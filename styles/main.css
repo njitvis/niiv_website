@@ -46,4 +46,8 @@
 #pricing ul li {
   font-size: 1.1em;
 }
-
+.card-highlights {
+  width: 100%;
+  height: 15vw;
+  object-fit: cover;
+}
