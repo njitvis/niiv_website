@@ -52,3 +52,9 @@
   height: 15vw;
   object-fit: cover;
 }
+
+.research_area_img{
+  width: 100%;
+  height: 12vw;
+  object-fit: cover;
+}
