@@ -1,11 +1,12 @@
 #intro {
   /*background: url("../img/panorama-3094696_1920.jpg") no-repeat center center;*/
-  background: url("../img/njit_large_image.jpg") no-repeat center center;
+  /*background: url("../img/njit_large_image.jpg") no-repeat center center; */
+  background: url("") no-repeat center center;
   background-size: cover;
 }
 
 .top-nav-collapse {
-  background-color: #3949ab !important;
+  background-color: #ffffff !important; /*#3949ab */
 }
 
 .navbar:not(.top-nav-collapse) {
@@ -14,7 +15,7 @@
 
 @media (max-width: 768px) {
   .navbar:not(.top-nav-collapse) {
-    background: #3949ab !important;
+    background: transparent !important; /* #3949ab */
   }
 }
 
@@ -23,10 +24,10 @@
   line-height: 1.7;
 }
 
-.hm-gradient .full-bg-img {
+/*.hm-gradient .full-bg-img {
   background: rgba(42, 27, 161, 0.7);
   background: linear-gradient(45deg, rgba(42, 27, 161, 0.7), rgba(29, 210, 177, 0.7) 100%);
-}
+}*/
 
 @media (max-width: 450px) {
   .margins {
