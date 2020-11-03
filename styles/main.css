@@ -17,6 +17,22 @@
     background: #3949ab !important;
   }
 }
+ul {
+  list-style: none;
+}
+li {
+  margin: 0.25rem;
+}
+li::before {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  display: inline-block;
+  line-height: 2rem;
+  color: white;
+  text-align: left;
+  margin-right: 0.5rem;
+}
 
 #intro .h6 {
   font-weight: 300;
