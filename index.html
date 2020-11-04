@@ -6,7 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>NiiV</title>
     <meta name="description" content="The website for the premier visualization lab in NJIT!"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"> -->
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/mdb.min.css" rel="stylesheet">
     <link href="styles/main.css" rel="stylesheet">
@@ -14,8 +17,8 @@
   <body id="top">
     <header>
       <!-- Navbar-->
-      <nav class="navbar navbar-expand-lg navbar-dark fixed-top scrolling-navbar" id="navbar">
-        <div class="container"><a class="navbar-brand" href="#"><strong>NJIT Intelligible Information Visualization Lab</strong></a>
+      <nav class="navbar navbar-expand-lg navbar-light fixed-top scrolling-navbar" id="navbar"> <!-- navbar-dark -->
+        <div class="container"><a class="navbar-brand" href="#"><strong>NJIT's Intelligible Information Visualization Lab</strong></a>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
           <div class="collapse navbar-collapse" id="navbarContent">
             <ul class="navbar-nav ml-auto">
@@ -36,15 +39,15 @@
           <div class="container">
             <div class="row no-gutters">
               <div class="col-md-10 col-lg-6 text-center text-md-left margins">
-                <div class="white-text">
-                  <div class="wow fadeInLeft" data-wow-delay="0.3s">
+                <div class="black-text">
+                  <div> <!-- class="wow fadeInLeft" data-wow-delay="0.3s" -->
                     <h1 class="h1-responsive font-bold mt-sm-5">The premier visualization lab in NJIT</h1>
                     <div class="h6">
-                      The NJIT Intelligible Information Visualization Lab specializes in the domains of Data Visualization and Interpretation while working with problems closely tied to the real world.<!--At base, visualization is a method for contextualizing data, enabling people to apply their prior experiences and perceptual and cognitive abilities to draw conclusions about phenomena in the real world. Data visualization and visual analytics excel at communicating information and discovering insights by using visual encodings to transform abstract data into meaningful representations. This research area has grown in both academia and industry, forming the basis for new research and communities that wish to work on problems that can help inform how anyone understands, designs, or evaluates visual representations of data. -->
+                      The NJIT's Intelligible Information Visualization Lab specializes in the domains of Data Visualization and Interpretation while working with problems closely tied to the real world.<!--At base, visualization is a method for contextualizing data, enabling people to apply their prior experiences and perceptual and cognitive abilities to draw conclusions about phenomena in the real world. Data visualization and visual analytics excel at communicating information and discovering insights by using visual encodings to transform abstract data into meaningful representations. This research area has grown in both academia and industry, forming the basis for new research and communities that wish to work on problems that can help inform how anyone understands, designs, or evaluates visual representations of data. -->
                     </div>
                   </div><br>
-                  <div class="wow fadeInLeft" data-wow-delay="0.3s"><a class="btn btn-white dark-grey-text font-bold ml-0" href="https://www.youtube.com/watch?v=CQxs9Hh_1f4" target="_blank"><i class="fa fa-play mr-1"></i> Latest Session</a><a class="btn btn-outline-white" href="https://kaustavbhattacharjee.com/eurovis_star.html" target="_blank">Learn more</a></div>
-                </div>
+                  <div><a class="btn btn-white dark-grey-text font-bold ml-0" href="https://www.youtube.com/watch?v=CQxs9Hh_1f4" target="_blank"><i class="fa fa-play mr-1"></i> Latest Session</a><a class="btn btn-white dark-grey-text font-bold ml-0" href="#highlights">Research Highlights</a></div>  <!-- btn btn-outline-white -->
+                </div> <!-- class="wow fadeInLeft" data-wow-delay="0.3s" -->
               </div>
             </div>
           </div>
@@ -52,73 +55,153 @@
       </section>
     </header>
     <div id="content">
-<section class="row no-gutters" id="highlights">
+      <section id="highlights">
+      <h2 class="h2 pt-5 pb-2 text-center">Research Highlights</h2>
+<div class="row no-gutters">
   <div class="col-lg-3 col-md-6 col-sm-12 white lighten-1  text-black"> <!-- original was deep-purple lighten-1 text-white -->
-    <div class="p-5 text-center wow zoomIn" data-wow-delay=".1s">
-      <div class="h5 mt-3">Visualization tool for interacting with model explanations</div>
+    <div class="p-5 text-center" > <!-- class="p-5 text-center wow zoomIn" data-wow-delay=".1s" -->
+      <div class="h5 mt-3 blue-grey-text">Visualization tool for interacting with model explanations</div>
       <!--<i class="fa fa-line-chart fa-2x"></i>-->
-      <img src="img/highlights/explainer7.jpeg" class="img-fluid">
+      <img src="img/highlights/explainer7.jpeg" class="card-highlights">
       <p class="mt-5 text-muted">J. Krause, A. Dasgupta, J. Swartz, Y. Aphinyanaphongs and E. Bertini</p>
       <p class="mt-5">A Workflow for Visual Diagnostics of Binary Classifiers using instance-level Explanations</p>
-      <p class="mt-5"><a href="assets/vast17.pdf" class="stretched-link">IEEE VAST, 2017.</a></p>
+      <p class="mt-5"><a href="assets/vast17.pdf" class="stretched-link">IEEE VAST, 2017</a></p>
     </div>
   </div>
   <div class="col-lg-3 col-md-6 lighten-1 text-black"> <!-- original was purple lighten-1 text-white -->
-    <div class="p-5 text-center wow zoomIn" data-wow-delay=".3s">
+    <div class="p-5 text-center"> <!-- class="p-5 text-center wow zoomIn" data-wow-delay=".3s" -->
       <!--<i class="fa fa-industry fa-2x"></i>-->
-      <div class="h5 mt-3">Effects of transparency in analytical systems</div>
-      <img src="img/highlights/trust.png" class="img-fluid">
+      <div class="h5 mt-3 blue-grey-text">Effects of transparency in analytical systems</div>
+      <img src="img/highlights/trust.png" class="card-highlights">
       <p class="mt-5 text-muted">A. Dasgupta, J. Lee, R. Wilson, R. Lafrance, N. Cramer, K. Cook, and S. Payne</p>
       <p class="mt-5">Familiarity Vs Trust: A Comparative Study of Domain Scientists' Trust in Visual Analytics and Conventional Analysis Methods</p>
-      <p class="mt-5"><a href="assets/tvcg17.pdf" class="stretched-link">IEEE TVCG, 2017.</a></p>
+      <p class="mt-5"><a href="assets/tvcg17.pdf" class="stretched-link">IEEE TVCG, 2017</a></p>
     </div>
   </div>
-  <div class="col-lg-3 col-md-6 teal lighten-1 text-white">
-    <div class="p-5 text-center wow zoomIn" data-wow-delay=".5s"><i class="fa fa-users fa-2x"></i>
-      <div class="h5 mt-3"> Workplace Diversity</div>
-      <p class="mt-5">Organically grow the holistic world view of disruptive innovation via workplace diversity and empowerment.</p>
+  <div class="col-lg-3 col-md-6 lighten-1 text-black"> <!-- original was purple lighten-1 text-white -->
+    <div class="p-5 text-center"> <!-- class="p-5 text-center wow zoomIn" data-wow-delay=".5s" -->
+      <!--<i class="fa fa-users fa-2x"></i> -->
+      <div class="h5 mt-3 blue-grey-text"> Evaluating experts' visualization task accuracy and preferences	</div>
+      <img src="img/highlights/chi.png" class="card-highlights">
+      <p class="mt-5 text-muted">A. Dasgupta, S. Burrows, K. Han, and P. J. Rasch</p>
+      <p class="mt-5">Empirical Analysis of the Subjective Impressions and Objective Measures of Domain Scientists’ Visual Analytic Judgments</p>
+      <p class="mt-5"><a href="assets/chi17.pdf" class="stretched-link">ACM CHI, 2017</a></p>
     </div>
   </div>
-  <div class="col-lg-3 col-md-6 light-blue lighten-1 text-white">
-    <div class="p-5 text-center wow zoomIn" data-wow-delay=".7s"><i class="fa fa-bullhorn fa-2x"></i>
-      <div class="h5 mt-3"> Survival Strategies</div>
-      <p class="mt-5">Bring to the table win-win survival strategies to ensure proactive domination.</p>
+  <div class="col-lg-3 col-md-6 lighten-1 text-black"> <!-- original was light-blue lighten-1 text-white -->
+    <div class="p-5 text-center"> <!-- class="p-5 text-center wow zoomIn" data-wow-delay=".7s" -->
+      <!--<i class="fa fa-bullhorn fa-2x"></i> -->
+      <div class="h5 mt-3 blue-grey-text"> Design space of visualizations for change perception</div>
+      <img src="img/highlights/streaming.png" class="card-highlights">
+      <p class="mt-5 text-muted">A. Dasgupta, D. Arendt, L. Franklin, P. C. Wong, and K. Cook</p>
+      <p class="mt-5">Human Factors in Streaming Data Analysis: Challenges and Opportunities for Information visualization</p>
+      <p class="mt-5"><a href="assets/cgf17.pdf" class="stretched-link">CGF, 2018</a></p>
     </div>
   </div>
+</div>
 </section>
-<section class="text-center py-5 grey lighten-4" id="about">
+<section class=" py-5 grey lighten-4" id="about">
   <div class="container">
     <div class="wow fadeIn">
-      <h2 class="h1 pt-5 pb-3">What makes us special?</h2>
+      <h2 class="h1 pt-5 pb-3 text-center">Research Areas</h2>
       <p class="px-5 mb-5 pb-3 lead blue-grey-text">
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
         aliqua. Ut enim ad minim veniam.
       </p>
     </div>
     <div class="row">
-      <div class="col-md-4 mb-r wow fadeInUp" data-wow-delay=".3s"><i class="fa fa-dashboard fa-3x orange-text"></i>
-        <h3 class="h4 mt-3">Expertise</h3>
+      <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".3s" --><!--<i class="fa fa-dashboard fa-3x orange-text"></i> -->
+        <div class="row">
+        <div class="col-md-4">
+        <img src="img/highlights/explainer7.jpeg" class="research_area_img">
+        </div>
+        <div class="col-md-8">
+        <h3 class="h4 mt-3">Interactive Visual Comparison</h3>
         <p class="mt-3 blue-grey-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti
-          hic.
+          Let domain scientists reason about computational model behavior and help them select the most accurate models by interactively comparing multiple facets of model performance.
         </p>
+          <p>EuroVis14 | TVCG14 | CISE15 | InfoVis19</p>
+          </div>
+        </div>
       </div>
-      <div class="col-md-4 mb-r wow fadeInUp" data-wow-delay=".4s"><i class="fa fa-comments-o fa-3x cyan-text"></i>
-        <h3 class="h4 mt-3">Domain Knowledge</h3>
+      <div class="col-md-6 mb-r" > <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".4s" --><!--<i class="fa fa-comments-o fa-3x cyan-text"></i> -->
+        <div class="row">
+          <div class="col-md-4">
+            <img src="img/highlights/trust.png" class="research_area_img">
+          </div>
+          <div class="col-md-8">
+        <h3 class="h4 mt-3">Studies on Visualization Effectiveness</h3>
         <p class="mt-3 blue-grey-text">
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit maiores nam, aperiam minima assumenda deleniti
-          hic.
+          Conduct user studies with experts from biology and climate science domains to evaluate if and how optimal visualization design can overcome potential biases due to familiarity.
         </p>
+            <p>TVCG16 | CHI17 | Chapter 6,Cognitive Biases Book 18 | TVCG19</p>
+            </div>
+        </div>
       </div>
-      <div class="col-md-4 mb-r wow fadeInUp" data-wow-delay=".5s"><i class="fa fa-cubes fa-3x red-text"></i>
-        <h3 class="h4 mt-3">Multiple Verticals</h3>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".5s" --><!--<i class="fa fa-dashboard fa-3x orange-text"></i> -->
+        <div class="row">
+        <div class="col-md-4">
+        <img src="img/highlights/explainer7.jpeg" class="research_area_img">
+        </div>
+        <div class="col-md-8">
+        <h3 class="h4 mt-3">Model Explainability and Trust</h3>
         <p class="mt-3 blue-grey-text">
-          We are exploring multiple verticals related to information visualization in order to advance this field of research.
+          Provide domain experts and model developers with tools that explain the decisions of machine learning models and help them semantically validate models.
         </p>
+          <p>HILDA17 | TVCG17 | VAST17 | UIST18</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".6s" --><!--<i class="fa fa-comments-o fa-3x cyan-text"></i> -->
+        <div class="row">
+          <div class="col-md-4">
+            <img src="img/highlights/trust.png" class="research_area_img">
+          </div>
+          <div class="col-md-8">
+        <h3 class="h4 mt-3">Visualization Perception & Design Analysis</h3>
+        <p class="mt-3 blue-grey-text">
+          Study and survey of the visualization design space for devising classification schemes that bridge human perception with visual encodings.
+        </p>
+            <p>TVCG15 | CGF17 | CGF18 | VisComm18</p>
+            </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".7s" --><!--<i class="fa fa-dashboard fa-3x orange-text"></i> -->
+        <div class="row">
+        <div class="col-md-4">
+        <img src="img/highlights/explainer7.jpeg" class="research_area_img">
+        </div>
+        <div class="col-md-8">
+        <h3 class="h4 mt-3">High-Dimensional Pattern Search</h3>
+        <p class="mt-3 blue-grey-text">
+          Provide guidance to analysts for finding patterns in high- dimensional subspaces by devising metrics that quantify salient patterns.
+        </p>
+          <p>InfoVis10 | LDAV12 | CGF2015 | LDAV20169</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".8s" -><!--<i class="fa fa-comments-o fa-3x cyan-text"></i> -->
+        <div class="row">
+          <div class="col-md-4">
+            <img src="img/highlights/trust.png" class="research_area_img">
+          </div>
+          <div class="col-md-8">
+        <h3 class="h4 mt-3">Privacy-Preserving Data Visualization</h3>
+        <p class="mt-3 blue-grey-text">
+          Adapt visualizations to prevent disclosure of sensitive information by developing information loss metrics that can help address the trade-off between privacy gain and loss of utility due to anonymization.
+        </p>
+            <p>InfoVis11 | CGF12 | CGF13 | EHRVis14 | VizSec19 | EuroVis20</p>
+            </div>
+        </div>
       </div>
     </div>
   </div>
 </section>
+      <!--
 <section class="py-5" id="projects">
   <div class="container">
     <div class="wow fadeIn">
@@ -202,8 +285,10 @@
     </div>
   </div>
   </div>
-</section>
-<section class="text-left py-5" id="pricing">
+
+</section> -->
+<section class="text-center py-5" id="pricing">
+
   <div class="container">
     <div class="wow fadeIn">
       <h2 class="h1 pt-5 pb-3">Publications</h2>
@@ -256,7 +341,7 @@
       </p>
     </div>
     <div class="row mb-lg-4 center-on-small-only">
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInLeft" data-wow-delay=".3s">
+      <div class="col-lg-6 col-md-12 mb-r"> <!-- class="col-lg-6 col-md-12 mb-r wow fadeInLeft" data-wow-delay=".3s" -->
         <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="img/team_members/aritra.jpeg" alt="team member"/></div>
         <div class="col-md-6 float-right">
           <div class="h4">Aritra Dasgupta</div>
@@ -264,38 +349,38 @@
           <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p><a href="https://twitter.com/AeDeeGee" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@AeDeeGee</span></a>
         </div>
       </div>
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInRight" data-wow-delay=".3s">
-        <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="img/team_members/akshith.jpg" alt="team member"/></div>
-        <div class="col-md-6 float-right">
-          <div class="h4">Akshith Reddy Kandakatla</div>
-          <h6 class="font-bold blue-grey-text mb-4">PhD Student</h6>
-          <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p><a href="https://twitter.com/AkshithRk" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@AkshithRk</span></a>
-        </div>
-      </div>
-    </div>
-    <div class="row center-on-small-only">
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInLeft" data-wow-delay=".3s">
+      <div class="col-lg-6 col-md-12 mb-r"> <!-- class="col-lg-6 col-md-12 mb-r wow fadeInRight" data-wow-delay=".3s" -->
         <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="img/team_members/jun.png" alt="team member"/></div>
         <div class="col-md-6 float-right">
           <div class="h4">Jun Yuan</div>
           <h6 class="font-bold blue-grey-text mb-4">PhD Student</h6>
-          <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p><!--<a href="https://twitter.com" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@markhall</span></a>-->
+          <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p><!--<a href="https://twitter.com/" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@markhall</span></a>-->
         </div>
       </div>
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInRight" data-wow-delay=".3s">
+    </div>
+    <div class="row center-on-small-only">
+      <div class="col-lg-6 col-md-12 mb-r"> <!-- class="col-lg-6 col-md-12 mb-r wow fadeInLeft" data-wow-delay=".3s" -->
         <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="img/team_members/kaustav.jpg" alt="team member"/></div>
         <div class="col-md-6 float-right">
           <div class="h4">Kaustav Bhattacharjee</div>
           <h6 class="font-bold blue-grey-text mb-4">PhD Student</h6>
-          <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p><a href="https://twitter.com/me_kebby" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@me_kebby</span></a>
+          <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p><a href="https://www.linkedin.com/in/kaustav-bhattacharjee/" target="_blank"><i class="fa fa-linkedin fa-fw"></i></a><a href="https://twitter.com/me_kebby" target="_blank"><i class="fa fa-twitter fa-fw"></i></a> <a href="https://www.researchgate.net/profile/Kaustav_Bhattacharjee2" target="_blank"><i class="fab fa-researchgate fa-fw"></i></a> <a href="https://scholar.google.com/citations?user=vNbc-p0AAAAJ&hl=en" target="_blank"><i class="ai ai-google-scholar-square fa-fw"></i></a>
         </div>
       </div>
-      <div class="col-lg-6 col-md-12 mb-r wow fadeInRight" data-wow-delay=".3s">
+      <div class="col-lg-6 col-md-12 mb-r"> <!-- class="col-lg-6 col-md-12 mb-r wow fadeInRight" data-wow-delay=".3s" -->
         <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="img/team_members/sahaj.jpeg" alt="team member"/></div>
         <div class="col-md-6 float-right">
           <div class="h4">Sahaj Vaidya</div>
           <h6 class="font-bold blue-grey-text mb-4">PhD Student</h6>
           <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p><a href="https://twitter.com/sahajs235" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@sahajs235</span></a>
+        </div>
+      </div>
+      <div class="col-lg-6 col-md-12 mb-r"> <!-- class="col-lg-6 col-md-12 mb-r wow fadeInRight" data-wow-delay=".3s" -->
+        <div class="col-md-6 float-left"><img class="img-fluid rounded z-depth-1 mb-3" src="img/team_members/soumyadeep.png" alt="team member"/></div>
+        <div class="col-md-6 float-right">
+          <div class="h4">Soumyadeep Basu</div>
+          <h6 class="font-bold blue-grey-text mb-4">PhD Student</h6>
+          <p class="grey-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quod eos id officiis hic tenetur.</p><a href="https://twitter.com/SoumyaGogol" target="_blank"><i class="fa fa-twitter"></i><span class="ml-1">@SoumyaGogol</span></a>
         </div>
       </div>
     </div>
@@ -304,18 +389,18 @@
 <section id="contact" style="background-image:url('img/njit_contact.jpg');">
   <div class="rgba-black-strong py-5">
     <div class="container">
-      <div class="wow fadeIn">
+      <div > <!-- class="wow fadeIn" -->
         <h2 class="h1 text-white pt-5 pb-3 text-center">Contact us</h2>
         <p class="text-white px-5 mb-5 pb-3 lead text-center">
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Fugit, error amet numquam iure provident voluptate
           esse quasi, veritatis totam voluptas nostrum quisquam eum porro a pariatur accusamus veniam.
         </p>
       </div>
-      <div class="card mb-5 wow fadeInUp" data-wow-delay=".4s">
+      <div class="card mb-5"> <!-- class="card mb-5 wow fadeInUp" data-wow-delay=".4s" -->
         <div class="card-body p-5">
           <div class="row">
             <div class="col-md-8">
-              <form action="https://formspree.io/youremail@example.com" method="POST">
+              <form action="#" method="POST">
                 <div class="row">
                   <div class="col-md-6">
                     <div class="md-form">
