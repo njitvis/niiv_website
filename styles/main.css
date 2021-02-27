@@ -75,3 +75,6 @@ li::before {
   height: 100%/*15vw*/;
   object-fit: fill;
 }
+.description{
+  /*letter-spacing: 0.05em; */
+}
