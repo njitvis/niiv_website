@@ -5,6 +5,11 @@
   /*background: grey no-repeat center center; */
   background-size: cover;
 }
+body {
+  font-family: 'Helvetica Neue',Open Sans', sans-serif;
+  /* font-size: 12px; 
+background-color: whitesmoke;*/
+}
 
 .top-nav-collapse {
   /* background-color: #ffffff !important; */ /*#3949ab */
