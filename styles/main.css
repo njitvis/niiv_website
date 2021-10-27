@@ -24,7 +24,7 @@ background-color: whitesmoke;*/
     background: transparent !important; // #3949ab 
   } 
 } */
-@media (min-width: 768px) {
+@media (min-width: 1600px) {
   #intro{
     height: 100vh;
   }
