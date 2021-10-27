@@ -29,6 +29,16 @@ background-color: whitesmoke;*/
     height: 100vh;
   }
 }
+.image_headers{
+  font-weight: 650;
+}
+.update_item{
+  color: rgb(94,94,94);
+  font-weight: normal;
+}
+.update_item_header{
+  font-weight: bold;
+}
 ul {
   list-style: none;
 }
