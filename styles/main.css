@@ -31,6 +31,7 @@ background-color: whitesmoke;*/
     height: 100vh;
   }
 }
+
 .image_headers{
   font-weight: 650;
   font-size: 0.85em;
@@ -53,7 +54,7 @@ background-color: whitesmoke;*/
   flex: 0 0 12.499%;
   max-width: 12.499%;
   z-index:5; */
-  font-size: 0.76em;
+  font-size: 0.85em;
 
   /* margin-right:0.1px; */
 }
