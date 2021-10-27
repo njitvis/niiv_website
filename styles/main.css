@@ -48,6 +48,15 @@ background-color: whitesmoke;*/
   border-radius: 3%;
   box-shadow:  1px 1px 1px 1px grey; 
 }
+.lab_updates{
+  /* width: 12.499999995%;
+  flex: 0 0 12.499%;
+  max-width: 12.499%;
+  z-index:5; */
+  font-size: 0.76em;
+
+  /* margin-right:0.1px; */
+}
 ul {
   list-style: none;
 }
