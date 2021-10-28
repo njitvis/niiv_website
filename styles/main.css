@@ -114,6 +114,11 @@ li::before {
   height: 100%/*15vw*/;
   object-fit: fill;
 }
+.research_area_img_long{
+  width: 100%;
+  height: 100%;/*15vw*/
+  object-fit: contain;
+}
 .description{
   /*letter-spacing: 0.05em; */
 }
