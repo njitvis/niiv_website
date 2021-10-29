@@ -135,6 +135,15 @@ li::before {
   text-decoration: none;
   color: inherit;
 }
+.publications_link1{
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+}
+.publications_link1:hover{
+  color: #0275d8;
+}
+
 .description{
   /*letter-spacing: 0.05em; */
 }
