@@ -119,6 +119,10 @@ li::before {
   height: 100%;/*15vw*/
   object-fit: contain;
 }
+.publications_link{
+  text-decoration: none;
+  color: inherit;
+}
 .description{
   /*letter-spacing: 0.05em; */
 }
