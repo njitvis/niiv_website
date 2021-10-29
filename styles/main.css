@@ -58,6 +58,18 @@ background-color: whitesmoke;*/
 
   /* margin-right:0.1px; */
 }
+.people_name{
+  font-weight:550;
+}
+.people_designation{
+  font-weight:450;
+}
+.people_department{
+  font-weight:400;
+}
+.people_website{
+  font-weight:400;
+}
 ul {
   list-style: none;
 }
