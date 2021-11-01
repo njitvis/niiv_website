@@ -140,6 +140,11 @@ li::before {
   height: 100%;/*15vw*/
   object-fit: contain;
 }
+.research_area_img_long1{
+  width: 100%;
+  height: 90%;/*15vw*/
+  object-fit: contain;
+}
 .publications_link{
   text-decoration: none;
   color: inherit;
