@@ -92,6 +92,12 @@ background-color: whitesmoke;*/
 
   /* margin-right:0.1px; */
 }
+.lab_updates1{
+  padding: 0 !important;
+}
+.header_middle_part{
+  padding: 0 !important;
+}
 .people_name{
   font-weight:550;
 }
