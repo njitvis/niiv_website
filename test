@@ -111,3 +111,28 @@
                   </ul>
                 </div>
               </nav>
+
+
+
+
+<div class="row main_content_row hidenavbar gx-0" style="" >
+              <!-- <nav1 class="navbar navbar-light " > -->
+              <!-- <span class="col-xs-12 mb-0 mr-0 ml-4 ml-lg-0" style="font-size: 1.2em;" ><p style="color:rgb(238,34,12) ;"> <a href="https://ds.njit.edu/" target="_blank" style="color:rgb(238,34,12); text-decoration: none;" >
+                &nbsp;&nbsp;&nbsp;Department of Data Science </a><b><a href="https://academicjobsonline.org/ajo/jobs/19179" target="_blank" style="color:rgb(238,34,12); text-decoration: none;">(We are hiring!)</a></b>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; New Jersey Institute of Technology &nbsp; <span style="align: right;"><a href="#research" style="color:black; text-decoration: none;">Research Areas &nbsp;&nbsp;</a><a href="#publications"  style="color:black; text-decoration: none;">Publications &nbsp;&nbsp;</a><a href="#contact"  style="color:black; text-decoration: none;">Contact Us</a></span></p></span>
+               -->
+               <div class="col-lg-4 header1" style="font-size: 1.2em; color:rgb(238,34,12) ;">
+                <a href="https://ds.njit.edu/" target="_blank" style="color:rgb(238,34,12); text-decoration: none;" >Department of Data Science</a> <b><a href="https://academicjobsonline.org/ajo/jobs/19179" target="_blank" style="color:rgb(238,34,12); text-decoration: none;">(We are hiring!)</a>
+               </div>
+               <div class="col-lg-8">
+                <div class="row">
+                  <div class="col-lg-10">
+                    <div class="row">
+                      <div class="col-lg-4">New Jersey Institute of Technology</div>
+                      <div class="col-lg-4">Research Areas</div>
+                      <div class="col-lg-4">Publications</div>
+                    </div>
+                  </div>
+                  <div class="col-lg-2"> Contact Us</div>
+                </div>
+               </div>
+            </div>              
