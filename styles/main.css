@@ -30,6 +30,15 @@ background-color: whitesmoke;*/
   #intro{
     height: 95vh;
   }
+  /* .image_headers{
+    height: 15%;
+  }
+  .image_main{
+    height: 60%;
+  }
+  .image_titles{
+    height: 25%;
+  } */
 }
 
 .image_headers{
@@ -129,6 +138,11 @@ li::before {
 .research_area_img_long{
   width: 100%;
   height: 100%;/*15vw*/
+  object-fit: contain;
+}
+.research_area_img_long1{
+  width: 100%;
+  height: 90%;/*15vw*/
   object-fit: contain;
 }
 .publications_link{
