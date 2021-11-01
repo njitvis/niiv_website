@@ -40,6 +40,20 @@ background-color: whitesmoke;*/
     height: 25%;
   } */
 }
+@media (max-width: 768px) {
+  .hidenavbar{
+    display: none;
+  }
+  /* .image_headers{
+    height: 15%;
+  }
+  .image_main{
+    height: 60%;
+  }
+  .image_titles{
+    height: 25%;
+  } */
+}
 
 .image_headers{
   font-weight: 650;

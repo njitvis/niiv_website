@@ -87,4 +87,27 @@
             </div>
         </div>
       </div>
-    </div>
+    <
+  /div>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-white">
+                <div class="collapse navbar-collapse" id="navbarNav">
+                  <ul class="navbar-nav">
+               <!-- <div class="row main_content_row" style="text-align: left" >--><!--row justify-content-start header_row-->
+                  <!-- <nav1 class="navbar navbar-light " > -->
+                <li class="nav-item"> <div><span class="col-xs-12 col-lg-3 mb-0 mr-3 ml-4 ml-lg-0" style="font-size: 1.2em;" ><p style="color:rgb(238,34,12) ;"> <a href="https://ds.njit.edu/" target="_blank" style="color:rgb(238,34,12); text-decoration: none;" ><!--darksalmon-->
+                  Department of Data Science </a><b><a href="https://academicjobsonline.org/ajo/jobs/19179" target="_blank" style="color:rgb(238,34,12); text-decoration: none;">(We are hiring!)</a></b></p></span></div></li>
+                    <li class="nav-item"> <span class="col-xs-12 col-lg-3  mb-0 m-r-7 ml-4 ml-lg-0" style="font-size: 1.2em;" ><p style="color:rgb(238,34,12) ;">New Jersey Institute of Technology</p></span></li>
+                    <li class="nav-item">
+                      <span class="col-xs-12 col-lg-2 mb-0 m-r-7 ml-4 ml-lg-0" style="font-size: 1.2em;" ><p style="color:rgb(238,34,12) ;">  <a class="nav-link" href="#">Research Philosophy</a></p></span>
+                    </li>
+
+                    <li class="nav-item">
+                      <span class="col-xs-12 col-lg-2 mb-0 m-r-7 ml-4 ml-lg-0" style="font-size: 1.2em;" ><p style="color:rgb(238,34,12) ;"> <a class="nav-link" href="#">Research Areas</a></p></span>
+                    </li>
+                    <li class="nav-item">
+                      <span class="col-xs-12 col-lg-2 mb-0 m-r-7 ml-4 ml-lg-0" style="font-size: 1.2em;" ><p style="color:rgb(238,34,12) ;">  <a class="nav-link" href="#">Publications</a></p></span>
+                    </li>
+                  </ul>
+                </div>
+              </nav>
