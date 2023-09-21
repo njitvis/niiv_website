@@ -33,7 +33,7 @@ background-color: whitesmoke;*/
     background: transparent !important; // #3949ab 
   } 
 } */
-@media (min-width: 1600px) {
+@media (min-width: 768px) {
   #intro{
     height: 95vh;
   }
@@ -210,6 +210,10 @@ li::before {
 }
 .pages_link{
   color: rgb(0, 128, 128)
+}
+.section_link{
+  color: inherit;
+  cursor:  pointer;
 }
 
 .description{
