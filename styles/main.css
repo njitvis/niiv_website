@@ -212,7 +212,7 @@ li::before {
   color: rgb(0, 128, 128)
 }
 .section_link{
-  color: inherit;
+  color: black;
   cursor:  pointer;
 }
 
