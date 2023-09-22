@@ -37,6 +37,27 @@ background-color: whitesmoke;*/
   #intro{
     height: 95vh;
   }
+  .pages_research_block{
+    height: 35vh; 
+  }
+  .pages_research_block_title{
+    font-size: 3.5em;
+  }
+  .pages_research_block_text{
+    font-size: 2.2em;
+  }
+  .pages_research_block_heading{
+    font-size: 4em;
+  }
+  .pages_research_block_heading_container{
+    transform: translateY(40%);
+  }
+  .pages_research_block_details_container{
+    transform: translateY(12vh);
+  }
+  .pages_research_block_conf{
+    font-size: 1.5em;
+  }
   /* .image_headers{
     height: 15%;
   }
@@ -50,6 +71,27 @@ background-color: whitesmoke;*/
 @media (max-width: 768px) {
   .hidenavbar{
     display: none;
+  }
+  .pages_research_block{
+    height: 15vh; 
+  }
+  .pages_research_block_title{
+    font-size: 2em;
+  }
+  .pages_research_block_text{
+    font-size: 1.1em;
+  }
+  .pages_research_block_heading{
+    font-size: 2.5em;
+  }
+  .pages_research_block_heading_container{
+    transform: translateY(8vh);
+  }
+  .pages_research_block_details_container{
+    transform: translateY(4vh);
+  }
+  .pages_research_block_conf{
+    font-size: 1em;
   }
   /* .image_headers{
     height: 15%;
@@ -79,6 +121,11 @@ background-color: whitesmoke;*/
 }
 
 .image_block{
+  border: solid 1px gainsboro;
+  border-radius: 3%;
+  box-shadow:  1px 1px 1px 1px grey; 
+}
+.pages_research_block{
   border: solid 1px gainsboro;
   border-radius: 3%;
   box-shadow:  1px 1px 1px 1px grey; 
