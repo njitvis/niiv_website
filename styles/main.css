@@ -33,7 +33,7 @@ background-color: whitesmoke;*/
     background: transparent !important; // #3949ab 
   } 
 } */
-@media (min-width: 768px) {
+@media (max-width: 1140px) {
   #intro{
     height: 95vh;
   }
@@ -41,13 +41,48 @@ background-color: whitesmoke;*/
     height: 35vh; 
   }
   .pages_research_block_title{
-    font-size: 3.5em;
+    font-size:  2.5em; 
   }
   .pages_research_block_text{
-    font-size: 2.2em;
+    font-size: 1.8em;
   }
   .pages_research_block_heading{
-    font-size: 4em;
+    font-size: 2.8em;
+  }
+  .pages_research_block_heading_container{
+    transform: translateY(40%);
+  }
+  .pages_research_block_details_container{
+    transform: translateY(12vh);
+  }
+  .pages_research_block_conf{
+    font-size: 1.2em;
+  }
+  /* .image_headers{
+    height: 15%;
+  }
+  .image_main{
+    height: 60%;
+  }
+  .image_titles{
+    height: 25%;
+  } */
+}
+@media (min-width: 1140px) {
+  #intro{
+    height: 95vh;
+  }
+  .pages_research_block{
+    height: 35vh; 
+  }
+  .pages_research_block_title{
+    font-size:  3.5em; 
+  }
+  .pages_research_block_text{
+    font-size: 2.2rem;
+  }
+  .pages_research_block_heading{
+    font-size: 3.8em;
   }
   .pages_research_block_heading_container{
     transform: translateY(40%);
