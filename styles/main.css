@@ -14,6 +14,13 @@
   /*background: grey no-repeat center center; */
   background-size: cover;
 }
+#intro_home {
+  /*background: url("../img/panorama-3094696_1920.jpg") no-repeat center center;*/
+  /* background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)),url("../img/intro/ywcc.jpg") no-repeat ; */ /* center center */
+  /*background: url("") no-repeat center center; */
+  /*background: grey no-repeat center center; */
+  background-size: cover;
+}
 body {
   font-family: 'Open Sans','Helvetica Neue',  sans-serif;
   /* font-size: 12px; 
@@ -143,6 +150,22 @@ screen and (max-height:768px)
   } */
 }
 
+/* Only for home page */
+@media (min-width: 1600px) {
+  #intro_home{
+    height: 95vh;
+  }
+  /* .image_headers{
+    height: 15%;
+  }
+  .image_main{
+    height: 60%;
+  }
+  .image_titles{
+    height: 25%;
+  } */
+}
+
 .image_headers{
   font-weight: 650;
   font-size: 0.85em;
@@ -217,6 +240,10 @@ li::before {
 }
 
 #intro .h6 {
+  /* font-weight: 300;
+  line-height: 1.7; */
+}
+#intro_home .h6 {
   /* font-weight: 300;
   line-height: 1.7; */
 }
