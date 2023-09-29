@@ -173,6 +173,9 @@ screen and (max-height:768px)
 .image_titles{
   vertical-align: bottom;
 }
+.team_member_pic{
+  border-radius: 50%;
+}
 
 .update_item{
   color: rgb(94,94,94);
