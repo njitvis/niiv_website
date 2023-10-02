@@ -18,6 +18,7 @@
     <link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
     <link rel="manifest" href="img/favicons/site.webmanifest">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <!-- Global site tag (gtag.js) - Google Analytics -->
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBCQHPZJ26"></script>
         <script>
@@ -27,6 +28,7 @@
 
           gtag('config', 'G-ZBCQHPZJ26');
         </script>
+        
     
   </head>
   <body id="top">
@@ -206,10 +208,10 @@
                    <div class="col-lg-12" style="color:rgb(255,147,0);"><b>Transparent AI-driven Decision Making</b></div>
                    <!-- <div class="col-lg-5" style="color:rgb(248,186,0); text-align: right;"><b>TVCG ’20</b></div> -->
                  </div>
-                  <div class="row h-60 image_main" style="">
+                  <div class="row h-60 image_main" style="" >
                      <img src="img/highlights/latest/foragingSensemaking.png" alt="highlight 2" class="img-thumbnail highlights_image" style=""> <!--width:97%; margin-left: 3%;-->
                   </div>
-                  <div class="row h-20 image_titles" style="font-size: 0.9em; text-align: justify; text-justify: inter-word;">
+                  <div class="row h-20 image_titles" style="font-size: 0.9em; text-align: justify; text-justify: inter-word;" id="third_highlight">
                     <p>Beyond Visual Analytics: Human-Machine Teaming for AI-Driven Data Sensemaking&nbsp;<a href="https://doi.org/10.1145/3597465.3605221" target="_blank">[VIS 2021]</a></p>
                     <p>Introducing contextual transparency for automated decision systems&nbsp;<a href="https://rdcu.be/c9fD3" target="_blank">[Nature 2023]</a></p>
                     <!-- <a href="assets/highlights/trex21.pdf" target="_blank" class="publications_link">Beyond Visual Analytics: Human-Machine Teaming for AI-Driven Data Sensemaking,</a> by J. Wenskovitch, C. Fallon and A. Dasgupta,  IEEE VIS, 2021&nbsp;<a href="https://doi.org/10.1145/3597465.3605221" target="_blank">[paper]</a><br><br>
@@ -225,11 +227,13 @@
                 </div>
                 <!-- <div class="row">&nbsp;&nbsp;</div> -->
                 
-                 <div class="row h-60  image_main" style="">
+                
+                <div class="row h-60  image_main" style="" >
                     <img src="img/highlights/latest/VIS2021.jpeg" alt="highlight 4" class="img-thumbnail  " style=""> <!--width:97%; margin-left: 3%;-->
                  </div>
+                
                  <!-- <div class="row">&nbsp;&nbsp;&nbsp;</div> -->
-                 <div class="row h-20 image_titles" style="font-size: 0.9em; text-align: justify; text-justify: inter-word;">
+                 <div class="row h-20 image_titles" style="font-size: 0.9em; text-align: justify; text-justify: inter-word; position:relative;" id="fourth_highlight">
                   <p>Visful thinking: Towards a Visual Reasoning Framework for Communicating with Data, Aritra Dasgupta &nbsp;<a href="https://www.youtube.com/watch?v=13Fqg6NAypU" target="_blank">[Outlier 2023]</a></p>
                   <p>Conceptualizing Visual Analytic Interventions for Content Moderation &nbsp;<a href="assets/publications/2021/sahaj_vis21.pdf" target="_blank">[VIS 2021]</a></p>
                   <!-- <a href="https://www.youtube.com/watch?v=13Fqg6NAypU" target="_blank" class="publications_link">Visful thinking: Towards a Visual Reasoning Framework for Communicating with Data,</a> by A. Dasgupta,  Outlier, 2023&nbsp;<a href="https://www.youtube.com/watch?v=13Fqg6NAypU" target="_blank">[link]</a> -->
@@ -575,6 +579,17 @@
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
     <script type="text/javascript" src="js/mdb.min.js"></script>
     <script>new WOW().init();</script>
+    <script>
+      var item3 =$('#third_highlight');
+      var item4 =$('#fourth_highlight');
+      var a = item3.position().top;
+      var b = item4.position().top;
+      var diff = a - b;
+      $('#fourth_highlight').css("top",diff)
+      //console.log(item3.position().top, item4.position().top);
+  
+      
+    </script>
     </div>
   </body>
 </html>
