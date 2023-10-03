@@ -167,7 +167,10 @@ screen and (max-height:768px)
 }
 
 .area_text{
-  /* position: absolute; */
+  /* position: relative; */
+}
+.area_links{
+  position: absolute;
 }
 .image_headers{
   font-weight: 650;
