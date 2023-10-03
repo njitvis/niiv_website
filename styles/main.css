@@ -166,6 +166,9 @@ screen and (max-height:768px)
   } */
 }
 
+.area_text{
+  /* position: absolute; */
+}
 .image_headers{
   font-weight: 650;
   font-size: 0.85em;
