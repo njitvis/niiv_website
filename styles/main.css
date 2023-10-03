@@ -165,13 +165,19 @@ screen and (max-height:768px)
     height: 25%;
   } */
 }
-
+.area_text_parent{
+  position: relative;
+}
 .area_text{
-  /* position: relative; */
+  position: absolute;
+}
+.area_links_parent{
+  position: relative;
 }
 .area_links{
   position: absolute;
 }
+
 .image_headers{
   font-weight: 650;
   font-size: 0.85em;

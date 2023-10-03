@@ -324,7 +324,7 @@
         Our research consists of multiple areas including information visualization, visual analytics, human-centered data science and human-computer interaction. Please get in touch if you want to know more about these topics.
       </p> -->
     </div>
-    <div class="row">
+    <div class="row test1">
       <div class="col-lg-3 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".3s" --><!--<i class="fa fa-dashboard fa-3x orange-text"></i> -->
         <div class="row">
         <!-- <div class="col-md-5">
@@ -332,9 +332,11 @@
         </div> -->
         <div class="col-md-12">
         <h3 class="h4 mt-3">Explainable AI for Algorithmic Rankers</h3>
+        <span class="area_text_parent"></span>
         <p class="mt-3 blue-grey-text area_text" id="area1_text">
           Unravel factors influencing black-box ranking models through visual analytic explanations.
         </p>
+        <p class="area_links_parent"></p>
           <p id="area1_links" class="area_links" ><a href="https://doi.org/10.1145/3597465.3605221" target="_blank">HILDA23</a> | <a href="assets/publications/2022/ranking_HCDSCHI22.pdf" target="_blank">HCDS @ CHI22</a> | <a href="https://arxiv.org/abs/2308.14622" target="_blank" style="color:gray">VisualComputer23</a></p>
           </div>
         </div>
@@ -346,9 +348,11 @@
           </div> -->
           <div class="col-md-12">
         <h3 class="h4 mt-3">Transparent AI-driven Decision Making</h3>
+        <span class="area_text_parent"></span>
         <p class="mt-3 blue-grey-text area_text" id="area2_text">
           Apply visualization and artificial intelligence techniques for high-consequential decision-making.
         </p>
+        <p class="area_links_parent"></p>
             <p id="area2_links" class="area_links" ><a href="https://rdcu.be/c9fD3" target="_blank">Nature23</a> | <a href="assets/publications/2021/trex21.pdf" target="_blank">TREX21</a> | <a href="https://ideas.repec.org/h/spr/sprchp/978-3-030-97940-9_102.html" target="_blank">Handbook of Smart Energy Systems'23</a> </p>
             </div>
         </div>
@@ -360,9 +364,11 @@
         </div> -->
         <div class="col-md-12">
         <h3 class="h4 mt-3">Privacy-aware Data Discovery</h3>
+        <span class="area_text_parent"></span>
         <p class="mt-3 blue-grey-text area_text" id="area3_text">
           Develop visual analytic workflows to discover joinable open datasets that can lead of disclosure of sensitive information.
         </p>
+        <p class="area_links_parent"></p>
           <p id="area3_links" class="area_links" ><a href="https://doi.org/10.1145/3597465.3605225" target="_blank">HILDA23</a> | <a href="assets/publications/2023/kaustav_usec23.pdf" target="_blank">USEC23</a> | <a href="assets/publications/2022/kaustav_vizsec22.pdf" target="_blank">VizSec22</a> | <a href="assets/publications/2020/eurovis20.pdf" target="_blank">CGF20</a></p>
           </div>
         </div>
@@ -374,18 +380,20 @@
         </div> -->
         <div class="col-md-12">
         <h3 class="h4 mt-3">Design and Analysis of Communicative Visualization</h3>
+        <span class="area_text_parent"></span>
         <p class="mt-3 blue-grey-text area_text" id="area4_text">
           Study the role of communicative visualization in data and domain sciences.
         </p>
+        <p class="area_links_parent"></p>
           <p id="area4_links" class="area_links" ><a href="https://www.youtube.com/watch?v=13Fqg6NAypU" target="_blank">Outlier23</a> | <a href="assets/publications/2021/sahaj_vis21.pdf" target="_blank">VIS21</a> | <a href="assets/publications/2020/sahaj_vis20.pdf" target="_blank">VIS20</a> | <a href="assets/publications/2018/viscom18.pdf" target="_blank">VisCom18</a></p>
           </div>
         </div>
       </div>
     </div>
-    
     <!-- The old content-->
     
   </div>
+  <br><br>
 </section>
       
 <section class="text-left py-1 " id="publications">
@@ -587,33 +595,43 @@
       var diff = a - b;
       $('#fourth_highlight').css("top",diff);
 
-      var area1_text =$('#area1_text');
-      var area2_text =$('#area2_text');
-      var area3_text =$('#area3_text');
-      var area4_text =$('#area4_text');
-      var a = area1_text.position().top;
-      var b = area2_text.position().top;
-      var c = area3_text.position().top;
-      var d = area4_text.position().top;
-      var highest = Math.max(a,b,c,d);
-      area1_text.css("top",highest);
-      area2_text.css("top",highest);
-      area3_text.css("top",highest);
-      area4_text.css("top",highest);
+      if($(this).width() > 768){
+        var area1_text =$('#area1_text');
+        var area2_text =$('#area2_text');
+        var area3_text =$('#area3_text');
+        var area4_text =$('#area4_text');
+        var a = area1_text.position().top;
+        var b = area2_text.position().top;
+        var c = area3_text.position().top;
+        var d = area4_text.position().top;
+        var highest = Math.max(a,b,c,d);
+        area1_text.css("top",highest);
+        area2_text.css("top",highest);
+        area3_text.css("top",highest);
+        area4_text.css("top",highest);
 
-      var area1_links =$('#area1_links');
-      var area2_links =$('#area2_links');
-      var area3_links =$('#area3_links');
-      var area4_links =$('#area4_links');
-      var a = area1_links.position().top;
-      var b = area2_links.position().top;
-      var c = area3_links.position().top;
-      var d = area4_links.position().top;
-      var highest = Math.max(a,b,c,d);
-      area1_links.css("top",highest);
-      area2_links.css("top",highest);
-      area3_links.css("top",highest);
-      area4_links.css("top",highest);
+        var area1_links =$('#area1_links');
+        var area2_links =$('#area2_links');
+        var area3_links =$('#area3_links');
+        var area4_links =$('#area4_links');
+        var a = area1_links.position().top;
+        var b = area2_links.position().top;
+        var c = area3_links.position().top;
+        var d = area4_links.position().top;
+        var highest = Math.max(a,b,c,d);
+        console.log($(this).width())
+        area1_links.css("top",highest*2);
+        area2_links.css("top",highest*2);
+        area3_links.css("top",highest*2);
+        area4_links.css("top",highest*2);
+      }
+      else{
+        $(".area_text_parent").css("position","static")
+        $(".area_text").css("position","static")
+        $(".area_links_parent").css("position","static")
+        $(".area_links_parent").css("position","static")
+      }
+      
 
       // var item3b =$('#third_highlightb');
       // var item4b =$('#fourth_highlightb');
