@@ -211,9 +211,9 @@
                   <div class="row h-60 image_main" style="" >
                      <img src="img/highlights/latest/foragingSensemaking.png" alt="highlight 2" class="img-thumbnail highlights_image" style=""> <!--width:97%; margin-left: 3%;-->
                   </div>
-                  <div class="row h-20 image_titles" style="font-size: 0.9em; text-align: justify; text-justify: inter-word;" id="third_highlight">
+                  <div class="row h-20 image_titles" style="font-size: 0.9em; text-align: justify; text-justify: inter-word;position:relative;" id="third_highlight">
                     <p>Beyond Visual Analytics: Human-Machine Teaming for AI-Driven Data Sensemaking&nbsp;<a href="https://doi.org/10.1145/3597465.3605221" target="_blank">[VIS 2021]</a></p>
-                    <p>Introducing contextual transparency for automated decision systems&nbsp;<a href="https://rdcu.be/c9fD3" target="_blank">[Nature 2023]</a></p>
+                    <p id="third_highlightb" >Introducing contextual transparency for automated decision systems&nbsp;<a href="https://rdcu.be/c9fD3" target="_blank">[Nature 2023]</a></p>
                     <!-- <a href="assets/highlights/trex21.pdf" target="_blank" class="publications_link">Beyond Visual Analytics: Human-Machine Teaming for AI-Driven Data Sensemaking,</a> by J. Wenskovitch, C. Fallon and A. Dasgupta,  IEEE VIS, 2021&nbsp;<a href="https://doi.org/10.1145/3597465.3605221" target="_blank">[paper]</a><br><br>
                     <a href="https://rdcu.be/c9fD3" target="_blank" class="publications_link">Introducing contextual transparency for automated decision systems,</a> by M. Sloane, I.R. Solano-Kamaiko, J. Yuan, A. Dasgupta and J. Stoyanovich,  Nature Machine Intelligence, 2023&nbsp;<a href="https://rdcu.be/c9fD3" target="_blank">[paper]</a> -->
                  </div>
@@ -235,7 +235,7 @@
                  <!-- <div class="row">&nbsp;&nbsp;&nbsp;</div> -->
                  <div class="row h-20 image_titles" style="font-size: 0.9em; text-align: justify; text-justify: inter-word; position:relative;" id="fourth_highlight">
                   <p>Visful thinking: Towards a Visual Reasoning Framework for Communicating with Data, Aritra Dasgupta &nbsp;<a href="https://www.youtube.com/watch?v=13Fqg6NAypU" target="_blank">[Outlier 2023]</a></p>
-                  <p>Conceptualizing Visual Analytic Interventions for Content Moderation &nbsp;<a href="assets/publications/2021/sahaj_vis21.pdf" target="_blank">[VIS 2021]</a></p>
+                  <p id="fourth_highlightb" >Conceptualizing Visual Analytic Interventions for Content Moderation &nbsp;<a href="assets/publications/2021/sahaj_vis21.pdf" target="_blank">[VIS 2021]</a></p>
                   <!-- <a href="https://www.youtube.com/watch?v=13Fqg6NAypU" target="_blank" class="publications_link">Visful thinking: Towards a Visual Reasoning Framework for Communicating with Data,</a> by A. Dasgupta,  Outlier, 2023&nbsp;<a href="https://www.youtube.com/watch?v=13Fqg6NAypU" target="_blank">[link]</a> -->
                   
                 </div>
@@ -586,6 +586,20 @@
       var b = item4.position().top;
       var diff = a - b;
       $('#fourth_highlight').css("top",diff)
+
+      // var item3b =$('#third_highlightb');
+      // var item4b =$('#fourth_highlightb');
+      // var b3 = item3b.position().top;
+      // var b4 = item4b.position().top;
+      // console.log(b3,b4)
+      // item3b.css("position","relative")
+      // item3b.css("top",5)
+      // if(b3 !== b4){
+      //   if(b3>b4){
+      //     console.log(item3b.position().top,item4b.position().top)
+      //     //item3b.css("position","relative")
+      //     item3b.css("top",b4)}
+      // }
       //console.log(item3.position().top, item4.position().top);
   
       
