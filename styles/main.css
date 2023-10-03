@@ -152,9 +152,9 @@ screen and (max-height:768px)
 
 /* Only for home page */
 @media (min-width: 1600px) {
-  #intro_home{
+  /* #intro_home{
     height: 95vh;
-  }
+  } */
   /* .image_headers{
     height: 15%;
   }
