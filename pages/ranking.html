@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Ranking</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<link rel="stylesheet" href="./../styles/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="./../styles/main.css" rel="stylesheet">
+<link href="./../css/bootstrap.min.css" rel="stylesheet">
+<link href="./../css/mdb.min.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="./../img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./../img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./../img/favicons/favicon-16x16.png">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBCQHPZJ26"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZBCQHPZJ26');
+</script>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-blue-grey w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large " href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#section_header" class="w3-bar-item w3-button w3-padding-large w3-white">About</a>
+    <a href="#section_privee" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">TRIVEA</a>
+    <a href="#section_disclosures" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Disclosures</a>
+    <a href="#section_utility" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Utility Profiling</a>
+    <a href="#section_star" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">STAR</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#section_header"class="w3-bar-item w3-button w3-padding-large">About</a>
+    <a href="#section_privee" class="w3-bar-item w3-button w3-padding-large">TRIVEA</a>
+    <a href=#section_disclosures" class="w3-bar-item w3-button w3-padding-large">Disclosures</a>
+    <a href="#section_utility" class="w3-bar-item w3-button w3-padding-large">Utility Profiling</a>
+    <a href="#section_star" class="w3-bar-item w3-button w3-padding-large">STAR</a>
+  </div>
+</div>
+
+<!-- Header -->
+<!-- <header class="w3-container w3-light-gray  section_header" id="section_header" style="padding:64px 26px">
+  <h1 class=" w3-jumbo">Visualization for Joinable Data Discovery</h1>
+  <p class="w3-large w3-block w3-justify">Governments and organizations globally share openly accessible datasets spanning domains, like, health, economy, education, etc.
+     These open data portals offer insightful perspectives on diverse societal dimensions, inspiring cross-domain data linking for enhanced problem-solving. However, identifying and assessing the value of joinable datasets within the open data ecosystem pose significant challenges, because of the lack of any standard schema. Moreover, there are concerns about potential privacy breaches when joining datasets, possibly divulging sensitive information about individuals.
+     The motivation for this project is to design metrics and interfaces for calibrating joinability risk and utility of open data sets.</p>
+  
+</header> -->
+
+<header id="intro" class="w3-light-gray container-fluid">
+<!-- <div class="row"></div> -->
+<div class="row">
+  <div class="col-sm-12 col-md-4 mb-3 pages_research_block_heading_container" style="">
+    <h1 class="pages_research_block_heading " style="padding-left: 8%; ">Demystifying Ranking in Socio-technical Systems</h1>
+  </div>
+  <div class="col-sm-12 col-md-8 mb-3 pages_research_block_details_container" style="">
+    <div class="container">
+    <!-- <div class="row" >
+      <div class="col-lg-11">
+      <p class="" style="font-size: 1.5em; font-weight:bold ">Research Objective</p>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-11" style="height:10vh">
+        <p class=" w3-justify" style="font-size: 0.9em;">Governments and organizations globally share openly accessible datasets spanning domains, like, health, economy, education, etc.
+          These open data portals offer insightful perspectives on diverse societal dimensions, inspiring cross-domain data linking for enhanced problem-solving. However, identifying and assessing the value of joinable datasets within the open data ecosystem pose significant challenges, because of the lack of any standard schema. Moreover, there are concerns about potential privacy breaches when joining datasets, possibly divulging sensitive information about individuals.
+          The motivation for this project is to design metrics and interfaces for calibrating joinability risk and utility of open data sets.</p>
+      </div>
+    </div> -->
+    <br>
+    <div class="row">
+      <div class="col-lg-12 research_highlights" style="">
+        <!-- <h4 style="font-weight: 600;">Research Highlights</h4> -->
+        <div class="container-fluid" style="">
+          <div class="row" >
+            <div class="col-sm-12 col-md-5 mt-0 mb-4 mr-4 ml-0 pages_research_block" style=""><!--each image block-->
+             <a  href="#section_privee" class="section_link">
+              <div class="container-fluid">
+               <div class="row  " style="">
+                <div class="col-md-12 col-lg-6" style=""></div> <!--rgb(241,128,58)-->
+                <div class="col-md-12 col-lg-6 pages_research_block_conf" style="color:rgb(248,186,0); text-align: right; ">VizSec ’22</div><!--rgb(241,128,58)-->
+              </div>
+               <div class="row  pages_research_block_title d-flex justify-content-center" style=" ">
+                 <b>PRIVEE</b>
+               </div>
+               <div class="row  pages_research_block_text" style=" ">
+                <div class="col-lg-12">Visual analytic workflow for open data disclosure evaluation</div>
+              </div>
+            </div>
+            </a> 
+            </div>
+            <div class="col-sm-12 col-md-5 mt-0 mb-4 mr-4 ml-0 pages_research_block" style=""><!--each image block-->
+              <a  href="#section_disclosures" class="section_link">
+              <div class="row h-20 " style="">
+               <div class="col-lg-6" style=""></div> <!--rgb(241,128,58)-->
+               <div class="col-lg-6 pages_research_block_conf" style="color:rgb(248,186,0); text-align: right;"><span>USEC ’23 </span></div><!--rgb(241,128,58)-->
+             </div>
+              <!-- <div class="row h-60 image_main" style="">
+                 <img src="img/highlights/latest/taskMappingv10.png" alt="highlight 1" class="img-thumbnail highlights_image" style=""> 
+              </div> -->
+              <div class="row h-60 pages_research_block_title d-flex justify-content-center" style="">
+               <b>Disclosures</b>
+              </div>
+              <div class="d-flex align-items-center pages_research_block_text" style="">
+               <div>Reporting examples of sensitive data disclosure</div>
+             </div>
+             </a>
+           </div>
+            
+          </div>
+          <div class="row" >
+            <div class=" col-sm-12 col-md-5 mt-0 mb-4 mr-4 ml-0 pages_research_block" style=""><!--each image block-->
+              <a  href="#section_utility" class="section_link">
+              <div class="row h-20 " style="">
+               <div class="col-lg-6" style=""></div> <!--rgb(241,128,58)-->
+               <div class="col-lg-6 pages_research_block_conf" style="color:rgb(248,186,0); text-align: right; "><span>HILDA ’23 </span></div><!--rgb(241,128,58)-->
+             </div>
+              <!-- <div class="row h-60 image_main" style="">
+                 <img src="img/highlights/latest/taskMappingv10.png" alt="highlight 1" class="img-thumbnail highlights_image" style=""> 
+              </div> -->
+              <div class="row h-60 pages_research_block_title d-flex justify-content-center" style="">
+               <b>Utility Profiling</b>
+              </div>
+              <div class="d-flex align-items-center pages_research_block_text" style="">
+               <div>Quantifying utility of joining open datasets</div>
+             </div>
+             </a>
+           </div>
+           <div class=" col-sm-12 col-md-5 mt-0 mb-4 mr-4 ml-0 pages_research_block" style=""><!--each image block-->
+            <a  href="#section_star" class="section_link">
+            <div class="row h-20 " style="">
+             <div class="col-lg-6" style=""></div> <!--rgb(241,128,58)-->
+             <div class="col-lg-6 pages_research_block_conf" style="color:rgb(248,186,0); text-align: right;"><span>CGF ‘20 </span></div><!--rgb(241,128,58)-->
+           </div>
+            <!-- <div class="row h-60 image_main" style="">
+               <img src="img/highlights/latest/taskMappingv10.png" alt="highlight 1" class="img-thumbnail highlights_image" style=""> 
+            </div> -->
+            <div class="row h-60 pages_research_block_title d-flex justify-content-center" style="">
+             <b>STAR Survey</b>
+            </div>
+            <div class="d-flex align-items-center pages_research_block_text" style="">
+             <div>Understanding techniques for handling data privacy in vis</div>
+           </div>
+           </a>
+         </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container " id="section_privee">
+  <div class="w3-block">
+    <div class="w3-twothird">
+      <h1>PRIVEE</h1>
+      <h5 class="w3-padding-32 w3-justify">Open data sets containing personal information, are primarily published through a release-and-forget model, where data owners and custodians
+        have little to no cognizance to the privacy risks. We address this gap by developing a visual analytic tool PRIVEE that help data defenders gain awareness about disclosure risks in local, joinable data neighborhoods.
+    </h5>
+
+      <p class="w3-text-grey w3-justify">Abstract: Open data sets that contain personal information are susceptible to adversarial attacks even when anonymized. By performing lowcost joins on multiple datasets with shared attributes, malicious users of open data portals might get access to information that violates individuals’ privacy. 
+        However, open data sets are primarily published using a release-and-forget model, whereby data owners and custodians have little to no cognizance of these privacy risks. We address this critical gap by developing a visual analytic solution that enables data defenders to gain awareness about the disclosure risks in local, joinable data neighborhoods. 
+        The solution is derived through a design study with data privacy researchers, where we initially play the role of a red team and engage in an ethical data hacking exercise based on privacy attack scenarios. We use this problem and domain characterization to develop a set of visual analytic interventions as a defense mechanism and realize them in PRIVEE, a visual risk inspection workflow that acts as a proactive monitor for data defenders. 
+        PRIVEE uses a combination of risk scores and associated interactive visualizations to let data defenders explore vulnerable joins and interpret risks at multiple levels of data granularity. We demonstrate how PRIVEE can help emulate the attack strategies and diagnose disclosure risks through two case studies with data privacy experts.</p>
+        <a href="datadiscovery_vizsec2022.html" target="_blank" class="pages_link" >[Details]</a>&nbsp;
+        <a href="./../assets/publications/2022/kaustav_vizsec22.pdf" target="_blank" class="pages_link" >[Paper]</a>&nbsp;
+        <a href="https://www.youtube.com/watch?v=bcmfsFaL8n4" target="_blank" class="pages_link" >[Presentation Video]</a>
+    </div>
+
+    <div class="w3-third w3-center">
+        <h1></h1>
+      <iframe width="80%" height="400vh"
+        src="https://www.youtube.com/embed/61BmGHceC_s" >
+    </iframe>
+      
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container " id="section_disclosures">
+  <div class="w3-block">
+    <div class="w3-third w3-center">
+        <h1></h1>
+        <img src="../img/pages_figures/datadiscovery/datasetDevelopment_v2.png" width="98%" height="400vh" class="w3-padding-32">
+      <!-- <iframe width="80%" height="400vh"
+        src="https://www.youtube.com/embed/61BmGHceC_s" >
+    </iframe> -->
+      <!-- <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i> -->
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Disclosures during Red Team Exercise</h1>
+      <h5 class="w3-padding-32 w3-justify">This paper highlights some of the vulnerabilities discovered during a red team exercise into the open data ecosystem. We report some examples where sensitive details of data subjects are exposed by joining open datasets. </h5>
+
+      <p class="w3-text-grey w3-justify">Abstract: The open data ecosystem is susceptible to vulnerabilities due to disclosure risks. 
+        Though the datasets are anonymized during release, the prevalence of the release-and-forget model makes the data defenders blind to privacy issues arising after the dataset release.
+         One such issue can be the disclosure risks in the presence of newly released datasets which may compromise the privacy of the data subjects of the anonymous open datasets.
+          In this paper, we first examine some of these pitfalls through the examples we observed during a red teaming exercise and then envision other possible vulnerabilities in this context. 
+          We also discuss proactive risk monitoring, including developing a collection of highly susceptible open datasets and a visual analytic workflow that empowers data defenders towards undertaking dynamic risk calibration strategies.</p>
+          <a href="datadiscovery_usec2023.html" target="_blank" class="pages_link" >[Details]</a>&nbsp;
+        <a href="../assets/publications/2023/kaustav_usec23.pdf" target="_blank" class="pages_link" >[Paper]</a>&nbsp;
+    </div>
+  </div>
+</div>
+
+<!-- Third Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container" id="section_utility">
+    <div class="w3-block">
+      <div class="w3-twothird">
+        <h1>Utility Profiling</h1>
+        <h5 class="w3-padding-32 w3-justify">We introduce a utility metric to quantify the utility of joined datasets. Our visual analytic workflow helps to identify joinable datasets, prioritize them based on their utility, and inspect the joined dataset</h5>
+  
+        <p class="w3-text-grey w3-justify">Abstract: The widespread adoption of open datasets across various domains has emphasized the significance of joining and computing their utility. 
+            However, the interplay between computation and human interaction is vital for informed decision-making. 
+            To address this issue, we first propose a utility metric to calibrate the usefulness of open datasets when joined with other such datasets. Further, we distill this utility metric through a visual analytic framework called VALUE, which empowers the researchers to identify joinable datasets, prioritize them based on their utility, and inspect the joined dataset. This transparent evaluation of the utility of the joined datasets is implemented through a human-in-the-loop approach where the researchers can adapt and refine the selection criteria according to their mental model of utility. 
+            Finally, we demonstrate the effectiveness of our approach through a usage scenario using real-world open datasets.</p>
+            <a href="datadiscovery_hilda2023.html" target="_blank" class="pages_link" >[Details]</a>&nbsp;
+        <a href="./../assets/publications/2023/kaustav_hilda23.pdf" target="_blank" class="pages_link" >[Paper]</a>&nbsp;
+      </div>
+  
+      <div class="w3-third w3-center">
+        <!-- <i class="fa fa-anchor w3-padding-64 w3-text-red"></i> -->
+        <iframe width="80%" height="400vh"
+        src="https://www.youtube.com/embed/76Gxqx_Pj8I" >
+    </iframe>
+      </div>
+    </div>
+  </div>
+
+<!-- Fourth Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container " id="section_star">
+  <div class="w3-block">
+    <div class="w3-third w3-center">
+        <h1></h1>
+        <img src="../img/pages_figures/datadiscovery/figure3.png" width="98%" height="400vh" class="w3-padding-32">
+      <!-- <iframe width="80%" height="400vh"
+        src="https://www.youtube.com/embed/CQxs9Hh_1f4" >
+    </iframe> -->
+      <!-- <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i> -->
+    </div>
+
+    <div class="w3-twothird">
+      <h1>State-of-the-Art Report</h1>
+      <h5 class="w3-padding-32 w3-justify">In this survey paper, we analyze the methods and techniques used for handling data privacy in visualization. We also reflect on the gaps and future research opportunities in this domain. </h5>
+
+      <p class="w3-text-grey w3-justify">Abstract: Preservation of data privacy and protection of sensitive information from potential adversaries constitute a key socio-technical challenge in the modern era of ubiquitous digital transformation.
+         Addressing this challenge needs analysis of multiple factors: algorithmic choices for balancing privacy and loss of utility, potential attack scenarios that can be undertaken by adversaries, implications for data owners, data subjects, and data sharing policies, and access control mechanisms that need to be built into interactive data interfaces. 
+         Visualization has a key role to play as part of the solution space, both as a medium of privacy-aware information communication and also as a tool for understanding the link between privacy parameters and data sharing policies.
+          The field of privacy-preserving data visualization has witnessed progress along many of these dimensions.
+           In this state-of-theart report, our goal is to provide a systematic analysis of the approaches, methods, and techniques used for handling data privacy in visualization. We also reflect on the road-map ahead by analyzing the gaps and research opportunities for solving some of the pressing socio-technical challenges involving data privacy with the help of visualization.</p>
+          <a href="datadiscovery_eurovis_2020.html" target="_blank" class="pages_link" >[Details]</a>&nbsp;
+        <a href="../assets/publications/2020/eurovis20.pdf" target="_blank" class="pages_link" >[Paper]</a>&nbsp;
+        <a href="https://www.youtube.com/watch/CQxs9Hh_1f4" target="_blank" class="pages_link" >[Presentation Video]</a>&nbsp;
+    </div>
+  </div>
+</div>  
+<!-- <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+</div> -->
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <!-- <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div> -->
+ <p>This project is a part of <a href="https://niiv.njitvis.com/" target="_blank">NJIT's Intelligible Information Visualization(NiiV)</a> Lab.</p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>
