@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title>Ranking</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
+<link rel="stylesheet" href="./../styles/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link href="./../styles/main.css" rel="stylesheet">
+<link href="./../css/bootstrap.min.css" rel="stylesheet">
+<link href="./../css/mdb.min.css" rel="stylesheet">
+<link rel="apple-touch-icon" sizes="180x180" href="./../img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./../img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./../img/favicons/favicon-16x16.png">
+<style>
+body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif}
+.w3-bar,h1,button {font-family: "Montserrat", sans-serif}
+.fa-anchor,.fa-coffee {font-size:200px}
+</style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBCQHPZJ26"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZBCQHPZJ26');
+</script>
+</head>
+<body>
+
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-blue-grey w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large " href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#section_header" class="w3-bar-item w3-button w3-padding-large w3-white">About</a>
+    <a href="#section_trivea" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">TRIVEA</a>
+    <a href="#section_sensitivity" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Sensitivity Analysis</a>
+    <a href="#section_transparency" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Contextual Transparency</a>
+    <a href="#section_position" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Position Paper</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#section_header"class="w3-bar-item w3-button w3-padding-large">About</a>
+    <a href="#section_trivea" class="w3-bar-item w3-button w3-padding-large">TRIVEA</a>
+    <a href=#section_sensitivity" class="w3-bar-item w3-button w3-padding-large">Sensitivity Analysis</a>
+    <a href="#section_transparency" class="w3-bar-item w3-button w3-padding-large">Contextual Transparency</a>
+    <a href="#section_position" class="w3-bar-item w3-button w3-padding-large">Position Paper</a>
+  </div>
+</div>
+
+<!-- Header -->
+<!-- <header class="w3-container w3-light-gray  section_header" id="section_header" style="padding:64px 26px">
+  <h1 class=" w3-jumbo">Visualization for Joinable Data Discovery</h1>
+  <p class="w3-large w3-block w3-justify">Governments and organizations globally share openly accessible datasets spanning domains, like, health, economy, education, etc.
+     These open data portals offer insightful perspectives on diverse societal dimensions, inspiring cross-domain data linking for enhanced problem-solving. However, identifying and assessing the value of joinable datasets within the open data ecosystem pose significant challenges, because of the lack of any standard schema. Moreover, there are concerns about potential privacy breaches when joining datasets, possibly divulging sensitive information about individuals.
+     The motivation for this project is to design metrics and interfaces for calibrating joinability risk and utility of open data sets.</p>
+  
+</header> -->
+
+<header id="intro" class="w3-light-gray container-fluid">
+<!-- <div class="row"></div> -->
+<div class="row">
+  <div class="col-sm-12 col-md-4 mb-3 pages_research_block_heading_container" style="">
+    <h1 class="pages_research_block_heading " style="padding-left: 8%; ">Visualization for Algorithmic Rankers</h1>
+  </div>
+  <div class="col-sm-12 col-md-8 mb-3 pages_research_block_details_container" style="">
+    <div class="container">
+    <!-- <div class="row" >
+      <div class="col-lg-11">
+      <p class="" style="font-size: 1.5em; font-weight:bold ">Research Objective</p>
+    </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-11" style="height:10vh">
+        <p class=" w3-justify" style="font-size: 0.9em;">Governments and organizations globally share openly accessible datasets spanning domains, like, health, economy, education, etc.
+          These open data portals offer insightful perspectives on diverse societal dimensions, inspiring cross-domain data linking for enhanced problem-solving. However, identifying and assessing the value of joinable datasets within the open data ecosystem pose significant challenges, because of the lack of any standard schema. Moreover, there are concerns about potential privacy breaches when joining datasets, possibly divulging sensitive information about individuals.
+          The motivation for this project is to design metrics and interfaces for calibrating joinability risk and utility of open data sets.</p>
+      </div>
+    </div> -->
+    <br>
+    <div class="row">
+      <div class="col-lg-12 research_highlights" style="">
+        <!-- <h4 style="font-weight: 600;">Research Highlights</h4> -->
+        <div class="container-fluid" style="">
+          <div class="row" >
+            <div class="col-sm-12 col-md-5 mt-0 mb-4 mr-4 ml-0 pages_research_block" style=""><!--each image block-->
+             <a  href="#section_trivea" class="section_link">
+              <div class="container-fluid">
+               <div class="row  " style="">
+                <div class="col-md-12 col-lg-6" style=""></div> <!--rgb(241,128,58)-->
+                <div class="col-md-12 col-lg-6 pages_research_block_conf" style="color:rgb(248,186,0); text-align: right; ">VCJ ’23</div><!--rgb(241,128,58)-->
+              </div>
+               <div class="row  pages_research_block_title d-flex justify-content-center" style=" ">
+                 <b>TRIVEA</b>
+               </div>
+               <div class="row  pages_research_block_text" style=" ">
+                <div class="col-lg-12">Visual analytic Interface for blackbox algorithmic rankers</div>
+              </div>
+            </div>
+            </a> 
+            </div>
+            <div class="col-sm-12 col-md-5 mt-0 mb-4 mr-4 ml-0 pages_research_block" style=""><!--each image block-->
+              <a  href="#section_sensitivity" class="section_link">
+              <div class="row h-20 " style="">
+               <div class="col-lg-6" style=""></div> <!--rgb(241,128,58)-->
+               <div class="col-lg-6 pages_research_block_conf" style="color:rgb(248,186,0); text-align: right;"><span>HILDASIGMOD ’23 </span></div><!--rgb(241,128,58)-->
+             </div>
+              <!-- <div class="row h-60 image_main" style="">
+                 <img src="img/highlights/latest/taskMappingv10.png" alt="highlight 1" class="img-thumbnail highlights_image" style=""> 
+              </div> -->
+              <div class="row h-60 pages_research_block_title d-flex justify-content-center" style="">
+               <b>Sensitivity Analysis</b>
+              </div>
+              <div class="d-flex align-items-center pages_research_block_text" style="">
+               <div>Human-in-the-loop multi-factorial sensitivity analysis of algorithmic rankers</div>
+             </div>
+             </a>
+           </div>
+            
+          </div>
+          <div class="row" >
+            <div class=" col-sm-12 col-md-5 mt-0 mb-4 mr-4 ml-0 pages_research_block" style=""><!--each image block-->
+              <a  href="#section_transparency" class="section_link">
+              <div class="row h-20 " style="">
+               <div class="col-lg-6" style=""></div> <!--rgb(241,128,58)-->
+               <div class="col-lg-6 pages_research_block_conf" style="color:rgb(248,186,0); text-align: right; "><span>NMI ’23 </span></div><!--rgb(241,128,58)-->
+             </div>
+              <!-- <div class="row h-60 image_main" style="">
+                 <img src="img/highlights/latest/taskMappingv10.png" alt="highlight 1" class="img-thumbnail highlights_image" style=""> 
+              </div> -->
+              <div class="row h-60 pages_research_block_title d-flex justify-content-center" style="">
+               <b>Contextual Transparency</b>
+              </div>
+              <div class="d-flex align-items-center pages_research_block_text" style="">
+               <div>Contextual transparency design principles for automatic decision systems</div>
+             </div>
+             </a>
+           </div>
+           <div class=" col-sm-12 col-md-5 mt-0 mb-4 mr-4 ml-0 pages_research_block" style=""><!--each image block-->
+            <a  href="#section_position" class="section_link">
+            <div class="row h-20 " style="">
+             <div class="col-lg-6" style=""></div> <!--rgb(241,128,58)-->
+             <div class="col-lg-6 pages_research_block_conf" style="color:rgb(248,186,0); text-align: right;"><span>HCDSCHI ‘20 </span></div><!--rgb(241,128,58)-->
+           </div>
+            <!-- <div class="row h-60 image_main" style="">
+               <img src="img/highlights/latest/taskMappingv10.png" alt="highlight 1" class="img-thumbnail highlights_image" style=""> 
+            </div> -->
+            <div class="row h-60 pages_research_block_title d-flex justify-content-center" style="">
+             <b>Position paper</b>
+            </div>
+            <div class="d-flex align-items-center pages_research_block_text" style="">
+             <div>Demystifying raking in socio-technical systems</div>
+           </div>
+           </a>
+         </div>
+           
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+</div>
+</header>
+
+<!-- First Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container " id="section_trivea">
+  <div class="w3-block">
+    <div class="w3-twothird">
+      <h1>TRIVEA</h1>
+      <!-- <h5 class="w3-padding-32 w3-justify">
+        Public rankings such as US News Univeristy rankings doesn't publicate their ranking formula. Decision-makers or consumers of public rankings need more control and customization of rankings and the attributes thawt impact the rankings. We created a web interface to help demystifying the pripietory rankings using Learning-to-rank machine learning models and XAI methods (e.g., LIME, SHAP). 
+    </h5> -->
+
+    <h5 class="w3-padding-32 w3-justify">
+      We created a web interface to help demystifying the pripietory rankings (e.g., US news Univeristy Rankings) using Learning-to-rank machine learning models and XAI methods (e.g., LIME, SHAP). 
+  </h5>
+
+      <p class="w3-text-grey w3-justify">Abstract: Ranking schemes drive many real-world decisions, like, where to study, whom to hire, what to buy, etc. Many of these decisions often come with high consequences. For example, a university can be deemed less prestigious if not featured in a top-k list, and consumers might not even explore products that do not get recommended to buyers. At the heart of most of these decisions are opaque ranking schemes, which dictate the ordering of data entities, but their internal logic is inaccessible or proprietary. Drawing inferences about the ranking differences is like a guessing game to the stakeholders, like, the rankees (i.e., the entities who are ranked, like product companies) and the decision-makers (i.e., who use the rankings, like buyers). 
+        In this paper, we aim to enable transparency in ranking interpretation by using algorithmic rankers that learn from available data and by enabling human reasoning about the learned ranking differences using explainable AI (XAI) methods. To realize this aim, we leverage the exploration-explanation paradigm of human-data interaction to let human stakeholders explore subsets and groupings of complex multi-attribute ranking data using visual explanations of model fit and attribute influence on rankings. We realize this explanation paradigm for transparent ranking interpretation in TRIVEA, a visual analytic system that is fueled by:
+        i) visualizations of model fit derived from algorithmic rankers that learn the associations between attributes and rankings from available data and
+        ii) visual explanations derived from XAI methods that help abstract important patterns, like, the relative influence of attributes in different ranking ranges.
+        Using TRIVEA, end users not trained in data science have the agency to transparently reason about the global and local behavior of the rankings without the need to open black-box ranking models and develop confidence in the resulting attribute-based inferences. We demonstrate the efficacy of TRIVEA using multiple usage scenarios and subjective feedback from researchers with diverse domain expertise.</p>
+        <a href="algoranker_vcj2023.html" target="_blank" class="pages_link" >[Details]</a>&nbsp;
+        <a href="./../assets/publications/2023/jun_vcj23.pdf" target="_blank" class="pages_link" >[Paper]</a>&nbsp;
+        <!-- <a href="https://www.youtube.com/watch?v=bcmfsFaL8n4" target="_blank" class="pages_link" >[Presentation Video]</a> -->
+    </div>
+
+    <div class="w3-third w3-center">
+        <h1></h1>
+        <img src="../img/pages_figures/algoranker/triveaWorkflow.png" width="100%" class="w3-padding-32" style="padding-left: 3%;">
+        <!-- <iframe width="80%" height="400vh"
+      <!-- <iframe width="80%" height="400vh"
+        src="https://www.youtube.com/embed/61BmGHceC_s" >
+    </iframe> -->
+      
+    </div>
+  </div>
+</div>
+
+<!-- Second Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container " id="section_sensitivity">
+  <div class="w3-block">
+    <div class="w3-third w3-center">
+        <h1></h1>
+        <img src="../img/pages_figures/algoranker/hilda.png" width="100%" class="w3-padding-32" style="padding-right: 3%;"> 
+      <!-- <iframe width="80%" height="400vh"
+        src="https://www.youtube.com/embed/61BmGHceC_s" >
+    </iframe> -->
+      <!-- <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i> -->
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Sensitivity Analysis of Algorithmic Rankers</h1>
+      <!-- <h5 class="w3-padding-32 w3-justify">Designing XAI methods for algorithmic rankers is essential for demystifying rankings. However, XAI methods for ranking is not well explored and difficult to evaluate. We designed a human-in-the-loop visual analytic sensitivity analysis system for testing XAI methods in algorithmic rankers. </h5> -->
+      <h5 class="w3-padding-32 w3-justify">XAI methods for ranking is not well explored and difficult to evaluate. We designed a human-in-the-loop visual analytic sensitivity analysis system for testing XAI methods in algorithmic rankers. </h5>
+
+      <p class="w3-text-grey w3-justify">Abstract: Algorithmic rankers are ubiquitously applied in automated decision systems such as hiring, admission, and loan-approval systems. Without appropriate explanations, decision-makers often cannot audit or trust algorithmic rankers' outcomes. In recent years, XAI(explainable AI) methods have focused on classification models, but there for algorithmic rankers, we are yet to develop state-of-the-art explanation methods. Moreover, explanations are also sensitive to changes in data and ranker properties, and decision-makers need transparent model diagnostics for calibrating the degree and impact of ranker sensitivity. To fulfill these needs, we take a dual approach of: i) designing explanations by transforming Shapley values for the simple form of a ranker based on linear weighted summation and ii) designing a human-in-the-loop sensitivity analysis workflow by simulating data whose attributes follow user-specified statistical distributions and correlations. We leverage a visualization interface to validate the transformed Shapley values and draw inferences from them by leveraging multi-factorial simulations, including data distributions, ranker parameters, and rank ranges.</p>
+          <a href="algoranker_hilda2023.html" target="_blank" class="pages_link" >[Details]</a>&nbsp;
+        <a href="../assets/publications/2023/jun_hilda23.pdf" target="_blank" class="pages_link" >[Paper]</a>&nbsp;
+    </div>
+  </div>
+</div>
+
+<!-- Third Grid -->
+<div class="w3-row-padding w3-padding-64 w3-container" id="section_transparency">
+    <div class="w3-block">
+      <div class="w3-twothird">
+        <h1>Contextual Transparency for Automatic Decision Systems</h1>
+        <h5 class="w3-padding-32 w3-justify">We introduce the concept of contextual transparency as an approach that integrates social science, engineering and information design to help improve automated decision systems (ADS) transparency for specific professions, business processes and stakeholder groups.</h5>
+  
+        <p class="w3-text-grey w3-justify">Abstract: As automated decision systems (ADS) get more deeply embedded into business processes worldwide, there is a growing need for practical ways to establish meaningful transparency. Here we argue that universally perfect transparency is impossible to achieve. We introduce the concept of contextual transparency as an approach that integrates social science, engineering and information design to help improve ADS transparency for specific professions, business processes and stakeholder groups. We demonstrate the applicability of the contextual transparency approach by using it for a well-established ADS transparency tool: nutritional labels that display specific information about an ADS. Empirically, it focuses on the profession of recruiting. Presenting data from an ongoing study about ADS use in recruiting alongside a typology of ADS nutritional labels, we suggest a nutritional label prototype for ADS-driven rankers such as LinkedIn Recruiter before closing with directions for future work.</p>
+            <a href="algoranker_nmi2023.html" target="_blank" class="pages_link" >[Details]</a>&nbsp;
+        <a href="https://www.nature.com/articles/s42256-023-00623-7" target="_blank" class="pages_link" >[Paper]</a>&nbsp;
+      </div>
+  
+      <div class="w3-third w3-center">
+        <!-- <i class="fa fa-anchor w3-padding-64 w3-text-red"></i> -->
+        <img src="../img/pages_figures/algoranker/NMI.png" width="100%" class="w3-padding-32" style="padding-left: 3%;"> 
+        <!-- <iframe width="80%" height="400vh"
+        src="https://www.youtube.com/embed/76Gxqx_Pj8I" >
+    </iframe> -->
+      </div>
+    </div>
+  </div>
+
+<!-- Fourth Grid -->
+<div class="w3-row-padding w3-light-grey w3-padding-64 w3-container " id="section_position">
+  <div class="w3-block">
+    <div class="w3-third w3-center">
+        <h1></h1>
+        <img src="../img/pages_figures/algoranker/position.png" width="100%" class="w3-padding-32" style="padding-right: 3%;"> 
+      <!-- <iframe width="80%" height="400vh"
+        src="https://www.youtube.com/embed/CQxs9Hh_1f4" >
+    </iframe> -->
+      <!-- <i class="fa fa-coffee w3-padding-64 w3-text-red w3-margin-right"></i> -->
+    </div>
+
+    <div class="w3-twothird">
+      <h1>Position Paper</h1>
+      <h5 class="w3-padding-32 w3-justify">In this position paper, we call for researchers from social science, human-computer interaction, and data science work in unison for demystifying how rankings are produced, who has agency to change them, and what metrics of socio-technical impact one must use for informing the context of use. </h5>
+
+      <p class="w3-text-grey w3-justify">Abstract: Algorithmic rankers have a profound impact on our increasingly data-driven society. From leisurely activities like the movies that we watch, the restaurants that we patronize; to highly consequential decisions, like making educational and occupational choices or getting hired by companies-these are all driven by sophisticated yet mostly inaccessible rankers. A small change to how these algorithms process the rankees (i.e., the data items that are ranked) can have profound consequences. For example, a change in rankings can lead to deterioration of the prestige of a university or have drastic consequences on a job candidate who missed out being in the list of the preferred top-k for an organization. This paper is a call to action to the human-centered data science research community to develop principled methods, measures, and metrics for studying the interactions among the socio-technical context of use, technological innovations, and the resulting consequences of algorithmic rankings on multiple stakeholders. Given the spate of new legislations on algorithmic accountability, it is imperative that researchers from social science, human-computer interaction, and data science work in unison for demystifying how rankings are produced, who has agency to change them, and what metrics of socio-technical impact one must use for informing the context of use.</p>
+          <a href="algoranker_hcdschi2023.html" target="_blank" class="pages_link" >[Details]</a>&nbsp;
+        <a href="../assets/publications/2022/ranking_HCDSCHI22.pdf" target="_blank" class="pages_link" >[Paper]</a>&nbsp;
+        <!-- <a href="https://www.youtube.com/watch/CQxs9Hh_1f4" target="_blank" class="pages_link" >[Presentation Video]</a>&nbsp; -->
+    </div>
+  </div>
+</div>  
+<!-- <div class="w3-container w3-black w3-center w3-opacity w3-padding-64">
+    <h1 class="w3-margin w3-xlarge">Quote of the day: live life</h1>
+</div> -->
+
+<!-- Footer -->
+<footer class="w3-container w3-padding-64 w3-center w3-opacity">  
+  <!-- <div class="w3-xlarge w3-padding-32">
+    <i class="fa fa-facebook-official w3-hover-opacity"></i>
+    <i class="fa fa-instagram w3-hover-opacity"></i>
+    <i class="fa fa-snapchat w3-hover-opacity"></i>
+    <i class="fa fa-pinterest-p w3-hover-opacity"></i>
+    <i class="fa fa-twitter w3-hover-opacity"></i>
+    <i class="fa fa-linkedin w3-hover-opacity"></i>
+ </div> -->
+ <p>This project is a part of <a href="https://niiv.njitvis.com/" target="_blank">NJIT's Intelligible Information Visualization(NiiV)</a> Lab.</p>
+</footer>
+
+<script>
+// Used to toggle the menu on small screens when clicking on the menu button
+function myFunction() {
+  var x = document.getElementById("navDemo");
+  if (x.className.indexOf("w3-show") == -1) {
+    x.className += " w3-show";
+  } else { 
+    x.className = x.className.replace(" w3-show", "");
+  }
+}
+</script>
+
+</body>
+</html>
