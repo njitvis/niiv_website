@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html class="full-height" lang="en-US">
+<head>
+<meta charset="UTF-8"> 
+<meta http-equiv="X-UA-Compatible" content="IE=edge"> 
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NiiV</title>
+<meta name="description" content="The visualization lab in NJIT"/>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="styles/main.css" rel="stylesheet">
+<link href="css/mdb.min.css" rel="stylesheet">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/all.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.1/css/v4-shims.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+<script type="text/javascript" src="js/jquery-3.2.1.min.js"></script>
+<script type="text/javascript" src="js/popper.min.js"></script>
+<script type="text/javascript" src="js/mdb.min.js"></script>
+<script>new WOW().init();</script>
+<!-- <link rel="icon" type="image/png" href="./img/favicon/favicon.png"/> -->
+<link rel="apple-touch-icon" sizes="180x180" href="img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="img/favicons/favicon-16x16.png">
+<link rel="manifest" href="img/favicons/site.webmanifest">
+<!-- <style>
+* {
+  box-sizing: border-box;
+}
+
+/* Create four equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 25%;
+  padding: 10px;
+  height: 300px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the four columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}
+</style> -->
+</head>
+<body>
+  <div class="container-fluid" >
+
+      <div class="row" style="height:100vh">
+        <div class="col-lg-2" style="border-right:1px white solid"> <!--rgb(214,213,213)-->
+          <div class="row-lg-12 mb-4">
+            <img src="img/logo/NIIV logoV1_zoomed.png" alt="logo" class="img-fluid" style="width:100%; ">
+          </div>
+          <div class="row-lg-12">
+            <h4>Who we are</h4>
+            <div class="row mb-2"> <!--For each team member-->
+              <div class="col-lg-5">
+                <img src="img/team_members/aritra.jpeg" alt="logo" class="img-fluid" style="width:100%; margin-left: 1%;">
+              </div>
+              <div class="col-lg-7" style="font-size:0.8em">
+                <div class="row" >Aritra Dasgupta</div>
+                <div class="row">Assistant Professor,</div>
+                <div class="row" style="font-size:0.90em">Department of Data Science</div>
+                <div class="row"><a href="https://aedeegee.github.io" target="_blank" style="color:black; text-decoration:underline">aedeegee.github.io</a></div>
+              </div>
+            </div>
+            <div class="row mb-2"> <!--For each team member-->
+              <div class="col-lg-5">
+                <img src="img/team_members/jun.png" alt="logo" class="img-fluid" style="width:100%; margin-left: 1%;">
+              </div>
+              <div class="col-lg-7" style="font-size:0.8em">
+                <div class="row" >Jun Yuan</div>
+                <div class="row">PhD student</div>
+                <div class="row" style="font-size:0.90em">Department of Informatics</div>
+                <!-- <div class="row"><a href="https://aedeegee.github.io" target="_blank" style="color:black; text-decoration:underline">aedeegee.github.io</a></div> -->
+              </div>
+            </div>
+            <div class="row mb-2"> <!--For each team member-->
+              <div class="col-lg-5">
+                <img src="img/team_members/sahaj.jpeg" alt="logo" class="img-fluid" style="width:100%; margin-left: 1%;">
+              </div>
+              <div class="col-lg-7" style="font-size:0.8em">
+                <div class="row" >Sahaj Vaidya</div>
+                <div class="row">PhD student</div>
+                <div class="row" style="font-size:0.90em">Department of Informatics</div>
+                <div class="row"><a href="https://sahaj-vaidya.github.io/SahajVaidya/" target="_blank" style="color:black; text-decoration:underline">sahaj-vaidya.github.io</a></div>
+              </div>
+            </div>
+            <div class="row mb-2"> <!--For each team member-->
+              <div class="col-lg-5">
+                <img src="img/team_members/kaustav.jpg" alt="logo" class="img-fluid" style="width:100%; margin-left: 1%;">
+              </div>
+              <div class="col-lg-7" style="font-size:0.8em">
+                <div class="row" >Kaustav Bhattacharjee</div>
+                <div class="row">PhD student</div>
+                <div class="row" style="font-size:0.90em">Department of Informatics</div>
+                <div class="row"><a href="https://kaustavbhattacharjee.com" target="_blank" style="color:black; text-decoration:underline">kaustavbhattacharjee.com</a></div>
+              </div>
+            </div>
+            <div class="row mb-2"> <!--For each team member-->
+              <div class="col-lg-5">
+                <img src="img/team_members/akm.jpeg" alt="logo" class="img-fluid" style="width:100%; margin-left: 1%;">
+              </div>
+              <div class="col-lg-7" style="font-size:0.8em">
+                <div class="row" >Akm Islam</div>
+                <div class="row">Research Assistant</div>
+                <div class="row" style="font-size:0.90em">Department of Informatics</div>
+                <div class="row"><a href="http://akmislam.com/" target="_blank" style="color:black; text-decoration:underline">akmislam.com</a></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+        <div class="col-lg-10 container-fluid middle_part">
+          <div class="row justify-content-end header_row" style="height:5%;">
+            <nav class="navbar navbar-light " >
+              <span class="navbar-brand mb-0 " ><p style="color:rgb(238,34,12) ;"> <!--darksalmon-->
+                &nbsp;Department of Data Science <b><a href="https://academicjobsonline.org/ajo/jobs/19179" target="_blank" style="color:rgb(238,34,12); text-decoration: none;">(We are hiring!)</a></b> &nbsp; New Jersey Institute of Technology &nbsp; <a href="https://ds.njit.edu/" target="_blank" style="color:rgb(238,34,12); text-decoration: underline;" >ds.njit.edu</a></p></span>
+            </nav>
+          </div>
+          <div class="row main_content_row" style="height:94%;">
+        <div class="col-lg-4 research_philosophy" style="">
+          <h4>Research Philosophy</h4>
+          <p style="text-align: justify; text-justify: inter-word;">
+            We are a group of data toolsmiths who develop and study the role of visualization techniques as a transparent lens between what is <i>computed</i> from data and what is <i>communicated</i> to the human mind. <br><br>
+
+As George Bernard Shaw so eloquently said: <i>“The single biggest problem in communication is the illusion that it has taken place.”</i>  This is oh-so-evident in today’s age, where, information, if communicated properly, can cure diseases and fuel discoveries, but, if miscommunicated, can lead to an “infodemic” in the worst-case scenario. <br><br>
+
+To solve this conundrum, at NiiV, we pursue intelligibility as the foundational principle for making information more accessible, meaningful, and actionable to experts (e.g., doctors, climate scientists) and non-experts alike. <br><br>
+
+
+We operationalize this principle by visualizing data, big or small, with the ultimate goal of letting human observers see, understand, and trust the information that is often generated by black-box algorithms. <br><br>
+
+By embracing a human-centered data science approach that ultimately culminates in interactive visual analytic interfaces, we preserve the best of both worlds: the power of computational methods and that of human judgment and reasoning.
+          </p>
+        </div>
+        <div class="col-lg-7 research_highlights" style="border-right:1px white solid">
+          <h4>Research Highlights</h4>
+          <div class="container-fluid" style="height:100%">
+            <div class="row" style="height:48%;">
+              <div class="col-lg-6 mb-2"><!--each image block-->
+               
+                 <div class="row" style="height:15%">
+                  <div class="col-lg-6" style="color:rgb(255,147,0);"><b>Visual Analytics for Content Moderation</b></div> <!--rgb(241,128,58)-->
+                  <div class="col-lg-6" style="color:rgb(248,186,0); text-align: center;"><b>IEEEVIS ’21 (Short paper)</b></div><!--rgb(241,128,58)-->
+                </div>
+                 <div class="row" style="height:70%">
+                    <img src="img/highlights/latest/taskMappingv10.png" alt="highlight 1" class="img-fluid" style="width:100%; margin-left: 1%;">
+                 </div>
+                 <div class="row" style="height:15%; font-size: 0.9em; ">
+                  Conceptualizing Visual Analytic Interventions for Content Moderation, by S. Vaidya, J. Cai, S. Basu, A. Naderi, D.Y. Wohn and A. Dasgupta,  IEEE VIS, 2021
+                </div>
+                
+              </div>
+              <div class="col-lg-6 mb-2"><!--each image block-->
+               
+                <div class="row" style="height:15%">
+                 <div class="col-lg-7" style="color:rgb(255,147,0);"><b>MyriadCues: A Multiway Visual Comparison Tool</b></div>
+                 <div class="col-lg-5" style="color:rgb(248,186,0); text-align: center;"><b>TVCG ’20</b></div>
+               </div>
+                <div class="row" style="height:70%">
+                   <img src="img/highlights/latest/vis_comparison.png" alt="highlight 1" class="img-fluid" style="width:97%; margin-left: 3%;">
+                </div>
+                <div class="row" style="height:15%; font-size: 0.82em; text-align: justify; text-justify: inter-word;">
+                  <i>Separating the Wheat from the Chaff</i>: Comparative Visual Cues for Transparent Diagnostics of Competing Models, by A. Dasgupta, H. Wang, N. O'Brien and S. Burrows,  IEEE TVCG, 2019
+               </div>
+               
+             </div>
+            </div>
+            <div class="row" style="height:48%;">
+              <div class="col-lg-6"><!--each image block-->
+               
+                <div class="row" style="height:15%">
+                 <div class="col-lg-6" style="color:rgb(255,147,0);"><b>Visualization and Machine Learning</b></div>
+                 <div class="col-lg-6" style="color:rgb(248,186,0); text-align: center;"><b>IEEEVIS ’21 TREX Workshop</b></div>
+               </div>
+                <div class="row" style="height:70%">
+                   <img src="img/highlights/latest/foragingSensemaking.png" alt="highlight 1" class="img-fluid" style="width:100%; margin-left: 1%;">
+                </div>
+                <div class="row" style="height:15%; font-size: 0.83em">
+                  Beyond Visual Analytics: Human-Machine Teaming for AI-Driven Data Sensemaking, by A. Dasgupta,  IEEE VIS, 2021
+               </div>
+               
+             </div>
+             <div class="col-lg-6"><!--each image block-->
+              
+               <div class="row" style="height:15%">
+                <div class="col-lg-7" style="color:rgb(255,147,0);"><b>Privacy meets Visualization</b></div>
+                <div class="col-lg-5" style="color:rgb(248,186,0); text-align: center;"><b>CGF ‘20</b></div>
+              </div>
+               <div class="row" style="height:70%">
+                  <img src="img/highlights/latest/Overview.png" alt="highlight 1" class="img-fluid" style="width:97%; margin-left: 3%;">
+               </div>
+               <div class="row" style="height:15%; font-size: 0.83em">
+                Privacy-Preserving Data Visualization: Reflections on the State of the Art and Research Opportunities, by K. Bhattacharjee, M. Chen and A. Dasgupta,  EUROVIS, 2020
+              </div>
+              
+            </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-1 lab_updates" style="">
+          <h4>Lab updates</h4>
+          <div class="row mb-2" style="font-size:0.8em"> <!--For each update-->
+            <p><b style="color:rgb(139, 139, 139)">Oct ’21:</b> 2 papers presented at IEEEVIS: short paper track (Vaidya) and TREX workshop(Dasgupta)</p>
+          </div> <!-- rgb(139, 122, 122)-->
+          <div class="row mb-2" style="font-size:0.8em"> <!--For each update-->
+            <p><b style="color:rgb(139, 139, 139)">Oct ’21:</b> Dasgupta chairs session on VIS+AI at IEEEVIS</p>
+          </div>
+          <div class="row mb-2" style="font-size:0.8em"> <!--For each update-->
+            <p><b style="color:rgb(139, 139, 139)">July ’21:</b> Dasgupta receives NJIT Seed grant for research on communicative visualization</p>
+          </div>
+
+          <div class="row mb-2" style="font-size:0.8em"> <!--For each update-->
+            <p><b style="color:rgb(139, 139, 139)">May ’21:</b> Yuan interning at Accern for summer '21</p>
+          </div>
+
+          <div class="row mb-2" style="font-size:0.8em"> <!--For each update-->
+            <p><b style="color:rgb(139, 139, 139)">Oct ’20:</b> 2 papers and a poster presented at IEEEVIS ‘20</p>
+          </div>
+          <div class="row mb-2" style="font-size:0.8em"> <!--For each update-->
+            <p><b style="color:rgb(139, 139, 139)">May ’20:</b>  Paper at EuroVis presented by Bhattacharjee</p>
+          </div>
+          <div class="row mb-2" style="font-size:0.8em"> <!--For each update-->
+            <p><b style="color:rgb(139, 139, 139)">May ’20:</b> Dasgupta receives grant from Hearst Corporation for data visualization training</p>
+          </div>
+        </div>
+      </div> <!--main content row ends-->
+      </div> <!--middle part ends-->
+        
+      </div>
+      <br>
+      <div class="row">
+        <section class=" py-5 grey lighten-4" id="research">
+          <div class="container">
+            <div class="wow fadeIn">
+              <h2 class="h1 pt-5 pb-3 text-center">Research Areas</h2>
+              <p class="px-5 mb-5 pb-3 lead blue-grey-text">
+                Our research consists of multiple areas including information visualization, visual analytics, human-centered data science and human-computer interaction. Please get in touch if you want to know more about these topics.
+              </p>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".3s" --><!--<i class="fa fa-dashboard fa-3x orange-text"></i> -->
+                <div class="row">
+                <div class="col-md-5">
+                <img src="img/research_areas/vis_comparison.png" class="research_area_img">
+                </div>
+                <div class="col-md-7">
+                <h3 class="h4 mt-3">Interactive Visual Comparison</h3>
+                <p class="mt-3 blue-grey-text">
+                  Let domain scientists reason about computational model behavior and help them select the most accurate models by interactively comparing multiple facets of model performance.
+                </p>
+                  <p><a href="assets/eurovis14.pdf" target="_blank">EuroVis14</a> | <a href="assets/tvcg14.pdf" target="_blank">TVCG14</a> | <a href="assets/tvcg15.pdf" target="_blank">CISE15</a> | <a href="assets/infovis19.pdf" target="_blank">InfoVis19</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-r" > <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".4s" --><!--<i class="fa fa-comments-o fa-3x cyan-text"></i> -->
+                <div class="row">
+                  <div class="col-md-5">
+                    <img src="img/research_areas/chi.png" class="research_area_img">
+                  </div>
+                  <div class="col-md-7">
+                <h3 class="h4 mt-3">Studies on Visualization Effectiveness</h3>
+                <p class="mt-3 blue-grey-text">
+                  Conduct user studies with experts from biology and climate science domains to evaluate if and how optimal visualization design can overcome potential biases due to familiarity.
+                </p>
+                    <p><a href="#about" target="_blank">TVCG16</a> | <a href="assets/chi17.pdf" target="_blank">CHI17</a> | <a href="assets/bookchapter18.pdf" target="_blank">Chapter 6,Cognitive Biases Book 18</a> | <a href="assets/tvcg19.pdf" target="_blank">TVCG19</a></p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".5s" --><!--<i class="fa fa-dashboard fa-3x orange-text"></i> -->
+                <div class="row">
+                <div class="col-md-5">
+                <img src="img/research_areas/trust.png" class="research_area_img">
+                </div>
+                <div class="col-md-7">
+                <h3 class="h4 mt-3">Model Explainability and Trust</h3>
+                <p class="mt-3 blue-grey-text">
+                  Provide domain experts and model developers with tools that explain the decisions of machine learning models and help them semantically validate models.
+                </p>
+                  <p><a href="assets/hilda17.pdf" target="_blank">HILDA17</a> | <a href="assets/tvcg17.pdf" target="_blank">TVCG17</a> | <a href="assets/vast17.pdf" target="_blank">VAST17</a> | <a href="assets/uist18.pdf" target="_blank">UIST18</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".6s" --><!--<i class="fa fa-comments-o fa-3x cyan-text"></i> -->
+                <div class="row">
+                  <div class="col-md-5">
+                    <img src="img/research_areas/vis_perception.png" class="research_area_img">
+                  </div>
+                  <div class="col-md-7">
+                <h3 class="h4 mt-3">Visualization Perception & Design Analysis</h3>
+                <p class="mt-3 blue-grey-text">
+                  Study and survey of the visualization design space for devising classification schemes that bridge human perception with visual encodings.
+                </p>
+                    <p><a href="assets/tvcg15.pdf" target="_blank">TVCG15</a> | <a href="assets/cgf17.pdf" target="_blank">CGF17</a> | <a href="assets/cgf18.pdf" target="_blank">CGF18</a> | <a href="assets/viscom18.pdf" target="_blank">VisComm18</a></p>
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".7s" --><!--<i class="fa fa-dashboard fa-3x orange-text"></i> -->
+                <div class="row">
+                <div class="col-md-5">
+                <img src="img/research_areas/high_dimentional.png" class="research_area_img">
+                </div>
+                <div class="col-md-7">
+                <h3 class="h4 mt-3">High-Dimensional Pattern Search</h3>
+                <p class="mt-3 blue-grey-text">
+                  Provide guidance to analysts for finding patterns in high- dimensional subspaces by devising metrics that quantify salient patterns.
+                </p>
+                  <p><a href="assets/infovis10.pdf" target="_blank">InfoVis10</a> | <a href="assets/ldav12.pdf" target="_blank">LDAV12</a> | <a href="assets/cgf15.pdf" target="_blank">CGF2015</a> | <a href="assets/ldav16.pdf" target="_blank">LDAV2016</a></p>
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 mb-r"> <!-- class="col-md-6 mb-r wow fadeInUp" data-wow-delay=".8s" --> <!-- <i class="fa fa-comments-o fa-3x cyan-text"></i> -->
+                <div class="row">
+                  <div class="col-md-5">
+                    <img src="img/research_areas/privacy4.png" class="research_area_img">
+                  </div>
+                  <div class="col-md-7">
+                <h3 class="h4 mt-3">Privacy-Preserving Data Visualization</h3>
+                <p class="mt-3 blue-grey-text">
+                  Adapt visualizations to prevent disclosure of sensitive information by developing information loss metrics that can help address the trade-off between privacy gain and loss of utility due to anonymization.
+                </p>
+                    <p><a href="assets/infovis11.pdf" target="_blank">InfoVis11</a> | <a href="assets/cgf12.pdf" target="_blank">CGF12</a> | <a href="assets/cgf13.pdf" target="_blank">CGF13</a> | <a href="assets/ehrvis14.pdf" target="_blank">EHRVis14</a> | <a href="assets/vizsec19.pdf" target="_blank">VizSec19</a> | <a href="assets/eurovis20.pdf" target="_blank">EuroVis20</a></p>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+
+  </div>
+  
+  
+
+</body>
+</html>
