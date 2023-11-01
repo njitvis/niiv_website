@@ -52,6 +52,9 @@ background-color: whitesmoke;*/
   .pages_research_block_title{
     font-size:  3.5em; 
   }
+  .pages_research_block_title3{
+    font-size:  3em; 
+  }
   .pages_research_block_text{
     font-size: 2em;
   }
@@ -88,6 +91,9 @@ screen and (max-height:768px)
   }
   .pages_research_block_title{
     font-size:  2.5em; 
+  }
+  .pages_research_block_title3{
+    font-size:  2.2em; 
   }
   .pages_research_block_text{
     font-size: 1.8em;
