@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<title>Workshop on Interrogating Human-Centered Data Science</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!-- <link rel="stylesheet" href="../css/w3.css"> -->
+<link rel="stylesheet" href="./../styles/w3.css">
+<!-- <link rel="stylesheet" href="../css/w3-theme-black.css"> -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="apple-touch-icon" sizes="180x180" href="./../img/favicons/apple-touch-icon.png">
+<link rel="icon" type="image/png" sizes="32x32" href="./../img/favicons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="./../img/favicons/favicon-16x16.png">
+<style>
+html,body,h1,h2,h3,h4,h5,h6 {font-family: "Roboto", sans-serif;}
+.w3-sidebar {
+  z-index: 3;
+  width: 250px;
+  top: 43px;
+  bottom: 0;
+  height: inherit;
+}
+</style>
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-ZBCQHPZJ26"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-ZBCQHPZJ26');
+</script>
+<body>
+<!-- Navbar -->
+<div class="w3-top">
+  <div class="w3-bar w3-blue-grey w3-card w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-hide-medium w3-hide-large w3-right w3-padding-large w3-hover-white w3-large w3-red" href="javascript:void(0);" onclick="myFunction()" title="Toggle Navigation Menu"><i class="fa fa-bars"></i></a>
+    <a href="#authors" class="w3-bar-item w3-button w3-padding-large w3-white">Paper</a>
+    <a href="#abstract" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Abstract</a>
+    <a href="#online_access" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">Access</a>
+    <a href="#bibtex" class="w3-bar-item w3-button w3-hide-small w3-padding-large w3-hover-white">BibTex</a>
+  </div>
+
+  <!-- Navbar on small screens -->
+  <div id="navDemo" class="w3-bar-block w3-white w3-hide w3-hide-large w3-hide-medium w3-large">
+    <a href="#authors" class="w3-bar-item w3-button w3-padding-large">Paper</a>
+    <a href="#abstract" class="w3-bar-item w3-button w3-padding-large">Abstract</a>
+    <a href="#online_access" class="w3-bar-item w3-button w3-padding-large">Access</a>
+    <a href="#bibtex" class="w3-bar-item w3-button w3-padding-large">BibTex</a>
+  </div>
+</div>
+<!-- Navbar -->
+<!-- <div class="w3-top">
+  <div class="w3-bar w3-theme w3-top w3-left-align w3-large">
+    <a class="w3-bar-item w3-button w3-right w3-hide-large w3-hover-white w3-large w3-theme-l1" href="javascript:void(0)" onclick="w3_open()"><i class="fa fa-bars"></i></a>
+    <a href="#authors" class="w3-bar-item w3-button w3-theme-l1">Paper</a>
+    <a href="#abstract" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Abstract</a>
+    <a href="#online_access" class="w3-bar-item w3-button w3-hide-small w3-hover-white">Access</a>
+    <a href="#bibtex" class="w3-bar-item w3-button w3-hide-small w3-hover-white">BibTex</a>
+  </div>
+</div> -->
+
+<!-- Sidebar -->
+<!--<nav class="w3-sidebar w3-bar-block w3-collapse w3-large w3-theme-l5 w3-animate-left" id="mySidebar">
+  <a href="javascript:void(0)" onclick="w3_close()" class="w3-right w3-xlarge w3-padding-large w3-hover-black w3-hide-large" title="Close Menu">
+    <i class="fa fa-remove"></i>
+  </a>
+  <h4 class="w3-bar-item"><b>Menu</b></h4>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#authors">Authors</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#abstract">Abstract</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#online_access">Online Access</a>
+  <a class="w3-bar-item w3-button w3-hover-black" href="#bibtex">BibTeX Reference</a>
+</nav>-->
+
+<!-- Overlay effect when opening sidebar on small screens -->
+<div class="w3-overlay w3-hide-large" onclick="w3_close()" style="cursor:pointer" title="close side menu" id="myOverlay"></div>
+
+<!-- Main content: shift it to the right by 250 pixels when the sidebar is visible -->
+<div class="w3-main" style="margin-left:9em">
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h1 class="" id="authors"><b>Rankers, Rankees, & Rankings: Peeking into the Pandora's Box from a Socio-Technical Perspective</b></h1>
+      <p>This paper has been published in Workshop on Interrogating Human-Centered Data Science at CHI 2022. The authors of this paper are: </p>
+      <ul>
+        <li>Jun Yuan &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;PhD student, Department of Data Science, New Jersey Institute of Technology, USA</li>
+        <li>Julia Stoyanovich &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Associate Professor, Tandon School of Engineering and Center for Data Science, New York University, USA</li>
+        <li>Aritra Dasgupta &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Assistant Professor, Department of Data Science, New Jersey Institute of Technology, USA</li>
+      </ul>
+    </div>
+    <!--<div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>-->
+  </div>
+
+  <div class="w3-row" id="abstract">
+    <div class="w3-twothird w3-container" >
+      <h2 class="" >Abstract</h2>
+      <p>Algorithmic rankers have a profound impact on our increasingly data-driven society. From leisurely activities like the movies that we watch, the restaurants that we patronize; to highly consequential decisions, like making educational and occupational choices or getting hired by companies-these are all driven by sophisticated yet mostly inaccessible rankers. A small change to how these algorithms process the rankees (i.e., the data items that are ranked) can have profound consequences. For example, a change in rankings can lead to deterioration of the prestige of a university or have drastic consequences on a job candidate who missed out being in the list of the preferred top-k for an organization. This paper is a call to action to the human-centered data science research community to develop principled methods, measures, and metrics for studying the interactions among the socio-technical context of use, technological innovations, and the resulting consequences of algorithmic rankings on multiple stakeholders. Given the spate of new legislations on algorithmic accountability, it is imperative that researchers from social science, human-computer interaction, and data science work in unison for demystifying how rankings are produced, who has agency to change them, and what metrics of socio-technical impact one must use for informing the context of use.</p>
+      <br>
+      <img src="../img/pages_figures/algoranker/position.png" width="70%" class="w3-border w3-padding">
+      <figcaption class="w3-small">Fig: <b>• The ecosystem of ranking producers and consumers.</b> </figcaption>
+    </div>
+    <!--<div class="w3-third w3-container">
+      <img src="figure3.png" class="w3-border w3-padding">
+    </div>-->
+  </div>
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h3 class="" id="online_access">Online Access</h3>
+      <ul>
+        <li> Paper: <a href="../assets/publications/2022/ranking_HCDSCHI22.pdf" target="_blank" class="w3-text-teal">ResearchGate(PDF Version)</a>
+        </li>
+      </ul>
+    </div>
+    <!--<div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>-->
+  </div>
+
+  <div class="w3-row w3-padding-64">
+    <div class="w3-twothird w3-container">
+      <h3 class="">BibTeX Reference</h3>
+      <pre id="bibtex">
+        @article{yuan2022rankers,
+          title={Rankers, Rankees, \& Rankings: Peeking into the Pandora's Box from a Socio-Technical Perspective},
+          author={Yuan, Jun and Stoyanovich, Julia and Dasgupta, Aritra},
+          journal={arXiv preprint arXiv:2211.02932},
+          year={2022}
+        }
+      </pre>
+    </div>
+    <!--<div class="w3-third w3-container">
+      <p class="w3-border w3-padding-large w3-padding-32 w3-center">AD</p>
+      <p class="w3-border w3-padding-large w3-padding-64 w3-center">AD</p>
+    </div>-->
+  </div>
+
+  <!-- Pagination -->
+  <!--
+  <div class="w3-center w3-padding-32">
+    <div class="w3-bar">
+      <a class="w3-button w3-black" href="#">1</a>
+      <a class="w3-button w3-hover-black" href="#">2</a>
+      <a class="w3-button w3-hover-black" href="#">3</a>
+      <a class="w3-button w3-hover-black" href="#">4</a>
+      <a class="w3-button w3-hover-black" href="#">5</a>
+      <a class="w3-button w3-hover-black" href="#">»</a>
+    </div>
+  </div>
+-->
+  <!-- <footer id="myFooter"> -->
+    <!--<div class="w3-container w3-theme-l2 w3-padding-32">
+      <h4>Footer</h4>
+    </div>-->
+
+    <!-- <div class="w3-container w3-theme-l1">
+      <p>Design theme by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a></p>
+    </div> -->
+  <!-- </footer> -->
+
+<!-- END MAIN -->
+</div>
+
+<script>
+// Get the Sidebar
+var mySidebar = document.getElementById("mySidebar");
+
+// Get the DIV with overlay effect
+var overlayBg = document.getElementById("myOverlay");
+
+// Toggle between showing and hiding the sidebar, and add overlay effect
+function w3_open() {
+  if (mySidebar.style.display === 'block') {
+    mySidebar.style.display = 'none';
+    overlayBg.style.display = "none";
+  } else {
+    mySidebar.style.display = 'block';
+    overlayBg.style.display = "block";
+  }
+}
+
+// Close the sidebar with the close button
+function w3_close() {
+  mySidebar.style.display = "none";
+  overlayBg.style.display = "none";
+}
+</script>
+
+</body>
+</html>
