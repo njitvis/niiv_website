@@ -246,6 +246,12 @@ screen and (max-height:768px)
 ul {
   list-style: none;
 }
+ul.others_ul{
+  list-style: inherit;
+}
+ul.others_ul_dash{
+  list-style-type: '- ';
+}
 li {
   margin: 0.25rem;
 }
@@ -258,6 +264,9 @@ li::before {
   color: white;
   text-align: left;
   margin-right: 0.5rem;
+}
+li.others_li {
+  color: inherit;
 }
 
 #intro .h6 {
@@ -345,6 +354,10 @@ li::before {
 .pages_link{
   color: rgb(0, 128, 128)
 }
+/* .pages_link1{
+  color: rgb(0, 128, 128);
+  font-weight: 800!important;
+} */
 .section_link{
   color: black;
   cursor:  pointer;
