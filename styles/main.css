@@ -247,7 +247,7 @@ ul {
   list-style: none;
 }
 ul.others_ul{
-  list-style: inherit;
+  list-style: inherit; /* checking if updated */
 }
 ul.others_ul_dash{
   list-style-type: '- ';
