@@ -1,0 +1,263 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    --background: 0 0% 100%;
+    --foreground: 0 0% 13%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 0 0% 13%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 13%;
+
+    /* NJIT Red as primary */
+    --primary: 0 100% 40%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 96%;
+    --secondary-foreground: 0 0% 13%;
+
+    --muted: 0 0% 96%;
+    --muted-foreground: 0 0% 45%;
+
+    --accent: 0 100% 40%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 90%;
+    --input: 0 0% 90%;
+    --ring: 0 100% 40%;
+
+    --radius: 0.5rem;
+
+    /* Academic design tokens */
+    --academic-dark: 0 0% 13%;
+    --academic-gray: 0 0% 45%;
+    --academic-light: 0 0% 96%;
+    
+    /* Soft ghost button colors */
+    --ghost-bg: 0 85% 40% / 0.06;
+    --ghost-bg-hover: 0 85% 40% / 0.10;
+    --ghost-border: 0 85% 40% / 0.12;
+    --ghost-text: 0 85% 40%;
+    --ghost-text-hover: 0 100% 30%;
+    
+    /* Premium gradients */
+    --gradient-soft: linear-gradient(135deg, hsl(0 0% 98%) 0%, hsl(0 0% 100%) 100%);
+    --gradient-accent: linear-gradient(135deg, hsl(0 100% 40% / 0.05) 0%, hsl(0 0% 100%) 100%);
+    --gradient-quote: linear-gradient(135deg, hsl(0 100% 98%) 0%, hsl(0 0% 100%) 100%);
+    
+    /* Shadows */
+    --shadow-card: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+    --shadow-card-hover: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+    --shadow-elegant: 0 10px 30px -10px rgb(0 0 0 / 0.15);
+    --glow-primary: 0 0 20px hsl(0 100% 40% / 0.2);
+    
+    /* Transitions */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .dark {
+    --background: 0 0% 13%;
+    --foreground: 0 0% 96%;
+
+    --card: 0 0% 18%;
+    --card-foreground: 0 0% 96%;
+
+    --popover: 0 0% 18%;
+    --popover-foreground: 0 0% 96%;
+
+    --primary: 0 100% 50%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 0 0% 20%;
+    --secondary-foreground: 0 0% 96%;
+
+    --muted: 0 0% 20%;
+    --muted-foreground: 0 0% 65%;
+
+    --accent: 0 100% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 0 0% 96%;
+
+    --border: 0 0% 25%;
+    --input: 0 0% 25%;
+    --ring: 0 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+  }
+  25% {
+    transform: translateY(-10px) translateX(5px);
+  }
+  50% {
+    transform: translateY(-5px) translateX(-5px);
+  }
+  75% {
+    transform: translateY(-15px) translateX(3px);
+  }
+}
+
+
+/* Hide horizontal scrollbar but keep scrolling */
+.no-scrollbar::-webkit-scrollbar { display: none; }
+.no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+@keyframes fadePulse { 0%{opacity:0} 30%{opacity:.7} 100%{opacity:0} }
+.fade-pulse { animation: fadePulse 900ms ease-out; }
+
+/* Subtle dot/grid backgrounds for sections */
+.bg-grid {
+  background-image:
+    radial-gradient(rgba(2, 6, 23, 0.06) 1px, transparent 1px);
+  background-size: 18px 18px;
+  background-position: -1px -1px;
+}
+
+/* Soft radial vignette to reduce plain white */
+.bg-vignette {
+  background:
+    radial-gradient(80% 60% at 50% -10%, rgba(204,0,0,0.08), transparent 60%),
+    radial-gradient(60% 40% at 100% 0%, rgba(204,0,0,0.06), transparent 60%),
+    radial-gradient(60% 40% at 0% 0%, rgba(0,0,0,0.03), transparent 60%);
+}
+
+.card-spotlight::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at var(--mx, 50%) var(--my, 50%),
+    rgba(204, 0, 0, 0.12) 0%,
+    rgba(255, 255, 255, 0.05) 25%,
+    transparent 55%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease, background 0.3s ease;
+  pointer-events: none;
+}
+.group:hover .card-spotlight::before {
+  opacity: 1;
+}
+
+
+/* Optional: nicer thin separators */
+.hr-soft {
+  height: 1px;
+  background: linear-gradient(to right, transparent, rgba(0,0,0,0.08), transparent);
+}
+
+/* tilt container (parent needs perspective) */
+.magnet-tilt {
+  transform:
+    rotateX(var(--tiltY, 0deg))
+    rotateY(var(--tiltX, 0deg));
+  transition: transform 180ms ease;
+  will-change: transform;
+  transform-style: preserve-3d;
+}
+
+/* smoother spring back */
+.magnet-rest {
+  --tiltX: 0deg;
+  --tiltY: 0deg;
+}
+
+/* allow vertical scroll while tracking horizontal touch */
+.touch-pan-y {
+  touch-action: pan-y;
+}
+
+/* smooth anchor scroll */
+html { scroll-behavior: smooth; }
+/* glass red chip (same as Research page) */
+/* chips (glass, NIIV red) */
+.chip-glass-red{
+  --tw-ring-color: rgba(204,0,0,.25);
+  border: 1px solid rgba(204,0,0,.28);
+  background: linear-gradient(135deg, rgba(204,0,0,.10), rgba(255,255,255,.45));
+  backdrop-filter: blur(6px);
+  color: #B00000;
+  border-radius: 9999px;
+  padding: .25rem .6rem;
+  font-size: .75rem;
+  font-weight: 600;
+  box-shadow: inset 0 0 1px rgba(255,255,255,.35);
+}
+
+/* soft link pill (used in overview) */
+.link-soft{
+  display:inline-flex;align-items:center;
+  border:1px solid rgba(204,0,0,.28);
+  background: linear-gradient(135deg, rgba(204,0,0,.08), rgba(255,255,255,.6));
+  color:#B00000;border-radius:9999px;
+  padding:.25rem .55rem;font-size:.75rem;font-weight:600;
+}
+
+/* soft red button for CTAs in sections */
+.btn-red-soft{
+  display:inline-flex;align-items:center;gap:.4rem;
+  border:1px solid rgba(204,0,0,.28);
+  background: linear-gradient(135deg, rgba(204,0,0,.10), rgba(255,255,255,.6));
+  color:#B00000;border-radius:.55rem;
+  padding:.45rem .65rem;font-size:.8rem;font-weight:600;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+.btn-red-soft:hover{ transform: translateY(-1px); box-shadow: 0 6px 16px rgba(204,0,0,.08); }
+
+/* highlight metric cards in hero */
+.hi-card {
+  border-radius: 0.9rem;
+  border: 1px solid rgba(204, 0, 0, 0.15);
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(8px);
+  padding: 0.6rem 0.9rem;
+  text-align: center;
+  box-shadow: 0 2px 8px rgba(204, 0, 0, 0.05);
+}
+
+.hi-num{ font-weight:800;color:#B00000;line-height:1; font-size:1.15rem; }
+.hi-label{ color:#555; font-size:.72rem }
+
+/* simple animations you’re already using */
+@keyframes fadeIn{ from{opacity:0; transform:translateY(12px)} to{opacity:1; transform:translateY(0)} }
+.animate-fade-in{ animation: fadeIn .6s ease both }
+@keyframes slideInRight{ from{transform:translateX(20px); opacity:0} to{transform:translateX(0); opacity:1} }
+.animate-slide-in-right{ animation: slideInRight .4s ease both }
+
+@keyframes slide-in-right {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);     opacity: 1; }
+}
+.motion-safe\:animate-slide-in-right { animation: slide-in-right .28s ease-out both; }
+
+@keyframes slide-in-up {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+.motion-safe\:animate-slide-in-up { animation: slide-in-up .28s ease-out both; }
+

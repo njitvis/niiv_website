@@ -1,0 +1,29 @@
+
+
+import { Routes, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import Contact from "./pages/Contact";
+import News from "./pages/News";
+import NotFound from "./pages/NotFound";
+import People from "./pages/People";
+import Publications from "./pages/Publications";
+import Research from "./pages/Research";
+import Layout from "./components/Layout";
+
+function App() {
+  return (
+    <Layout>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/people" element={<People />} />
+        <Route path="/publications" element={<Publications />} />
+        <Route path="/research" element={<Research />} />
+        <Route path="/news" element={<News />} />
+        <Route path="/contact" element={<Contact />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </Layout>
+  );
+}
+
+export default App;
