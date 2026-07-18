@@ -161,7 +161,7 @@ const Home = () => {
               {/* Intro */}
               <div className="mb-8">
                 <h2 className="mb-6 text-3xl font-extrabold tracking-tight text-[#1a1a1a]">
-                  Designing Intelligible AI
+                  Designing Intelligible Human-AI Collaboration
                 </h2>
 
                 <div className="mb-8 animate-fade-in">
@@ -398,9 +398,9 @@ const Home = () => {
                         {member.name}
                       </p>
                       <p className="text-[11px] text-[#555] leading-snug">{member.role}</p>
-                      <p className="text-[11px] text-[#777] leading-snug">
+                      {/* <p className="text-[11px] text-[#777] leading-snug">
                         {member.researchArea || member.research || "Research Focus"}
-                      </p>
+                      </p> */}
 
                       <div className="flex items-center gap-2 mt-1">
                         {member.linkedin && (

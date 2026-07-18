@@ -25,26 +25,26 @@ const _PEOPLE: Person[] = [
     linkedin: "https://www.linkedin.com/in/aritradasgupta/"
   },
   {
-    name: "Jun Yuan",
+    name: "Avina Nakarmi",
     role: "PhD Candidate",
-    email: "jy448@njit.edu",
-    initials: "JY",
+    email: "",
+    initials: "AN",
     priority: 2,
     affiliation: "NJIT",
-    image: "/people/jun.png",
-    website: "https://jydrew.github.io/",
+    image: "",
+    website: "",
   },
   {
-    name: "Kaustav Bhattacharjee",
+    name: "Bayan Divaaniaazar",
     role: "PhD Candidate",
-    email: "kb572@njit.edu",
-    initials: "KB",
+    email: "",
+    initials: "BD",
     priority: 2,
     affiliation: "NJIT",
-    image: "/people/kaustav.png",
-    website: "https://kaustavbhattacharjee.com/",
-    linkedin: "https://www.linkedin.com/in/kaustav-bhattacharjee/",
-    github: "https://github.com/kaustavbhattacharjee"
+    image: "",
+    website: "https://bayan-divaaniaazar.github.io/",
+    linkedin: "https://www.linkedin.com/in/bayan-divaaniaazar/",
+    github: "https://github.com/bayan-divaaniaazar"
   },
   {
     name: "Vrushali Koli",
@@ -59,14 +59,14 @@ const _PEOPLE: Person[] = [
     github: "https://github.com/vkoli"
   },
   {
-    name: "Akm Islam",
-    role: "University Lecturer",
-    email: "akm.islam@njit.edu",
-    initials: "AI",
+    name: "Saikiran Battula",
+    role: "PhD Candidate",
+    email: "",
+    initials: "SB",
     priority: 3,
     affiliation: "NJIT",
-    image: "/people/akm.jpeg",
-    website: "http://akmislam.com/",
+    image: "",
+    website: "",
   },
 ];
 
