@@ -1,50 +1,63 @@
+import { ArrowRight } from "lucide-react";
+import { Link } from "react-router-dom";
 import type { ProjectData } from "../data/projectData";
 
-interface RelatedProjectsProps {
+type RelatedProjectsProps = {
   projects: ProjectData[];
   currentProjectSlug: string;
-}
+};
 
-const RelatedProjects = ({ projects, currentProjectSlug }: RelatedProjectsProps) => {
-  const relatedProjects = projects
-    .filter(p => p.slug !== currentProjectSlug)
-    .slice(0, 4);
+const RelatedProjects = ({
+  projects,
+  currentProjectSlug,
+}: RelatedProjectsProps) => {
+  const otherProjects = projects.filter(
+    (project) => project.slug !== currentProjectSlug,
+  );
 
-  if (relatedProjects.length === 0) return null;
+  if (otherProjects.length === 0) return null;
 
   return (
-    <section className="py-12 border-t border-gray-200 bg-gray-50">
-      <div className="container mx-auto px-6 lg:px-8">
-        <h2 className="text-2xl font-serif font-bold text-foreground mb-8">
-          Related Projects
-        </h2>
+    <section className="border-t border-gray-200 bg-white py-12 sm:py-16">
+      <div className="container mx-auto px-4 lg:px-8">
+        <div className="mb-7 flex items-end justify-between gap-4">
+          <div>
+            <p className="mb-2 text-xs font-semibold uppercase text-[#B00000]">
+              Continue exploring
+            </p>
+            <h2 className="text-2xl font-semibold text-gray-950">
+              More research areas
+            </h2>
+          </div>
+          <Link
+            to="/research"
+            className="hidden text-sm font-semibold text-[#B00000] hover:underline sm:inline"
+          >
+            View all
+          </Link>
+        </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {relatedProjects.map((project) => (
-            <a
+        <div className="grid gap-px overflow-hidden rounded-lg border border-gray-200 bg-gray-200 md:grid-cols-3">
+          {otherProjects.map((project) => (
+            <Link
               key={project.slug}
-              href={`/research?project=${project.slug}`}
-              className="group bg-white rounded-[16px] border border-gray-200 p-5 hover:border-primary hover:shadow-lg transition-all hover:scale-[1.02] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+              to={`/research/${project.slug}`}
+              className="group flex min-h-44 flex-col bg-white p-5 transition-colors hover:bg-gray-50 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000]"
             >
-              <h3 className="text-base font-semibold text-foreground mb-3 line-clamp-2 group-hover:text-primary transition-colors">
+              <h3 className="mb-3 text-base font-semibold leading-snug text-gray-950 group-hover:text-[#B00000]">
                 {project.title}
               </h3>
-
-              <div className="flex flex-wrap gap-1.5 mb-3">
-                {project.tags.slice(0, 3).map((tag) => (
-                  <span
-                    key={tag}
-                    className="px-2 py-0.5 bg-gray-100 border border-gray-200 text-gray-600 text-xs rounded-full"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              <p className="text-xs text-muted-foreground">
-                {project.conference} · {project.year}
+              <p className="mb-5 line-clamp-3 text-sm leading-6 text-gray-600">
+                {project.description}
               </p>
-            </a>
+              <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#B00000]">
+                Explore
+                <ArrowRight
+                  className="h-4 w-4 transition-transform group-hover:translate-x-1"
+                  aria-hidden="true"
+                />
+              </span>
+            </Link>
           ))}
         </div>
       </div>

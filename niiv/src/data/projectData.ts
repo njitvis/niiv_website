@@ -1,215 +1,288 @@
-// projectData.ts (or wherever your interfaces live)
-export interface Paper {
-  title: string;
-  subtitle: string;
-  venue: string;
-  abstract: string;
-  media?: string;
-  mediaType?: "video" | "image";
-  keyFocus?: string;
-  links: {
-    paper?: string;
-    details?: string;
-    video?: string;
-  };
-}
+import { PUBLICATIONS, type Pub } from "./publications";
 
-export interface ProjectData {
+export type ProjectResource = {
+  label: string;
+  href: string;
+  type: "code" | "demo" | "video" | "website";
+};
+
+export type ProjectPublication = {
+  publicationId: string;
+  summary?: string;
+  image?: string;
+  imageAlt?: string;
+  caption?: string;
+  resources?: ProjectResource[];
+};
+
+export type ProjectData = {
   slug: string;
   title: string;
-  conference: string;
-  year: number;
-  tags: string[];
-  media?: string;
-  mediaType: "video" | "image";
   description: string;
-  subtitle?: string;
-  papers: Paper[];
-}
+  overview: string;
+  image: string;
+  imageAlt: string;
+  tags: string[];
+  publications: ProjectPublication[];
+  resources?: ProjectResource[];
+};
 
+export type ResolvedProjectPublication = ProjectPublication & {
+  publication: Pub;
+};
 
 export const projectsData: ProjectData[] = [
   {
-  slug: "trivea",
-  title: "Explainable AI for Algorithmic Rankers",
-  conference: "Multiple Publications 2022–2023",
-  year: 2023,
-  tags: ["Explainable AI", "Visualization", "Ranking"],
-  mediaType: "image",
-  description:
-    "Unravel factors influencing black-box ranking models through visual analytic explanations.",
-  subtitle: "Transparency in ranking interpretation with XAI + visual analytics.", // NEW
-  papers: [
-    {
-      title:
-        "A Human-in-the-loop Workflow for Multi-Factorial Sensitivity Analysis of Algorithmic Rankers",
-      subtitle:
-        "Designing explanations (Shapley transform) + a human-in-the-loop sensitivity analysis workflow.",
-      venue: "HILDA 2023",
-      keyFocus: "Sensitivity analysis · Shapley transform", // NEW
-      abstract:
-        "Algorithmic rankers are widely used in hiring, admission, and loan-approval systems, yet are hard to audit or trust without explanations. We (i) transform Shapley values for a linear weighted-sum ranker, and (ii) design a human-in-the-loop sensitivity analysis workflow by simulating data with user-specified distributions and correlations.",
-      links: {
-        paper: "https://dl.acm.org/doi/10.1145/3597465.3605221"
-      }
-    },
-    {
-      title:
-        "Rankers, Rankees, & Rankings: Peeking into the Pandora’s Box from a Socio-Technical Perspective",
-      subtitle:
-        "Position paper calling for principled methods and metrics around ranking systems' socio-technical impact.",
-      venue: "HCDS @ CHI 2022",
-      keyFocus: "Socio-technical lens · Accountability",
-      abstract:
-        "Algorithmic rankings shape both everyday choices and high-stakes outcomes. We call on HCI, data science, and social science to jointly study how rankings are produced, who has agency to change them, and how to measure socio-technical impact.",
-      links: {
-        paper: "/publications/2022/ranking_HCDSCHI22.pdf"
-      }
-    },
-    {
-      title:
-        "A Simple Scoring Function to Fool SHAP: Stealing from the One Above",
-      subtitle:
-        "A rule that adapts any scoring function to evade SHAP-based unfairness detection without data access.",
-      venue: "NeurIPS 2023",
-      keyFocus: "Adversarial scoring · SHAP robustness",
-      abstract:
-        "We show adversarial scoring functions can subvert SHAP-based unfairness detection without access to the data distribution, exposing limitations of current XAI practices for scoring functions.",
-      links: {
-        paper: "https://openreview.net/pdf?id=iMR4ukkUFU"
-      }
-    },
-    {
-      title:
-        "TRIVEA: Transparent Ranking Interpretation using Visual Explanation of Black-Box Algorithmic Rankers",
-      subtitle:
-        "Visual exploration–explanation for model fit and attribute influence across ranking ranges.",
-      venue: "Visual Computer 2023",
-      keyFocus: "Visual explanations · Model fit",
-      abstract:
-        "TRIVEA lets stakeholders explore multi-attribute ranking data via model-fit views and XAI-based explanations, enabling transparent reasoning about global and local behavior of opaque ranking models.",
-      links: {
-        paper: "https://link.springer.com/article/10.1007/s00371-023-03055-x",
-        details: "https://niiv.njitvis.com/projects/algoranker_vcj2023.html"
-      }
-    }
-  ]
-},
-{
-    slug: "privee",
-    title: "Privacy-aware Data Discovery",
-    conference: "Multiple Publications 2020–2023",
-    year: 2023,
-    tags: ["Privacy", "Data Science", "Visual Analytics"],
-    mediaType: "video",
+    slug: "trivea",
+    title: "Explainable AI for Algorithmic Rankers",
     description:
-      "Develop visual analytic workflows to discover joinable open datasets that can lead of disclosure of sensitive information.",
-    papers: [
+      "Unravel the factors influencing black-box ranking models through visual analytic explanations.",
+    overview:
+      "Algorithmic rankings shape consequential decisions in education, hiring, lending, and recommendations, while their internal logic is often inaccessible. This research combines explainable AI with visual analytics so stakeholders can examine how attributes influence rankings, test how explanations respond to changing assumptions, and reason about the social consequences of ranked outcomes.",
+    image: "/explainableAI.png",
+    imageAlt:
+      "Diagram of the TRIVEA workflow for interpreting algorithmic rankings",
+    tags: ["Explainable AI", "Algorithmic Ranking", "Visual Analytics"],
+    publications: [
       {
-        title: "PRIVEE",
-        subtitle: "Privacy Risk Inspection and Evaluation",
-        venue: "HILDA 2023",
-        abstract:
-          "Open data sets containing personal information, are primarily published through a release-and-forget model, where data owners and custodians have little to no cognizance to the privacy risks. We address this gap by developing a visual analytic tool PRIVEE that help data defenders gain awareness about disclosure risks in local, joinable data neighborhoods.",
-        // Use embed for iframe:
-        media: "https://www.youtube.com/embed/61BmGHceC_s",
-        mediaType: "video",
-        links: {
-          paper:
-            "https://niiv.njitvis.com/assets/publications/2022/kaustav_vizsec22.pdf",
-          details:
-            "https://niiv.njitvis.com/projects/datadiscovery_vizsec2022.html",
-          // External watch link:
-          video: "https://www.youtube.com/watch?v=61BmGHceC_s",
-        },
+        publicationId: "revise-incremental-algorithmic-recourse",
       },
       {
-        title: "Disclosures",
-        subtitle: "Disclosures during Red Team Exercise",
-        venue: "USEC 2023",
-        abstract:
-          "This paper highlights some of the vulnerabilities discovered during a red team exercise into the open data ecosystem. We report some examples where sensitive details of data subjects are exposed by joining open datasets.",
-        mediaType: "image",
-        links: {
-          paper:
-            "https://niiv.njitvis.com/assets/publications/2023/kaustav_usec23.pdf",
-          details:
-            "https://niiv.njitvis.com/projects/datadiscovery_usec2023.html",
-        },
+        publicationId: "visual-analytic-techniques-interpretable-ranking",
       },
       {
-        title: "Utility Profiling",
-        subtitle: "Visual Analytics for Utility-driven Data Discovery",
-        venue: "HILDA 2023",
-        abstract:
-          "We introduce a utility metric to quantify the utility of joined datasets. Our visual analytic workflow helps to identify joinable datasets, prioritize them based on their utility, and inspect the joined dataset.",
-        media: "https://www.youtube.com/embed/76Gxqx_Pj8I",
-        mediaType: "video",
-        links: {
-          paper:
-            "https://niiv.njitvis.com/assets/publications/2023/kaustav_hilda23.pdf",
-          details:
-            "https://niiv.njitvis.com/projects/datadiscovery_hilda2023.html",
-          video: "https://www.youtube.com/watch?v=76Gxqx_Pj8I",
-        },
+        publicationId: "simple-scoring-function-fool-shap",
+        summary:
+          "This work shows how adversarial scoring functions can evade SHAP-based unfairness detection without access to the underlying data distribution, exposing an important limitation of current explanation practices.",
       },
       {
-        title: "STAR",
-        subtitle:
-          "State-of-the-Art Report on Privacy-Preserving Visualization",
-        venue: "EuroVis 2020",
-        abstract:
-          "In this survey paper, we analyze the methods and techniques used for handling data privacy in visualization. We also reflect on the gaps and future research opportunities in this domain.",
-        mediaType: "image",
-        links: {
-          paper: "https://niiv.njitvis.com/assets/publications/2020/eurovis20.pdf",
-          details:
-            "https://niiv.njitvis.com/projects/datadiscovery_eurovis_2020.html",
-          // fixed: correct "watch?v=" format
-          video: "https://www.youtube.com/watch?v=CQxs9Hh_1f4",
-        },
+        publicationId: "trivea-transparent-ranking-interpretation",
+        summary:
+          "TRIVEA combines learned ranking models with visual explanations of model fit and attribute influence. It helps people explore global and local ranking behavior without needing direct access to the underlying black-box model.",
+        image: "/projects/algorithmic-rankers/trivea-workflow.png",
+        imageAlt:
+          "TRIVEA visual analytics workflow for transparent ranking interpretation",
+        caption: "Visual analytics workflow used in TRIVEA.",
+        resources: [
+          {
+            label: "Code",
+            href: "https://github.com/njitvis/trivea",
+            type: "code",
+          },
+          {
+            label: "Interactive demo",
+            href: "https://njitvis.github.io/trivea/",
+            type: "demo",
+          },
+        ],
+      },
+      {
+        publicationId: "human-in-loop-sensitivity-analysis-rankers",
+        summary:
+          "A human-in-the-loop workflow transforms Shapley values for ranking models and uses multi-factor simulations to study how explanations change with data distributions, ranker parameters, and rank ranges.",
+        image: "/projects/algorithmic-rankers/sensitivity-analysis.png",
+        imageAlt:
+          "Interface for sensitivity analysis of algorithmic rankers",
+        caption:
+          "Visual interface for multi-factor sensitivity analysis of rankers.",
+        resources: [
+          {
+            label: "Interactive demo",
+            href: "https://hilda23-ranking-shapley.streamlit.app/",
+            type: "demo",
+          },
+        ],
+      },
+      {
+        publicationId: "contextual-transparency-automated-decision-systems",
+        summary:
+          "Contextual transparency connects social science, engineering, and information design to make automated decision systems understandable for specific professions, processes, and stakeholder groups.",
+        image: "/projects/algorithmic-rankers/contextual-transparency.png",
+        imageAlt:
+          "Diagram showing contextual transparency in an automated recruiting process",
+        caption:
+          "Contextual transparency applied to automated recruiting systems.",
+      },
+      {
+        publicationId: "rankers-rankees-rankings-pandora-box",
+        summary:
+          "This position paper calls for principled methods and metrics that connect ranking technologies to their socio-technical context, the agency of affected stakeholders, and the consequences of ranked outcomes.",
+        image: "/projects/algorithmic-rankers/socio-technical-ranking.png",
+        imageAlt:
+          "Socio-technical relationships among rankers, rankees, and rankings",
+        caption:
+          "A socio-technical view of rankers, rankees, and ranking outcomes.",
       },
     ],
   },
   {
     slug: "ai-decisions",
     title: "Transparent AI-driven Decision Making",
-    conference: "Ongoing Research",
-    year: 2023,
-    tags: ["AI Decisions", "Visual Analytics", "Decision Support"],
-    mediaType: "image",
-    // If you have a hero image, add it here, e.g.:
-    // media: "/images/ai-decisions-hero.jpg",
     description:
-      "Apply visualization and artificial intelligence techniques for high-consequential decision-making.",
-    papers: [],
+      "Apply visualization and artificial intelligence techniques to support consequential decision-making.",
+    overview:
+      "This research studies how people can understand, evaluate, and collaborate with AI systems in consequential settings. The work spans contextual transparency, human-machine teaming, and visual diagnostics for comparing model behavior in domains such as recruiting and energy systems.",
+    image: "/transparentAI.png",
+    imageAlt:
+      "Diagram comparing traditional computing systems with human-AI teaming",
+    tags: ["Decision Support", "Human-AI Teaming", "Model Diagnostics"],
+    publications: [
+      {
+        publicationId: "trust-net-load-forecasting-models",
+      },
+      {
+        publicationId:
+          "characterizing-interaction-uncertainty-human-machine-teams",
+      },
+      {
+        publicationId: "forte-trust-augmented-net-load-forecasting",
+      },
+      {
+        publicationId: "machine-learning-energy-efficient-buildings",
+      },
+      {
+        publicationId: "contextual-transparency-automated-decision-systems",
+        summary:
+          "The contextual transparency approach asks what information a particular stakeholder needs in a specific decision process, then designs explanations around that context rather than pursuing a universal form of transparency.",
+      },
+      {
+        publicationId: "beyond-visual-analytics-human-machine-teaming",
+        summary:
+          "This work examines how tightly coupled human-machine teams can support AI-driven data sensemaking beyond conventional visual analytics workflows.",
+      },
+    ],
+  },
+  {
+    slug: "privee",
+    title: "Privacy-aware Data Discovery",
+    description:
+      "Develop visual analytic workflows for discovering useful open data while identifying disclosure risks.",
+    overview:
+      "Open datasets can become privacy risks when seemingly harmless releases are joined with other data. This research develops human-centered visual analytics that help data defenders inspect vulnerable joins, calibrate disclosure risk, and evaluate whether joined datasets provide enough utility to justify their use.",
+    image: "/privacyAware.png",
+    imageAlt:
+      "PRIVEE visualization for evaluating disclosure risk in joined datasets",
+    tags: ["Data Privacy", "Open Data", "Risk Inspection"],
+    publications: [
+      {
+        publicationId: "value-linked-data-utility-evaluation",
+        summary:
+          "VALUE introduces a utility metric and visual analytic workflow for finding joinable datasets, prioritizing them by usefulness, and refining that evaluation through human judgment.",
+        image: "/projects/privacy-data-discovery/value-interface.png",
+        imageAlt:
+          "VALUE interface for inspecting the utility of joining open datasets",
+        caption:
+          "Inspecting the utility of joined open datasets through VALUE.",
+        resources: [
+          {
+            label: "Presentation",
+            href: "https://www.youtube.com/watch?v=76Gxqx_Pj8I",
+            type: "video",
+          },
+        ],
+      },
+      {
+        publicationId: "power-data-defenders-disclosure-risk-calibration",
+        summary:
+          "A red-team exercise identifies vulnerabilities in the release-and-forget model of open data and motivates proactive monitoring strategies that let data defenders recalibrate privacy risk as new datasets appear.",
+        image: "/projects/privacy-data-discovery/disclosure-risks.png",
+        imageAlt:
+          "Examples of open-data disclosure risks identified through red teaming",
+        caption:
+          "Disclosure risks that emerge as new open datasets become available.",
+      },
+      {
+        publicationId: "privee-privacy-risk-inspection-open-data",
+        summary:
+          "PRIVEE is a visual risk-inspection workflow that helps data defenders explore vulnerable joins and interpret disclosure risk at multiple levels of data granularity.",
+        image: "/projects/privacy-data-discovery/privee-workflow.png",
+        imageAlt:
+          "Workflow showing how data defenders use PRIVEE to inspect privacy risk",
+        caption:
+          "The data-defender workflow and role of interactive visualization in PRIVEE.",
+        resources: [
+          {
+            label: "Presentation",
+            href: "https://youtu.be/bcmfsFaL8n4",
+            type: "video",
+          },
+        ],
+      },
+      {
+        publicationId: "privacy-preserving-data-visualization-reflections",
+        summary:
+          "This state-of-the-art report surveys methods for privacy-preserving visualization and identifies research opportunities across privacy-utility tradeoffs, attack scenarios, stakeholder needs, and interactive access controls.",
+        image: "/projects/privacy-data-discovery/privacy-landscape.png",
+        imageAlt:
+          "Research landscape for privacy-preserving data visualization",
+        caption:
+          "The research landscape for privacy-preserving data visualization.",
+        resources: [
+          {
+            label: "Presentation",
+            href: "https://www.youtube.com/watch?v=CQxs9Hh_1f4",
+            type: "video",
+          },
+        ],
+      },
+    ],
   },
   {
     slug: "communicative-viz",
     title: "Design and Analysis of Communicative Visualization",
-    conference: "Multiple Publications",
-    year: 2023,
-    tags: ["Visualization", "Communication", "HCI"],
-    mediaType: "image",
-    // media: "/images/communicative-viz-hero.jpg",
     description:
-      "Study the role of communicative visualization in data and domain sciences.",
-    papers: [
+      "Study how visualizations communicate evidence, change, and uncertainty across data-driven domains.",
+    overview:
+      "Communicative visualizations do more than display data: they guide attention, establish evidence, and shape how readers reason about a message. This research studies frameworks and visual analytic interventions that help designers and readers understand how visual representations communicate complex or evolving information.",
+    image: "/commVis.jpeg",
+    imageAlt:
+      "Task mapping for the design and analysis of communicative visualization",
+    tags: ["Communicative Visualization", "Visual Reasoning", "Human-Centered Design"],
+    publications: [
       {
-        title: "Outlier23 | VIS21 | VIS20 | VisCom18",
-        subtitle: "Communicative Visualization Design",
-        venue: "Outlier 2023 · VIS 2021 · VIS 2020 · VisCom 2018",
-        abstract:
-          "Study the role of communicative visualization in data and domain sciences for enhanced understanding.",
-        mediaType: "image",
-        links: {
-          paper: "#",
-        },
+        publicationId: "visual-analytic-interventions-content-moderation",
+      },
+      {
+        publicationId:
+          "fact-evidence-reasoning-communicative-visualization",
+        summary:
+          "The fact-evidence reasoning framework describes how readers identify facts, connect them to visual evidence, and construct meaning from communicative visualizations.",
+      },
+      {
+        publicationId:
+          "bridging-computation-visual-communication-change",
+      },
+    ],
+    resources: [
+      {
+        label: "Outlier 2023 presentation",
+        href: "https://www.youtube.com/watch?v=13Fqg6NAypU",
+        type: "video",
       },
     ],
   },
 ];
 
-export const getProjectBySlug = (slug: string): ProjectData | undefined => {
-  return projectsData.find((project) => project.slug === slug);
-};
+const publicationById = new Map(
+  PUBLICATIONS.map((publication) => [publication.id, publication]),
+);
+
+export const getProjectBySlug = (slug: string): ProjectData | undefined =>
+  projectsData.find((project) => project.slug === slug);
+
+export const getProjectPublications = (
+  project: ProjectData,
+): ResolvedProjectPublication[] =>
+  project.publications.flatMap((entry) => {
+    const publication = publicationById.get(entry.publicationId);
+    return publication ? [{ ...entry, publication }] : [];
+  });
+
+export const getProjectLatestYear = (project: ProjectData): number | undefined =>
+  getProjectPublications(project).reduce<number | undefined>(
+    (latest, { publication }) =>
+      latest === undefined || publication.year > latest
+        ? publication.year
+        : latest,
+    undefined,
+  );

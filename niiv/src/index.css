@@ -2,6 +2,24 @@
 @tailwind components;
 @tailwind utilities;
 
+.search-input::-webkit-search-cancel-button,
+.search-input::-webkit-search-decoration {
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.search-input::-ms-clear,
+.search-input::-ms-reveal {
+  display: none;
+  width: 0;
+  height: 0;
+}
+
+.person-card:target {
+  border-color: rgba(204, 0, 0, 0.45);
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.08);
+}
+
 /* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
 All colors MUST be HSL.
 */
@@ -260,4 +278,3 @@ html { scroll-behavior: smooth; }
   to   { transform: translateY(0);     opacity: 1; }
 }
 .motion-safe\:animate-slide-in-up { animation: slide-in-up .28s ease-out both; }
-

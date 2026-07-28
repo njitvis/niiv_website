@@ -18,6 +18,7 @@ function App() {
         <Route path="/people" element={<People />} />
         <Route path="/publications" element={<Publications />} />
         <Route path="/research" element={<Research />} />
+        <Route path="/research/:projectSlug" element={<Research />} />
         <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="*" element={<NotFound />} />
