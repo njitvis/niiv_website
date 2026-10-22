@@ -3,11 +3,10 @@
 # including edits submitted through the /admin editor.
 #
 # Owners must have write access to this repository.
-# TODO: add the professor's GitHub username as a second approver once confirmed.
 
 # Content edited in /admin: people, publications, projects, news, uploaded files.
-/niiv/src/content/       @MeghanaBangari
-/niiv/public/            @MeghanaBangari
+/niiv/src/content/       @MeghanaBangari @aedeegee
+/niiv/public/            @MeghanaBangari @aedeegee
 
 # Editor setup, checks and sign-in helper.
 /niiv/public/admin/      @MeghanaBangari

@@ -1,0 +1,668 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>NIIV Lab · Review changes</title>
+    <link rel="icon" type="image/png" href="niiv-logo.png" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@500;600&family=Source+Sans+3:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      /* Review inbox for changes sent from the editor: one line per change, details open in place.
+         Same look as the editor (niiv-theme.css). */
+      :root {
+        --red: #cc0000;
+        --red-dark: #a30000;
+        --red-soft: #fdf0f0;
+        --ink: #212121;
+        --muted: #6b6b6b;
+        --line: #e8e2de;
+        --page: #faf7f5;
+        --card: #ffffff;
+        --hover: #fcf8f6;
+        --ok: #1f6b3a;
+        --ok-soft: #e9f4ec;
+        --warn: #8a5a00;
+        --warn-soft: #fff6e0;
+        --font: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+        --serif: "EB Garamond", Georgia, serif;
+      }
+      * { box-sizing: border-box; }
+      [hidden] { display: none !important; }
+      body { margin: 0; background: var(--page); color: var(--ink); font-family: var(--font); font-size: 16px; line-height: 1.5; }
+      a { color: inherit; }
+      button, select { font: inherit; }
+      button { cursor: pointer; }
+      :focus-visible { outline: 2px solid var(--red); outline-offset: 2px; }
+
+      header.bar {
+        position: sticky; top: 0; z-index: 5;
+        display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+        padding: 0.75rem max(16px, calc((100vw - 68rem) / 2));
+        background: var(--card); border-bottom: 1px solid var(--line);
+      }
+      header.bar img { height: 30px; display: block; }
+      header.bar .label { color: var(--muted); font-size: 13px; font-weight: 600; padding-left: 1rem; border-left: 1px solid var(--line); }
+      header.bar .spacer { flex: 1; }
+      .muted { color: var(--muted); font-size: 14px; }
+
+      main { max-width: 68rem; margin: 0 auto; padding: 2rem max(16px, 2vw) 5rem; display: flex; flex-direction: column; gap: 1.25rem; }
+      h1 { font-family: var(--serif); font-weight: 600; font-size: 2.2rem; line-height: 1.1; margin: 0; }
+      .intro { color: var(--muted); margin: 0.4rem 0 0; max-width: 46rem; }
+
+      .toolbar { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+      .toolbar .spacer { flex: 1; }
+      select { height: 2.5rem; border: 1px solid #d6cfc9; border-radius: 8px; background: var(--card); padding: 0 0.6rem; color: var(--ink); }
+
+      .btn { display: inline-flex; align-items: center; justify-content: center; gap: 0.4rem; height: 2.5rem; padding: 0 0.9rem; border-radius: 8px; font-weight: 600; font-size: 14px; border: 1px solid transparent; text-decoration: none; white-space: nowrap; transition: background-color 0.15s, border-color 0.15s, color 0.15s; }
+      .btn-primary { background: #111; color: #fff; }
+      .btn-primary:hover { background: #333; }
+      .btn-secondary { background: var(--card); border-color: #d6cfc9; color: var(--ink); }
+      .btn-secondary:hover { border-color: var(--red); color: var(--red-dark); }
+      .btn-danger { background: var(--card); border-color: #d6cfc9; color: var(--red-dark); }
+      .btn-danger:hover { border-color: var(--red); }
+      .btn[disabled] { opacity: 0.45; cursor: default; }
+
+      .notice { border-radius: 10px; padding: 0.75rem 1rem; font-size: 15px; }
+      .notice-info { background: var(--card); border: 1px solid var(--line); color: var(--muted); }
+      .notice-error { background: var(--red-soft); color: var(--red-dark); }
+      .notice-ok { background: var(--ok-soft); color: var(--ok); }
+
+      /* The inbox: one line per change. */
+      .inbox { background: var(--card); border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
+      .row {
+        display: grid;
+        grid-template-columns: 2.25rem minmax(0, 1fr) 11rem 6.5rem 8rem;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.6rem 1rem;
+        border-bottom: 1px solid var(--line);
+      }
+      .row.head { background: #f6f2ef; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+      .item:last-child > .row { border-bottom: 0; }
+      .item.open > .row { background: var(--hover); }
+      .item > .row:hover { background: var(--hover); }
+      .row input[type="checkbox"] { width: 18px; height: 18px; accent-color: var(--red); }
+
+      .what { display: flex; align-items: center; gap: 0.5rem; min-width: 0; background: none; border: 0; padding: 0; text-align: left; color: var(--ink); }
+      .what .chev { flex: none; color: var(--muted); transition: transform 0.15s; }
+      .item.open .what .chev { transform: rotate(90deg); }
+      .what .type { flex: none; font-size: 12px; font-weight: 700; color: var(--muted); text-transform: uppercase; letter-spacing: 0.03em; }
+      .what .name { font-weight: 600; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .what .more { flex: none; font-size: 12px; color: var(--muted); }
+      .what:hover .name { color: var(--red-dark); }
+      .who { display: flex; align-items: center; gap: 0.4rem; min-width: 0; font-size: 14px; color: var(--muted); }
+      .who img { width: 22px; height: 22px; border-radius: 50%; flex: none; }
+      .who span { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+      .when { font-size: 14px; color: var(--muted); }
+
+      .pill { display: inline-flex; align-items: center; gap: 0.25rem; border-radius: 999px; padding: 0.1rem 0.55rem; font-size: 12px; font-weight: 700; white-space: nowrap; }
+      .pill-ok { background: var(--ok-soft); color: var(--ok); }
+      .pill-warn { background: var(--warn-soft); color: var(--warn); }
+      .pill-bad { background: var(--red-soft); color: var(--red-dark); }
+      .pill-muted { background: #f0ece9; color: var(--muted); }
+
+      .item.done > .row { opacity: 0.6; }
+      .item.done .name { text-decoration: line-through; }
+
+      /* Details of one change, shown under its line. */
+      .detail { padding: 1rem 1rem 1.25rem 3.25rem; border-bottom: 1px solid var(--line); background: var(--hover); display: flex; flex-direction: column; gap: 1rem; }
+      .file h3 { margin: 0 0 0.5rem; font-size: 15px; font-weight: 700; display: flex; gap: 0.5rem; align-items: baseline; flex-wrap: wrap; }
+      .file h3 .path { font-weight: 400; color: var(--muted); font-size: 13px; overflow-wrap: anywhere; }
+      .diff-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; background: var(--card); }
+      table.diff { width: 100%; border-collapse: collapse; font-size: 14px; }
+      table.diff th, table.diff td { text-align: left; vertical-align: top; padding: 0.5rem 0.7rem; border-bottom: 1px solid var(--line); }
+      table.diff tr:last-child td { border-bottom: 0; }
+      table.diff th { background: #f6f2ef; font-size: 12px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+      table.diff td.field { font-weight: 600; width: 22%; min-width: 8rem; }
+      table.diff td.before { width: 39%; color: #7a1f1f; background: #fff7f7; }
+      table.diff td.after { width: 39%; color: #1d4d2c; background: #f6fbf7; }
+      .val { white-space: pre-wrap; overflow-wrap: anywhere; max-height: 12rem; overflow: auto; display: block; }
+      .val.empty { color: var(--muted); font-style: italic; }
+      .val img { display: block; max-width: 100%; max-height: 9rem; margin-top: 0.4rem; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+      .uploaded img { max-width: 16rem; max-height: 10rem; border: 1px solid var(--line); border-radius: 6px; background: #fff; }
+
+      .actions { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+      .reply { width: 100%; display: flex; flex-direction: column; gap: 0.5rem; }
+      .reply textarea { width: 100%; min-height: 5rem; border: 1px solid #d6cfc9; border-radius: 8px; padding: 0.6rem; font: inherit; background: var(--card); }
+      .reply textarea:focus { border-color: var(--red); outline: none; box-shadow: 0 0 0 3px rgb(204 0 0 / 0.12); }
+      .confirm { display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; font-weight: 600; }
+
+      /* Bar for publishing several ticked changes at once. */
+      .bulk {
+        position: sticky; bottom: 1rem; z-index: 4;
+        display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center;
+        background: var(--ink); color: #fff; border-radius: 12px; padding: 0.75rem 1rem;
+        box-shadow: 0 8px 24px rgb(0 0 0 / 0.18);
+      }
+      .bulk[hidden] { display: none; }
+      .bulk .btn-secondary { background: transparent; color: #fff; border-color: #666; }
+      .bulk .btn-light { background: #fff; color: #111; }
+      .bulk .btn-light:hover { background: #eee; }
+      .bulk .spacer { flex: 1; }
+
+      .empty-state { text-align: center; padding: 3rem 1rem; color: var(--muted); }
+
+      @media (max-width: 46rem) {
+        h1 { font-size: 1.8rem; }
+        .row.head { display: none; }
+        .row { grid-template-columns: 2rem minmax(0, 1fr) auto; grid-template-areas: "tick what check" ". who when"; row-gap: 0.25rem; }
+        .row > .tick { grid-area: tick; }
+        .row > .what { grid-area: what; }
+        .row > .who { grid-area: who; }
+        .row > .when { grid-area: when; justify-self: end; }
+        .row > .check { grid-area: check; justify-self: end; }
+        .detail { padding-left: 1rem; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="bar">
+      <a href="index.html#/" aria-label="Back to the editor"><img src="niiv-logo.png" alt="NIIV" /></a>
+      <span class="label">Review changes</span>
+      <span class="spacer"></span>
+      <span class="muted" id="who"></span>
+      <a class="btn btn-secondary" href="index.html#/">← Back to editor</a>
+    </header>
+
+    <main>
+      <div>
+        <h1>Changes waiting for review</h1>
+        <p class="intro">
+          Every change lab members sent with <strong>In review</strong>. Click a line to see what changed.
+          Approvers can publish it to the website, ask for changes, or close it.
+        </p>
+      </div>
+
+      <div class="toolbar">
+        <label class="muted" for="filter-person">Person</label>
+        <select id="filter-person"><option value="">Everyone</option></select>
+        <label class="muted" for="filter-type">Type</label>
+        <select id="filter-type"><option value="">All types</option></select>
+        <span class="spacer"></span>
+        <span class="muted" id="count"></span>
+        <button class="btn btn-secondary" id="refresh" type="button">Refresh</button>
+      </div>
+
+      <div id="status" role="status" aria-live="polite"></div>
+      <div class="inbox" id="inbox"></div>
+
+      <div class="bulk" id="bulk" hidden>
+        <strong id="bulk-count"></strong>
+        <span class="spacer"></span>
+        <span id="bulk-actions" class="actions"></span>
+      </div>
+    </main>
+
+    <script>
+      (function () {
+        const API = "https://api.github.com";
+        const RAW = "https://raw.githubusercontent.com";
+        const TYPES = {
+          people: "Person",
+          publications: "Publication",
+          projects: "Project",
+          news: "News",
+          "research-assistants": "Research assistant",
+        };
+        const LABELS = {
+          title: "Title", authors: "Authors", venue: "Venue", year: "Year", type: "Type", tags: "Short venue tags",
+          award: "Award", abstract: "Abstract", description: "Description", bibtex: "BibTeX", order: "Position",
+          "spotlight.title": "Spotlight · short title", "spotlight.summary": "Spotlight · summary",
+          "links.pdf": "Link · PDF", "links.arxiv": "Link · arXiv", "links.doi": "Link · DOI", "links.code": "Link · Code",
+          "links.website": "Link · Website", "links.poster": "Link · Poster", "links.demo": "Link · Demo",
+          name: "Full name", role: "Role", group: "Section", image: "Image", imageAlt: "Image description", period: "Years in the lab",
+          affiliation: "Affiliation", note: "Current position", email: "Email", website: "Website", github: "GitHub",
+          linkedin: "LinkedIn", scholar: "Google Scholar", initials: "Initials", date: "Month", category: "Category",
+          link: "Link", overview: "Overview", program: "Program", alt: "Description", caption: "Caption", credit: "Credit",
+          source: "Credit link", publicationId: "Paper", summary: "Summary", label: "Link text", href: "URL",
+        };
+        const IMAGE = /\.(png|jpe?g|gif|webp|svg|avif)$/i;
+
+        const $ = (id) => document.getElementById(id);
+        const el = (tag, attrs = {}, ...children) => {
+          const node = document.createElement(tag);
+          for (const [key, value] of Object.entries(attrs)) {
+            if (key === "class") node.className = value;
+            else if (key.startsWith("on")) node.addEventListener(key.slice(2), value);
+            else if (value !== undefined && value !== null && value !== false) node.setAttribute(key, value === true ? "" : value);
+          }
+          for (const child of children.flat()) {
+            if (child === null || child === undefined || child === false) continue;
+            node.append(child instanceof Node ? child : document.createTextNode(String(child)));
+          }
+          return node;
+        };
+
+        const state = { repo: "", branch: "", appDir: "niiv", token: "", canPublish: false, changes: [] };
+
+        // ---------- GitHub ----------
+
+        function readToken() {
+          try {
+            const user = JSON.parse(localStorage.getItem("decap-cms-user") || "null");
+            return user && typeof user.token === "string" && user.token.length > 20 ? user.token : "";
+          } catch {
+            return "";
+          }
+        }
+
+        async function gh(path, options = {}) {
+          const headers = { Accept: "application/vnd.github+json", ...(options.headers || {}) };
+          if (state.token) headers.Authorization = `Bearer ${state.token}`;
+          const response = await fetch(`${API}${path}`, { ...options, headers });
+          if (!response.ok) {
+            let message = `${response.status}`;
+            try { message = (await response.json()).message || message; } catch {}
+            const error = new Error(message);
+            error.status = response.status;
+            throw error;
+          }
+          return response.status === 204 ? null : response.json();
+        }
+
+        async function rawJson(repo, sha, path) {
+          const response = await fetch(`${RAW}/${repo}/${sha}/${path}`);
+          if (response.status === 404) return null;
+          if (!response.ok) throw new Error(`Couldn't load ${path}`);
+          return response.json();
+        }
+
+        async function loadSettings() {
+          // Repo, branch and site folder come from the editor's own config, so they never drift apart.
+          const text = await (await fetch("config.yml", { cache: "no-store" })).text();
+          state.repo = (text.match(/^\s*repo:\s*(\S+)/m) || [])[1] || "";
+          state.branch = (text.match(/^\s*branch:\s*(\S+)/m) || [])[1] || "";
+          state.appDir = ((text.match(/^media_folder:\s*(\S+)/m) || [])[1] || "niiv/public/uploads").split("/")[0];
+          if (!state.repo || !state.branch) throw new Error("Couldn't read the repository settings from config.yml.");
+        }
+
+        async function loadUser() {
+          state.token = readToken();
+          if (!state.token) {
+            $("who").textContent = "Not signed in · view only";
+            return;
+          }
+          try {
+            const [user, repo] = await Promise.all([gh("/user"), gh(`/repos/${state.repo}`)]);
+            state.canPublish = Boolean(repo.permissions && repo.permissions.push);
+            $("who").textContent = `@${user.login} · ${state.canPublish ? "approver" : "view only"}`;
+          } catch {
+            state.token = "";
+            $("who").textContent = "Sign-in expired · view only";
+          }
+        }
+
+        // ---------- Reading a change ----------
+
+        const timeAgo = (iso) => {
+          const minutes = Math.round((Date.now() - new Date(iso).getTime()) / 60000);
+          if (minutes < 1) return "just now";
+          if (minutes < 60) return `${minutes} min ago`;
+          const hours = Math.round(minutes / 60);
+          if (hours < 24) return `${hours} h ago`;
+          const days = Math.round(hours / 24);
+          return days === 1 ? "1 day ago" : `${days} days ago`;
+        };
+
+        function prettyPath(path) {
+          if (LABELS[path]) return LABELS[path];
+          return path
+            .split(".")
+            .map((part) => (/^\d+$/.test(part) ? `#${Number(part) + 1}` : LABELS[part] || part.replace(/([A-Z])/g, " $1").replace(/^./, (c) => c.toUpperCase())))
+            .join(" · ");
+        }
+
+        // Flattens an entry into "field path" → readable value, so two versions can be compared field by field.
+        function flatten(value, prefix = "", out = {}) {
+          if (Array.isArray(value)) {
+            if (value.every((item) => item === null || typeof item !== "object")) out[prefix] = value.join(", ");
+            else value.forEach((item, index) => flatten(item, prefix ? `${prefix}.${index}` : String(index), out));
+          } else if (value && typeof value === "object") {
+            for (const [key, child] of Object.entries(value)) flatten(child, prefix ? `${prefix}.${key}` : key, out);
+          } else if (prefix) {
+            out[prefix] = value === null || value === undefined ? "" : String(value);
+          }
+          return out;
+        }
+
+        const headRepo = (pr) => (pr.head.repo ? pr.head.repo.full_name : state.repo);
+
+        // Builds the summary for one change: what entries it touches, their names, and uploads.
+        async function describe(pr) {
+          const files = await gh(`/repos/${state.repo}/pulls/${pr.number}/files?per_page=100`);
+          const entries = [];
+          const uploads = [];
+          for (const file of files) {
+            const match = file.filename.match(/src\/content\/([^/]+)\/([^/]+)\.json$/);
+            if (match) entries.push({ file, collection: match[1], slug: match[2] });
+            else uploads.push(file);
+          }
+          await Promise.all(entries.map(async (entry) => {
+            entry.after = entry.file.status === "removed" ? null : await rawJson(headRepo(pr), pr.head.sha, entry.file.filename).catch(() => null);
+            const data = entry.after || {};
+            entry.name = data.title || data.name || entry.slug;
+          }));
+          const first = entries[0];
+          const verb = !first ? "" : first.file.status === "added" ? "New " : first.file.status === "removed" ? "Deleted " : "";
+          return {
+            pr,
+            entries,
+            uploads,
+            type: first ? TYPES[first.collection] || first.collection : "File",
+            typeKey: first ? first.collection : "files",
+            name: first ? `${verb}${first.name}` : uploads.map((file) => file.filename.split("/").pop()).join(", "),
+            extra: Math.max(0, entries.length - 1) + uploads.length,
+            check: null,
+            done: false,
+          };
+        }
+
+        async function checkPill(change) {
+          try {
+            const runs = await gh(`/repos/${state.repo}/commits/${change.pr.head.sha}/check-runs`);
+            const list = runs.check_runs || [];
+            if (list.length === 0) return el("span", { class: "pill pill-warn", title: "On GitHub, open the change and click Approve and run" }, "Waiting");
+            if (list.some((run) => run.status !== "completed")) return el("span", { class: "pill pill-muted" }, "Checking…");
+            if (list.every((run) => ["success", "neutral", "skipped"].includes(run.conclusion))) return el("span", { class: "pill pill-ok" }, "✓ Passed");
+            if (list.some((run) => run.conclusion === "action_required")) return el("span", { class: "pill pill-warn", title: "On GitHub, open the change and click Approve and run" }, "Needs approval");
+            return el("span", { class: "pill pill-bad" }, "✗ Failed");
+          } catch {
+            return el("span", { class: "pill pill-muted" }, "Unknown");
+          }
+        }
+
+        function valueCell(className, text, imageBase) {
+          const cell = el("td", { class: className });
+          if (text === undefined || text === "") {
+            cell.append(el("span", { class: "val empty" }, "empty"));
+            return cell;
+          }
+          const span = el("span", { class: "val" }, text);
+          if (text.startsWith("/") && IMAGE.test(text)) span.append(el("img", { src: `${imageBase}${text}`, alt: "", loading: "lazy" }));
+          cell.append(span);
+          return cell;
+        }
+
+        async function renderDetails(change) {
+          const { pr } = change;
+          const baseRaw = `${RAW}/${state.repo}/${pr.base.sha}/${state.appDir}/public`;
+          const headRaw = `${RAW}/${headRepo(pr)}/${pr.head.sha}/${state.appDir}/public`;
+          const sections = [];
+
+          for (const entry of change.entries) {
+            const before = entry.file.status === "added" ? null : await rawJson(state.repo, pr.base.sha, entry.file.filename).catch(() => null);
+            const verb = entry.file.status === "added" ? "New" : entry.file.status === "removed" ? "Deleted" : "Updated";
+            const box = el("section", { class: "file" },
+              el("h3", {}, `${verb} ${(TYPES[entry.collection] || entry.collection).toLowerCase()}: ${entry.name}`, el("span", { class: "path" }, entry.slug)));
+            const a = flatten(before || {});
+            const b = flatten(entry.after || {});
+            const keys = [...new Set([...Object.keys(a), ...Object.keys(b)])].filter((key) => (a[key] ?? "") !== (b[key] ?? ""));
+            if (keys.length === 0) {
+              box.append(el("p", { class: "notice notice-info" }, "No visible changes. The entry was saved with its fields in a different order only."));
+            } else {
+              box.append(el("div", { class: "diff-wrap" },
+                el("table", { class: "diff" },
+                  el("thead", {}, el("tr", {}, el("th", { scope: "col" }, "Field"), el("th", { scope: "col" }, "Before"), el("th", { scope: "col" }, "After"))),
+                  el("tbody", {}, keys.map((key) =>
+                    el("tr", {}, el("td", { class: "field" }, prettyPath(key)), valueCell("before", a[key], baseRaw), valueCell("after", b[key], headRaw)))))));
+            }
+            sections.push(box);
+          }
+
+          for (const file of change.uploads) {
+            const publicPath = file.filename.replace(`${state.appDir}/public`, "");
+            const kind = file.status === "removed" ? "Removed file" : file.status === "added" ? "Uploaded file" : "Changed file";
+            const box = el("section", { class: "file" }, el("h3", {}, kind, el("span", { class: "path" }, publicPath)));
+            if (file.status !== "removed" && IMAGE.test(file.filename)) {
+              box.append(el("div", { class: "uploaded" }, el("img", { src: `${headRaw}${publicPath}`, alt: `Uploaded image ${publicPath}`, loading: "lazy" })));
+            } else if (file.status !== "removed") {
+              box.append(el("a", { href: `${headRaw}${publicPath}`, target: "_blank", rel: "noopener" }, "Open file ↗"));
+            }
+            sections.push(box);
+          }
+          return sections;
+        }
+
+        // ---------- Publishing ----------
+
+        async function publish(change) {
+          await gh(`/repos/${state.repo}/pulls/${change.pr.number}/merge`, { method: "PUT", body: JSON.stringify({ merge_method: "merge" }) });
+          markDone(change, "Published");
+        }
+
+        function publishError(error) {
+          if (error.status === 405 || error.status === 409) return "GitHub couldn't publish this yet (it may conflict with another change or still be checking). Open it on GitHub to see why.";
+          if (error.status === 403 || error.status === 404) return "You don't have permission to publish to this website.";
+          return `Publishing failed: ${error.message}`;
+        }
+
+        function markDone(change, label) {
+          change.done = true;
+          change.item.classList.add("done");
+          change.tick.checked = false;
+          change.tick.disabled = true;
+          change.checkCell.replaceChildren(el("span", { class: `pill ${label === "Published" ? "pill-ok" : "pill-muted"}` }, label));
+          const actions = change.item.querySelector(".detail .actions");
+          if (actions) {
+            actions.replaceWith(el("p", { class: `notice ${label === "Published" ? "notice-ok" : "notice-info"}` },
+              label === "Published" ? "Published. It appears on the website after the next site update." : "Closed without publishing.",
+              " ", el("a", { href: change.pr.html_url, target: "_blank", rel: "noopener" }, "Open on GitHub ↗")));
+          }
+          updateBulk();
+          updateCount();
+        }
+
+        function renderActions(change, message) {
+          const bar = el("div", { class: "actions" });
+          const github = el("a", { class: "btn btn-secondary", href: change.pr.html_url, target: "_blank", rel: "noopener" }, "Open on GitHub ↗");
+          if (!state.canPublish) {
+            bar.append(github, el("span", { class: "muted" }, state.token ? "Only approvers can publish changes." : "Sign in to the editor first to publish changes."));
+            return bar;
+          }
+          const reset = () => bar.replaceChildren(publishBtn, askBtn, closeBtn, github);
+          const setMessage = (kind, text) => { message.className = `notice notice-${kind}`; message.textContent = text; };
+
+          const publishBtn = el("button", { class: "btn btn-primary", type: "button", onclick: () => {
+            bar.replaceChildren(el("div", { class: "confirm" }, "Publish this change to the website?",
+              el("button", { class: "btn btn-primary", type: "button", onclick: async () => {
+                setMessage("info", "Publishing…");
+                try {
+                  await publish(change);
+                  message.className = ""; message.textContent = "";
+                } catch (error) { reset(); setMessage("error", publishError(error)); }
+              } }, "Yes, publish"),
+              el("button", { class: "btn btn-secondary", type: "button", onclick: reset }, "Cancel")));
+          } }, "Publish");
+
+          const askBtn = el("button", { class: "btn btn-secondary", type: "button", onclick: () => {
+            const box = el("textarea", { id: `reply-${change.pr.number}`, "aria-label": "What should be changed?", placeholder: "What should be changed? The author gets this by email." });
+            bar.replaceChildren(el("div", { class: "reply" }, box, el("div", { class: "confirm" },
+              el("button", { class: "btn btn-primary", type: "button", onclick: async () => {
+                if (!box.value.trim()) { setMessage("error", "Write what should be changed first."); return; }
+                try {
+                  await gh(`/repos/${state.repo}/issues/${change.pr.number}/comments`, { method: "POST", body: JSON.stringify({ body: box.value.trim() }) });
+                  reset(); setMessage("ok", `Sent to @${change.pr.user.login}.`);
+                } catch (error) { setMessage("error", `Couldn't send: ${error.message}`); }
+              } }, "Send"),
+              el("button", { class: "btn btn-secondary", type: "button", onclick: reset }, "Cancel"))));
+            box.focus();
+          } }, "Ask for changes");
+
+          const closeBtn = el("button", { class: "btn btn-danger", type: "button", onclick: () => {
+            bar.replaceChildren(el("div", { class: "confirm" }, "Close without publishing?",
+              el("button", { class: "btn btn-danger", type: "button", onclick: async () => {
+                try {
+                  await gh(`/repos/${state.repo}/pulls/${change.pr.number}`, { method: "PATCH", body: JSON.stringify({ state: "closed" }) });
+                  markDone(change, "Closed");
+                  message.className = ""; message.textContent = "";
+                } catch (error) { reset(); setMessage("error", `Couldn't close: ${error.message}`); }
+              } }, "Yes, close it"),
+              el("button", { class: "btn btn-secondary", type: "button", onclick: reset }, "Cancel")));
+          } }, "Close");
+
+          reset();
+          return bar;
+        }
+
+        // ---------- The inbox ----------
+
+        function renderRow(change) {
+          const { pr } = change;
+          const item = el("div", { class: "item", role: "listitem" });
+          const tick = el("input", { type: "checkbox", "aria-label": `Select ${change.name}`, disabled: !state.canPublish, onchange: updateBulk });
+          const checkCell = el("span", { class: "check" }, el("span", { class: "pill pill-muted" }, "…"));
+          const detail = el("div", { class: "detail", hidden: true });
+          const toggle = el("button", { class: "what", type: "button", "aria-expanded": "false", onclick: async () => {
+            const opening = detail.hidden;
+            detail.hidden = !opening;
+            item.classList.toggle("open", opening);
+            toggle.setAttribute("aria-expanded", String(opening));
+            if (opening && !detail.dataset.loaded) {
+              detail.dataset.loaded = "1";
+              const message = el("div", { role: "status", "aria-live": "polite" });
+              detail.replaceChildren(el("p", { class: "muted" }, "Loading changes…"));
+              try {
+                const sections = await renderDetails(change);
+                detail.replaceChildren(...sections, renderActions(change, message), message);
+              } catch (error) {
+                detail.replaceChildren(el("p", { class: "notice notice-error" }, `Couldn't load the changes: ${error.message}`));
+              }
+            }
+          } },
+            el("span", { class: "chev", "aria-hidden": "true" }, "▸"),
+            el("span", { class: "type" }, change.type),
+            el("span", { class: "name", title: change.name }, change.name),
+            change.extra ? el("span", { class: "more" }, `+${change.extra} more`) : null);
+
+          item.append(
+            el("div", { class: "row" },
+              el("span", { class: "tick" }, state.canPublish ? tick : null),
+              toggle,
+              el("span", { class: "who" }, el("img", { src: pr.user.avatar_url, alt: "" }), el("span", {}, `@${pr.user.login}`)),
+              el("span", { class: "when" }, timeAgo(pr.created_at)),
+              checkCell),
+            detail);
+          Object.assign(change, { item, tick, checkCell });
+          checkPill(change).then((pill) => { if (!change.done) checkCell.replaceChildren(pill); });
+          return item;
+        }
+
+        function visible(change) {
+          const person = $("filter-person").value;
+          const type = $("filter-type").value;
+          return (!person || change.pr.user.login === person) && (!type || change.typeKey === type);
+        }
+
+        function applyFilters() {
+          for (const change of state.changes) change.item.hidden = !visible(change);
+          updateCount();
+          updateBulk();
+        }
+
+        function updateCount() {
+          const waiting = state.changes.filter((change) => !change.done);
+          const shown = waiting.filter(visible).length;
+          const total = waiting.length;
+          $("count").textContent = shown === total ? `${total} waiting` : `${shown} of ${total} waiting`;
+        }
+
+        function fillFilters() {
+          const people = [...new Set(state.changes.map((change) => change.pr.user.login))].sort();
+          const types = [...new Map(state.changes.map((change) => [change.typeKey, change.type])).entries()];
+          const keep = (select, options) => {
+            const current = select.value;
+            select.replaceChildren(select.options[0], ...options);
+            select.value = options.some((option) => option.value === current) ? current : "";
+          };
+          keep($("filter-person"), people.map((login) => el("option", { value: login }, `@${login}`)));
+          keep($("filter-type"), types.map(([key, label]) => el("option", { value: key }, label)));
+        }
+
+        function selected() {
+          return state.changes.filter((change) => change.tick && change.tick.checked && !change.done && visible(change));
+        }
+
+        function updateBulk() {
+          const picks = selected();
+          $("bulk").hidden = !state.canPublish || picks.length === 0;
+          $("bulk-count").textContent = picks.length === 1 ? "1 change selected" : `${picks.length} changes selected`;
+          $("bulk-actions").replaceChildren(
+            el("button", { class: "btn btn-secondary", type: "button", onclick: () => { picks.forEach((change) => (change.tick.checked = false)); updateBulk(); } }, "Clear"),
+            el("button", { class: "btn btn-light", type: "button", onclick: () => confirmBulk(picks) }, `Publish selected (${picks.length})`));
+        }
+
+        function confirmBulk(picks) {
+          $("bulk-actions").replaceChildren(
+            el("span", {}, `Publish ${picks.length} change${picks.length === 1 ? "" : "s"} to the website?`),
+            el("button", { class: "btn btn-light", type: "button", onclick: () => publishMany(picks) }, "Yes, publish"),
+            el("button", { class: "btn btn-secondary", type: "button", onclick: updateBulk }, "Cancel"));
+        }
+
+        async function publishMany(picks) {
+          const failed = [];
+          for (const [index, change] of picks.entries()) {
+            $("bulk-count").textContent = `Publishing ${index + 1} of ${picks.length}…`;
+            $("bulk-actions").replaceChildren();
+            try {
+              await publish(change);
+            } catch (error) {
+              failed.push(`${change.name}: ${publishError(error)}`);
+            }
+          }
+          const status = $("status");
+          if (failed.length) {
+            status.className = "notice notice-error";
+            status.textContent = `${picks.length - failed.length} published. Not published: ${failed.join(" · ")}`;
+          } else {
+            status.className = "notice notice-ok";
+            status.textContent = `${picks.length} change${picks.length === 1 ? "" : "s"} published. They appear on the website after the next site update.`;
+          }
+          updateBulk();
+        }
+
+        async function load() {
+          const inbox = $("inbox");
+          $("status").className = "";
+          $("status").textContent = "";
+          inbox.replaceChildren(el("p", { class: "empty-state" }, "Loading…"));
+          try {
+            const pulls = await gh(`/repos/${state.repo}/pulls?state=open&base=${encodeURIComponent(state.branch)}&per_page=50`);
+            state.changes = await Promise.all(pulls.map(describe));
+            fillFilters();
+            if (state.changes.length === 0) {
+              inbox.replaceChildren(el("p", { class: "empty-state" }, "Nothing is waiting for review. Changes appear here when someone sets their edit to In review."));
+            } else {
+              inbox.replaceChildren(
+                el("div", { class: "row head", "aria-hidden": "true" }, el("span", {}), el("span", {}, "What"), el("span", {}, "Who"), el("span", {}, "Sent"), el("span", {}, "Check")),
+                el("div", { role: "list" }, state.changes.map(renderRow)));
+            }
+            applyFilters();
+          } catch (error) {
+            inbox.replaceChildren();
+            $("status").className = "notice notice-error";
+            $("status").textContent = error.status === 403
+              ? "GitHub is limiting requests right now. Sign in to the editor (that raises the limit) and refresh."
+              : `Couldn't load changes: ${error.message}`;
+          }
+        }
+
+        $("filter-person").addEventListener("change", applyFilters);
+        $("filter-type").addEventListener("change", applyFilters);
+        $("refresh").addEventListener("click", load);
+        loadSettings()
+          .then(loadUser)
+          .then(load)
+          .catch((error) => {
+            $("status").className = "notice notice-error";
+            $("status").textContent = error.message;
+          });
+      })();
+    </script>
+  </body>
+</html>

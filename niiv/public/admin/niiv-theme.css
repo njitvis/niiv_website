@@ -363,3 +363,43 @@ a[data-testid="research-assistants"] [class*="-IconWrapper"] { -webkit-mask-imag
 [class*="-CustomLogoIcon"] {
   max-height: 110px;
 }
+
+/* ---------- "Review changes" button (review-link.js) ---------- */
+
+.niiv-review-link {
+  position: fixed;
+  right: max(20px, env(safe-area-inset-right, 0px));
+  bottom: max(20px, env(safe-area-inset-bottom, 0px));
+  z-index: 300;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 44px;
+  padding: 0 1.1rem;
+  border-radius: 999px;
+  background: var(--niiv-ink);
+  color: #fff;
+  font-weight: 600;
+  font-size: 15px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.18);
+  transition: background-color 0.15s ease, transform 0.15s ease;
+}
+
+.niiv-review-link:hover { background: #3a3a3a; transform: translateY(-1px); }
+.niiv-review-link:focus-visible { outline: 2px solid var(--niiv-red); outline-offset: 3px; }
+.niiv-review-link[hidden] { display: none; }
+
+.niiv-review-count {
+  min-width: 1.5rem;
+  height: 1.5rem;
+  padding: 0 0.4rem;
+  border-radius: 999px;
+  background: var(--niiv-red);
+  color: #fff;
+  font-size: 13px;
+  line-height: 1.5rem;
+  text-align: center;
+}
+
+.niiv-review-count[hidden] { display: none; }
