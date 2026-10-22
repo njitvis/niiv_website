@@ -1,0 +1,15 @@
+{
+  "year": 2018,
+  "title": "The Exploratory Labeling Assistant: Mixed-Initiative Label Curation with Large Document Collections",
+  "authors": "Cristian Felix, Aritra Dasgupta, and Enrico Bertini",
+  "venue": "Proceedings of the 31st Annual ACM Symposium on User Interface Software and Technology, pp. 153-164",
+  "tags": [
+    "UIST"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2018/uist18.pdf",
+    "doi": "https://doi.org/10.1145/3242587.3242596"
+  },
+  "order": 4
+}

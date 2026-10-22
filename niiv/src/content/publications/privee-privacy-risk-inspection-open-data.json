@@ -1,0 +1,31 @@
+{
+  "year": 2022,
+  "title": "PRIVEE: A Visual Analytic Workflow for Proactive Privacy Risk Inspection of Open Data",
+  "authors": "Kaustav Bhattacharjee, Akm Islam, Jaideep Vaidya, and Aritra Dasgupta",
+  "venue": "2022 IEEE Symposium on Visualization for Cyber Security (VizSec), pp. 1-11",
+  "tags": [
+    "VizSec"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2022/kaustav_vizsec22.pdf",
+    "doi": "https://doi.org/10.1109/VizSec56996.2022.9941431"
+  },
+  "order": 1,
+  "figures": [
+    {
+      "image": "/projects/privacy-data-discovery/privee-workflow.png",
+      "alt": "Workflow showing how data defenders use PRIVEE to inspect privacy risk",
+      "caption": "The data-defender workflow and role of interactive visualization in PRIVEE."
+    },
+    {
+      "image": "/privacyAware.png",
+      "alt": "PRIVEE visualization for evaluating disclosure risk in joined datasets",
+      "caption": "Evaluating disclosure risk in joined datasets with PRIVEE."
+    }
+  ],
+  "spotlight": {
+    "title": "PRIVEE",
+    "summary": "PRIVEE is a visual risk-inspection workflow that helps data defenders explore vulnerable joins and interpret disclosure risk at multiple levels of data granularity."
+  }
+}

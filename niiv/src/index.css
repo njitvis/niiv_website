@@ -2,6 +2,290 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply font-sans font-normal;
+  }
+
+  /* Editorial headings use Garamond; uppercase labels inherit the UI font. */
+  :where(h1, h2, h3, h4, h5, h6):not(.uppercase) {
+    @apply font-serif;
+  }
+}
+
+@layer components {
+  /* Shared fluid gutters align every page with the navigation and footer. */
+  .site-shell {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 6vw, 12rem);
+    container: page / inline-size;
+  }
+
+  .site-layout {
+    overflow-wrap: anywhere;
+  }
+
+  .site-layout :where(.grid, .flex) > * {
+    min-width: 0;
+  }
+
+  .cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr));
+  }
+
+  .compact-cards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  }
+
+  .home-layout {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas: "intro" "team" "updates";
+    gap: 2.5rem;
+  }
+
+  .home-intro {
+    grid-area: intro;
+    container: introduction / inline-size;
+  }
+
+  .home-title {
+    font-size: clamp(2rem, 1.375rem + 1.35vw, 3.5rem);
+    line-height: 1.08;
+    letter-spacing: -0.018em;
+    text-wrap: balance;
+  }
+
+  .reading-copy,
+  .home-copy {
+    @apply font-serif font-normal;
+    font-size: clamp(1.125rem, 1.0625rem + 0.1vw, 1.25rem);
+    line-height: 1.4;
+    text-wrap: pretty;
+  }
+
+  .home-copy {
+    font-size: clamp(1.1875rem, 1.0625rem + 0.175vw, 1.375rem);
+  }
+
+  .home-label {
+    font-size: clamp(0.75rem, 0.6875rem + 0.1vw, 0.875rem);
+    line-height: 1.4;
+    letter-spacing: 0.06em;
+  }
+
+  .home-team { grid-area: team; }
+  .home-updates { grid-area: updates; }
+
+  .home-team-avatar {
+    width: 3.5rem;
+    height: 3.5rem;
+  }
+
+  .home-team,
+  .home-updates {
+    border-top: 1px solid hsl(var(--border));
+    padding-top: 2rem;
+  }
+
+  /* Research Spotlight: short titles in an index, the selected item beside it.
+     In a narrow column the index becomes a scrollable row of tabs above. */
+  .spotlight-layout { display: grid; gap: 0.75rem; }
+
+  .spotlight-index {
+    display: flex;
+    overflow-x: auto;
+    border-bottom: 1px solid hsl(var(--border));
+    scrollbar-width: thin;
+  }
+
+  .spotlight-tab {
+    position: relative;
+    flex: 0 0 auto;
+    max-width: 16rem;
+    padding: 0.625rem 0.875rem;
+    border-bottom: 0.1875rem solid transparent;
+    font-family: inherit;
+    font-size: clamp(0.875rem, 0.8125rem + 0.1vw, 1rem);
+    font-weight: 500;
+    line-height: 1.35;
+    text-align: left;
+    color: hsl(0 0% 40%);
+    transition: color 0.15s ease;
+  }
+
+  .spotlight-tab[aria-selected="true"] {
+    border-bottom-color: hsl(var(--primary));
+    color: hsl(0 0% 7%);
+    font-weight: 600;
+  }
+
+  .spotlight-tab:hover { color: hsl(0 0% 7%); }
+  .spotlight-tab:focus-visible {
+    outline: 2px solid hsl(var(--primary));
+    outline-offset: -3px;
+  }
+
+  /* Short title by default; the full title replaces it in place on hover/focus
+     (only in the side column, where there is room for it to wrap). */
+  .spotlight-tab-full {
+    display: none;
+    font-size: 0.875rem;
+    line-height: 1.4;
+  }
+
+  /* Year and venue under each title in the index. */
+  .spotlight-tab-meta {
+    display: block;
+    margin-top: 0.125rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.75rem;
+    font-weight: 400;
+    color: hsl(0 0% 45%);
+  }
+
+  /* "Browse all publications" sits under the index only when it is a side column. */
+  .spotlight-rail { min-width: 0; }
+  .spotlight-rail-link { display: none; }
+
+  .spotlight-title {
+    font-size: clamp(1.5rem, 1.25rem + 0.6vw, 2.125rem);
+    line-height: 1.15;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .spotlight-media { height: clamp(9rem, 26cqi, 17rem); }
+
+  .home-approach {
+    border-top: 1px solid hsl(var(--border));
+    padding-top: 1.5rem;
+  }
+
+  /* These sections respond to the middle column, not the viewport. */
+  @container introduction (min-width: 42rem) {
+    .spotlight-layout {
+      grid-template-columns: minmax(9rem, 13rem) minmax(0, 1fr);
+      gap: 1.25rem;
+      align-items: start;
+    }
+
+    .spotlight-index {
+      flex-direction: column;
+      overflow: visible;
+      border-bottom: 0;
+      border-left: 1px solid hsl(var(--border));
+    }
+
+    .spotlight-tab {
+      max-width: none;
+      margin-left: -1px;
+      border-bottom: 0;
+      border-left: 0.1875rem solid transparent;
+    }
+
+    .spotlight-tab[aria-selected="true"] { border-left-color: hsl(var(--primary)); }
+
+    .spotlight-tab:has(.spotlight-tab-full):hover .spotlight-tab-short,
+    .spotlight-tab:has(.spotlight-tab-full):focus-visible .spotlight-tab-short { display: none; }
+
+    .spotlight-tab:hover .spotlight-tab-full,
+    .spotlight-tab:focus-visible .spotlight-tab-full { display: inline; }
+
+    .spotlight-rail-link {
+      display: inline-flex;
+      margin: 1rem 0 0 0.875rem;
+    }
+
+    .home-principles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+    .home-approach {
+      border-top: 0;
+      border-left: 1px solid hsl(var(--border));
+      padding-top: 0;
+      padding-left: 2rem;
+    }
+  }
+
+  @container page (min-width: 42rem) {
+    .home-layout {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-areas: "intro intro" "team updates";
+    }
+  }
+
+  @container page (min-width: 58rem) {
+    .home-layout {
+      /* Keep both supporting columns beside the lab's work on laptops.
+         Cap their growth so extra screen space goes to the middle column. */
+      grid-template-columns:
+        clamp(10.5rem, 14cqi, 16rem)
+        minmax(0, 1fr)
+        clamp(11rem, 13cqi, 14rem);
+      grid-template-areas: "team intro updates";
+      column-gap: clamp(1rem, 1.5cqi, 2rem);
+    }
+
+    .home-updates {
+      border-top: 0;
+      border-left: 1px solid hsl(var(--border));
+      padding-top: 0;
+      padding-left: clamp(0.75rem, 1cqi, 1.25rem);
+    }
+
+    .home-team {
+      border-top: 0;
+      border-right: 1px solid hsl(var(--border));
+      padding-top: 0;
+      padding-right: clamp(0.75rem, 1cqi, 1.25rem);
+    }
+
+    .home-team-list { grid-template-columns: minmax(0, 1fr); }
+
+    .home-team-avatar {
+      width: clamp(2.25rem, 3.5cqi, 3.5rem);
+      height: clamp(2.25rem, 3.5cqi, 3.5rem);
+    }
+  }
+}
+
+/* Keep the existing composition on laptops with less vertical room.
+   Content remains in normal flow, including expanded research descriptions. */
+@media (min-width: 64rem) and (max-height: 60rem) {
+  .home-hero {
+    /* Restore breathing room as vertical space becomes available. */
+    --home-gap: clamp(0.5rem, calc(8svh - 3.25rem), 0.9375rem);
+  }
+  .home-hero > .site-shell { padding-top: var(--home-gap); }
+  .home-intro > header { margin-bottom: var(--home-gap); }
+  .home-hero .home-title {
+    font-size: clamp(2rem, 4.5svh, 3rem);
+    margin-bottom: var(--home-gap);
+  }
+  .home-intro > header .home-copy {
+    font-size: clamp(1.0625rem, 2.2svh, 1.25rem);
+  }
+  .home-intro blockquote footer { margin-top: 0.25rem; }
+  .home-intro > header > div { margin-top: var(--home-gap); }
+  .home-hero .home-spotlight { padding-top: var(--home-gap); }
+  .home-hero .spotlight-heading { margin-bottom: 0.5rem; }
+  .spotlight-tab { padding-block: 0.5rem; }
+  .spotlight-media { height: clamp(7rem, 18svh, 12rem); }
+  .spotlight-panel figure { margin-top: var(--home-gap); }
+  .spotlight-summary {
+    margin-top: var(--home-gap);
+    font-size: clamp(1.0625rem, 2.05svh, 1.1875rem);
+    line-height: 1.35;
+  }
+  .spotlight-title { font-size: clamp(1.375rem, 3svh, 1.875rem); }
+  .home-hero .spotlight-actions { margin-top: var(--home-gap); }
+}
+
 .search-input::-webkit-search-cancel-button,
 .search-input::-webkit-search-decoration {
   -webkit-appearance: none;

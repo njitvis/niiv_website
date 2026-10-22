@@ -1,0 +1,365 @@
+/*
+ * NIIV look for the Decap CMS editor at /admin.
+ * Decap has no theming API, so this targets its stable class-name labels
+ * ([class*="-Name"]) and data-testid attributes. If a Decap upgrade changes
+ * those names, the editor still works and simply falls back to its default look.
+ */
+
+:root {
+  --niiv-red: #cc0000;
+  --niiv-red-dark: #a30000;
+  --niiv-red-soft: #fdf0f0;
+  --niiv-ink: #212121;
+  --niiv-muted: #6b6b6b;
+  --niiv-line: #e8e2de;
+  --niiv-page: #faf7f5;
+  --niiv-card: #ffffff;
+  --niiv-radius: 10px;
+  --niiv-font: "Source Sans 3", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --niiv-serif: "EB Garamond", Georgia, serif;
+}
+
+body,
+button,
+input,
+textarea,
+select {
+  font-family: var(--niiv-font) !important;
+}
+
+body {
+  background: var(--niiv-page) !important;
+  color: var(--niiv-ink);
+}
+
+/* ---------- Top bar ---------- */
+
+header[class*="-AppHeader"] {
+  background: var(--niiv-card);
+  border-bottom: 1px solid var(--niiv-line);
+  box-shadow: none;
+}
+
+[class*="-AppHeaderContent"] {
+  max-width: 1280px;
+  align-items: center;
+}
+
+/* Keep the navigation next to the logo instead of centered. */
+[class*="-AppHeaderContent"] > nav {
+  margin-right: auto;
+}
+
+/* Lab logo + "Website editor" label to the left of the navigation. */
+[class*="-AppHeaderContent"]::before {
+  content: "Website editor";
+  display: flex;
+  align-items: center;
+  flex-shrink: 0;
+  height: 32px;
+  padding: 0 18px 0 90px;
+  margin-right: 12px;
+  border-right: 1px solid var(--niiv-line);
+  background: url("niiv-logo.png") left center / auto 30px no-repeat;
+  color: var(--niiv-muted);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  white-space: nowrap;
+  align-self: center;
+}
+
+[class*="-AppHeaderNavLink"],
+[class*="-AppHeaderButton"] {
+  color: var(--niiv-muted) !important;
+  font-weight: 600;
+}
+
+[class*="-AppHeaderNavLink"]:hover,
+[class*="-AppHeaderButton"]:hover,
+.header-link-active {
+  color: var(--niiv-red) !important;
+}
+
+.header-link-active [class*="-IconWrapper"],
+[class*="-AppHeaderNavLink"]:hover [class*="-IconWrapper"],
+[class*="-AppHeaderButton"]:hover [class*="-IconWrapper"] {
+  color: var(--niiv-red) !important;
+}
+
+.header-link-active svg,
+[class*="-AppHeaderNavLink"]:hover svg {
+  fill: var(--niiv-red) !important;
+}
+
+/* ---------- Primary buttons ---------- */
+
+[class*="-AppHeaderQuickNewButton"],
+[class*="-CollectionTopNewButton"],
+[class*="-LoginButton"],
+[class*="-PublishedToolbarButton"],
+[class*="-PublishButton"] {
+  background-color: var(--niiv-red) !important;
+  color: #fff !important;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+  font-weight: 600 !important;
+  transition: background-color 0.15s ease;
+}
+
+[class*="-AppHeaderQuickNewButton"]:hover,
+[class*="-CollectionTopNewButton"]:hover,
+[class*="-LoginButton"]:hover,
+[class*="-PublishButton"]:hover {
+  background-color: var(--niiv-red-dark) !important;
+}
+
+/* ---------- Sidebar ---------- */
+
+[class*="-SidebarContainer"] {
+  border: 1px solid var(--niiv-line);
+  border-radius: var(--niiv-radius) !important;
+  box-shadow: none !important;
+  padding-bottom: 8px;
+}
+
+[class*="-SidebarHeading"] {
+  font-family: var(--niiv-serif) !important;
+  font-size: 24px !important;
+  font-weight: 600 !important;
+  color: var(--niiv-ink);
+}
+
+[class*="-SidebarNavLink"] {
+  margin: 2px 10px;
+  padding: 10px 12px !important;
+  border-left: 0 !important;
+  border-radius: 8px;
+  color: #4a4a4a !important;
+  font-weight: 600;
+  font-size: 15px;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+[class*="-SidebarNavLink"]:hover {
+  background: var(--niiv-page) !important;
+  color: var(--niiv-ink) !important;
+}
+
+[class*="-SidebarNavLink"].sidebar-active {
+  background: var(--niiv-red-soft) !important;
+  color: var(--niiv-red) !important;
+}
+
+/* Each section gets its own icon in place of the generic one. */
+[class*="-SidebarNavLink"] [class*="-IconWrapper"] {
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-color: currentColor;
+  -webkit-mask: no-repeat center / contain;
+  mask: no-repeat center / contain;
+}
+
+[class*="-SidebarNavLink"] [class*="-IconWrapper"] svg {
+  visibility: hidden;
+}
+
+a[data-testid="people"] [class*="-IconWrapper"] { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M16%2021v-2a4%204%200%200%200-4-4H6a4%204%200%200%200-4%204v2%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%227%22%20r%3D%224%22%2F%3E%3Cpath%20d%3D%22M22%2021v-2a4%204%200%200%200-3-3.87%22%2F%3E%3Cpath%20d%3D%22M16%203.13a4%204%200%200%201%200%207.75%22%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M16%2021v-2a4%204%200%200%200-4-4H6a4%204%200%200%200-4%204v2%22%2F%3E%3Ccircle%20cx%3D%229%22%20cy%3D%227%22%20r%3D%224%22%2F%3E%3Cpath%20d%3D%22M22%2021v-2a4%204%200%200%200-3-3.87%22%2F%3E%3Cpath%20d%3D%22M16%203.13a4%204%200%200%201%200%207.75%22%2F%3E%3C%2Fsvg%3E"); }
+a[data-testid="publications"] [class*="-IconWrapper"] { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%203h6a4%204%200%200%201%204%204v14a3%203%200%200%200-3-3H2z%22%2F%3E%3Cpath%20d%3D%22M22%203h-6a4%204%200%200%200-4%204v14a3%203%200%200%201%203-3h7z%22%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M2%203h6a4%204%200%200%201%204%204v14a3%203%200%200%200-3-3H2z%22%2F%3E%3Cpath%20d%3D%22M22%203h-6a4%204%200%200%200-4%204v14a3%203%200%200%201%203-3h7z%22%2F%3E%3C%2Fsvg%3E"); }
+a[data-testid="projects"] [class*="-IconWrapper"] { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M10%202v7.5a2%202%200%200%201-.2.9L4.7%2020.5a1%201%200%200%200%20.9%201.5h12.8a1%201%200%200%200%20.9-1.5l-5.1-10.1a2%202%200%200%201-.2-.9V2%22%2F%3E%3Cpath%20d%3D%22M8.5%202h7%22%2F%3E%3Cpath%20d%3D%22M7%2016h10%22%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M10%202v7.5a2%202%200%200%201-.2.9L4.7%2020.5a1%201%200%200%200%20.9%201.5h12.8a1%201%200%200%200%20.9-1.5l-5.1-10.1a2%202%200%200%201-.2-.9V2%22%2F%3E%3Cpath%20d%3D%22M8.5%202h7%22%2F%3E%3Cpath%20d%3D%22M7%2016h10%22%2F%3E%3C%2Fsvg%3E"); }
+a[data-testid="news"] [class*="-IconWrapper"] { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%2022h16a2%202%200%200%200%202-2V4a2%202%200%200%200-2-2H8a2%202%200%200%200-2%202v16a2%202%200%200%201-2%202Zm0%200a2%202%200%200%201-2-2v-9c0-1.1.9-2%202-2h2%22%2F%3E%3Cpath%20d%3D%22M18%2014h-8%22%2F%3E%3Cpath%20d%3D%22M15%2018h-5%22%2F%3E%3Cpath%20d%3D%22M10%206h8v4h-8z%22%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M4%2022h16a2%202%200%200%200%202-2V4a2%202%200%200%200-2-2H8a2%202%200%200%200-2%202v16a2%202%200%200%201-2%202Zm0%200a2%202%200%200%201-2-2v-9c0-1.1.9-2%202-2h2%22%2F%3E%3Cpath%20d%3D%22M18%2014h-8%22%2F%3E%3Cpath%20d%3D%22M15%2018h-5%22%2F%3E%3Cpath%20d%3D%22M10%206h8v4h-8z%22%2F%3E%3C%2Fsvg%3E"); }
+a[data-testid="research-assistants"] [class*="-IconWrapper"] { -webkit-mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M22%2010v6%22%2F%3E%3Cpath%20d%3D%22M2%2010l10-5%2010%205-10%205z%22%2F%3E%3Cpath%20d%3D%22M6%2012v5c3%203%209%203%2012%200v-5%22%2F%3E%3C%2Fsvg%3E"); mask-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22black%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpath%20d%3D%22M22%2010v6%22%2F%3E%3Cpath%20d%3D%22M2%2010l10-5%2010%205-10%205z%22%2F%3E%3Cpath%20d%3D%22M6%2012v5c3%203%209%203%2012%200v-5%22%2F%3E%3C%2Fsvg%3E"); }
+
+/* ---------- Collection header + list ---------- */
+
+[class*="-CollectionTopContainer"] {
+  border: 1px solid var(--niiv-line);
+  border-radius: var(--niiv-radius) !important;
+  box-shadow: none !important;
+}
+
+[class*="-CollectionTopHeading"] {
+  font-family: var(--niiv-serif) !important;
+  font-size: 30px !important;
+  font-weight: 600 !important;
+  color: var(--niiv-ink);
+}
+
+[class*="-CollectionTopDescription"] {
+  color: var(--niiv-muted) !important;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* Decap marks the active view (list/grid) only by a blue color; shift that blue
+   to NIIV red. Grey (inactive) buttons have no hue, so they are unaffected. */
+[class*="-ViewControlsButton"] {
+  filter: hue-rotate(140deg) saturate(1.4);
+}
+
+[class*="-ListCard-card"],
+[class*="-GridCard-card"] {
+  border: 1px solid var(--niiv-line);
+  border-radius: var(--niiv-radius) !important;
+  box-shadow: none !important;
+  overflow: hidden;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease;
+}
+
+[class*="-ListCard-card"]:hover,
+[class*="-GridCard-card"]:hover {
+  border-color: rgba(204, 0, 0, 0.35);
+  box-shadow: 0 6px 18px rgba(33, 33, 33, 0.08) !important;
+  transform: translateY(-1px);
+}
+
+[class*="-ListCardLink"] {
+  border-left: 3px solid transparent;
+  transition: border-color 0.15s ease;
+}
+
+[class*="-ListCard-card"]:hover [class*="-ListCardLink"] {
+  border-left-color: var(--niiv-red);
+}
+
+[class*="-ListCardTitle"],
+[class*="-CardHeading"] {
+  font-weight: 600 !important;
+  color: var(--niiv-ink);
+}
+
+[class*="-ListCard-card"]:hover [class*="-ListCardTitle"],
+[class*="-GridCard-card"]:hover [class*="-CardHeading"] {
+  color: var(--niiv-red);
+}
+
+/* Grid view photos: keep faces in frame. */
+[class*="-StyledImage"] {
+  background-position: center 22% !important;
+}
+
+[class*="-GroupHeading"] {
+  font-family: var(--niiv-serif) !important;
+  color: var(--niiv-ink) !important;
+}
+
+/* ---------- Search ---------- */
+
+[class*="-SearchInput"] {
+  border-radius: 8px !important;
+  background: var(--niiv-page) !important;
+  border: 1px solid var(--niiv-line) !important;
+}
+
+[class*="-SearchInput"]:focus {
+  outline: 2px solid rgba(204, 0, 0, 0.25);
+  border-color: var(--niiv-red) !important;
+}
+
+/* ---------- Editor ---------- */
+
+[class*="-ToolbarContainer"] {
+  box-shadow: none !important;
+  border-bottom: 1px solid var(--niiv-line);
+}
+
+[class*="-ControlPaneContainer"] {
+  background: var(--niiv-page);
+}
+
+[class*="-ControlPaneContainer"] > div {
+  max-width: 820px;
+}
+
+/* Field labels: plain bold text instead of grey tabs. */
+[class*="-FieldLabel"] {
+  background: transparent !important;
+  color: var(--niiv-ink) !important;
+  border: 0 !important;
+  padding: 0 0 6px 2px !important;
+  margin: 0 !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  text-transform: none !important;
+  letter-spacing: 0 !important;
+}
+
+[class*="-ControlContainer"] {
+  margin-top: 22px !important;
+}
+
+[class*="-ControlContainer"]:focus-within > [class*="-FieldLabel"] {
+  color: var(--niiv-red) !important;
+}
+
+[class*="-ControlContainer"] input,
+[class*="-ControlContainer"] textarea,
+[class*="-ControlContainer"] [class*="-control"] {
+  border-radius: 8px !important;
+  border: 1px solid #d9d2cd !important;
+  background: var(--niiv-card) !important;
+  font-size: 15px !important;
+  color: var(--niiv-ink) !important;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+[class*="-ControlContainer"] input:focus,
+[class*="-ControlContainer"] textarea:focus,
+[class*="-ControlContainer"] [class*="-control"]:focus-within {
+  border-color: var(--niiv-red) !important;
+  box-shadow: 0 0 0 3px rgba(204, 0, 0, 0.12) !important;
+  outline: none !important;
+}
+
+[class*="-ControlHint"] {
+  color: var(--niiv-muted) !important;
+  font-size: 13px !important;
+  line-height: 1.45;
+  padding-left: 2px;
+}
+
+/* Nested sections (links, papers in a project, spotlight). */
+[class*="-ObjectControl"],
+[class*="-ListControl"] {
+  border-radius: var(--niiv-radius) !important;
+}
+
+[class*="-TopBarContainer"] {
+  border-radius: 8px 8px 0 0 !important;
+  background: #f3eeea !important;
+}
+
+/* Collapsed items in a list (e.g. papers in a project). */
+[class*="-ListItem-listControlItem"] > :first-child,
+[class*="-NestedObjectLabel"] {
+  background: #fbf8f6 !important;
+  color: var(--niiv-ink) !important;
+}
+
+[class*="-NestedObjectLabel"] {
+  border: 1px solid var(--niiv-line);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  font-weight: 600;
+}
+
+[class*="-ListItem-listControlItem"] > :first-child {
+  border: 1px solid var(--niiv-line);
+  border-bottom: 0;
+}
+
+[class*="-FileWidgetButton"] {
+  border-radius: 6px !important;
+}
+
+/* ---------- Login screen ---------- */
+
+[class*="-StyledAuthenticationPage"] {
+  background: var(--niiv-page) !important;
+}
+
+[class*="-PageLogoIcon"],
+[class*="-CustomLogoIcon"] {
+  max-height: 110px;
+}

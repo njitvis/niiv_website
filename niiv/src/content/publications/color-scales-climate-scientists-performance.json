@@ -1,0 +1,15 @@
+{
+  "year": 2020,
+  "title": "The Effect of Color Scales on Climate Scientists' Objective and Subjective Performance in Spatial Data Analysis Tasks",
+  "authors": "Aritra Dasgupta, Jorge Poco, Bernice Rogowitz, Kyungsik Han, Enrico Bertini, and Claudio T. Silva",
+  "venue": "IEEE Transactions on Visualization and Computer Graphics 26, no. 3 (2018): 1577-1591",
+  "tags": [
+    "TVCG"
+  ],
+  "type": "journal",
+  "links": {
+    "pdf": "/publications/2020/tvcg_2020.pdf",
+    "doi": "https://doi.org/10.1109/TVCG.2018.2876539"
+  },
+  "order": 4
+}

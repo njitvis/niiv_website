@@ -1,0 +1,22 @@
+{
+  "year": 2023,
+  "title": "Power to the Data Defenders: Human-Centered Disclosure Risk Calibration of Open Data",
+  "authors": "Kaustav Bhattacharjee and Aritra Dasgupta",
+  "venue": "2023 Symposium on Usable Security and Privacy (USEC)",
+  "tags": [
+    "USEC"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2023/kaustav_usec23.pdf",
+    "doi": "https://dx.doi.org/10.14722/usec.2023.237256"
+  },
+  "order": 7,
+  "figures": [
+    {
+      "image": "/projects/privacy-data-discovery/disclosure-risks.png",
+      "alt": "Examples of open-data disclosure risks identified through red teaming",
+      "caption": "Disclosure risks that emerge as new open datasets become available."
+    }
+  ]
+}

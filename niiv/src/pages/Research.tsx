@@ -1,7 +1,11 @@
 import { Search, X } from "lucide-react";
-import { useEffect, useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Link, useParams, useSearchParams } from "react-router-dom";
-import ProjectCard from "../components/ProjectCard";
+import HighlightedText from "../components/HighlightedText";
+import ProjectCard, {
+  type ProjectSearchMatch,
+  type ProjectSearchMatchSection,
+} from "../components/ProjectCard";
 import ProjectDetail from "../components/ProjectDetail";
 import {
   getProjectBySlug,
@@ -9,6 +13,10 @@ import {
   projectsData,
   type ProjectData,
 } from "../data/projectData";
+
+type SearchSection = ProjectSearchMatchSection & {
+  values?: string[];
+};
 
 const normalizeSearchText = (value: string) =>
   value
@@ -18,32 +26,143 @@ const normalizeSearchText = (value: string) =>
     .replace(/[^a-z0-9]+/g, " ")
     .trim();
 
-const projectSearchText = (project: ProjectData) => {
-  const publicationFields = getProjectPublications(project).flatMap(
-    ({ publication, summary }) => [
-      publication.title,
-      publication.authors,
-      publication.venue,
-      String(publication.year),
-      ...(publication.tags ?? []),
-      summary ?? "",
-    ],
-  );
+const getSearchSections = (project: ProjectData): SearchSection[] => {
+  const publications = getProjectPublications(project);
 
-  return normalizeSearchText(
-    [
-      project.title,
-      project.description,
-      project.overview,
-      ...project.tags,
-      ...publicationFields,
-    ].join(" "),
+  const publicationTitles = publications.map(({ publication }) => publication.title);
+  const publicationAuthors = publications.map(({ publication }) => publication.authors);
+  const publicationVenues = publications.map(
+    ({ publication }) => `${publication.venue} (${publication.year})`,
   );
+  const publicationTags = [
+    ...new Set(publications.flatMap(({ publication }) => publication.tags ?? [])),
+  ];
+  const publicationSummaries = publications
+    .map(({ summary }) => summary)
+    .filter((summary): summary is string => Boolean(summary));
+
+  const sections: SearchSection[] = [
+    {
+      key: "title",
+      label: "Title",
+      text: project.title,
+    },
+    {
+      key: "description",
+      label: "Description",
+      text: project.description,
+    },
+    {
+      key: "overview",
+      label: "Overview",
+      text: project.overview,
+    },
+    {
+      key: "project-tags",
+      label: "Project tags",
+      text: project.tags.join(", "),
+      values: project.tags,
+    },
+    {
+      key: "publication-tags",
+      label: "Publication tags",
+      text: publicationTags.join(", "),
+      values: publicationTags,
+    },
+    {
+      key: "publication-titles",
+      label: "Publication titles",
+      text: publicationTitles.join("; "),
+      values: publicationTitles,
+    },
+    {
+      key: "publication-summaries",
+      label: "Publication summaries",
+      text: publicationSummaries.join(" "),
+      values: publicationSummaries,
+    },
+    {
+      key: "authors",
+      label: "Authors",
+      text: publicationAuthors.join("; "),
+      values: publicationAuthors,
+    },
+    {
+      key: "venues",
+      label: "Venues",
+      text: publicationVenues.join("; "),
+      values: publicationVenues,
+    },
+  ];
+
+  return sections.filter((section) => section.text.length > 0);
+};
+
+const sectionMatchesAnyTerm = (section: SearchSection, terms: string[]) => {
+  const searchable = normalizeSearchText(section.text);
+  const compactSearchable = searchable.replace(/\s+/g, "");
+
+  return terms.some(
+    (term) => searchable.includes(term) || compactSearchable.includes(term),
+  );
+};
+
+const sectionContainsEveryTerm = (sections: SearchSection[], terms: string[]) => {
+  const searchable = normalizeSearchText(
+    sections.map((section) => section.text).join(" "),
+  );
+  const compactSearchable = searchable.replace(/\s+/g, "");
+
+  return terms.every(
+    (term) => searchable.includes(term) || compactSearchable.includes(term),
+  );
+};
+
+const matchingValues = (section: SearchSection, terms: string[]) =>
+  (section.values ?? [section.text]).filter((value) => {
+    const searchable = normalizeSearchText(value);
+    const compactSearchable = searchable.replace(/\s+/g, "");
+
+    return terms.some(
+      (term) => searchable.includes(term) || compactSearchable.includes(term),
+    );
+  });
+
+const buildProjectMatch = (
+  project: ProjectData,
+  terms: string[],
+): ProjectSearchMatch | undefined => {
+  if (terms.length === 0) return undefined;
+
+  const sections = getSearchSections(project);
+  const matchedSections = sections
+    .filter((section) => sectionMatchesAnyTerm(section, terms))
+    .map((section) => {
+      const matches = matchingValues(section, terms);
+
+      return {
+        key: section.key,
+        label: section.label,
+        text: matches.length > 0 ? matches.slice(0, 3).join("; ") : section.text,
+      };
+    });
+
+  const matchedTags = getSearchSections(project)
+    .filter(
+      (section) =>
+        section.key === "project-tags" || section.key === "publication-tags",
+    )
+    .flatMap((section) => matchingValues(section, terms));
+
+  return {
+    sections: matchedSections,
+    matchedTags,
+  };
 };
 
 const ProjectNotFound = () => (
   <div className="min-h-[70vh] bg-[#F8F9FA]">
-    <div className="container mx-auto px-4 py-24 text-center lg:px-8">
+    <div className="site-shell py-24 text-center">
       <p className="mb-3 text-sm font-semibold text-[#B00000]">
         Project not found
       </p>
@@ -68,6 +187,11 @@ const Research = () => {
   const [searchParams, setSearchParams] = useSearchParams();
   const selectedProject = projectSlug ? getProjectBySlug(projectSlug) : undefined;
   const searchQuery = searchParams.get("q") ?? "";
+  const [searchOpen, setSearchOpen] = useState(false);
+  const searchTerms = useMemo(
+    () => normalizeSearchText(searchQuery).split(" ").filter(Boolean),
+    [searchQuery],
+  );
 
   useEffect(() => {
     document.title = selectedProject
@@ -81,21 +205,24 @@ const Research = () => {
     };
   }, [projectSlug, selectedProject]);
 
-  const filteredProjects = useMemo(() => {
-    const terms = normalizeSearchText(searchQuery).split(" ").filter(Boolean);
+  const projectSearchResults = useMemo(() => {
+    if (searchTerms.length === 0) {
+      return projectsData.map((project) => ({ project, match: undefined }));
+    }
 
-    if (terms.length === 0) return projectsData;
+    return projectsData
+      .map((project) => {
+        const sections = getSearchSections(project);
 
-    return projectsData.filter((project) => {
-      const searchable = projectSearchText(project);
-      const compactSearchable = searchable.replace(/\s+/g, "");
-
-      return terms.every(
-        (term) =>
-          searchable.includes(term) || compactSearchable.includes(term),
-      );
-    });
-  }, [searchQuery]);
+        return {
+          project,
+          match: buildProjectMatch(project, searchTerms),
+          isMatch: sectionContainsEveryTerm(sections, searchTerms),
+        };
+      })
+      .filter(({ isMatch }) => isMatch)
+      .map(({ project, match }) => ({ project, match }));
+  }, [searchTerms]);
 
   const updateSearch = (value: string) => {
     const nextParams = new URLSearchParams(searchParams);
@@ -105,6 +232,7 @@ const Research = () => {
     } else {
       nextParams.delete("q");
     }
+    nextParams.delete("scope");
 
     setSearchParams(nextParams, { replace: true });
   };
@@ -121,45 +249,119 @@ const Research = () => {
     <div className="min-h-screen bg-[#F8F9FA]">
       <main>
         <section className="border-b border-gray-100 bg-white py-10 sm:py-12">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(440px,1.1fr)] lg:items-center lg:gap-14">
+          <div className="site-shell">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-14">
               <header className="max-w-3xl">
                 <h1 className="text-4xl font-bold text-gray-950 sm:text-5xl">
                   Research projects
                 </h1>
-                <p className="mt-5 text-lg leading-8 text-gray-600">
+                <p className="reading-copy mt-5 text-gray-700">
                   Explore our work in intelligible AI, visual analytics,
                   privacy, and human-centered computing.
                 </p>
               </header>
 
               <section aria-label="Research project search">
-                <div className="relative w-full">
-                  <Search
-                    className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
-                    aria-hidden="true"
-                  />
-                  <label htmlFor="project-search" className="sr-only">
-                    Search research projects
-                  </label>
-                  <input
-                    id="project-search"
-                    type="search"
-                    placeholder="Search topics, publications, authors, or venues"
-                    value={searchQuery}
-                    onChange={(event) => updateSearch(event.target.value)}
-                    className="search-input h-12 w-full rounded-md border border-gray-300 bg-white pl-10 pr-11 text-sm text-gray-950 placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
-                  />
-                  {searchQuery && (
-                    <button
-                      type="button"
-                      onClick={() => updateSearch("")}
-                      aria-label="Clear project search"
-                      title="Clear search"
-                      className="absolute right-1.5 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000]"
+                <div
+                  className="relative w-full"
+                  onBlur={(event) => {
+                    if (!event.currentTarget.contains(event.relatedTarget)) {
+                      setSearchOpen(false);
+                    }
+                  }}
+                >
+                  <div className="relative">
+                    <Search
+                      className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
+                      aria-hidden="true"
+                    />
+                    <label htmlFor="project-search" className="sr-only">
+                      Search research projects
+                    </label>
+                    <input
+                      id="project-search"
+                      type="search"
+                      placeholder="Search topics, tags, publications, authors, or venues"
+                      value={searchQuery}
+                      onChange={(event) => {
+                        updateSearch(event.target.value);
+                        setSearchOpen(true);
+                      }}
+                      onFocus={() => setSearchOpen(true)}
+                      onKeyDown={(event) => {
+                        if (event.key === "Escape") setSearchOpen(false);
+                      }}
+                      aria-expanded={searchOpen && searchTerms.length > 0}
+                      aria-controls="project-live-results"
+                      autoComplete="off"
+                      className="search-input h-12 w-full rounded-md border border-gray-300 bg-white pl-10 pr-11 text-sm text-gray-950 placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
+                    />
+                    {searchQuery && (
+                      <button
+                        type="button"
+                        onClick={() => {
+                          updateSearch("");
+                          setSearchOpen(false);
+                        }}
+                        aria-label="Clear project search"
+                        title="Clear search"
+                        className="absolute right-1.5 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000]"
+                      >
+                        <X className="h-4 w-4" aria-hidden="true" />
+                      </button>
+                    )}
+                  </div>
+
+                  {searchOpen && searchTerms.length > 0 && (
+                    <div
+                      id="project-live-results"
+                      className="absolute left-0 right-0 top-[calc(100%+0.5rem)] z-30 overflow-hidden rounded-md border border-gray-200 bg-white shadow-xl"
                     >
-                      <X className="h-4 w-4" aria-hidden="true" />
-                    </button>
+                      {projectSearchResults.length > 0 ? (
+                        <div className="max-h-96 overflow-y-auto" role="list">
+                          {projectSearchResults.map(({ project, match }) => (
+                            <Link
+                              key={project.slug}
+                              to={`/research/${project.slug}`}
+                              onClick={() => setSearchOpen(false)}
+                              className="block border-b border-gray-100 px-4 py-3 text-left transition-colors last:border-b-0 hover:bg-[#F8F9FA] focus-visible:bg-[#F8F9FA] focus-visible:outline-none"
+                              role="listitem"
+                            >
+                              <p className="text-sm font-semibold leading-5 text-gray-950">
+                                <HighlightedText
+                                  text={project.title}
+                                  terms={searchTerms}
+                                />
+                              </p>
+                              <div className="mt-1 space-y-0.5">
+                                {(match?.sections ?? [])
+                                  .filter((section) => section.key !== "title")
+                                  .slice(0, 2)
+                                  .map((section) => (
+                                    <p
+                                      key={section.key}
+                                      className="line-clamp-1 text-xs leading-5 text-gray-600"
+                                    >
+                                      <span className="font-semibold text-gray-800">
+                                        {section.label}:{" "}
+                                      </span>
+                                      <HighlightedText
+                                        text={section.text}
+                                        terms={searchTerms}
+                                      />
+                                    </p>
+                                  ))}
+                              </div>
+                            </Link>
+                          ))}
+                        </div>
+                      ) : (
+                        <p className="px-4 py-5 text-sm text-gray-600">
+                          No matching research projects
+                        </p>
+                      )}
+
+                    </div>
                   )}
                 </div>
 
@@ -168,9 +370,9 @@ const Research = () => {
                   aria-live="polite"
                 >
                   <strong className="font-semibold text-gray-950">
-                    {filteredProjects.length}
+                    {projectsData.length}
                   </strong>{" "}
-                  {filteredProjects.length === 1
+                  {projectsData.length === 1
                     ? "research area"
                     : "research areas"}
                 </p>
@@ -179,31 +381,16 @@ const Research = () => {
           </div>
         </section>
 
-        <section className="pb-14 pt-6 sm:pb-20 sm:pt-8">
-          <div className="container mx-auto px-4 lg:px-8">
-            {filteredProjects.length > 0 ? (
-              <div className="grid gap-6 md:grid-cols-2">
-                {filteredProjects.map((project) => (
-                  <ProjectCard key={project.slug} project={project} />
-                ))}
-              </div>
-            ) : (
-              <div className="mt-6 rounded-lg border border-gray-200/80 bg-white/75 py-20 text-center backdrop-blur-sm">
-                <h2 className="text-xl font-semibold text-gray-950">
-                  No matching research areas
-                </h2>
-                <p className="mt-2 text-sm text-gray-600">
-                  Try a broader topic, author, venue, or publication title.
-                </p>
-                <button
-                  type="button"
-                  onClick={() => updateSearch("")}
-                  className="mt-6 inline-flex min-h-10 items-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-semibold text-gray-800 hover:border-[#CC0000] hover:text-[#B00000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
-                >
-                  Clear search
-                </button>
-              </div>
-            )}
+        <section
+          id="research-results"
+          className="scroll-mt-24 pb-14 pt-6 sm:pb-20 sm:pt-8"
+        >
+          <div className="site-shell">
+            <div className="cards-grid gap-6">
+              {projectsData.map((project) => (
+                <ProjectCard key={project.slug} project={project} />
+              ))}
+            </div>
           </div>
         </section>
       </main>

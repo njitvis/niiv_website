@@ -1,0 +1,15 @@
+{
+  "year": 2019,
+  "title": "Guess Me If You Can: A Visual Uncertainty Model for Transparent Evaluation of Disclosure Risks in Privacy-Preserving Data Visualization",
+  "authors": "Aritra Dasgupta, Robert Kosara, and Min Chen",
+  "venue": "2019 IEEE Symposium on Visualization for Cyber Security (VizSec), pp. 1-10",
+  "tags": [
+    "VizSec"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2019/vizsec19.pdf",
+    "doi": "https://doi.org/10.1109/VizSec48167.2019.9161608"
+  },
+  "order": 1
+}

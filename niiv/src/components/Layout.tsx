@@ -17,7 +17,7 @@ const Layout = ({ children }: LayoutProps) => {
   }, [pathname]);
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="site-layout min-h-screen bg-gray-50">
       <ScrollProgress />
       <Navbar />
       <main>{children}</main>

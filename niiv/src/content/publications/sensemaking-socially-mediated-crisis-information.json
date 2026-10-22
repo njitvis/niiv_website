@@ -1,0 +1,15 @@
+{
+  "year": 2024,
+  "title": "Sensemaking of Socially-Mediated Crisis Information",
+  "authors": "Vrushali Koli, Jun Yuan, and Aritra Dasgupta",
+  "venue": "Proceedings of the Third Workshop on Bridging Human-Computer Interaction and Natural Language Processing, pp. 74-81",
+  "tags": [
+    "HCINLP"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2024/vrushali_HCINLP2024.pdf",
+    "website": "https://aclanthology.org/2024.hcinlp-1.7/"
+  },
+  "order": 5
+}

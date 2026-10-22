@@ -1,0 +1,14 @@
+{
+  "year": 2012,
+  "title": "Meta parallel coordinates for visualizing features in large, high-dimensional, time-varying data",
+  "authors": "Aritra Dasgupta, Robert Kosara, and Luke Gosink",
+  "venue": "IEEE Symposium on Large Data Analysis and Visualization (LDAV)",
+  "tags": [
+    "IEEE LDAV"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2012/Meta_parallel_coordinates_for_visualizing_features_in_large_high-dimensional_time-varying_data.pdf"
+  },
+  "order": 1
+}

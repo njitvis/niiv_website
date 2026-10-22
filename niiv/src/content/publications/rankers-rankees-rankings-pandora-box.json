@@ -1,0 +1,21 @@
+{
+  "year": 2022,
+  "title": "Rankers, Rankees, & Rankings: Peeking into the Pandora's Box from a Socio-Technical Perspective",
+  "authors": "Jun Yuan, Julia Stoyanovich, and Aritra Dasgupta",
+  "venue": "Position paper presented at 2022 CHI Workshop on Interrogating Human-Centered Data Science",
+  "tags": [
+    "CHI Workshop"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2022/ranking_HCDSCHI22.pdf"
+  },
+  "order": 2,
+  "figures": [
+    {
+      "image": "/projects/algorithmic-rankers/socio-technical-ranking.png",
+      "alt": "Socio-technical relationships among rankers, rankees, and rankings",
+      "caption": "A socio-technical view of rankers, rankees, and ranking outcomes."
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "year": 2021,
+  "title": "Beyond Visual Analytics: Human-Machine Teaming for AI-Driven Data Sensemaking",
+  "authors": "John Wenskovitch, Corey Fallon, Kate Miller, and Aritra Dasgupta",
+  "venue": "IEEE VIS 2021 Workshop on Trust and Expertise in Visual Analytics",
+  "tags": [
+    "IEEE VIS Workshop"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2021/trex21.pdf"
+  },
+  "order": 2
+}

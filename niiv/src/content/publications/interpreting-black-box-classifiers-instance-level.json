@@ -1,0 +1,14 @@
+{
+  "year": 2017,
+  "title": "Interpreting Black-Box Classifiers Using Instance-Level Visual Explanations",
+  "authors": "Paolo Tamagnini, Josua Krause, Aritra Dasgupta, and Enrico Bertini",
+  "venue": "Proceedings of the 2nd Workshop on Human-In-the-Loop Data Analytics - HILDA'17",
+  "tags": [
+    "HILDA"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2017/hilda17.pdf"
+  },
+  "order": 3
+}

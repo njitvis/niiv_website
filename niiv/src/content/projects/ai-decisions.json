@@ -1,0 +1,35 @@
+{
+  "title": "Transparent AI-driven Decision Making",
+  "description": "Apply visualization and artificial intelligence techniques to support consequential decision-making.",
+  "overview": "This research studies how people can understand, evaluate, and collaborate with AI systems in consequential settings. The work spans contextual transparency, human-machine teaming, and visual diagnostics for comparing model behavior in domains such as recruiting and energy systems.",
+  "image": "/transparentAI.png",
+  "imageAlt": "Diagram comparing traditional computing systems with human-AI teaming",
+  "tags": [
+    "Decision Support",
+    "Human-AI Teaming",
+    "Model Diagnostics"
+  ],
+  "publications": [
+    {
+      "publicationId": "trust-net-load-forecasting-models"
+    },
+    {
+      "publicationId": "characterizing-interaction-uncertainty-human-machine-teams"
+    },
+    {
+      "publicationId": "forte-trust-augmented-net-load-forecasting"
+    },
+    {
+      "publicationId": "machine-learning-energy-efficient-buildings"
+    },
+    {
+      "publicationId": "contextual-transparency-automated-decision-systems",
+      "summary": "The contextual transparency approach asks what information a particular stakeholder needs in a specific decision process, then designs explanations around that context rather than pursuing a universal form of transparency."
+    },
+    {
+      "publicationId": "beyond-visual-analytics-human-machine-teaming",
+      "summary": "This work examines how tightly coupled human-machine teams can support AI-driven data sensemaking beyond conventional visual analytics workflows."
+    }
+  ],
+  "order": 2
+}

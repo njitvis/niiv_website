@@ -1,0 +1,22 @@
+{
+  "year": 2023,
+  "title": "A Human-in-the-loop Workflow for Multi-Factorial Sensitivity Analysis of Algorithmic Rankers",
+  "authors": "Jun Yuan and Aritra Dasgupta",
+  "venue": "Proceedings of the Workshop on Human-In-the-Loop Data Analytics (HILDA), ACM",
+  "tags": [
+    "HILDA"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2023/jun_hilda23.pdf",
+    "doi": "https://doi.org/10.1145/3597465.3605221"
+  },
+  "order": 4,
+  "figures": [
+    {
+      "image": "/projects/algorithmic-rankers/sensitivity-analysis.png",
+      "alt": "Interface for sensitivity analysis of algorithmic rankers",
+      "caption": "Visual interface for multi-factor sensitivity analysis of rankers."
+    }
+  ]
+}

@@ -1,0 +1,25 @@
+{
+  "year": 2023,
+  "title": "Introducing contextual transparency for automated decision systems",
+  "authors": "Mona Sloane, Ian Rene Solano-Kamaiko, Jun Yuan, Aritra Dasgupta, and Julia Stoyanovich",
+  "venue": "Nature Machine Intelligence (2023): 1-9",
+  "tags": [
+    "Nature Machine Intelligence"
+  ],
+  "type": "journal",
+  "links": {
+    "website": "https://rdcu.be/c9fD3"
+  },
+  "order": 6,
+  "figures": [
+    {
+      "image": "/projects/algorithmic-rankers/contextual-transparency.png",
+      "alt": "Diagram showing contextual transparency in an automated recruiting process",
+      "caption": "Contextual transparency applied to automated recruiting systems."
+    }
+  ],
+  "spotlight": {
+    "title": "Contextual transparency",
+    "summary": "Contextual transparency connects social science, engineering, and information design to make automated decision systems understandable for specific professions, processes, and stakeholder groups."
+  }
+}

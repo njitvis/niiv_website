@@ -1,0 +1,14 @@
+{
+  "year": 2010,
+  "title": "Pargnostics: Screen-space metrics for parallel coordinates",
+  "authors": "Aritra Dasgupta and Robert Kosara",
+  "venue": "IEEE Transactions on Visualization and Computer Graphics 16.6 (2010): 1017-1026",
+  "tags": [
+    "TVCG"
+  ],
+  "type": "journal",
+  "links": {
+    "pdf": "/publications/2010/Pargnostics_Screen-Space_Metrics_for_Parallel_Coordinates.pdf"
+  },
+  "order": 1
+}

@@ -1,0 +1,64 @@
+{
+  "title": "Privacy-aware Data Discovery",
+  "description": "Develop visual analytic workflows for discovering useful open data while identifying disclosure risks.",
+  "overview": "Open datasets can become privacy risks when seemingly harmless releases are joined with other data. This research develops human-centered visual analytics that help data defenders inspect vulnerable joins, calibrate disclosure risk, and evaluate whether joined datasets provide enough utility to justify their use.",
+  "image": "/privacyAware.png",
+  "imageAlt": "PRIVEE visualization for evaluating disclosure risk in joined datasets",
+  "tags": [
+    "Data Privacy",
+    "Open Data",
+    "Risk Inspection"
+  ],
+  "publications": [
+    {
+      "publicationId": "value-linked-data-utility-evaluation",
+      "summary": "VALUE introduces a utility metric and visual analytic workflow for finding joinable datasets, prioritizing them by usefulness, and refining that evaluation through human judgment.",
+      "image": "/projects/privacy-data-discovery/value-interface.png",
+      "imageAlt": "VALUE interface for inspecting the utility of joining open datasets",
+      "caption": "Inspecting the utility of joined open datasets through VALUE.",
+      "resources": [
+        {
+          "label": "Presentation",
+          "href": "https://www.youtube.com/watch?v=76Gxqx_Pj8I",
+          "type": "video"
+        }
+      ]
+    },
+    {
+      "publicationId": "power-data-defenders-disclosure-risk-calibration",
+      "summary": "A red-team exercise identifies vulnerabilities in the release-and-forget model of open data and motivates proactive monitoring strategies that let data defenders recalibrate privacy risk as new datasets appear.",
+      "image": "/projects/privacy-data-discovery/disclosure-risks.png",
+      "imageAlt": "Examples of open-data disclosure risks identified through red teaming",
+      "caption": "Disclosure risks that emerge as new open datasets become available."
+    },
+    {
+      "publicationId": "privee-privacy-risk-inspection-open-data",
+      "summary": "PRIVEE is a visual risk-inspection workflow that helps data defenders explore vulnerable joins and interpret disclosure risk at multiple levels of data granularity.",
+      "image": "/projects/privacy-data-discovery/privee-workflow.png",
+      "imageAlt": "Workflow showing how data defenders use PRIVEE to inspect privacy risk",
+      "caption": "The data-defender workflow and role of interactive visualization in PRIVEE.",
+      "resources": [
+        {
+          "label": "Presentation",
+          "href": "https://youtu.be/bcmfsFaL8n4",
+          "type": "video"
+        }
+      ]
+    },
+    {
+      "publicationId": "privacy-preserving-data-visualization-reflections",
+      "summary": "This state-of-the-art report surveys methods for privacy-preserving visualization and identifies research opportunities across privacy-utility tradeoffs, attack scenarios, stakeholder needs, and interactive access controls.",
+      "image": "/projects/privacy-data-discovery/privacy-landscape.png",
+      "imageAlt": "Research landscape for privacy-preserving data visualization",
+      "caption": "The research landscape for privacy-preserving data visualization.",
+      "resources": [
+        {
+          "label": "Presentation",
+          "href": "https://www.youtube.com/watch?v=CQxs9Hh_1f4",
+          "type": "video"
+        }
+      ]
+    }
+  ],
+  "order": 3
+}

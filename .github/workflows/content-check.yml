@@ -1,0 +1,31 @@
+# Runs the website content check on every pull request, including edits made
+# through the /admin editor, so problems show up on the pull request before
+# anything is merged. Same check as `npm run validate` in niiv/.
+name: Content check
+
+on:
+  pull_request:
+    paths:
+      - "niiv/src/content/**"
+      - "niiv/public/**"
+      - "niiv/scripts/validate-content.mjs"
+  push:
+    branches: [master]
+    paths:
+      - "niiv/src/content/**"
+      - "niiv/public/**"
+      - "niiv/scripts/validate-content.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      # The check uses only Node's built-in modules, so no npm install is needed.
+      - run: node niiv/scripts/validate-content.mjs

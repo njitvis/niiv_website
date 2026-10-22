@@ -7,8 +7,6 @@ import {
   Globe,
   Linkedin,
   Mail,
-  Search,
-  X,
 } from "lucide-react";
 import { Link, useLocation } from "react-router-dom";
 import {
@@ -37,25 +35,8 @@ const SECTIONS: { value: PersonGroup; label: string }[] = [
   { value: "former", label: "Former Lab Members" },
 ];
 
-const normalizeSearchText = (value: string) =>
-  value
-    .normalize("NFKD")
-    .replace(/[\u0300-\u036f]/g, "")
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, " ")
-    .trim();
-
-const matchesQuery = (values: (string | undefined)[], query: string) => {
-  const terms = normalizeSearchText(query).split(" ").filter(Boolean);
-  if (terms.length === 0) return true;
-
-  const searchable = normalizeSearchText(values.filter(Boolean).join(" "));
-  return terms.every((term) => searchable.includes(term));
-};
-
 const People = () => {
   const [activeFilter, setActiveFilter] = useState<PeopleFilter>("all");
-  const [query, setQuery] = useState("");
   const { hash } = useLocation();
 
   const filteredPeople = useMemo(
@@ -63,36 +44,15 @@ const People = () => {
       PEOPLE.filter(
         (person) =>
           activeFilter === "all" || person.group === activeFilter,
-      ).filter((person) =>
-        matchesQuery(
-          [
-            person.name,
-            person.role,
-            person.affiliation,
-            person.period,
-            person.note,
-          ],
-          query,
-        ),
       ),
-    [activeFilter, query],
+    [activeFilter],
   );
 
   const filteredAssistants = useMemo(() => {
     if (activeFilter !== "all" && activeFilter !== "former") return [];
 
-    return PREVIOUS_RESEARCH_ASSISTANTS.filter((assistant) =>
-      matchesQuery(
-        [
-          assistant.name,
-          assistant.program,
-          "previous research assistant",
-          "former member",
-        ],
-        query,
-      ),
-    );
-  }, [activeFilter, query]);
+    return PREVIOUS_RESEARCH_ASSISTANTS;
+  }, [activeFilter]);
 
   const resultCount = filteredPeople.length + filteredAssistants.length;
 
@@ -119,75 +79,27 @@ const People = () => {
     return () => window.clearTimeout(timeout);
   }, [hash]);
 
-  const clearSearch = () => setQuery("");
-
-  const clearAll = () => {
-    setQuery("");
-    setActiveFilter("all");
-  };
+  const clearAll = () => setActiveFilter("all");
 
   return (
     <div className="bg-[#F8F9FA]">
       <main>
         <section className="border-b border-gray-100 bg-white py-10 sm:py-12">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(440px,1.1fr)] lg:items-center lg:gap-14">
-              <header className="max-w-3xl">
-                <h1 className="text-4xl font-bold text-gray-950 sm:text-5xl">
-                  Our team
-                </h1>
-                <p className="mt-5 text-lg leading-8 text-gray-600">
-                  Meet the researchers advancing intelligible AI,
-                  visualization, and human-centered data science.
-                </p>
-              </header>
-
-              <section aria-label="People search">
-                <div className="relative w-full">
-                  <Search
-                    className="pointer-events-none absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
-                    aria-hidden="true"
-                  />
-                  <label htmlFor="people-search" className="sr-only">
-                    Search people
-                  </label>
-                  <input
-                    id="people-search"
-                    type="search"
-                    value={query}
-                    onChange={(event) => setQuery(event.target.value)}
-                    placeholder="Search names, roles, programs, or affiliations"
-                    className="search-input h-12 w-full rounded-md border border-gray-300 bg-white pl-10 pr-11 text-sm text-gray-950 placeholder:text-gray-500 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
-                  />
-                  {query && (
-                    <button
-                      type="button"
-                      onClick={clearSearch}
-                      aria-label="Clear people search"
-                      title="Clear search"
-                      className="absolute right-1.5 top-1/2 inline-flex h-8 w-8 -translate-y-1/2 items-center justify-center rounded-md text-gray-500 hover:bg-gray-100 hover:text-gray-900 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000]"
-                    >
-                      <X className="h-4 w-4" aria-hidden="true" />
-                    </button>
-                  )}
-                </div>
-
-                <p
-                  className="mt-4 text-sm text-gray-600 lg:text-right"
-                  aria-live="polite"
-                >
-                  <strong className="font-semibold text-gray-950">
-                    {resultCount}
-                  </strong>{" "}
-                  {resultCount === 1 ? "person" : "people"}
-                </p>
-              </section>
-            </div>
+          <div className="site-shell">
+            <header className="max-w-3xl">
+              <h1 className="text-4xl font-bold text-gray-950 sm:text-5xl">
+                Our team
+              </h1>
+              <p className="reading-copy mt-5 text-gray-700">
+                Meet the researchers advancing intelligible AI, visualization,
+                and human-centered data science.
+              </p>
+            </header>
           </div>
         </section>
 
         <section className="pb-14 pt-6 sm:pb-20 sm:pt-8">
-          <div className="container mx-auto px-4 lg:px-8">
+          <div className="site-shell">
             <div
               className="mb-8 flex flex-wrap gap-2"
               aria-label="Filter people by role"
@@ -237,7 +149,7 @@ const People = () => {
                         </span>
                       </div>
 
-                      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+                      <div className="cards-grid gap-4">
                         {sectionPeople.map((person) => (
                           <PersonCard key={person.name} person={person} />
                         ))}
@@ -253,17 +165,17 @@ const People = () => {
             ) : (
               <div className="rounded-lg border border-gray-200/80 bg-white/75 py-20 text-center backdrop-blur-sm">
                 <h2 className="text-xl font-semibold text-gray-950">
-                  No matching people
+                  No people in this group
                 </h2>
                 <p className="mt-2 text-sm text-gray-600">
-                  Try a broader name, role, program, or affiliation.
+                  Choose another role to view more team members.
                 </p>
                 <button
                   type="button"
                   onClick={clearAll}
                   className="mt-6 inline-flex h-10 items-center justify-center rounded-md border border-[#CC0000] bg-[#CC0000] px-4 text-sm font-semibold text-white transition duration-200 hover:scale-[1.03] hover:border-[#A80000] hover:bg-[#A80000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
                 >
-                  Clear filters
+                  Show everyone
                 </button>
               </div>
             )}
@@ -271,13 +183,13 @@ const People = () => {
         </section>
 
         <section className="border-t border-gray-200 bg-[#F8F9FA]">
-          <div className="container mx-auto px-4 py-10 lg:px-8">
+          <div className="site-shell py-10">
             <div className="flex flex-col gap-6 rounded-lg border border-gray-200 border-l-4 border-l-[#CC0000] bg-white/80 px-6 py-7 sm:flex-row sm:items-center sm:justify-between sm:px-8">
               <div>
                 <h2 className="text-2xl font-semibold text-gray-950">
                   Interested in joining the lab?
                 </h2>
-                <p className="mt-2 text-base leading-7 text-gray-600">
+                <p className="reading-copy mt-2 text-gray-700">
                   We welcome students interested in intelligible AI and visual
                   analytics.
                 </p>
@@ -305,7 +217,7 @@ const PersonCard = ({ person }: { person: Person }) => (
     id={getPersonAnchor(person.name)}
     className="person-card group flex scroll-mt-24 overflow-hidden rounded-lg border border-gray-200/90 bg-white/80 shadow-sm backdrop-blur-sm transition duration-200 hover:-translate-y-0.5 hover:border-gray-300 hover:shadow-md supports-[backdrop-filter]:bg-white/70"
   >
-    <div className="w-32 shrink-0 self-start p-3 pr-0 sm:w-36 sm:p-4 sm:pr-0">
+    <div className="w-[30%] max-w-36 shrink-0 self-start p-3 pr-0 sm:p-4 sm:pr-0">
       <div className="flex h-36 w-full items-center justify-center overflow-hidden rounded-md border border-gray-200/80 bg-[#F8F9FA]">
         {person.image ? (
           <img
@@ -341,7 +253,7 @@ const PersonCard = ({ person }: { person: Person }) => (
       </div>
 
       {person.note && (
-        <p className="mt-3 text-sm leading-5 text-gray-600">{person.note}</p>
+        <p className="reading-copy mt-3 text-gray-700">{person.note}</p>
       )}
 
       <ProfileLinks person={person} />
@@ -416,7 +328,7 @@ const ProfileLinks = ({ person }: { person: Person }) => {
   if (!person.email && links.length === 0) return null;
 
   return (
-    <div className="mt-auto flex items-center gap-2 pt-4">
+    <div className="mt-auto flex flex-wrap items-center gap-2 pt-4">
       {person.email && (
         <div className="group/email relative">
           <button
@@ -507,7 +419,7 @@ const PreviousAssistants = ({
               <h3 className="mb-3 text-sm font-semibold text-gray-600">
                 {program}
               </h3>
-              <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+              <div className="compact-cards-grid gap-3">
                 {programAssistants.map((assistant) => (
                   <article
                     key={assistant.name}

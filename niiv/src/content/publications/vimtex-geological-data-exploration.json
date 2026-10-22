@@ -1,0 +1,14 @@
+{
+  "year": 2015,
+  "title": "VIMTEX: A Visualization Interface for Multivariate, Time-Varying, Geological Data Exploration",
+  "authors": "Aritra Dasgupta, Robert Kosara, and Luke Gosink",
+  "venue": "Computer Graphics Forum 34.3 (2015)",
+  "tags": [
+    "CGF"
+  ],
+  "type": "journal",
+  "links": {
+    "pdf": "/publications/2015/VIMTEX%20A%20Visualization%20Interface%20for%20Multivariate,%20Time-Varying,%20Geological%20Data%20Exploration.pdf"
+  },
+  "order": 2
+}

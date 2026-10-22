@@ -1,0 +1,21 @@
+{
+  "year": 2020,
+  "title": "Privacy-Preserving Data Visualization: Reflections on the State of the Art and Research Opportunities",
+  "authors": "Kaustav Bhattacharjee, Min Chen, and Aritra Dasgupta",
+  "venue": "Computer Graphics Forum 39.3 (2020): 675-692",
+  "tags": [
+    "CGF"
+  ],
+  "type": "journal",
+  "links": {
+    "pdf": "/publications/2020/eurovis20.pdf"
+  },
+  "order": 3,
+  "figures": [
+    {
+      "image": "/projects/privacy-data-discovery/privacy-landscape.png",
+      "alt": "Research landscape for privacy-preserving data visualization",
+      "caption": "The research landscape for privacy-preserving data visualization."
+    }
+  ]
+}

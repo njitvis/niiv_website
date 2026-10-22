@@ -1,0 +1,25 @@
+{
+  "authors": "Jun Yuan, Kaustav Bhattacharjee, Akm Zahirul Islam, and Aritra Dasgupta",
+  "order": 2,
+  "figures": [
+    {
+      "image": "/projects/algorithmic-rankers/trivea-workflow.png",
+      "alt": "TRIVEA visual analytics workflow for transparent ranking interpretation",
+      "caption": "Visual analytics workflow used in TRIVEA."
+    }
+  ],
+  "venue": "The Visual Computer (2023)",
+  "spotlight": {
+    "title": "TRIVEA",
+    "summary": "TRIVEA combines learned ranking models with visual explanations of model fit and attribute influence, so people can explore how a black-box ranker behaves without direct access to the model."
+  },
+  "title": "TRIVEA: Transparent Ranking Interpretation using Visual Explanation of black-box Algorithmic rankers",
+  "tags": [
+    "The Visual Computer"
+  ],
+  "links": {
+    "doi": "https://doi.org/10.1007/s00371-023-03055-x"
+  },
+  "type": "journal",
+  "year": 2023
+}

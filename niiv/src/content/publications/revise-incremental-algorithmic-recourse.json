@@ -1,0 +1,14 @@
+{
+  "year": 2025,
+  "title": "ReVise: A Human-AI Interface for Incremental Algorithmic Recourse",
+  "authors": "Kaustav Bhattacharjee, Jun Yuan, and Aritra Dasgupta",
+  "venue": "Proceedings of 2025 IEEE Visualization and Visual Analytics (VIS)",
+  "tags": [
+    "IEEE VIS"
+  ],
+  "type": "conf",
+  "links": {
+    "arxiv": "https://arxiv.org/abs/2508.00002"
+  },
+  "order": 1
+}

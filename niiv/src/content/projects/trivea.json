@@ -1,0 +1,72 @@
+{
+  "title": "Explainable AI for Algorithmic Rankers",
+  "description": "Unravel the factors influencing black-box ranking models through visual analytic explanations.",
+  "overview": "Algorithmic rankings shape consequential decisions in education, hiring, lending, and recommendations, while their internal logic is often inaccessible. This research combines explainable AI with visual analytics so stakeholders can examine how attributes influence rankings, test how explanations respond to changing assumptions, and reason about the social consequences of ranked outcomes.",
+  "image": "/explainableAI.png",
+  "imageAlt": "Diagram of the TRIVEA workflow for interpreting algorithmic rankings",
+  "tags": [
+    "Explainable AI",
+    "Algorithmic Ranking",
+    "Visual Analytics"
+  ],
+  "publications": [
+    {
+      "publicationId": "revise-incremental-algorithmic-recourse"
+    },
+    {
+      "publicationId": "visual-analytic-techniques-interpretable-ranking"
+    },
+    {
+      "publicationId": "simple-scoring-function-fool-shap",
+      "summary": "This work shows how adversarial scoring functions can evade SHAP-based unfairness detection without access to the underlying data distribution, exposing an important limitation of current explanation practices."
+    },
+    {
+      "publicationId": "trivea-transparent-ranking-interpretation",
+      "summary": "TRIVEA combines learned ranking models with visual explanations of model fit and attribute influence. It helps people explore global and local ranking behavior without needing direct access to the underlying black-box model.",
+      "image": "/projects/algorithmic-rankers/trivea-workflow.png",
+      "imageAlt": "TRIVEA visual analytics workflow for transparent ranking interpretation",
+      "caption": "Visual analytics workflow used in TRIVEA.",
+      "resources": [
+        {
+          "label": "Code",
+          "href": "https://github.com/njitvis/trivea",
+          "type": "code"
+        },
+        {
+          "label": "Interactive demo",
+          "href": "https://njitvis.github.io/trivea/",
+          "type": "demo"
+        }
+      ]
+    },
+    {
+      "publicationId": "human-in-loop-sensitivity-analysis-rankers",
+      "summary": "A human-in-the-loop workflow transforms Shapley values for ranking models and uses multi-factor simulations to study how explanations change with data distributions, ranker parameters, and rank ranges.",
+      "image": "/projects/algorithmic-rankers/sensitivity-analysis.png",
+      "imageAlt": "Interface for sensitivity analysis of algorithmic rankers",
+      "caption": "Visual interface for multi-factor sensitivity analysis of rankers.",
+      "resources": [
+        {
+          "label": "Interactive demo",
+          "href": "https://hilda23-ranking-shapley.streamlit.app/",
+          "type": "demo"
+        }
+      ]
+    },
+    {
+      "publicationId": "contextual-transparency-automated-decision-systems",
+      "summary": "Contextual transparency connects social science, engineering, and information design to make automated decision systems understandable for specific professions, processes, and stakeholder groups.",
+      "image": "/projects/algorithmic-rankers/contextual-transparency.png",
+      "imageAlt": "Diagram showing contextual transparency in an automated recruiting process",
+      "caption": "Contextual transparency applied to automated recruiting systems."
+    },
+    {
+      "publicationId": "rankers-rankees-rankings-pandora-box",
+      "summary": "This position paper calls for principled methods and metrics that connect ranking technologies to their socio-technical context, the agency of affected stakeholders, and the consequences of ranked outcomes.",
+      "image": "/projects/algorithmic-rankers/socio-technical-ranking.png",
+      "imageAlt": "Socio-technical relationships among rankers, rankees, and rankings",
+      "caption": "A socio-technical view of rankers, rankees, and ranking outcomes."
+    }
+  ],
+  "order": 1
+}

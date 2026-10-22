@@ -5,7 +5,10 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b && vite build",
+    "cms": "cd .. && npx decap-server",
+    "validate": "node scripts/validate-content.mjs",
+    "inventory": "node scripts/content-inventory.mjs",
+    "build": "node scripts/validate-content.mjs && tsc -b && vite build && node scripts/generate-seo.mjs",
     "build:aws": "npm run build && node scripts/prepare-aws-build.mjs",
     "lint": "eslint .",
     "preview": "vite preview"

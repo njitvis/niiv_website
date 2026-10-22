@@ -6,7 +6,13 @@
     "condition": null
   },
   {
-    "source": "</^[^.]+$|\\.(?!(css|gif|html|ico|jpg|jpeg|js|png|txt|svg|woff|woff2|ttf|map|json|webp|pdf|zip|key)$)([^.]+$)/>",
+    "source": "</^\\/admin\\/?$/>",
+    "target": "/admin/index.html",
+    "status": "200",
+    "condition": null
+  },
+  {
+    "source": "</^[^.]+$|\\.(?!(css|gif|html|ico|jpg|jpeg|js|png|txt|svg|woff|woff2|ttf|map|json|webp|pdf|zip|key|xml)$)([^.]+$)/>",
     "target": "/index.html",
     "status": "200",
     "condition": null

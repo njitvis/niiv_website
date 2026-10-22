@@ -1,0 +1,14 @@
+{
+  "year": 2017,
+  "title": "A Workflow for Visual Diagnostics of Binary Classifiers Using Instance-Level Explanations",
+  "authors": "Josua Krause, Aritra Dasgupta, Jordan Swartz, Yindalon Aphinyanaphongs, and Enrico Bertini",
+  "venue": "2017 IEEE Conference on Visual Analytics Science and Technology (VAST)",
+  "tags": [
+    "IEEE VAST"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2017/vast17.pdf"
+  },
+  "order": 2
+}

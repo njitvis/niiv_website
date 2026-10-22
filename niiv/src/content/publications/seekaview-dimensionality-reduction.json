@@ -1,0 +1,14 @@
+{
+  "year": 2016,
+  "title": "Seekaview: An intelligent dimensionality reduction strategy for navigating high-dimensional data spaces",
+  "authors": "Josua Krause, Aritra Dasgupta, Jean-Daniel Fekete, and Enrico Bertini",
+  "venue": "2016 IEEE 6th Symposium on Large Data Analysis and Visualization (LDAV)",
+  "tags": [
+    "IEEE LDAV"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2016/SeekAView_An_intelligent_dimensionality_reduction_strategy_for_navigating_high-dimensional_data_spaces.pdf"
+  },
+  "order": 1
+}

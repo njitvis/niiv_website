@@ -1,0 +1,15 @@
+{
+  "year": 2025,
+  "title": "Who should I trust? A Visual Analytics Approach for Comparing Net Load Forecasting Models",
+  "authors": "Kaustav Bhattacharjee, Soumya Kundu, Indrasis Chakraborty, and Aritra Dasgupta",
+  "venue": "Proceedings of 2025 IEEE PES Grid Edge Technologies Conference & Exposition (Grid Edge)",
+  "tags": [
+    "IEEE PES Grid Edge"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "/publications/2025/kaustav_GridEdge25.pdf",
+    "doi": "https://doi.org/10.1109/GridEdge61154.2025.10887523"
+  },
+  "order": 2
+}

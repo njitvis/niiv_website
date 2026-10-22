@@ -1,0 +1,32 @@
+{
+  "title": "Design and Analysis of Communicative Visualization",
+  "description": "Study how visualizations communicate evidence, change, and uncertainty across data-driven domains.",
+  "overview": "Communicative visualizations do more than display data: they guide attention, establish evidence, and shape how readers reason about a message. This research studies frameworks and visual analytic interventions that help designers and readers understand how visual representations communicate complex or evolving information.",
+  "image": "/commVis.jpeg",
+  "imageAlt": "Task mapping for the design and analysis of communicative visualization",
+  "tags": [
+    "Communicative Visualization",
+    "Visual Reasoning",
+    "Human-Centered Design"
+  ],
+  "publications": [
+    {
+      "publicationId": "visual-analytic-interventions-content-moderation"
+    },
+    {
+      "publicationId": "fact-evidence-reasoning-communicative-visualization",
+      "summary": "The fact-evidence reasoning framework describes how readers identify facts, connect them to visual evidence, and construct meaning from communicative visualizations."
+    },
+    {
+      "publicationId": "bridging-computation-visual-communication-change"
+    }
+  ],
+  "resources": [
+    {
+      "label": "Outlier 2023 presentation",
+      "href": "https://www.youtube.com/watch?v=13Fqg6NAypU",
+      "type": "video"
+    }
+  ],
+  "order": 4
+}

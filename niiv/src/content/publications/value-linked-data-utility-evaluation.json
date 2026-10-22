@@ -1,0 +1,25 @@
+{
+  "year": 2023,
+  "title": "VALUE: Visual Analytics driven Linked data Utility Evaluation",
+  "authors": "Kaustav Bhattacharjee and Aritra Dasgupta",
+  "venue": "Proceedings of the Workshop on Human-In-the-Loop Data Analytics (HILDA), ACM",
+  "tags": [
+    "HILDA"
+  ],
+  "type": "conf",
+  "links": {
+    "doi": "https://doi.org/10.1145/3597465.3605225"
+  },
+  "order": 3,
+  "figures": [
+    {
+      "image": "/projects/privacy-data-discovery/value-interface.png",
+      "alt": "VALUE interface for inspecting the utility of joining open datasets",
+      "caption": "Inspecting the utility of joined open datasets through VALUE."
+    }
+  ],
+  "spotlight": {
+    "title": "VALUE",
+    "summary": "VALUE introduces a utility metric and visual analytic workflow for finding joinable datasets, prioritizing them by usefulness, and refining that evaluation through human judgment."
+  }
+}

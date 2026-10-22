@@ -1,0 +1,14 @@
+{
+  "year": 2023,
+  "title": "A Simple Scoring Function to Fool SHAP: Stealing from the One Above",
+  "authors": "Jun Yuan and Aritra Dasgupta",
+  "venue": "Proceedings of the NeurIPS 2023 Workshop on XAI in Action",
+  "tags": [
+    "NeurIPS Workshop"
+  ],
+  "type": "conf",
+  "links": {
+    "pdf": "https://openreview.net/pdf?id=iMR4ukkUFU"
+  },
+  "order": 1
+}

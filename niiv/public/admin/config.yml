@@ -1,0 +1,334 @@
+# Decap CMS configuration for the NIIV website editor at /admin.
+# Paths are relative to the repository root (the site itself lives in niiv/).
+# Setup and workflow notes: niiv/CONTENT_EDITING.md
+
+backend:
+  name: github
+  repo: njitvis/niiv_website
+  branch: master
+  # Lab members without write access edit a fork and their changes arrive as
+  # pull requests, so nothing reaches the site until a maintainer merges it.
+  open_authoring: true
+  # GitHub sign-in goes through our helper in cms-auth/, which also holds the
+  # list of who may edit. Uncomment once it is deployed (see cms-auth/README.md).
+  # base_url: https://niiv-cms-auth.<your-account>.workers.dev
+
+# Every edit becomes a draft/pull request instead of going live immediately.
+publish_mode: editorial_workflow
+
+# `npm run cms` serves the repo locally so the editor works without GitHub login.
+local_backend: true
+
+logo_url: /admin/niiv-logo.png
+
+media_folder: niiv/public/uploads
+public_folder: /uploads
+
+collections:
+  - name: people
+    label: People
+    label_singular: Person
+    description: Lab members shown on the People page. Edit your own profile or add a new member.
+    folder: niiv/src/content/people
+    extension: json
+    format: json
+    create: true
+    identifier_field: name
+    slug: "{{slug}}"
+    summary: "{{name}} · {{role}}"
+    sortable_fields: [name, group]
+    view_groups:
+      - { label: Section, field: group }
+    editor: { preview: false }
+    media_folder: /niiv/public/people
+    public_folder: /people
+    fields:
+      - { label: Full name, name: name, widget: string }
+      - label: Role
+        name: role
+        widget: string
+        hint: 'As it should appear, e.g. "Ph.D. Student", "Ph.D. Candidate", "Ph.D. Alumnus".'
+      - label: Section on the People page
+        name: group
+        widget: select
+        options:
+          - { label: Faculty, value: faculty }
+          - { label: Ph.D. students, value: phd }
+          - { label: Ph.D. alumni, value: alumni }
+          - { label: Former members, value: former }
+      - label: Photo
+        name: image
+        widget: image
+        required: false
+        hint: A square head-and-shoulders photo, at least 400×400 px.
+      - label: Years in the lab
+        name: period
+        widget: string
+        required: false
+        hint: 'e.g. "2024 - Present" or "2019 - 2024".'
+      - { label: Affiliation, name: affiliation, widget: string, required: false, default: NJIT }
+      - label: Current position (alumni)
+        name: note
+        widget: string
+        required: false
+        hint: 'e.g. "Postdoctoral Research Associate at PNNL".'
+      - { label: Email, name: email, widget: string, required: false, pattern: ['^[^@\s]+@[^@\s]+\.[^@\s]+$', "Enter a valid email address"] }
+      - { label: Personal website, name: website, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+      - { label: GitHub profile, name: github, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+      - { label: LinkedIn profile, name: linkedin, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+      - { label: Google Scholar profile, name: scholar, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+      - label: Initials
+        name: initials
+        widget: string
+        required: false
+        hint: Shown when there is no photo. Leave blank to use first and last initials.
+
+  - name: publications
+    label: Publications
+    label_singular: Publication
+    description: Papers shown on the Publications page. Research projects link to these.
+    folder: niiv/src/content/publications
+    extension: json
+    format: json
+    create: true
+    identifier_field: title
+    slug: "{{slug}}"
+    summary: "{{fields.year}} · {{title}}"
+    sortable_fields: [year, title]
+    view_groups:
+      - { label: Year, field: year }
+    editor: { preview: false }
+    media_folder: /niiv/public/publications/uploads
+    public_folder: /publications/uploads
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Authors
+        name: authors
+        widget: string
+        hint: 'In publication order, e.g. "Jun Yuan, Kaustav Bhattacharjee, and Aritra Dasgupta".'
+      - { label: Year, name: year, widget: number, value_type: int, min: 1990, max: 2100 }
+      - label: Venue
+        name: venue
+        widget: string
+        hint: 'Full venue name, e.g. "Proceedings of 2025 IEEE Visualization and Visual Analytics (VIS)".'
+      - label: Type
+        name: type
+        widget: select
+        options:
+          - { label: Conference paper, value: conf }
+          - { label: Journal article, value: journal }
+          - { label: Preprint, value: preprint }
+          - { label: Thesis / dissertation, value: thesis }
+      - label: Short venue tags
+        name: tags
+        widget: list
+        default: []
+        hint: 'Comma-separated, e.g. "IEEE VIS" or "EuroVis, CGF".'
+      - { label: Award, name: award, widget: string, required: false, hint: 'e.g. "Best Paper Honorable Mention".' }
+      - { label: Abstract, name: abstract, widget: text, required: false }
+      - label: Research description
+        name: description
+        widget: text
+        required: false
+        hint: Optional. A longer, plain-language description shown on the paper's own page. If the paper also has an abstract, the abstract is tucked under "Read abstract" there.
+      - label: Figures
+        name: figures
+        widget: list
+        required: false
+        label_singular: figure
+        summary: "{{fields.alt}}"
+        hint: Optional. Shown as a gallery on the paper's page; drag to reorder. The first figure is also used in the home page Research Spotlight and on project pages.
+        fields:
+          - { label: Image, name: image, widget: image, hint: "Wide figures work best. Keep images under 1 MB (PNG, JPEG, WebP or SVG)." }
+          - { label: Figure description, name: alt, widget: string, hint: Describe the figure for people using screen readers. }
+          - { label: Caption, name: caption, widget: string, required: false, hint: 'e.g. "Figure 2: The TRIVEA interface".' }
+          - { label: Credit, name: credit, widget: string, required: false, hint: 'e.g. "Figure 1: Nakarmi et al., CC BY 4.0".' }
+          - { label: Credit link, name: source, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+      - label: Homepage Research Spotlight
+        name: spotlight
+        widget: object
+        required: false
+        collapsed: true
+        hint: Fill in this optional section to feature the paper in the home page Research Spotlight (newest five featured papers are shown). It uses the paper's first figure, so add one under Figures. Ideally the paper is also part of a research project, so the spotlight links there. Clear the section to stop featuring it.
+        fields:
+          - { label: Short title, name: title, widget: string, required: false, hint: 'Needed to feature the paper. A few words shown in the spotlight list, e.g. "Relevance is not enough"; the full title appears on hover.' }
+          - { label: Short summary, name: summary, widget: text, required: false, hint: Needed to feature the paper. One or two sentences for the home page. }
+      - label: Links
+        name: links
+        widget: object
+        required: false
+        collapsed: false
+        fields:
+          - { label: PDF (upload a file or paste a link), name: pdf, widget: file, required: false }
+          - { label: arXiv link, name: arxiv, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+          - { label: DOI link, name: doi, widget: string, required: false, pattern: ['^https?://', "Use the full link, e.g. https://doi.org/..."] }
+          - { label: Code repository, name: code, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+          - { label: Project website or demo, name: website, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+          - { label: Poster, name: poster, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+          - { label: Demo, name: demo, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+      - { label: BibTeX, name: bibtex, widget: text, required: false }
+      - label: Position within its year
+        name: order
+        widget: number
+        value_type: int
+        required: false
+        hint: Optional. Lower numbers are listed first; papers without a number appear at the top of their year.
+
+  - name: projects
+    label: Research projects
+    label_singular: Research project
+    description: Research areas on the Research page. Each one tells the bigger story and links its papers.
+    folder: niiv/src/content/projects
+    extension: json
+    format: json
+    create: true
+    identifier_field: title
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: [order, title]
+    editor: { preview: false }
+    media_folder: /niiv/public/projects
+    public_folder: /projects
+    fields:
+      - { label: Title, name: title, widget: string }
+      - label: Short summary
+        name: description
+        widget: text
+        hint: One sentence shown on the project card.
+      - label: Overview
+        name: overview
+        widget: text
+        hint: A paragraph on the research question, approach and impact, shown at the top of the project page.
+      - { label: Cover image, name: image, widget: image }
+      - { label: Cover image description, name: imageAlt, widget: string, hint: Describe the image for people using screen readers. }
+      - label: Topics
+        name: tags
+        widget: list
+        default: []
+        hint: 'Comma-separated, e.g. "Explainable AI, Visual Analytics".'
+      - label: Papers in this project
+        name: publications
+        widget: list
+        label_singular: paper
+        summary: "{{fields.publicationId}}"
+        hint: Add the paper under Publications first, then select it here. A paper can belong to several projects.
+        fields:
+          - label: Paper
+            name: publicationId
+            widget: relation
+            collection: publications
+            value_field: "{{slug}}"
+            search_fields: [title, authors, venue]
+            display_fields: [title]
+          - label: Summary for this project
+            name: summary
+            widget: text
+            required: false
+            hint: Optional. How this paper contributes to the project, in 1-3 sentences.
+          - { label: Figure, name: image, widget: image, required: false, hint: Optional. Leave empty to use the paper's first figure. }
+          - { label: Figure description, name: imageAlt, widget: string, required: false }
+          - { label: Figure caption, name: caption, widget: string, required: false }
+          - label: Code, demos and videos
+            name: resources
+            widget: list
+            required: false
+            label_singular: link
+            summary: "{{fields.label}}"
+            fields:
+              - { label: Link text, name: label, widget: string, hint: 'e.g. "Code", "Interactive demo", "Presentation".' }
+              - { label: URL, name: href, widget: string, pattern: ['^https?://', "Start the link with https://"] }
+              - label: Kind
+                name: type
+                widget: select
+                options:
+                  - { label: Code, value: code }
+                  - { label: Demo, value: demo }
+                  - { label: Video, value: video }
+                  - { label: Website, value: website }
+      - label: Project-wide links
+        name: resources
+        widget: list
+        required: false
+        label_singular: link
+        summary: "{{fields.label}}"
+        hint: Optional. Links about the whole project rather than one paper.
+        fields:
+          - { label: Link text, name: label, widget: string, hint: 'e.g. "Code", "Interactive demo", "Presentation".' }
+          - { label: URL, name: href, widget: string, pattern: ['^https?://', "Start the link with https://"] }
+          - label: Kind
+            name: type
+            widget: select
+            options:
+              - { label: Code, value: code }
+              - { label: Demo, value: demo }
+              - { label: Video, value: video }
+              - { label: Website, value: website }
+      - label: Position on the Research page
+        name: order
+        widget: number
+        value_type: int
+        required: false
+        hint: Lower numbers are listed first; projects without a number are listed last. When no paper is featured, the first three appear in the home page Research Spotlight.
+
+  - name: news
+    label: News
+    label_singular: News item
+    description: Lab headlines. The latest six appear in Lab Updates on the home page and all of them on the News page. To feature research on the home page, use the spotlight section of a publication instead.
+    folder: niiv/src/content/news
+    extension: json
+    format: json
+    create: true
+    identifier_field: title
+    slug: "{{fields.date}}-{{slug}}"
+    summary: "{{fields.date}} · {{title}}"
+    sortable_fields: [date, title]
+    view_groups:
+      - { label: Category, field: category }
+    editor: { preview: false }
+    fields:
+      - label: Month
+        name: date
+        widget: datetime
+        format: YYYY-MM
+        date_format: YYYY-MM
+        time_format: false
+        picker_utc: true
+        hint: Pick any day in the month it happened; only the month and year are shown.
+      - label: Category
+        name: category
+        widget: select
+        options: [Publication, Award, Grant, Milestone, Event, Showcase]
+      - label: Headline
+        name: title
+        widget: string
+        hint: 'One line with who did what, e.g. "Vrushali Koli''s paper was accepted at HCI+NLP".'
+      - label: Details
+        name: description
+        widget: text
+        required: false
+        hint: Optional. One or two sentences shown on the News page.
+      - label: Link
+        name: link
+        widget: string
+        required: false
+        pattern: ['^https?://', "Start the link with https://"]
+        hint: Optional. The paper, announcement or post the headline should open.
+
+  - name: research-assistants
+    label: Previous research assistants
+    label_singular: Research assistant
+    description: Names listed under "Previous research assistants" on the People page.
+    folder: niiv/src/content/research-assistants
+    extension: json
+    format: json
+    create: true
+    identifier_field: name
+    slug: "{{slug}}"
+    summary: "{{name}} · {{program}}"
+    editor: { preview: false }
+    fields:
+      - { label: Full name, name: name, widget: string }
+      - label: Program
+        name: program
+        widget: select
+        options: ["M.S. Data Science", "B.S. IT/CS/DS"]

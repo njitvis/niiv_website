@@ -1,0 +1,16 @@
+# Who reviews website changes. On every pull request that touches these paths,
+# GitHub automatically requests a review from the people listed and emails them,
+# including edits submitted through the /admin editor.
+#
+# Owners must have write access to this repository. Replace the placeholder
+# usernames below before merging (see niiv/CONTENT_EDITING.md → Launch checklist).
+
+# Content edited in /admin: people, publications, projects, news, uploaded files.
+/niiv/src/content/       @APPROVER_1 @APPROVER_2
+/niiv/public/            @APPROVER_1 @APPROVER_2
+
+# Editor setup, checks and sign-in helper.
+/niiv/public/admin/      @APPROVER_1
+/niiv/scripts/           @APPROVER_1
+/cms-auth/               @APPROVER_1
+/.github/                @APPROVER_1

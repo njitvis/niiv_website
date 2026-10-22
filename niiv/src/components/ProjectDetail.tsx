@@ -1,11 +1,4 @@
-import {
-  ArrowLeft,
-  Code2,
-  ExternalLink,
-  FileText,
-  MonitorPlay,
-  PlayCircle,
-} from "lucide-react";
+import { ArrowLeft, Code2, ExternalLink, MonitorPlay, PlayCircle } from "lucide-react";
 import { Link } from "react-router-dom";
 import {
   getProjectLatestYear,
@@ -14,7 +7,9 @@ import {
   type ProjectData,
   type ProjectResource,
 } from "../data/projectData";
-import type { Pub } from "../data/publications";
+import { paperHref } from "../data/publications";
+import { getPaperLinks } from "../lib/paperLinks";
+import LinkButton from "./LinkButton";
 import RelatedProjects from "./RelatedProjects";
 
 type ProjectDetailProps = {
@@ -36,83 +31,16 @@ const ResourceLinks = ({
   if (!resources?.length) return null;
 
   return (
-    <div className="flex flex-wrap gap-2">
-      {resources.map((resource) => {
-        const Icon = resourceIcon[resource.type];
-
-        return (
-          <a
-            key={`${resource.label}-${resource.href}`}
-            href={resource.href}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex min-h-10 items-center gap-2 rounded-md border border-gray-300 bg-white px-3.5 py-2 text-sm font-semibold text-gray-800 transition-colors hover:border-[#CC0000] hover:text-[#B00000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
-          >
-            <Icon className="h-4 w-4" aria-hidden="true" />
-            {resource.label}
-          </a>
-        );
-      })}
-    </div>
-  );
-};
-
-const PublicationLinks = ({ publication }: { publication: Pub }) => {
-  const links = [
-    publication.links?.pdf
-      ? {
-          label: "PDF",
-          href: publication.links.pdf,
-          icon: FileText,
-        }
-      : null,
-    publication.links?.doi
-      ? {
-          label: "DOI",
-          href: publication.links.doi,
-          icon: ExternalLink,
-        }
-      : null,
-    publication.links?.arxiv
-      ? {
-          label: "arXiv",
-          href: publication.links.arxiv,
-          icon: ExternalLink,
-        }
-      : null,
-    publication.links?.website
-      ? {
-          label: "Publication page",
-          href: publication.links.website,
-          icon: ExternalLink,
-        }
-      : null,
-    publication.links?.code
-      ? {
-          label: "Code",
-          href: publication.links.code,
-          icon: Code2,
-        }
-      : null,
-  ].filter((link) => link !== null);
-
-  if (links.length === 0) return null;
-
-  return (
-    <div className="flex flex-wrap gap-2">
-      {links.map(({ label, href, icon: Icon }) => (
-        <a
-          key={`${label}-${href}`}
-          href={href}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex min-h-10 items-center gap-2 rounded-md bg-gray-950 px-3.5 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#B00000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
-        >
-          <Icon className="h-4 w-4" aria-hidden="true" />
-          {label}
-        </a>
+    <>
+      {resources.map((resource) => (
+        <LinkButton
+          key={`${resource.label}-${resource.href}`}
+          href={resource.href}
+          label={resource.label}
+          icon={resourceIcon[resource.type]}
+        />
       ))}
-    </div>
+    </>
   );
 };
 
@@ -123,7 +51,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
   return (
     <div className="min-h-screen bg-[#F8F9FA]">
       <header className="border-b border-gray-100 bg-[#F8F9FA]">
-        <div className="container mx-auto px-4 py-10 sm:py-14 lg:px-8">
+        <div className="site-shell py-10 sm:py-14">
           <Link
             to="/research"
             className="mb-8 inline-flex items-center gap-2 text-sm font-semibold text-gray-600 hover:text-[#B00000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
@@ -132,7 +60,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
             Back to research
           </Link>
 
-          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(360px,0.95fr)]">
+          <div className="grid items-center gap-10 lg:grid-cols-[minmax(0,1.05fr)_minmax(0,0.95fr)]">
             <div>
               <p className="mb-3 text-xs font-semibold uppercase text-[#B00000]">
                 Research area
@@ -140,7 +68,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
               <h1 className="max-w-4xl text-4xl font-bold leading-tight text-gray-950 sm:text-5xl">
                 {project.title}
               </h1>
-              <p className="mt-5 max-w-3xl text-lg leading-8 text-gray-600">
+              <p className="reading-copy mt-5 max-w-3xl text-gray-700">
                 {project.description}
               </p>
 
@@ -173,7 +101,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
               </div>
 
               {project.resources && (
-                <div className="mt-7">
+                <div className="mt-7 flex flex-wrap gap-2">
                   <ResourceLinks resources={project.resources} />
                 </div>
               )}
@@ -192,11 +120,11 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
 
       <main>
         <section className="border-b border-gray-200 bg-white py-12 sm:py-16">
-          <div className="container mx-auto grid gap-5 px-4 lg:grid-cols-[220px_minmax(0,760px)] lg:px-8">
+          <div className="site-shell grid gap-5 lg:grid-cols-[minmax(0,1fr)_minmax(0,3fr)]">
             <h2 className="text-sm font-semibold uppercase text-[#B00000]">
               Overview
             </h2>
-            <p className="text-lg leading-8 text-gray-700">{project.overview}</p>
+            <p className="reading-copy text-gray-700">{project.overview}</p>
           </div>
         </section>
 
@@ -204,7 +132,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
           className="bg-[#F8F9FA] py-12 sm:py-16"
           aria-labelledby="research-outputs"
         >
-          <div className="container mx-auto px-4 lg:px-8">
+          <div className="site-shell">
             <div className="mb-4 max-w-3xl">
               <p className="mb-2 text-xs font-semibold uppercase text-[#B00000]">
                 Publications and outcomes
@@ -219,14 +147,14 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
 
             <div className="mt-8 grid gap-5">
               {publications.map(
-                ({
-                  publication,
-                  summary,
-                  image,
-                  imageAlt,
-                  caption,
-                  resources,
-                }) => (
+                ({ publication, summary, resources, ...entry }) => {
+                  // A figure set on this project wins; otherwise the paper's first figure.
+                  const figure = entry.image
+                    ? { image: entry.image, alt: entry.imageAlt ?? "", caption: entry.caption }
+                    : publication.figures?.[0];
+                  const image = figure?.image;
+
+                  return (
                   <article
                     key={publication.id}
                     className="rounded-lg border border-gray-200/80 bg-white/80 p-6 shadow-sm backdrop-blur-sm sm:p-8 supports-[backdrop-filter]:bg-white/70"
@@ -234,7 +162,7 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
                     <div
                       className={
                         image
-                          ? "grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(320px,0.85fr)] lg:gap-12"
+                          ? "grid items-start gap-8 lg:grid-cols-[minmax(0,1.15fr)_minmax(0,0.85fr)] lg:gap-12"
                           : "max-w-4xl"
                       }
                     >
@@ -243,43 +171,51 @@ const ProjectDetail = ({ project }: ProjectDetailProps) => {
                           {publication.venue} · {publication.year}
                         </p>
                         <h3 className="text-2xl font-semibold leading-snug text-gray-950">
-                          {publication.title}
+                          <Link
+                            to={paperHref(publication.id)}
+                            className="hover:text-[#B00000] focus-visible:rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
+                          >
+                            {publication.title}
+                          </Link>
                         </h3>
                         <p className="mt-3 text-sm leading-6 text-gray-600">
                           {publication.authors}
                         </p>
                         {summary && (
-                          <p className="mt-5 text-base leading-7 text-gray-700">
+                          <p className="reading-copy mt-5 text-gray-700">
                             {summary}
                           </p>
                         )}
 
                         <div className="mt-6 flex flex-wrap gap-2">
-                          <PublicationLinks publication={publication} />
+                          {getPaperLinks(publication).map((link) => (
+                            <LinkButton key={link.href} href={link.href} label={link.label} icon={link.icon} primary={link.primary} />
+                          ))}
                           <ResourceLinks resources={resources} />
                         </div>
                       </div>
 
-                      {image && (
+                      {figure && (
                         <figure>
                           <div className="flex aspect-[16/10] items-center justify-center overflow-hidden rounded-md border border-gray-200/80 bg-[#F8F9FA] p-4">
                             <img
-                              src={image}
-                              alt={imageAlt ?? ""}
+                              src={figure.image}
+                              alt={figure.alt}
                               loading="lazy"
                               className="h-full w-full object-contain"
                             />
                           </div>
-                          {caption && (
+                          {(figure.caption || figure.credit) && (
                             <figcaption className="mt-3 text-xs leading-5 text-gray-500">
-                              {caption}
+                              {figure.caption ?? figure.credit}
                             </figcaption>
                           )}
                         </figure>
                       )}
                     </div>
                   </article>
-                ),
+                  );
+                },
               )}
             </div>
           </div>

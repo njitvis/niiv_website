@@ -105,13 +105,13 @@ const Contact = () => {
     <div className="bg-[#F8F9FA]">
       <main>
         <section className="border-b border-gray-100 bg-white py-10 sm:py-12">
-          <div className="container mx-auto px-4 lg:px-8">
-            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(440px,1.1fr)] lg:items-center lg:gap-14">
+          <div className="site-shell">
+            <div className="grid gap-8 lg:grid-cols-[minmax(0,0.9fr)_minmax(0,1.1fr)] lg:items-center lg:gap-14">
               <header className="max-w-3xl">
                 <h1 className="text-4xl font-bold text-gray-950 sm:text-5xl">
                   Contact
                 </h1>
-                <p className="mt-5 text-lg leading-8 text-gray-600">
+                <p className="reading-copy mt-5 text-gray-700">
                   Reach out about research collaborations, prospective
                   students, or the lab&apos;s work.
                 </p>
@@ -155,7 +155,7 @@ const Contact = () => {
         </section>
 
         <section className="pb-14 pt-6 sm:pb-20 sm:pt-8">
-          <div className="container mx-auto px-4 lg:px-8">
+          <div className="site-shell">
             <section
               className="overflow-hidden rounded-lg border border-gray-200/90 border-l-4 border-l-[#CC0000] bg-white/80 px-6 py-8 backdrop-blur-sm sm:px-8 sm:py-10"
               aria-labelledby="prospective-students-heading"
@@ -171,12 +171,12 @@ const Contact = () => {
                   >
                     Prospective students
                   </h2>
-                  <p className="mt-3 text-base leading-7 text-gray-700">
+                  <p className="reading-copy mt-3 text-gray-700">
                     We welcome inquiries from prospective Ph.D. students
                     interested in intelligible AI, visual analytics, and
                     human-centered data science.
                   </p>
-                  <p className="mt-3 text-sm leading-6 text-gray-500">
+                  <p className="reading-copy mt-3 text-gray-700">
                     Include your CV and a concise description of your research
                     interests when you contact the lab.
                   </p>
@@ -225,14 +225,14 @@ const Contact = () => {
                 >
                   Research topics
                 </h2>
-                <p className="mt-3 text-base leading-7 text-gray-600">
+                <p className="reading-copy mt-3 text-gray-700">
                   Current directions include transparent AI, visual analytics,
                   human-machine teaming, and interfaces for complex
                   sensemaking.
                 </p>
               </div>
 
-              <ul className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-3">
+              <ul className="compact-cards-grid mt-6 gap-4">
                 {RESEARCH_TOPICS.map((topic) => (
                   <li
                     key={topic.text}
@@ -243,7 +243,7 @@ const Contact = () => {
                         Funded by {topic.funder}
                       </span>
                     )}
-                    <p className="text-sm leading-6 text-gray-700">
+                    <p className="reading-copy text-gray-700">
                       {topic.text}
                     </p>
                   </li>
@@ -267,7 +267,7 @@ const Contact = () => {
                   >
                     Our location
                   </h2>
-                  <p className="mt-2 text-sm leading-6 text-gray-600">
+                  <p className="reading-copy mt-2 text-gray-700">
                     The lab is located in GITC on the NJIT campus in Newark.
                   </p>
 
@@ -308,11 +308,11 @@ const Contact = () => {
                   </div>
                 </div>
 
-                <div className="min-h-80 border-t border-gray-200/80 bg-gray-100 lg:col-span-3 lg:min-h-[430px] lg:border-l lg:border-t-0">
+                <div className="min-h-80 border-t border-gray-200/80 bg-gray-100 lg:col-span-3 lg:min-h-[26.875rem] lg:border-l lg:border-t-0">
                   <iframe
                     title="Map of Guttenberg Information Technologies Center at NJIT"
                     src={MAP_EMBED_URL}
-                    className="h-full min-h-80 w-full border-0 lg:min-h-[430px]"
+                    className="h-full min-h-80 w-full border-0 lg:min-h-[26.875rem]"
                     loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade"
                     allowFullScreen

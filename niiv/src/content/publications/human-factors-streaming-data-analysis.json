@@ -1,0 +1,15 @@
+{
+  "year": 2018,
+  "title": "Human factors in streaming data analysis: Challenges and opportunities for information visualization",
+  "authors": "Aritra Dasgupta, Dustin L. Arendt, Lyndsey R. Franklin, Pak Chung Wong, and Kristin A. Cook",
+  "venue": "Computer Graphics Forum 37.1 (2018): 254-272",
+  "tags": [
+    "CGF"
+  ],
+  "type": "journal",
+  "links": {
+    "pdf": "/publications/2018/cgf18.pdf",
+    "doi": "https://doi.org/10.1111/cgf.13264"
+  },
+  "order": 5
+}

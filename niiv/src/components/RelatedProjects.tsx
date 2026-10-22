@@ -19,7 +19,7 @@ const RelatedProjects = ({
 
   return (
     <section className="border-t border-gray-200 bg-white py-12 sm:py-16">
-      <div className="container mx-auto px-4 lg:px-8">
+      <div className="site-shell">
         <div className="mb-7 flex items-end justify-between gap-4">
           <div>
             <p className="mb-2 text-xs font-semibold uppercase text-[#B00000]">
@@ -37,17 +37,17 @@ const RelatedProjects = ({
           </Link>
         </div>
 
-        <div className="grid gap-px overflow-hidden rounded-lg border border-gray-200 bg-gray-200 md:grid-cols-3">
+        <div className="compact-cards-grid gap-px overflow-hidden rounded-lg border border-gray-200 bg-gray-200">
           {otherProjects.map((project) => (
             <Link
               key={project.slug}
               to={`/research/${project.slug}`}
               className="group flex min-h-44 flex-col bg-white p-5 transition-colors hover:bg-gray-50 focus-visible:z-10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000]"
             >
-              <h3 className="mb-3 text-base font-semibold leading-snug text-gray-950 group-hover:text-[#B00000]">
+              <h3 className="mb-3 text-xl font-semibold leading-tight text-gray-950 group-hover:text-[#B00000]">
                 {project.title}
               </h3>
-              <p className="mb-5 line-clamp-3 text-sm leading-6 text-gray-600">
+              <p className="reading-copy mb-5 line-clamp-3 text-gray-700">
                 {project.description}
               </p>
               <span className="mt-auto inline-flex items-center gap-2 text-sm font-semibold text-[#B00000]">
