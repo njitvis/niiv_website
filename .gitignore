@@ -10,3 +10,6 @@
 .env.development.local
 .env.test.local
 .env.production.local
+
+# Local report from `npm run inventory` (niiv/scripts/content-inventory.mjs)
+niiv/CONTENT_INVENTORY.md

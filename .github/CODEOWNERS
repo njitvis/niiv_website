@@ -2,15 +2,15 @@
 # GitHub automatically requests a review from the people listed and emails them,
 # including edits submitted through the /admin editor.
 #
-# Owners must have write access to this repository. Replace the placeholder
-# usernames below before merging (see niiv/CONTENT_EDITING.md → Launch checklist).
+# Owners must have write access to this repository.
+# TODO: add the professor's GitHub username as a second approver once confirmed.
 
 # Content edited in /admin: people, publications, projects, news, uploaded files.
-/niiv/src/content/       @APPROVER_1 @APPROVER_2
-/niiv/public/            @APPROVER_1 @APPROVER_2
+/niiv/src/content/       @MeghanaBangari
+/niiv/public/            @MeghanaBangari
 
 # Editor setup, checks and sign-in helper.
-/niiv/public/admin/      @APPROVER_1
-/niiv/scripts/           @APPROVER_1
-/cms-auth/               @APPROVER_1
-/.github/                @APPROVER_1
+/niiv/public/admin/      @MeghanaBangari
+/niiv/scripts/           @MeghanaBangari
+/cms-auth/               @MeghanaBangari
+/.github/                @MeghanaBangari

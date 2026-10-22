@@ -10,7 +10,7 @@ on:
       - "niiv/public/**"
       - "niiv/scripts/validate-content.mjs"
   push:
-    branches: [master]
+    branches: [master, sandbox/meghana]
     paths:
       - "niiv/src/content/**"
       - "niiv/public/**"

@@ -1,17 +1,18 @@
 # Decap CMS configuration for the NIIV website editor at /admin.
 # Paths are relative to the repository root (the site itself lives in niiv/).
-# Setup and workflow notes: niiv/CONTENT_EDITING.md
+# Sign-in setup: cms-auth/README.md
 
 backend:
   name: github
   repo: njitvis/niiv_website
-  branch: master
+  # Must be the branch AWS Amplify publishes the live site from.
+  branch: sandbox/meghana
   # Lab members without write access edit a fork and their changes arrive as
   # pull requests, so nothing reaches the site until a maintainer merges it.
   open_authoring: true
-  # GitHub sign-in goes through our helper in cms-auth/, which also holds the
-  # list of who may edit. Uncomment once it is deployed (see cms-auth/README.md).
-  # base_url: https://niiv-cms-auth.<your-account>.workers.dev
+  # GitHub sign-in goes through our helper in cms-auth/ (a Cloudflare Worker),
+  # which also holds the list of who may edit (see cms-auth/README.md).
+  base_url: https://niiv-cms-auth.mb2324.workers.dev
 
 # Every edit becomes a draft/pull request instead of going live immediately.
 publish_mode: editorial_workflow

@@ -2,6 +2,7 @@
 
 import { Routes, Route } from "react-router-dom";
 import Home from "./pages/Home";
+import AdminRedirect from "./pages/AdminRedirect";
 import Contact from "./pages/Contact";
 import News from "./pages/News";
 import NotFound from "./pages/NotFound";
@@ -23,6 +24,7 @@ function App() {
         <Route path="/research/:projectSlug" element={<Research />} />
         <Route path="/news" element={<News />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/admin/*" element={<AdminRedirect />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </Layout>
