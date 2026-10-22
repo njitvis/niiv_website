@@ -1,13 +1,13 @@
 {
+  "period": "2022 - 2026 (expected)",
+  "github": "https://github.com/vkoli",
   "name": "Vrushali Koli",
-  "role": "Ph.D. Candidate",
-  "group": "phd",
   "initials": "VK",
   "affiliation": "NJIT",
-  "period": "2022 - 2026 (expected)",
-  "email": "vk343@njit.edu",
-  "image": "/people/vrushali.jpg",
+  "role": "Ph.D. Student",
   "website": "https://vkoli.github.io/",
+  "image": "/people/vrushali.jpg",
+  "email": "vk343@njit.edu",
   "linkedin": "https://www.linkedin.com/in/vk801/",
-  "github": "https://github.com/vkoli"
+  "group": "phd"
 }
