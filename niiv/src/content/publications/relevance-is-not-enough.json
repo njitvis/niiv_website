@@ -6,8 +6,9 @@
     {
       "image": "/publications/figures/relevance-is-not-enough-pipeline.svg",
       "alt": "Community-oriented RAG pipeline: retrieval is audited for relevance and reasoning gaps before evidence-grounded, empathy-aware responses are generated.",
-      "credit": "Figure 1: Nakarmi et al., CC BY 4.0",
-      "source": "https://arxiv.org/html/2609.06222v1#S2.F1"
+      "credit": "",
+      "source": "",
+      "caption": "Our community-oriented RAG pipeline anchors on iterative reasoning gap-driven retrieval from the knowledge base (KB) for sufficient content extraction and empathy-aware response articulation. Two-step audit using Prognostic and Diagnostic check controls conciseness and sufficiency of content, respectively."
     }
   ],
   "venue": "EMNLP Industry Track 2026",
