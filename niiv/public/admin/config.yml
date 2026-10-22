@@ -165,7 +165,7 @@ collections:
           - { label: DOI link, name: doi, widget: string, required: false, pattern: ['^https?://', "Use the full link, e.g. https://doi.org/..."] }
           - { label: Code repository, name: code, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
           - { label: Project website or demo, name: website, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
-          - { label: Poster, name: poster, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+          - { label: Poster (upload a PDF or paste a link), name: poster, widget: file, required: false, hint: 'Upload the poster as a PDF (under 15 MB), or use "Insert from URL" for a public link.' }
           - { label: Demo, name: demo, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
       - { label: BibTeX, name: bibtex, widget: text, required: false }
       - label: Position within its year
