@@ -1,30 +1,32 @@
 {
-  "year": 2026,
-  "title": "Relevance is not enough: A Communication-Oriented Retrieval System for Consequential Scientific Question Answering",
-  "authors": "Avina Nakarmi, Naga Datha Saikiran Battula, Anthony Diaz, and Aritra Dasgupta",
-  "venue": "EMNLP Industry Track 2026",
-  "tags": [
-    "EMNLP",
-    "Industry Track"
-  ],
-  "type": "conf",
-  "description": "Standard Retrieval-Augmented Generation (RAG) systems are typically optimized for topical relevance, but for consequential scientific questions, such as assessing local water quality and public health risks, on-topic answers may fail to provide non-experts with the practical clarity needed to make informed decisions. Our work shows that standard automated relevance metrics account for only about 1% of the variation in human-perceived answer completeness, demonstrating that \"relevance is not enough\" in high-stakes science communication.\n\nTo address this disconnect, we introduced a communication-oriented RAG system designed to prioritize evidential sufficiency over raw context volume. The pipeline employs a two-step retrieval audit: a prognostic check filters out context noise, while a diagnostic check identifies and fills missing reasoning gaps tailored to causal, regulatory, comparative, and explanatory query types. Responses are then articulated through neighborhood-grounded personas, which lower reading difficulty, express grounded empathy, and transparently surface epistemic uncertainties without compromising factual accuracy.\n\nOur evaluation demonstrates that this reasoning-guided framework improves human-rated answer completeness while reducing retrieved context size by 25-fold compared to baseline RAG setups. Accepted at the EMNLP Industry Track 2026, this work underscores the need to align retrieval mechanisms and evaluation frameworks with human-centered criteria rather than relying on standard relevance metrics in high-stakes science communication.",
   "abstract": "AI systems increasingly answer scientific questions about health, safety, and the environment. But most retrieval-augmented generation systems are tuned to provide factually correct, on-topic answers rather than to help non-experts understand what those answers mean for their lives and decisions. We focus on consequential scientific questions whose results directly shape people's lives and study them through a public water-quality communication system, where residents and community leaders interpret the findings and choose actions. Their experiences show that on-topic answers can still be insufficient without explanation and context and that the emotional weight of risk information cannot be ignored. Our system first classifies each question by reasoning type (for example, causal versus policy-based), then generates follow-up questions to identify missing evidence and retrieve it. One component clearly distinguishes between what is known and what is uncertain, while another rewrites scientific details into accessible language, using persona-based styles, such as a caring neighbor or an administrative official, to adapt tone and readability. Ablations on over 160 questions show that the system uses an order of magnitude less context and, in several configurations, improves human-rated completeness. A completeness metric co-designed with community members and a fine-tuned learned judge reveal that standard relevance scores explain about 1% of variation in human completeness ratings, and even the tuned judge only moderately aligns with humans, indicating that completeness is a distinct human-centered objective that current metrics do not reliably capture.",
-  "links": {
-    "arxiv": "https://arxiv.org/abs/2609.06222",
-    "code": "https://github.com/njitvis/RelevanceIsNotEnough",
-    "poster": "https://docs.google.com/presentation/d/1yK4iFUQEW7VFMZvxIlBWD7PVkY2wfVlW2Sr9DKgbR_I/edit?slide=id.g3f8e684c0ce_3_2#slide=id.g3f8e684c0ce_3_2"
-  },
-  "spotlight": {
-    "title": "Relevance is not enough",
-    "summary": "A communication-oriented RAG system that helps non-experts understand scientific evidence, uncertainty, and what findings mean for their decisions. Reasoning-guided retrieval improves human-rated answer completeness while using less context."
-  },
+  "authors": "Avina Nakarmi, Naga Datha Saikiran Battula, Anthony Diaz, and Aritra Dasgupta",
+  "bibtex": "@article{nakarmi2026relevance,\n  title={Relevance is not enough: A Communication-Oriented Retrieval System for Consequential Scientific Question Answering},\n  author={Nakarmi, Avina and Battula, Naga Datha Saikiran and Diaz, Anthony and Dasgupta, Aritra},\n  journal={arXiv preprint arXiv:2609.06222},\n  year={2026}\n}",
   "figures": [
     {
       "image": "/publications/figures/relevance-is-not-enough-pipeline.svg",
       "alt": "Community-oriented RAG pipeline: retrieval is audited for relevance and reasoning gaps before evidence-grounded, empathy-aware responses are generated.",
-      "credit": "Figure 1: Nakarmi et al., CC BY 4.0",
-      "source": "https://arxiv.org/html/2609.06222v1#S2.F1"
+      "credit": "",
+      "source": "",
+      "caption": "Our community-oriented RAG pipeline anchors on iterative reasoning gap-driven retrieval from the knowledge base (KB) for sufficient content extraction and empathy-aware response articulation. Two-step audit using Prognostic and Diagnostic check controls conciseness and sufficiency of content, respectively."
     }
-  ]
+  ],
+  "venue": "EMNLP Industry Track 2026",
+  "spotlight": {
+    "title": "Relevance is not enough",
+    "summary": "A communication-oriented RAG system that audits retrieved context for relevance and sufficiency, iteratively retrieving missing evidence. It proposes “completeness”--measuring coverage plus transparency of uncertainty--as a human-centered metric for high-stakes scientific communication and shows that standard relevance metrics fail to capture it."
+  },
+  "title": "Relevance is not enough: A Communication-Oriented Retrieval System for Consequential Scientific Question Answering",
+  "tags": [
+    "EMNLP",
+    "Industry Track"
+  ],
+  "links": {
+    "arxiv": "https://arxiv.org/abs/2609.06222",
+    "code": "https://github.com/njitvis/RelevanceIsNotEnough",
+    "poster": "/publications/uploads/emnlp-poster.pdf"
+  },
+  "type": "conf",
+  "description": "Standard Retrieval-Augmented Generation (RAG) systems are typically optimized for topical relevance, but for consequential scientific questions, such as assessing local water quality and public health risks, on-topic answers may fail to provide non-experts with the practical clarity needed to make informed decisions. Our work shows that standard automated relevance metrics account for only about 1% of the variation in human-perceived answer completeness, demonstrating that \"relevance is not enough\" in high-stakes science communication.\n\nTo address this disconnect, we introduced a communication-oriented RAG system designed to prioritize evidential sufficiency over raw context volume. The pipeline employs a two-step retrieval audit: a prognostic check filters out context noise, while a diagnostic check identifies and fills missing reasoning gaps tailored to causal, regulatory, comparative, and explanatory query types. Responses are then articulated through neighborhood-grounded personas, which lower reading difficulty, express grounded empathy, and transparently surface epistemic uncertainties without compromising factual accuracy.\n\nOur evaluation demonstrates that this reasoning-guided framework improves human-rated answer completeness while reducing retrieved context size by 25-fold compared to baseline RAG setups. Accepted at the EMNLP Industry Track 2026, this work underscores the need to align retrieval mechanisms and evaluation frameworks with human-centered criteria rather than relying on standard relevance metrics in high-stakes science communication.",
+  "year": 2026
 }
