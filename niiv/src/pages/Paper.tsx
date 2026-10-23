@@ -169,7 +169,7 @@ const Paper = () => {
             {mainText && (
               <section aria-labelledby="paper-about">
                 <h2 id="paper-about" className="font-serif text-2xl font-semibold text-gray-950">
-                  {publication.description ? "Motivation and contributions" : "Abstract"}
+                  {publication.description ? "Motivation and Contributions" : "Abstract"}
                 </h2>
                 <p className="reading-copy mt-4 whitespace-pre-line text-gray-800">{mainText}</p>
               </section>

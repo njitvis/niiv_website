@@ -127,11 +127,11 @@ collections:
         hint: 'Comma-separated, e.g. "IEEE VIS" or "EuroVis, CGF".'
       - { label: Award, name: award, widget: string, required: false, hint: 'e.g. "Best Paper Honorable Mention".' }
       - { label: Abstract, name: abstract, widget: text, required: false }
-      - label: Motivation and contributions
+      - label: Motivation and Contributions
         name: description
         widget: text
         required: false
-        hint: Optional. Why this work matters and what it contributes, in plain language. Shown under "Motivation and contributions" on the paper's own page; if the paper also has an abstract, the abstract is tucked under "Read abstract" there.
+        hint: Optional. Why this work matters and what it contributes, in plain language. Shown under "Motivation and Contributions" on the paper's own page; if the paper also has an abstract, the abstract is tucked under "Read abstract" there.
       - label: Figures
         name: figures
         widget: list
