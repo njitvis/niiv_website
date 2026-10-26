@@ -1,0 +1,17 @@
+{
+  "year": 2026,
+  "title": "A Multimodal Reasoning Typology for Grounding Chart-Image Coherence in Science Communication",
+  "authors": "Avina Nakarmi, Sohom Sen, Xun Song, Sreyashi Samaddar, and Aritra Dasgupta",
+  "venue": "IEEE VIS 2026 (Short Papers)",
+  "tags": [
+    "IEEE VIS",
+    "Short Paper"
+  ],
+  "type": "conf",
+  "abstract": "Charts and images appear together throughout scientific publications, yet most computational work does not characterize their coherence. We argue that a chart, its accompanying image, and the caption that links them form a multimodal unit, and that the inferential work required to read it varies systematically. To capture this variation, we develop a typology of reasoning gaps, R1 through R5, that characterizes how chart, image, and text jointly convey a scientific claim, and the interpretive work this demands of the reader. Some pairs restate the same data, while in other pairs, charts are used to quantify a structure the image localizes, project image content onto an external variable, audit an image-based claim, or jointly construct a frame that neither panel can establish alone. The typology is anchored in the grounding theory of communication and was derived bottom-up, with a neuroscience expert, from a corpus of 79 traumatic brain injury papers and 32 chart-image pairs. Crucially, the levels provide a systematic mechanism for identifying where grounding succeeds or breaks down, rather than leaving it to subjective inference. We show this in a study in which a domain expert and three non-experts judge vision-language model (VLM) descriptions of 25 pairs: the level predicts where their judgments align and where they diverge, isolating the points at which contextual knowledge, not the figure, carries coherence. This typology thus offers figure designers a systematic way to balance text against chart-image pairs, bridging the expert-to-non-expert divide in reading a scientific takeaway.",
+  "links": {
+    "arxiv": "https://arxiv.org/abs/2607.05222"
+  },
+  "bibtex": "@article{nakarmi2026multimodal,\n  title={A Multimodal Reasoning Typology for Grounding Chart-Image Coherence in Science Communication},\n  author={Nakarmi, Avina and Sen, Sohom and Song, Xun and Samaddar, Sreyashi and Dasgupta, Aritra},\n  journal={arXiv preprint arXiv:2607.05222},\n  year={2026}\n}",
+  "order": 2
+}

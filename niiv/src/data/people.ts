@@ -14,6 +14,8 @@ export type Person = {
   email?: string;
   image?: string;
   website?: string;
+  /** Workplace profile page, e.g. on an employer's site; shown with a briefcase icon. */
+  workWebsite?: string;
   github?: string;
   linkedin?: string;
   scholar?: string;

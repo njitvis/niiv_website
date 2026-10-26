@@ -3,6 +3,7 @@ import { loadEntries } from "../lib/content";
 export const NEWS_CATEGORIES = [
   "Publication",
   "Award",
+  "Challenge",
   "Grant",
   "Milestone",
   "Event",

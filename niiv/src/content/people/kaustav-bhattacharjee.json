@@ -4,8 +4,12 @@
   "group": "alumni",
   "initials": "KB",
   "period": "2019 - 2024",
-  "note": "Postdoctoral Research Associate, Optimization and Control Group at PNNL",
-  "email": "kb526@njit.edu",
+  "note": "Data Scientist, Optimization and Control Group at PNNL",
+  "email": "kaustav.bhattacharjee@pnnl.gov",
   "image": "/people/kaustav.png",
-  "website": "https://kaustavbhattacharjee.com/"
+  "website": "https://kaustavbhattacharjee.com/",
+  "workWebsite": "https://www.pnnl.gov/people/kaustav-bhattacharjee",
+  "github": "https://github.com/kaustavbhattacharjee",
+  "linkedin": "https://www.linkedin.com/in/kaustav-bhattacharjee/",
+  "scholar": "https://scholar.google.com/citations?user=vNbc-p0AAAAJ&hl=en"
 }
