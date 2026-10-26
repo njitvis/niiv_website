@@ -1,0 +1,16 @@
+{
+  "year": 2026,
+  "title": "Who Paid for It? Evaluating Reasoning Cost in AI-Mediated Visual Analytics",
+  "authors": "Aritra Dasgupta and Naga Datha Saikiran Battula",
+  "venue": "BELIV Workshop at IEEE VIS 2026",
+  "tags": [
+    "BELIV",
+    "IEEE VIS Workshop"
+  ],
+  "type": "conf",
+  "abstract": "Visual analytics began with a cognitive ambition rather than a graphical one: it was defined as the science of analytical reasoning carried out through a principled combination of interactivity and visual representations of data. That ambition, while still relevant, needs to be reoriented in the modern AI era, where human-AI roles, systems, and tools will continue to evolve. The goal of this paper is to recalibrate what analytical reasoning looks like in human-AI collaboration, because that recalibration is what tells us how to evaluate and design these systems: a chart, a caption, or an interaction log can look thoroughly reasoned while a person did little more than approve what a model produced with minimal agency, and the visible trace gives no sign of the difference. An evaluation task only traces the system's reasoning, and a designer working from such evaluations has no signal about which parts of the reasoning the human should still be doing. What it cannot show is who actually paid the cost of the reasoning, and that is the question we think worth asking.\n\nThe central position is this: instead of judging critical thinking by the coherence of the final artifact, we judge it by how the cost of reasoning is borne, passed on, or lost at each handoff. The handoffs are not chosen ad hoc; they are the encode-decode transitions that already structure a human-AI visualization pipeline, where intent becomes encoding, encoding becomes artifact, and artifact becomes interpretation. As it crosses a handoff, a reasoning element can sit in one of four states: transmitted, when the human bore the cost and the trace says so; offloaded, when the model bore it in the open; misattributed, when the model bore it, but the trace credits the human; and evaporated, when no one bore it, yet the artifact carries it anyway. Three of these four states can leave behind the same visible trace, so an evaluator who reads only the finished output cannot tell the reasoning an analyst genuinely did from the convincing appearance of reasoning that no one did. Asking the analyst does not rescue the judgment either: whoever is best placed to report on a handoff usually took part in it, and no one can honestly account for a cost they never paid. In high-consequence real-world settings, a clinician acting on a model's cohort or an analyst briefing a decision, tracking who paid at each handoff is what turns a trace into a diagnosis of collaboration gone wrong.",
+  "links": {
+    "website": "https://ieeevis.org/year/2026/program/content/0b8437e7-f177-499d-883d-b21947053ded/"
+  },
+  "order": 3
+}

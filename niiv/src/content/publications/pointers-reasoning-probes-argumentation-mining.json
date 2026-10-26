@@ -1,0 +1,18 @@
+{
+  "year": 2026,
+  "title": "POINTERS at UZH Shared Task 2026: Reasoning Probes for Argumentation Mining in UN Resolutions",
+  "authors": "Sohom Sen, Avina Nakarmi, Xun Song, and Aritra Dasgupta",
+  "venue": "Proceedings of the 13th Workshop on Argument Mining and Reasoning (ArgMining), ACL 2026, pp. 145-150",
+  "tags": [
+    "ACL Workshop",
+    "ArgMining"
+  ],
+  "type": "conf",
+  "abstract": "This paper describes the submission of team POINTERS to the UZH ArgMining 2026 Shared Task, which aims to recover the argumentation structure of UN and UNESCO resolutions by labeling paragraph types, assigning specific tags, and predicting relations between paragraphs. We take a generative approach, treating each resolution as a sequence of claim-evidence pairs connected by explicit reasoning strategies. First, each paragraph is classified as preambular or operative and assigned tags from a 126-code vocabulary, with the model required to quote specific phrases to justify every decision. Second, for each paragraph, we first retrieve semantically related candidates using sentence transformers, then use reasoning strategies as a diagnostic scaffold to label the relation—supporting, complemental, contradictive, or modifying—along with a quoted, strategy-grounded rationale. Both steps run locally on Qwen3-8B-GGUF (Team, 2025) (NVIDIA RTX 4080, 16 GB VRAM) without any cloud API calls. In the absence of labeled data, we use Claude Sonnet 4.6 only for an internal diagnostic evaluation of the generated reasoning traces. The results show that a sub-8B open-source model can produce evidence-grounded explanations for formal diplomatic text, while relation labeling remains sensitive to the distinction between retrieval and reasoning strategy-based diagnosis.",
+  "links": {
+    "pdf": "https://aclanthology.org/2026.argmining-1.16.pdf",
+    "doi": "https://doi.org/10.18653/v1/2026.argmining-1.16"
+  },
+  "bibtex": "@inproceedings{sen-etal-2026-pointers,\n  title = \"{POINTERS} at {UZH} Shared Task 2026: Reasoning Probes for Argumentation Mining in {UN} Resolutions\",\n  author = \"Sen, Sohom and Nakarmi, Avina and Song, Xun and Dasgupta, Aritra\",\n  booktitle = \"Proceedings of the 13th Workshop on Argument Mining and Reasoning\",\n  month = jul,\n  year = \"2026\",\n  address = \"San Diego, California, USA\",\n  publisher = \"Association for Computational Linguistics\",\n  url = \"https://aclanthology.org/2026.argmining-1.16/\",\n  doi = \"10.18653/v1/2026.argmining-1.16\",\n  pages = \"145--150\"\n}",
+  "order": 4
+}

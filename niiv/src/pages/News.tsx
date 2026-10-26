@@ -7,6 +7,7 @@ import {
   ExternalLink,
   GraduationCap,
   Presentation,
+  Trophy,
   Users,
   type LucideIcon,
 } from "lucide-react";
@@ -16,6 +17,7 @@ import { NEWS, NEWS_CATEGORIES, type NewsCategory } from "../data/news";
 const CATEGORY_STYLES: Record<NewsCategory, { icon: LucideIcon; className: string }> = {
   Publication: { icon: BookOpen, className: "bg-blue-50 text-blue-700 ring-blue-600/15" },
   Award: { icon: Award, className: "bg-amber-50 text-amber-800 ring-amber-600/20" },
+  Challenge: { icon: Trophy, className: "bg-orange-50 text-orange-700 ring-orange-600/15" },
   Grant: { icon: DollarSign, className: "bg-green-50 text-green-700 ring-green-600/15" },
   Milestone: { icon: GraduationCap, className: "bg-red-50 text-[#CC0000] ring-[#CC0000]/15" },
   Event: { icon: Users, className: "bg-purple-50 text-purple-700 ring-purple-600/15" },

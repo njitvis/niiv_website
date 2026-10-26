@@ -73,7 +73,7 @@ const people = readCollection("people");
 for (const entry of people) {
   requireFields(entry, ["name", "role", "group"]);
   requireOneOf(entry, "group", ["faculty", "phd", "alumni", "former"]);
-  for (const field of ["image", "website", "github", "linkedin", "scholar"]) checkLink(entry.where, field, entry.data[field]);
+  for (const field of ["image", "website", "workWebsite", "github", "linkedin", "scholar"]) checkLink(entry.where, field, entry.data[field]);
 }
 
 const publications = readCollection("publications");
@@ -104,7 +104,7 @@ for (const entry of publications) {
 const news = readCollection("news");
 for (const entry of news) {
   requireFields(entry, ["date", "category", "title"]);
-  requireOneOf(entry, "category", ["Publication", "Award", "Grant", "Milestone", "Event", "Showcase"]);
+  requireOneOf(entry, "category", ["Publication", "Award", "Challenge", "Grant", "Milestone", "Event", "Showcase"]);
   if (!blank(entry.data.date) && !/^\d{4}-(0[1-9]|1[0-2])(-\d{2})?$/.test(entry.data.date)) {
     errors.push(`${entry.where}: "date" must be a month like 2024-11 (got "${entry.data.date}")`);
   }

@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from "react";
 import {
   ArrowRight,
+  Briefcase,
   Check,
   GraduationCap,
   Github,
@@ -296,6 +297,13 @@ const ProfileLinks = ({ person }: { person: Person }) => {
           href: person.website,
           label: `${person.name}'s website`,
           icon: Globe,
+        }
+      : null,
+    person.workWebsite
+      ? {
+          href: person.workWebsite,
+          label: `${person.name}'s work profile`,
+          icon: Briefcase,
         }
       : null,
     person.linkedin

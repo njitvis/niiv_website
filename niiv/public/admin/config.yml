@@ -75,6 +75,7 @@ collections:
         hint: 'e.g. "Postdoctoral Research Associate at PNNL".'
       - { label: Email, name: email, widget: string, required: false, pattern: ['^[^@\s]+@[^@\s]+\.[^@\s]+$', "Enter a valid email address"] }
       - { label: Personal website, name: website, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+      - { label: Work profile page, name: workWebsite, widget: string, required: false, hint: 'Optional. A profile on an employer''s site, e.g. "https://www.pnnl.gov/people/…". Shown with a briefcase icon.', pattern: ['^https?://', "Start the link with https://"] }
       - { label: GitHub profile, name: github, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
       - { label: LinkedIn profile, name: linkedin, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
       - { label: Google Scholar profile, name: scholar, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
@@ -298,7 +299,7 @@ collections:
       - label: Category
         name: category
         widget: select
-        options: [Publication, Award, Grant, Milestone, Event, Showcase]
+        options: [Publication, Award, Challenge, Grant, Milestone, Event, Showcase]
       - label: Headline
         name: title
         widget: string
