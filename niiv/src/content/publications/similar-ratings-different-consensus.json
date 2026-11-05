@@ -1,0 +1,17 @@
+{
+  "year": 2026,
+  "title": "Similar Ratings, Different Consensus: Visualizing Agreement Uncertainty in Survey Data",
+  "authors": "Vrushali Koli, Yi Meng, Eugene P. Deess, and Aritra Dasgupta",
+  "venue": "Uncertainty Visualization Workshop at IEEE VIS 2026",
+  "tags": [
+    "Uncertainty Visualization",
+    "IEEE VIS Workshop"
+  ],
+  "type": "conf",
+  "award": "Best Paper Award",
+  "abstract": "Survey results are routinely summarized with scalar measures of agreement to compare questionnaire items, yet those summaries are hard to interpret on bounded rating scales. Most uncertainty visualizations communicate uncertainty by representing multiple possible values, estimates, or outcomes.\n\nWe consider a complementary source: the responses and the computed agreement score are fixed, but the meaning of that score depends on where it sits on the scale. Because responses have less room to spread near the endpoints of a five-point Likert item, agreement there is mechanically constrained, so the same score can arise from very different distributions and can imply different consensus at different rating levels. We call this ambiguity agreement uncertainty; collecting more responses does not resolve it, since the score must instead be read against the feasible agreement space at its rating level.\n\nWe introduce residual consensus, a calibration that expresses agreement relative to what the scale allows, informative only where that space has enough resolution and therefore read alongside the response distribution itself. Drawing on ideas from possibility-framing and meta-uncertainty in uncertainty visualization, we contribute a coordinated view that shows calibrated agreement, its positional informativeness, and the distribution together, demonstrated on real-world survey datasets to support more meaningful comparisons across bounded scales.",
+  "links": {
+    "website": "https://ieeevis.org/year/2026/program/content/97ae9dc5-b01d-4eac-aeae-8edab7180a4d/"
+  },
+  "order": 4
+}

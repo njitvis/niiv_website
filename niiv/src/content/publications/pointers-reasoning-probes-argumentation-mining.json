@@ -14,5 +14,5 @@
     "doi": "https://doi.org/10.18653/v1/2026.argmining-1.16"
   },
   "bibtex": "@inproceedings{sen-etal-2026-pointers,\n  title = \"{POINTERS} at {UZH} Shared Task 2026: Reasoning Probes for Argumentation Mining in {UN} Resolutions\",\n  author = \"Sen, Sohom and Nakarmi, Avina and Song, Xun and Dasgupta, Aritra\",\n  booktitle = \"Proceedings of the 13th Workshop on Argument Mining and Reasoning\",\n  month = jul,\n  year = \"2026\",\n  address = \"San Diego, California, USA\",\n  publisher = \"Association for Computational Linguistics\",\n  url = \"https://aclanthology.org/2026.argmining-1.16/\",\n  doi = \"10.18653/v1/2026.argmining-1.16\",\n  pages = \"145--150\"\n}",
-  "order": 4
+  "order": 6
 }
