@@ -1,0 +1,43 @@
+{
+  "title": "IEEE VIS Publications: Growth, Venue Mix, and the Journal Turn",
+  "subtitle": "A guided-to-open exploration of how 3,877 IEEE VIS papers changed from 1990 through 2024.",
+  "overview": "The IEEE VIS record is not just a story of more papers; it is a story of changing containers for those papers. The surprising endpoint is 2024, when journal papers account for 100.0% of 124 papers. The stem first separates annual volume from venue concentration, then shows that the deeper structural change is the move from conference-paper dominance toward journal-paper dominance. The bowl lets readers test that turn against collaboration size, keyword coverage, and paper-type leadership years.",
+  "key_findings": [
+    {
+      "value": "3,877",
+      "label": "papers in scope",
+      "detail": "counted across the 1990–2024 IEEE VIS record"
+    },
+    {
+      "value": "174",
+      "label": "peak annual output",
+      "detail": "papers in 2004, compared with 53 in 1990"
+    },
+    {
+      "value": "1,942",
+      "label": "Vis papers",
+      "detail": "the largest overall conference contribution"
+    },
+    {
+      "value": "100.0%",
+      "label": "journal share in 2024",
+      "detail": "124 of 124 papers are J in the paper-type table"
+    },
+    {
+      "value": "4.7016",
+      "label": "authors per paper in 2024",
+      "detail": "up from 2.2642 in 1990"
+    }
+  ],
+  "takeaway": "The panels converge on one conclusion: IEEE VIS changed less by simple expansion than by rebalancing into a journal-centered publication record, with Vis remaining the largest venue grouping and collaboration/metadata measures maturing by 2024. What follows is practical: read any long-run VIS trend through paper type and venue mix before attributing it to overall community growth. The conclusion would change if later years returned to a conference-paper majority or if the 2024 journal-only endpoint proved to be a normalization artifact.",
+  "stem_kicker": "Guided stem",
+  "stem_title": "From paper volume to publication structure",
+  "stem_note": "Read the first four panels in order: they move from the count of papers, to the venue producing the most papers, to yearly venue mix, and finally to the paper-type shift. Together they build the case that composition, not just volume, explains the modern record.",
+  "bowl_title": "Explore the turn yourself",
+  "bowl_note": "Use the remaining panels to test whether the journal turn aligns with collaboration, keyword coverage, and the years when each paper kind leads.",
+  "caveats": [
+    "Tables are mechanically normalized from the raw files without task-specific reinterpretation.",
+    "Conference and per-year counts include all 3,877 source rows.",
+    "Paper-type labels are shown as C, J, and M as provided in the analysis table."
+  ]
+}

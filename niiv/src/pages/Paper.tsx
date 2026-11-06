@@ -105,6 +105,11 @@ const Paper = () => {
   const mainText = publication.description ?? publication.abstract;
   const extraAbstract = publication.description && publication.abstract ? publication.abstract : undefined;
   const figures = publication.figures ?? [];
+  // Figures go in the gallery above the text unless placed below the abstract.
+  const galleryFigures = figures.filter((figure) => figure.placement !== "below-abstract");
+  const figuresBelowAbstract = figures.filter((figure) => figure.placement === "below-abstract");
+  // A figure drawn in code (e.g. a pipeline diagram) gets the full page width above the text.
+  const wideFigures = galleryFigures.some((figure) => figure.interactive);
 
   return (
     <div className="min-h-screen bg-[#F8F9FA]">
@@ -157,14 +162,20 @@ const Paper = () => {
               {getPaperLinks(publication).map((link) => (
                 <LinkButton key={link.href} href={link.href} label={link.label} icon={link.icon} primary={link.primary} />
               ))}
-              <CiteButton publication={publication} />
+              {!publication.hideCite && <CiteButton publication={publication} />}
             </div>
           </div>
         </section>
 
+        {wideFigures && (
+          <div className="site-shell pt-10 sm:pt-14">
+            <FigureGallery figures={galleryFigures} />
+          </div>
+        )}
+
         <div className="site-shell grid gap-10 py-10 sm:py-14 lg:grid-cols-[minmax(0,1fr)_18rem] lg:gap-14">
           <div className="min-w-0 space-y-10">
-            {figures.length > 0 && <FigureGallery figures={figures} />}
+            {!wideFigures && galleryFigures.length > 0 && <FigureGallery figures={galleryFigures} />}
 
             {mainText && (
               <section aria-labelledby="paper-about">
@@ -196,6 +207,19 @@ const Paper = () => {
                   </p>
                 )}
               </section>
+            )}
+
+            {figuresBelowAbstract.map((figure, index) =>
+              figure.heading ? (
+                <section key={figure.image} aria-labelledby={`paper-figure-${index}`}>
+                  <h2 id={`paper-figure-${index}`} className="mb-4 font-serif text-2xl font-semibold text-gray-950">
+                    {figure.heading}
+                  </h2>
+                  <FigureGallery figures={[figure]} />
+                </section>
+              ) : (
+                <FigureGallery key={figure.image} figures={[figure]} />
+              ),
             )}
 
             {!mainText && figures.length === 0 && (

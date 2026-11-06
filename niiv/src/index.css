@@ -252,6 +252,126 @@
       height: clamp(2.25rem, 3.5cqi, 3.5rem);
     }
   }
+
+  /* Pipeline figure drawn in HTML (components/figures). One column with down
+     arrows on phones, a 2×2 grid when there's room, and the original row of
+     four stages above the validator on wide screens. */
+  .pipeline-figure {
+    container: pipeline / inline-size;
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.875rem;
+    line-height: 1.35;
+    color: #1a1a1a;
+  }
+
+  /* Code and data lines keep their line breaks; a box too narrow for them scrolls. */
+  .pipeline-mono {
+    font-family: Consolas, "SFMono-Regular", Menlo, monospace;
+    font-size: 0.82em;
+    line-height: 1.5;
+    white-space: pre;
+    overflow-x: auto;
+  }
+
+  .pipeline-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    row-gap: 0.5rem;
+  }
+
+  .pipeline-stage {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+  }
+
+  .pipeline-arrow {
+    display: flex;
+    justify-content: center;
+  }
+
+  .pipeline-arrow svg { transform: rotate(90deg); }
+  .pipeline-connector { display: none; }
+  .pipeline-validator { margin-top: 0.75rem; }
+  .pipeline-note { margin-top: 0.5rem; }
+
+  .pipeline-checks {
+    display: grid;
+    gap: 0.6em 1.2em;
+  }
+
+  .pipeline-check { padding: 0.25em 0.45em; }
+
+  @container pipeline (min-width: 34rem) {
+    .pipeline-grid {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .pipeline-arrow { display: none; }
+
+    .pipeline-validator,
+    .pipeline-note { grid-column: 1 / -1; }
+
+    .pipeline-checks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  }
+
+  @container pipeline (min-width: 60rem) {
+    .pipeline-figure { font-size: clamp(0.75rem, 1.05cqi, 0.875rem); }
+
+    .pipeline-grid {
+      grid-template-columns:
+        minmax(0, 1fr) 1.75rem minmax(0, 1fr) 1.75rem
+        minmax(0, 1fr) 1.75rem minmax(0, 1fr);
+      grid-template-rows: auto auto 1fr 1fr 1.5rem auto auto;
+      gap: 0;
+    }
+
+    /* Stage cards share rows so their sections line up across the row. */
+    .pipeline-stage {
+      display: grid;
+      grid-row: 1 / span 4;
+      grid-template-rows: subgrid;
+      grid-template-columns: minmax(0, 1fr);
+    }
+
+    .pipeline-arrow {
+      display: flex;
+      grid-row: 1 / span 4;
+      align-items: center;
+    }
+
+    .pipeline-arrow svg { transform: none; }
+
+    .pipeline-connector {
+      display: block;
+      grid-row: 5;
+      grid-column: var(--pipeline-col);
+    }
+
+    .pipeline-validator {
+      grid-row: 6;
+      margin-top: 0;
+    }
+
+    .pipeline-note {
+      grid-row: 7;
+      margin-top: 0.6rem;
+    }
+
+    .pipeline-checks { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    /* Divider between the four checks, kept outside each check's hover background. */
+    .pipeline-check + .pipeline-check::before {
+      content: "";
+      position: absolute;
+      top: 0.2em;
+      bottom: 0.2em;
+      left: -0.6em;
+      border-left: 1px solid #c9cfcd;
+    }
+  }
 }
 
 /* Keep the existing composition on laptops with less vertical room.

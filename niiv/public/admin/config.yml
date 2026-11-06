@@ -146,6 +146,17 @@ collections:
           - { label: Caption, name: caption, widget: string, required: false, hint: 'e.g. "Figure 2: The TRIVEA interface".' }
           - { label: Credit, name: credit, widget: string, required: false, hint: 'e.g. "Figure 1: Nakarmi et al., CC BY 4.0".' }
           - { label: Credit link, name: source, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+          - label: Where to show it
+            name: placement
+            widget: select
+            required: false
+            options:
+              - { label: In the gallery above the text, value: "" }
+              - { label: On its own below the abstract, value: below-abstract }
+            hint: Optional. Leave as "In the gallery" unless this figure belongs after the abstract, e.g. a results chart.
+          - { label: Heading (below the abstract only), name: heading, widget: string, required: false, hint: 'Optional. A title shown above the figure when it is placed below the abstract, e.g. "Leaderboard".' }
+          - { label: Open this page when clicked, name: link, widget: string, required: false, hint: "Optional. Clicking the image opens this page in a new tab instead of a larger view.", pattern: ['^https?://', "Start the link with https://"] }
+          - { label: Interactive version, name: interactive, widget: string, required: false, hint: "Leave as is. Set by the site's developers to show a diagram drawn in code (e.g. generate-validate-repair) instead of the image on the paper's page." }
       - label: Homepage Research Spotlight
         name: spotlight
         widget: object
@@ -168,7 +179,18 @@ collections:
           - { label: Project website or demo, name: website, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
           - { label: Poster (upload a PDF or paste a link), name: poster, widget: file, required: false, hint: 'Upload the poster as a PDF (under 15 MB), or use "Insert from URL" for a public link.' }
           - { label: Demo, name: demo, widget: string, required: false, pattern: ['^https?://', "Start the link with https://"] }
+      - label: Other links
+        name: extraLinks
+        widget: list
+        required: false
+        label_singular: link
+        summary: "{{fields.label}}"
+        hint: Optional. Links with your own button text, shown after the links above, e.g. "Challenge website" or "Sample report".
+        fields:
+          - { label: Button text, name: label, widget: string }
+          - { label: Link, name: href, widget: string, pattern: ['^https?://', "Start the link with https://"] }
       - { label: BibTeX, name: bibtex, widget: text, required: false }
+      - { label: Hide the Cite button, name: hideCite, widget: boolean, required: false, default: false, hint: "Turn on to remove the Cite button from this paper's page." }
       - label: Position within its year
         name: order
         widget: number

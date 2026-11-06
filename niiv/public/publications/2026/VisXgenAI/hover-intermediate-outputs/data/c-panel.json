@@ -1,0 +1,72 @@
+{
+  "title": "Annual VIS output ranges from 53 to 174 papers",
+  "caption": "The generated panel includes its question, chart specification, answer, and interaction instructions.",
+  "panel_id": "l1",
+  "question": "How many papers were published each year?",
+  "answer": "From 1990 through 2024, IEEE VIS yearly output ranges from 53 papers in 1990 to 174 papers in 2004, within a 3,877-paper record. Treat the peak as an annual-volume high, not as evidence of paper type or venue mix by itself.",
+  "table_id": "ieee_vis_papers_1990_2024_main_dataset_per_year",
+  "how_to_read": "Read left to right: each point is one publication year, and higher points mean more papers that year.",
+  "interaction": {
+    "kind": "range filter",
+    "instruction": "Move the Start year slider to focus the line on later parts of the 1990–2024 record."
+  },
+  "preview_image": "images/c-plot-l1.png",
+  "spec_excerpt": {
+    "data": {
+      "name": "ieee_vis_papers_1990_2024_main_dataset_per_year"
+    },
+    "mark": {
+      "type": "line",
+      "point": true
+    },
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year",
+        "sort": "ascending",
+        "axis": {
+          "labelAngle": 0,
+          "labelOverlap": "greedy",
+          "labelSeparation": 2
+        }
+      },
+      "y": {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Number of papers",
+        "axis": {
+          "labelExpr": "datum.value % 1 == 0 ? format(datum.value, ',d') : ''"
+        }
+      },
+      "tooltip": [
+        {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Number of papers",
+          "format": ",d"
+        },
+        {
+          "field": "record_total",
+          "type": "quantitative",
+          "title": "Papers in selected table",
+          "format": ",d"
+        }
+      ]
+    }
+  },
+  "excerpt_note": "Selected keys from the accepted specification. The complete spec, including its slider parameter and transforms, is in data/c-l1.spec.json.",
+  "related_repair_example": "validator-C",
+  "sources": [
+    {
+      "run": "20260826-043224",
+      "path": "generation/source/pipeline/visualizations.json",
+      "pointer": "/charts/3"
+    }
+  ]
+}

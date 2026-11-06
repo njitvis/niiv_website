@@ -83,11 +83,18 @@ for (const entry of publications) {
   if (!blank(entry.data.year) && !Number.isInteger(entry.data.year)) errors.push(`${entry.where}: "year" must be a whole number`);
   if (entry.data.tags !== undefined && !Array.isArray(entry.data.tags)) errors.push(`${entry.where}: "tags" must be a list`);
   for (const [field, value] of Object.entries(entry.data.links ?? {})) checkLink(entry.where, `links.${field}`, value);
+  (entry.data.extraLinks ?? []).forEach((link, index) => {
+    const where = `${entry.where} (other link ${index + 1})`;
+    requireFields({ where, data: link }, ["label", "href"]);
+    checkLink(where, "href", link.href);
+  });
   const figures = entry.data.figures;
   if (figures !== undefined && !Array.isArray(figures)) errors.push(`${entry.where}: "figures" must be a list`);
   (Array.isArray(figures) ? figures : []).forEach((figure, index) => {
     const where = `${entry.where} (figure ${index + 1})`;
     requireFields({ where, data: figure }, ["image", "alt"]);
+    requireOneOf({ where, data: figure }, "placement", ["below-abstract"]);
+    checkLink(where, "link", figure.link);
     checkLink(where, "image", figure.image);
     checkLink(where, "source", figure.source);
   });

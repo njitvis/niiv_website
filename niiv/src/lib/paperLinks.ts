@@ -24,6 +24,7 @@ export const getPaperLinks = (publication: Pub): PaperLink[] => {
     code ? { label: /github\.com/i.test(code) ? "GitHub" : "Code", href: code, icon: Github } : null,
     links.demo ? { label: "Demo", href: links.demo, icon: MonitorPlay } : null,
     links.poster ? { label: "Poster", href: links.poster, icon: Presentation } : null,
+    ...(publication.extraLinks ?? []).map((link) => ({ label: link.label, href: link.href, icon: ExternalLink })),
   ];
   const present = candidates.filter((link): link is PaperLink => link !== null);
   // The first way to read the paper (Paper, arXiv, DOI or website) is the main button.

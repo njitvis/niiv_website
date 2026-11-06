@@ -1,0 +1,68 @@
+{
+  "title": "IEEE VIS Publications: Growth, Venue Mix, and the Journal Turn",
+  "caption": "The report shell places four guided panels before two panels for independent exploration.",
+  "preview_image": "images/d-report-opening.png",
+  "guided": [
+    {
+      "id": "h1",
+      "title": "Volume growth is tied to the changing conference mix",
+      "question": "How have the yearly publication counts and venue shares changed across the IEEE VIS record?"
+    },
+    {
+      "id": "h2",
+      "title": "Journal papers dominate the record by 2024",
+      "question": "When did the publication record shift from conference papers toward journal papers?"
+    },
+    {
+      "id": "l1",
+      "title": "Annual VIS output ranges from 53 to 174 papers",
+      "question": "How many papers were published each year?"
+    },
+    {
+      "id": "l2",
+      "title": "Vis contributes the largest overall paper count",
+      "question": "Which conference contributed the most papers overall?"
+    }
+  ],
+  "open": [
+    {
+      "id": "h3",
+      "title": "Collaboration and keyword coverage both rise by 2024",
+      "question": "Did collaboration size and keyword coverage rise alongside the publication-format shift?"
+    },
+    {
+      "id": "l3",
+      "title": "Journal is the main paper kind by 2024",
+      "question": "When did journal papers become the main kind of paper?"
+    }
+  ],
+  "takeaway": "The panels converge on one conclusion: IEEE VIS changed less by simple expansion than by rebalancing into a journal-centered publication record, with Vis remaining the largest venue grouping and collaboration/metadata measures maturing by 2024. What follows is practical: read any long-run VIS trend through paper type and venue mix before attributing it to overall community growth. The conclusion would change if later years returned to a conference-paper majority or if the 2024 journal-only endpoint proved to be a normalization artifact.",
+  "recorded_report_check": {
+    "status": "ok",
+    "rendered": [
+      "h1",
+      "h2",
+      "h3",
+      "l1",
+      "l2",
+      "l3"
+    ],
+    "failed": [],
+    "console_errors": [],
+    "problems": []
+  },
+  "report_url": "report/index.html",
+  "order_note": "Actual shell order: filter chart payload order by stage. This is not an editorial reordering based on the framing prose.",
+  "sources": [
+    {
+      "run": "20260826-043224",
+      "path": "generation/source/pipeline/visualizations.json",
+      "pointer": "/framing"
+    },
+    {
+      "run": "20260826-043224",
+      "path": "generation/dist/report.js",
+      "lines": "545–611"
+    }
+  ]
+}

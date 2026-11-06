@@ -6,6 +6,14 @@ export type PaperFigure = {
   caption?: string;
   credit?: string;
   source?: string;
+  /** Id of a figure drawn in code (components/figures) to show instead of the image on the paper page. */
+  interactive?: string;
+  /** "below-abstract" shows the figure on its own after the abstract instead of in the gallery. */
+  placement?: "below-abstract";
+  /** Section heading above a figure placed below the abstract, e.g. "Leaderboard". */
+  heading?: string;
+  /** Clicking the image opens this page (in a new tab) instead of the larger view. */
+  link?: string;
 };
 
 export type Pub = {
@@ -36,7 +44,11 @@ export type Pub = {
     poster?: string;
     demo?: string;
   };
+  /** Further links with their own button labels, shown after the links above. */
+  extraLinks?: { label: string; href: string }[];
   bibtex?: string;
+  /** Leaves the Cite button off the paper page. */
+  hideCite?: boolean;
 };
 
 /**

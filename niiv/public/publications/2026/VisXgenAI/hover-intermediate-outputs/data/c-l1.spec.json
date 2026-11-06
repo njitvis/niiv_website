@@ -1,0 +1,83 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "data": {
+    "name": "ieee_vis_papers_1990_2024_main_dataset_per_year"
+  },
+  "transform": [
+    {
+      "joinaggregate": [
+        {
+          "op": "sum",
+          "field": "count",
+          "as": "record_total"
+        }
+      ]
+    },
+    {
+      "filter": "datum.year >= start_year"
+    }
+  ],
+  "params": [
+    {
+      "name": "start_year",
+      "value": 1990,
+      "bind": {
+        "input": "range",
+        "min": 1990,
+        "max": 2024,
+        "step": 1,
+        "name": "Start year"
+      }
+    }
+  ],
+  "mark": {
+    "type": "line",
+    "point": true
+  },
+  "encoding": {
+    "x": {
+      "field": "year",
+      "type": "ordinal",
+      "title": "Year",
+      "sort": "ascending",
+      "axis": {
+        "labelAngle": 0,
+        "labelOverlap": "greedy",
+        "labelSeparation": 2
+      }
+    },
+    "y": {
+      "field": "count",
+      "type": "quantitative",
+      "title": "Number of papers",
+      "axis": {
+        "labelExpr": "datum.value % 1 == 0 ? format(datum.value, ',d') : ''"
+      }
+    },
+    "tooltip": [
+      {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year"
+      },
+      {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Number of papers",
+        "format": ",d"
+      },
+      {
+        "field": "record_total",
+        "type": "quantitative",
+        "title": "Papers in selected table",
+        "format": ",d"
+      }
+    ]
+  },
+  "width": "container",
+  "height": 260,
+  "autosize": {
+    "type": "fit",
+    "contains": "padding"
+  }
+}
