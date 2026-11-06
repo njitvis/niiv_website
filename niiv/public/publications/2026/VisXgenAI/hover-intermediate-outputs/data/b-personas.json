@@ -1,0 +1,110 @@
+{
+  "title": "Questions grounded in the available tables",
+  "caption": "Each persona contributes two guided questions and one question for open exploration.",
+  "stats": {
+    "personas": 2,
+    "questions": 6,
+    "guided": 4,
+    "open": 2
+  },
+  "personas": [
+    {
+      "id": "high_expertise",
+      "display_name": "Expert reader",
+      "original_label": "VIS publication trend researcher",
+      "description": "A visualization researcher examining structural change in the IEEE VIS publication corpus from 1990 through 2024. They are here to assess whether growth, venue mix, publication format, and collaboration signals point to durable shifts in the record.",
+      "featured_question": {
+        "id": "h1",
+        "persona": "high_expertise",
+        "text": "How have the yearly publication counts and venue shares changed across the IEEE VIS record?",
+        "complexity": "medium",
+        "stage": "stem",
+        "vis_task": "explore",
+        "tables": [
+          "analysis_publication_volume_by_year_conference"
+        ],
+        "attributes": [
+          "analysis_publication_volume_by_year_conference.Year",
+          "analysis_publication_volume_by_year_conference.Conference",
+          "analysis_publication_volume_by_year_conference.paper_count",
+          "analysis_publication_volume_by_year_conference.year_total",
+          "analysis_publication_volume_by_year_conference.share_pct"
+        ],
+        "answerable_because": "Each row represents one year and conference, with paper counts, the full yearly total, and within-year share, so one chart can show both volume and venue-mix change over time.",
+        "answers_brief": 0
+      },
+      "open_question": {
+        "id": "h3",
+        "persona": "high_expertise",
+        "text": "Did collaboration size and keyword coverage rise alongside the publication-format shift?",
+        "complexity": "high",
+        "stage": "bowl",
+        "vis_task": "discover",
+        "tables": [
+          "analysis_authorship_keywords_by_year"
+        ],
+        "attributes": [
+          "analysis_authorship_keywords_by_year.Year",
+          "analysis_authorship_keywords_by_year.paper_count",
+          "analysis_authorship_keywords_by_year.author_count_present",
+          "analysis_authorship_keywords_by_year.avg_authors",
+          "analysis_authorship_keywords_by_year.keyword_paper_count",
+          "analysis_authorship_keywords_by_year.keyword_coverage_pct",
+          "analysis_authorship_keywords_by_year.keyword_count",
+          "analysis_authorship_keywords_by_year.avg_keywords_per_keyworded_paper"
+        ],
+        "answerable_because": "The table provides yearly averages for authors per paper and yearly keyword availability measures derived from semicolon-delimited author and keyword fields, so one chart can compare these longitudinal signals against the same time axis.",
+        "answers_brief": 0
+      }
+    },
+    {
+      "id": "low_expertise",
+      "display_name": "Curious reader",
+      "original_label": "Curious VIS newcomer",
+      "description": "A general reader who wants an approachable overview of how IEEE VIS publishing has changed since 1990. They want to see the main growth story, the changing kinds of papers, and what became more common in recent records.",
+      "featured_question": {
+        "id": "l1",
+        "persona": "low_expertise",
+        "text": "How many papers were published each year?",
+        "complexity": "low",
+        "stage": "stem",
+        "vis_task": "present",
+        "tables": [
+          "ieee_vis_papers_1990_2024_main_dataset_per_year"
+        ],
+        "attributes": [
+          "ieee_vis_papers_1990_2024_main_dataset_per_year.year",
+          "ieee_vis_papers_1990_2024_main_dataset_per_year.count"
+        ],
+        "answerable_because": "This table has one row for each year with the total number of papers, so a single line or bar chart can show annual publishing volume from 1990 through 2024.",
+        "answers_brief": 0
+      },
+      "open_question": {
+        "id": "l3",
+        "persona": "low_expertise",
+        "text": "When did journal papers become the main kind of paper?",
+        "complexity": "medium",
+        "stage": "bowl",
+        "vis_task": "locate",
+        "tables": [
+          "analysis_paper_type_by_year"
+        ],
+        "attributes": [
+          "analysis_paper_type_by_year.Year",
+          "analysis_paper_type_by_year.PaperType",
+          "analysis_paper_type_by_year.paper_count",
+          "analysis_paper_type_by_year.share_pct"
+        ],
+        "answerable_because": "The table records paper counts and yearly shares for each publication type, so a chart can show the point at which journal papers overtake other types or dominate the year.",
+        "answers_brief": 0
+      }
+    }
+  ],
+  "sources": [
+    {
+      "run": "20260826-043224",
+      "path": "generation/source/pipeline/questions.json",
+      "pointer": "/personas"
+    }
+  ]
+}

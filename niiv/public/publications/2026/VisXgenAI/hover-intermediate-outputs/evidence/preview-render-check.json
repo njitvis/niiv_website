@@ -1,0 +1,38 @@
+{
+  "kind": "new local render and interaction check of unchanged historical report",
+  "viewport": {
+    "width": 1200,
+    "height": 850
+  },
+  "runtime": {
+    "rendered": [
+      "h1",
+      "h2",
+      "h3",
+      "l1",
+      "l2",
+      "l3"
+    ],
+    "failed": [],
+    "empty": []
+  },
+  "guided": [
+    "h1",
+    "h2",
+    "l1",
+    "l2"
+  ],
+  "open": [
+    "h3",
+    "l3"
+  ],
+  "interaction_check": {
+    "panel": "l1",
+    "marks_before": 35,
+    "start_year": 2020,
+    "marks_after": 5,
+    "marks_after_reset": 35,
+    "tooltip_text": "Year\n2,004\nCount\n174\nRecord total\n3,877"
+  },
+  "page_errors": []
+}

@@ -1,0 +1,112 @@
+{
+  "A": {
+    "recorded_rejection": "[extract] attempt 2/3 rejected: the brief has no explicit questions, so metadata.json must hand off 4–5 insights; it currently has 10",
+    "accepted_output": "The accepted metadata contains five default analyses. All 3,877 mechanically normalized source rows remain unchanged.",
+    "source": {
+      "run": "20260826-043224",
+      "path": "generation.log",
+      "line": 7
+    },
+    "accepted_evidence": {
+      "analysis_count": 5,
+      "source_rows": 3877,
+      "source_preserved": true
+    },
+    "artifact": "data/a-extraction.json"
+  },
+  "B": {
+    "recorded_rejection": "[personas] attempt 1/3 rejected: personas.high_expertise.questions tags 3 question(s) as stage 'stem', expected exactly 2 — the guided stem is the first few panels; the rest are the exploration bowl",
+    "accepted_output": "The saved questions have exactly two guided questions and one exploratory question for each persona.",
+    "source": {
+      "run": "20260826-043224",
+      "path": "generation.log",
+      "line": 12
+    },
+    "accepted_evidence": {
+      "high_expertise": {
+        "stem": 2,
+        "bowl": 1
+      },
+      "low_expertise": {
+        "stem": 2,
+        "bowl": 1
+      }
+    },
+    "artifact": "data/b-questions.exact.json"
+  },
+  "C": {
+    "recorded_rejection": "[charts] attempt 1/3 rejected: these encoded fields do not exist in table 'analysis_paper_type_by_year': C, J. Available attributes: PaperType, Year, paper_count, share_pct, year_total. Either encode an existing attribute or create it with a transform `as` in this spec.",
+    "accepted_output": "The accepted h2 panel uses share_pct as the y field and PaperType as the color field. C and J are values of PaperType, not column names.",
+    "source": {
+      "run": "20260826-043224",
+      "path": "generation.log",
+      "line": 19
+    },
+    "accepted_example": {
+      "panel_id": "h2",
+      "table": "analysis_paper_type_by_year",
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "ordinal",
+          "title": "Year",
+          "sort": "ascending",
+          "axis": {
+            "labelAngle": 0,
+            "labelOverlap": "greedy",
+            "labelSeparation": 2
+          }
+        },
+        "y": {
+          "field": "share_pct",
+          "type": "quantitative",
+          "title": "Share of papers within year (%)"
+        },
+        "color": {
+          "field": "PaperType",
+          "type": "nominal",
+          "title": "Paper type",
+          "legend": {
+            "orient": "bottom",
+            "direction": "horizontal",
+            "labelLimit": 80,
+            "symbolLimit": 8
+          },
+          "scale": {
+            "domain": [
+              "C",
+              "J",
+              "M"
+            ]
+          }
+        }
+      }
+    },
+    "evidence_boundary": "The log records a rejected chart batch and names the table, but does not identify the failed panel. h2 is a valid final example for that table. The rejected specification and rejected screenshot were not saved.",
+    "artifact": "data/c-h2.accepted-panel.json"
+  },
+  "D": {
+    "title": "Recorded browser check",
+    "recorded_result": {
+      "status": "ok",
+      "rendered": [
+        "h1",
+        "h2",
+        "h3",
+        "l1",
+        "l2",
+        "l3"
+      ],
+      "failed": [],
+      "console_errors": [],
+      "problems": []
+    },
+    "caption": "The saved check lists six rendered charts, no failed charts, no console errors, and no reported problems.",
+    "evidence_boundary": "This is the saved result from the run, not a claim that every interpretation is correct or that every possible interaction was tested.",
+    "source": {
+      "run": "20260826-043224",
+      "path": "generation/source/pipeline/visualizations.json",
+      "pointer": "/report_check"
+    }
+  }
+}

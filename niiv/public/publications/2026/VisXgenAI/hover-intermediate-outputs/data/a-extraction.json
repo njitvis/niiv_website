@@ -1,0 +1,65 @@
+{
+  "title": "Analysis tables ready for question generation",
+  "caption": "3,877 source rows retained, with 20 source fields and 10 additional tables for analysis.",
+  "stats": {
+    "source_rows": 3877,
+    "source_fields": 20,
+    "output_tables": 11,
+    "additional_tables": 10,
+    "annual_rows": 35
+  },
+  "source_file": "IEEE VIS papers 1990-2024 - Main dataset.csv",
+  "preview": {
+    "table_id": "ieee_vis_papers_1990_2024_main_dataset_per_year",
+    "columns": [
+      "year",
+      "count"
+    ],
+    "rows": [
+      {
+        "year": 1990,
+        "count": 53
+      },
+      {
+        "year": 2004,
+        "count": 174
+      },
+      {
+        "year": 2024,
+        "count": 124
+      }
+    ],
+    "selection_note": "Three selected years from the complete 35-row annual table; not consecutive rows."
+  },
+  "field_summary": [
+    {
+      "name": "Year",
+      "type": "ordinal"
+    },
+    {
+      "name": "Conference",
+      "type": "nominal"
+    },
+    {
+      "name": "PaperType",
+      "type": "nominal"
+    }
+  ],
+  "verification": {
+    "normalized_source_equals_mechanical_baseline": true,
+    "normalized_source_equals_accepted_snapshot": true,
+    "annual_counts_sum_to_source_rows": true
+  },
+  "sources": [
+    {
+      "run": "20260826-043224",
+      "path": "generation/source/pipeline/normalized.json",
+      "pointer": "/tables/ieee_vis_papers_1990_2024_main_dataset_per_year/rows"
+    },
+    {
+      "run": "20260826-043224",
+      "path": "generation/source/pipeline/metadata.json",
+      "pointer": "/tables/ieee_vis_papers_1990_2024_main_dataset"
+    }
+  ]
+}

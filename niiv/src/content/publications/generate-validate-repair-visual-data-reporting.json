@@ -10,8 +10,41 @@
   "type": "conf",
   "award": "VISxGenAI Challenge Winner (First Place)",
   "abstract": "AI agents can now analyze, synthesize, and visualize complex datasets, yet turning their outputs into a coherent narrative aligned with a reader’s expectations remains an open challenge. A single generation pass produces charts that misread the data, claims the visuals do not support, and narratives that lose coherence over a long document. We present a multi-agent system for automated visual data reporting in which every generative stage is paired with a deterministic validator that can reject its output, and failures are repaired in the same context or disclosed rather than shipped. The system organizes the validated panels into a guided narrative and renders it as an interactive report, letting readers follow the analytical thread and then explore the underlying data themselves.",
+  "figures": [
+    {
+      "image": "/publications/2026/VisXgenAI/stages.svg",
+      "interactive": "generate-validate-repair",
+      "alt": "Four-stage pipeline: Data Extractor, Persona Explorer, Visualization Generator, and Report Designer, with a validator beneath that checks the output of every stage.",
+      "caption": "Our multi-agent pipeline for visual data reporting. The Data Extractor (A) converts input datasets into actionable tables, the Persona Explorer (B) designs questions for two personas, the Visualization Generator (C) creates and frames panels that answer them, and the Report Designer (D) lays the panels out into a narrative report. A validator runs at every stage: a failure returns to the model as a repair instruction, and every stage keeps a valid result to fall back to."
+    },
+    {
+      "image": "/publications/2026/VisXgenAI/leaderboard.png",
+      "alt": "Line chart of every team's score out of 100 across challenge rounds R1 to R5 and the final evaluation, June to August 2026. The highlighted Niiv line dips at R4, rises sharply by Aug 20, and ends at 79.79, rank 1.",
+      "caption": "Final leaderboard of the 2026 VISxGenAI (Agentic VIS) Challenge. Our agent, Niiv (highlighted), finished first with an overall score of 79.79.",
+      "credit": "Agentic VIS Challenge leaderboard",
+      "source": "https://visagent.org/leaderboard",
+      "placement": "below-abstract",
+      "heading": "Leaderboard",
+      "link": "https://visagent.org/leaderboard"
+    }
+  ],
   "links": {
-    "website": "https://ieeevis.org/year/2026/program/content/56f42275-c01f-4d71-ba53-321afb82e483/"
+    "pdf": "/publications/2026/VisXgenAI/VISXGENAI_CHALLENGE_2026.pdf"
   },
-  "order": 5
+  "extraLinks": [
+    {
+      "label": "IEEE VIS Conference",
+      "href": "https://ieeevis.org/year/2026/program/content/56f42275-c01f-4d71-ba53-321afb82e483/"
+    },
+    {
+      "label": "Challenge website",
+      "href": "https://visagent.org"
+    },
+    {
+      "label": "Sample report",
+      "href": "https://visagent.org/api/arena/v1/jobs/b420d5eb-d901-43bb-ad76-d7ef9e39a523/preview/index.html"
+    }
+  ],
+  "order": 5,
+  "hideCite": true
 }

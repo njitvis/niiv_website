@@ -1,0 +1,177 @@
+{
+  "id": "h2",
+  "persona": "high_expertise",
+  "question": "When did the publication record shift from conference papers toward journal papers?",
+  "complexity": "medium",
+  "stage": "stem",
+  "vis_task": "compare",
+  "table": "analysis_paper_type_by_year",
+  "chart_title": "Journal papers dominate the record by 2024",
+  "caption": "",
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "name": "analysis_paper_type_by_year"
+    },
+    "transform": [
+      {
+        "joinaggregate": [
+          {
+            "op": "sum",
+            "field": "paper_count",
+            "as": "type_total"
+          }
+        ],
+        "groupby": [
+          "PaperType"
+        ]
+      }
+    ],
+    "params": [
+      {
+        "name": "highlight_paper_type",
+        "select": {
+          "type": "point",
+          "fields": [
+            "PaperType"
+          ]
+        },
+        "bind": "legend"
+      }
+    ],
+    "mark": {
+      "type": "line",
+      "point": true
+    },
+    "encoding": {
+      "x": {
+        "field": "Year",
+        "type": "ordinal",
+        "title": "Year",
+        "sort": "ascending",
+        "axis": {
+          "labelAngle": 0,
+          "labelOverlap": "greedy",
+          "labelSeparation": 2
+        }
+      },
+      "y": {
+        "field": "share_pct",
+        "type": "quantitative",
+        "title": "Share of papers within year (%)"
+      },
+      "color": {
+        "field": "PaperType",
+        "type": "nominal",
+        "title": "Paper type",
+        "legend": {
+          "orient": "bottom",
+          "direction": "horizontal",
+          "labelLimit": 80,
+          "symbolLimit": 8
+        },
+        "scale": {
+          "domain": [
+            "C",
+            "J",
+            "M"
+          ]
+        }
+      },
+      "opacity": {
+        "condition": {
+          "param": "highlight_paper_type",
+          "value": 1
+        },
+        "value": 0.2
+      },
+      "tooltip": [
+        {
+          "field": "Year",
+          "type": "ordinal"
+        },
+        {
+          "field": "PaperType",
+          "type": "nominal",
+          "title": "Paper type"
+        },
+        {
+          "field": "paper_count",
+          "type": "quantitative",
+          "title": "Papers",
+          "format": ",d"
+        },
+        {
+          "field": "share_pct",
+          "type": "quantitative",
+          "title": "Share of year (%)"
+        },
+        {
+          "field": "type_total",
+          "type": "quantitative",
+          "title": "Type total",
+          "format": ",d"
+        }
+      ]
+    },
+    "width": "container",
+    "height": 260,
+    "autosize": {
+      "type": "fit",
+      "contains": "padding"
+    }
+  },
+  "fields": [
+    "PaperType",
+    "Year",
+    "paper_count",
+    "share_pct"
+  ],
+  "interaction": {
+    "kind": "legend highlight",
+    "instruction": "Click C, J, or M in the legend to isolate that paper-type trajectory."
+  },
+  "how_to_read": "Follow each paper-type line across years; the highest line in a year is the largest type share for that year.",
+  "summary": "By 2024, journal papers account for 100.0% of 124 papers, and across 1990–2024 the record contains 1,999 J papers versus 1,559 C papers and 319 M papers. The format shift is therefore not just an end-year anomaly; J is also the largest paper type over the full record.",
+  "self_eval": {
+    "score": 88.0,
+    "criteria": [
+      {
+        "id": "data_fidelity",
+        "score": 5,
+        "rationale": "uses paper-type shares and totals directly"
+      },
+      {
+        "id": "insightfulness",
+        "score": 5,
+        "rationale": "connects annual endpoint with full-record totals"
+      },
+      {
+        "id": "narrative_coherence",
+        "score": 5,
+        "rationale": "delivers the stem’s main pivot"
+      },
+      {
+        "id": "visual_craft",
+        "score": 4,
+        "rationale": "line chart fits share trajectories"
+      },
+      {
+        "id": "functionality",
+        "score": 3,
+        "rationale": "legend highlight helps but does not compute crossover"
+      }
+    ],
+    "weakest": "It shows the transition visually but the summary can only state the supported endpoint and totals."
+  },
+  "type_corrections": [],
+  "filter": {
+    "field": "PaperType",
+    "values": [
+      "C",
+      "J",
+      "M"
+    ],
+    "rows": 105
+  }
+}

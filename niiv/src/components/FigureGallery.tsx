@@ -1,6 +1,7 @@
 import { ChevronLeft, ChevronRight, Maximize2, X } from "lucide-react";
 import { useRef, useState, type KeyboardEvent, type MouseEvent } from "react";
 import type { PaperFigure } from "../data/publications";
+import { INTERACTIVE_FIGURES } from "./figures";
 
 const FigureCaption = ({ figure, light = false }: { figure: PaperFigure; light?: boolean }) => {
   if (!figure.caption && !figure.credit) return null;
@@ -36,6 +37,8 @@ const FigureGallery = ({ figures }: { figures: PaperFigure[] }) => {
   if (figures.length === 0) return null;
 
   const figure = figures[Math.min(index, figures.length - 1)];
+  // A figure drawn in code stays sharp at any size, so it has no "View larger".
+  const Interactive = figure.interactive ? INTERACTIVE_FIGURES[figure.interactive] : undefined;
   const many = figures.length > 1;
   const go = (step: number) => setIndex((current) => (current + step + figures.length) % figures.length);
 
@@ -58,15 +61,32 @@ const FigureGallery = ({ figures }: { figures: PaperFigure[] }) => {
     <section aria-roledescription="gallery" aria-label="Figures">
       <figure>
         <div className="relative overflow-hidden rounded-xl border border-gray-200 bg-white">
-          <button
-            type="button"
-            onClick={openViewer}
-            className="block w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#CC0000]"
-            aria-label={`View larger: ${figure.alt}`}
-          >
-            <img src={figure.image} alt={figure.alt} className="mx-auto max-h-[32rem] w-full object-contain p-3 sm:p-5" />
-          </button>
-          {many && (
+          {Interactive ? (
+            <div className="p-3 sm:p-5">
+              <Interactive />
+            </div>
+          ) : figure.link ? (
+            <a
+              href={figure.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#CC0000]"
+              aria-label={`${figure.alt} (opens ${new URL(figure.link, window.location.href).hostname} in a new tab)`}
+            >
+              <img src={figure.image} alt="" className="mx-auto max-h-[32rem] w-full object-contain p-3 transition-opacity hover:opacity-90 sm:p-5" />
+            </a>
+          ) : (
+            <button
+              type="button"
+              onClick={openViewer}
+              className="block w-full cursor-zoom-in focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-inset focus-visible:ring-[#CC0000]"
+              aria-label={`View larger: ${figure.alt}`}
+            >
+              <img src={figure.image} alt={figure.alt} className="mx-auto max-h-[32rem] w-full object-contain p-3 sm:p-5" />
+            </button>
+          )}
+          {/* Arrows would sit on top of an interactive figure; the thumbnails below switch figures instead. */}
+          {many && !Interactive && (
             <>
               <button type="button" onClick={() => go(-1)} className={`${arrowClassName} left-3`} aria-label="Previous figure">
                 <ChevronLeft className="h-5 w-5" aria-hidden="true" />
@@ -87,14 +107,16 @@ const FigureGallery = ({ figures }: { figures: PaperFigure[] }) => {
             )}
             <FigureCaption figure={figure} />
           </span>
-          <button
-            type="button"
-            onClick={openViewer}
-            className="inline-flex shrink-0 items-center gap-1.5 font-medium text-gray-700 hover:text-[#B00000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
-          >
-            <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
-            View larger
-          </button>
+          {!Interactive && !figure.link && (
+            <button
+              type="button"
+              onClick={openViewer}
+              className="inline-flex shrink-0 items-center gap-1.5 font-medium text-gray-700 hover:text-[#B00000] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#CC0000] focus-visible:ring-offset-2"
+            >
+              <Maximize2 className="h-3.5 w-3.5" aria-hidden="true" />
+              View larger
+            </button>
+          )}
         </figcaption>
       </figure>
 

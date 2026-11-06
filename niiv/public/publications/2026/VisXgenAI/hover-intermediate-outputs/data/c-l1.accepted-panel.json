@@ -1,0 +1,137 @@
+{
+  "id": "l1",
+  "persona": "low_expertise",
+  "question": "How many papers were published each year?",
+  "complexity": "low",
+  "stage": "stem",
+  "vis_task": "present",
+  "table": "ieee_vis_papers_1990_2024_main_dataset_per_year",
+  "chart_title": "Annual VIS output ranges from 53 to 174 papers",
+  "caption": "",
+  "spec": {
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "data": {
+      "name": "ieee_vis_papers_1990_2024_main_dataset_per_year"
+    },
+    "transform": [
+      {
+        "joinaggregate": [
+          {
+            "op": "sum",
+            "field": "count",
+            "as": "record_total"
+          }
+        ]
+      },
+      {
+        "filter": "datum.year >= start_year"
+      }
+    ],
+    "params": [
+      {
+        "name": "start_year",
+        "value": 1990,
+        "bind": {
+          "input": "range",
+          "min": 1990,
+          "max": 2024,
+          "step": 1,
+          "name": "Start year"
+        }
+      }
+    ],
+    "mark": {
+      "type": "line",
+      "point": true
+    },
+    "encoding": {
+      "x": {
+        "field": "year",
+        "type": "ordinal",
+        "title": "Year",
+        "sort": "ascending",
+        "axis": {
+          "labelAngle": 0,
+          "labelOverlap": "greedy",
+          "labelSeparation": 2
+        }
+      },
+      "y": {
+        "field": "count",
+        "type": "quantitative",
+        "title": "Number of papers",
+        "axis": {
+          "labelExpr": "datum.value % 1 == 0 ? format(datum.value, ',d') : ''"
+        }
+      },
+      "tooltip": [
+        {
+          "field": "year",
+          "type": "ordinal",
+          "title": "Year"
+        },
+        {
+          "field": "count",
+          "type": "quantitative",
+          "title": "Number of papers",
+          "format": ",d"
+        },
+        {
+          "field": "record_total",
+          "type": "quantitative",
+          "title": "Papers in selected table",
+          "format": ",d"
+        }
+      ]
+    },
+    "width": "container",
+    "height": 260,
+    "autosize": {
+      "type": "fit",
+      "contains": "padding"
+    }
+  },
+  "fields": [
+    "count",
+    "year"
+  ],
+  "interaction": {
+    "kind": "range filter",
+    "instruction": "Move the Start year slider to focus the line on later parts of the 1990–2024 record."
+  },
+  "how_to_read": "Read left to right: each point is one publication year, and higher points mean more papers that year.",
+  "summary": "From 1990 through 2024, IEEE VIS yearly output ranges from 53 papers in 1990 to 174 papers in 2004, within a 3,877-paper record. Treat the peak as an annual-volume high, not as evidence of paper type or venue mix by itself.",
+  "self_eval": {
+    "score": 88.0,
+    "criteria": [
+      {
+        "id": "data_fidelity",
+        "score": 5,
+        "rationale": "uses the per-year count table directly"
+      },
+      {
+        "id": "insightfulness",
+        "score": 4,
+        "rationale": "names range and peak year"
+      },
+      {
+        "id": "narrative_coherence",
+        "score": 4,
+        "rationale": "opens the volume story cleanly"
+      },
+      {
+        "id": "visual_craft",
+        "score": 5,
+        "rationale": "line fits ordered yearly counts"
+      },
+      {
+        "id": "functionality",
+        "score": 4,
+        "rationale": "range filter visibly changes the years shown"
+      }
+    ],
+    "weakest": "It answers volume only, leaving composition to later panels."
+  },
+  "type_corrections": [],
+  "filter": null
+}

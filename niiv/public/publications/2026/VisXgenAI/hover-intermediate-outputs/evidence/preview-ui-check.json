@@ -1,0 +1,73 @@
+{
+  "live_gallery": [
+    {
+      "id": "h1",
+      "marks": 144
+    },
+    {
+      "id": "h2",
+      "marks": 111
+    },
+    {
+      "id": "h3",
+      "marks": 36
+    },
+    {
+      "id": "l1",
+      "marks": 36
+    },
+    {
+      "id": "l2",
+      "marks": 4
+    },
+    {
+      "id": "l3",
+      "marks": 19
+    }
+  ],
+  "default_visual": "l1",
+  "year_slider_2020_points": 5,
+  "year_slider_1990_points": 35,
+  "embedded_images": true,
+  "targets": [
+    {
+      "target": "A",
+      "heading": "Analysis tables ready for question generation"
+    },
+    {
+      "target": "B",
+      "heading": "Questions grounded in the available tables"
+    },
+    {
+      "target": "C",
+      "heading": "Annual VIS output ranges from 53 to 174 papers"
+    },
+    {
+      "target": "D",
+      "heading": "IEEE VIS Publications: Growth, Venue Mix, and the Journal Turn"
+    },
+    {
+      "target": "validator-A",
+      "heading": "Stage A: a rejected attempt and accepted output"
+    },
+    {
+      "target": "validator-B",
+      "heading": "Stage B: a rejected attempt and accepted output"
+    },
+    {
+      "target": "validator-C",
+      "heading": "Stage C: a rejected attempt and accepted output"
+    },
+    {
+      "target": "validator-D",
+      "heading": "Recorded browser check"
+    }
+  ],
+  "click_to_pin": true,
+  "switch_pinned_target": true,
+  "escape_dismisses": true,
+  "keyboard_focus": true,
+  "mobile_no_horizontal_overflow": true,
+  "mobile_heading": "Questions grounded in the available tables",
+  "page_errors": []
+}

@@ -1,0 +1,3168 @@
+{
+  "charts": [
+    {
+      "id": "h1",
+      "persona": "high_expertise",
+      "question": "How have the yearly publication counts and venue shares changed across the IEEE VIS record?",
+      "complexity": "medium",
+      "stage": "stem",
+      "vis_task": "explore",
+      "table": "analysis_publication_volume_by_year_conference",
+      "chart_title": "Volume growth is tied to the changing conference mix",
+      "caption": "",
+      "spec": {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "data": {
+          "name": "analysis_publication_volume_by_year_conference"
+        },
+        "params": [
+          {
+            "name": "highlight_conference",
+            "select": {
+              "type": "point",
+              "fields": [
+                "Conference"
+              ]
+            },
+            "bind": "legend"
+          }
+        ],
+        "mark": "bar",
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year",
+            "sort": "ascending",
+            "axis": {
+              "labelAngle": 0,
+              "labelOverlap": "greedy",
+              "labelSeparation": 2
+            }
+          },
+          "y": {
+            "aggregate": "sum",
+            "field": "paper_count",
+            "type": "quantitative",
+            "title": "Number of papers",
+            "axis": {
+              "labelExpr": "datum.value % 1 == 0 ? format(datum.value, ',d') : ''"
+            }
+          },
+          "color": {
+            "field": "Conference",
+            "type": "nominal",
+            "title": "Conference",
+            "legend": {
+              "orient": "bottom",
+              "direction": "horizontal",
+              "labelLimit": 80,
+              "symbolLimit": 8
+            },
+            "scale": {
+              "domain": [
+                "InfoVis",
+                "SciVis",
+                "VAST",
+                "Vis"
+              ]
+            }
+          },
+          "opacity": {
+            "condition": {
+              "param": "highlight_conference",
+              "value": 1
+            },
+            "value": 0.25
+          },
+          "tooltip": [
+            {
+              "field": "Year",
+              "type": "ordinal"
+            },
+            {
+              "field": "Conference",
+              "type": "nominal"
+            },
+            {
+              "field": "paper_count",
+              "type": "quantitative",
+              "title": "Papers",
+              "format": ",d"
+            },
+            {
+              "field": "year_total",
+              "type": "quantitative",
+              "title": "Year total",
+              "format": ",d"
+            },
+            {
+              "field": "share_pct",
+              "type": "quantitative",
+              "title": "Share of year"
+            }
+          ]
+        },
+        "width": "container",
+        "height": 260,
+        "autosize": {
+          "type": "fit",
+          "contains": "padding"
+        }
+      },
+      "fields": [
+        "Conference",
+        "Year",
+        "paper_count",
+        "share_pct",
+        "year_total"
+      ],
+      "interaction": {
+        "kind": "legend highlight",
+        "instruction": "Click a conference in the legend to keep it prominent while the other venues fade."
+      },
+      "how_to_read": "Each stacked bar is one year; total bar height is annual volume, and colored segments show how much each conference contributed within that year.",
+      "summary": "Annual volume ranges from 53 papers in 1990 to 174 papers in 2004, and in 2024 the largest conference group is Vis with 124 papers. The chart shows why counts and shares must be read together: the same annual total can come from very different venue mixes.",
+      "self_eval": {
+        "score": 84.0,
+        "criteria": [
+          {
+            "id": "data_fidelity",
+            "score": 5,
+            "rationale": "uses year-conference counts and shares"
+          },
+          {
+            "id": "insightfulness",
+            "score": 4,
+            "rationale": "links volume to within-year mix"
+          },
+          {
+            "id": "narrative_coherence",
+            "score": 5,
+            "rationale": "extends the stem from totals to composition"
+          },
+          {
+            "id": "visual_craft",
+            "score": 3,
+            "rationale": "stacking supports whole-year totals but limits segment comparison"
+          },
+          {
+            "id": "functionality",
+            "score": 4,
+            "rationale": "legend selection clearly changes emphasis"
+          }
+        ],
+        "weakest": "Stacked bars make non-baseline conference trends harder to compare."
+      },
+      "type_corrections": [],
+      "filter": {
+        "field": "Conference",
+        "values": [
+          "InfoVis",
+          "SciVis",
+          "VAST",
+          "Vis"
+        ],
+        "rows": 140
+      }
+    },
+    {
+      "id": "h2",
+      "persona": "high_expertise",
+      "question": "When did the publication record shift from conference papers toward journal papers?",
+      "complexity": "medium",
+      "stage": "stem",
+      "vis_task": "compare",
+      "table": "analysis_paper_type_by_year",
+      "chart_title": "Journal papers dominate the record by 2024",
+      "caption": "",
+      "spec": {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "data": {
+          "name": "analysis_paper_type_by_year"
+        },
+        "transform": [
+          {
+            "joinaggregate": [
+              {
+                "op": "sum",
+                "field": "paper_count",
+                "as": "type_total"
+              }
+            ],
+            "groupby": [
+              "PaperType"
+            ]
+          }
+        ],
+        "params": [
+          {
+            "name": "highlight_paper_type",
+            "select": {
+              "type": "point",
+              "fields": [
+                "PaperType"
+              ]
+            },
+            "bind": "legend"
+          }
+        ],
+        "mark": {
+          "type": "line",
+          "point": true
+        },
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year",
+            "sort": "ascending",
+            "axis": {
+              "labelAngle": 0,
+              "labelOverlap": "greedy",
+              "labelSeparation": 2
+            }
+          },
+          "y": {
+            "field": "share_pct",
+            "type": "quantitative",
+            "title": "Share of papers within year (%)"
+          },
+          "color": {
+            "field": "PaperType",
+            "type": "nominal",
+            "title": "Paper type",
+            "legend": {
+              "orient": "bottom",
+              "direction": "horizontal",
+              "labelLimit": 80,
+              "symbolLimit": 8
+            },
+            "scale": {
+              "domain": [
+                "C",
+                "J",
+                "M"
+              ]
+            }
+          },
+          "opacity": {
+            "condition": {
+              "param": "highlight_paper_type",
+              "value": 1
+            },
+            "value": 0.2
+          },
+          "tooltip": [
+            {
+              "field": "Year",
+              "type": "ordinal"
+            },
+            {
+              "field": "PaperType",
+              "type": "nominal",
+              "title": "Paper type"
+            },
+            {
+              "field": "paper_count",
+              "type": "quantitative",
+              "title": "Papers",
+              "format": ",d"
+            },
+            {
+              "field": "share_pct",
+              "type": "quantitative",
+              "title": "Share of year (%)"
+            },
+            {
+              "field": "type_total",
+              "type": "quantitative",
+              "title": "Type total",
+              "format": ",d"
+            }
+          ]
+        },
+        "width": "container",
+        "height": 260,
+        "autosize": {
+          "type": "fit",
+          "contains": "padding"
+        }
+      },
+      "fields": [
+        "PaperType",
+        "Year",
+        "paper_count",
+        "share_pct"
+      ],
+      "interaction": {
+        "kind": "legend highlight",
+        "instruction": "Click C, J, or M in the legend to isolate that paper-type trajectory."
+      },
+      "how_to_read": "Follow each paper-type line across years; the highest line in a year is the largest type share for that year.",
+      "summary": "By 2024, journal papers account for 100.0% of 124 papers, and across 1990–2024 the record contains 1,999 J papers versus 1,559 C papers and 319 M papers. The format shift is therefore not just an end-year anomaly; J is also the largest paper type over the full record.",
+      "self_eval": {
+        "score": 88.0,
+        "criteria": [
+          {
+            "id": "data_fidelity",
+            "score": 5,
+            "rationale": "uses paper-type shares and totals directly"
+          },
+          {
+            "id": "insightfulness",
+            "score": 5,
+            "rationale": "connects annual endpoint with full-record totals"
+          },
+          {
+            "id": "narrative_coherence",
+            "score": 5,
+            "rationale": "delivers the stem’s main pivot"
+          },
+          {
+            "id": "visual_craft",
+            "score": 4,
+            "rationale": "line chart fits share trajectories"
+          },
+          {
+            "id": "functionality",
+            "score": 3,
+            "rationale": "legend highlight helps but does not compute crossover"
+          }
+        ],
+        "weakest": "It shows the transition visually but the summary can only state the supported endpoint and totals."
+      },
+      "type_corrections": [],
+      "filter": {
+        "field": "PaperType",
+        "values": [
+          "C",
+          "J",
+          "M"
+        ],
+        "rows": 105
+      }
+    },
+    {
+      "id": "h3",
+      "persona": "high_expertise",
+      "question": "Did collaboration size and keyword coverage rise alongside the publication-format shift?",
+      "complexity": "high",
+      "stage": "bowl",
+      "vis_task": "discover",
+      "table": "analysis_authorship_keywords_by_year",
+      "chart_title": "Collaboration and keyword coverage both rise by 2024",
+      "caption": "",
+      "spec": {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "data": {
+          "name": "analysis_authorship_keywords_by_year"
+        },
+        "transform": [
+          {
+            "filter": "datum.Year <= max_year"
+          }
+        ],
+        "params": [
+          {
+            "name": "max_year",
+            "value": 2024,
+            "bind": {
+              "input": "range",
+              "min": 1990,
+              "max": 2024,
+              "step": 1,
+              "name": "Through year"
+            }
+          }
+        ],
+        "layer": [
+          {
+            "mark": {
+              "type": "line",
+              "tooltip": true
+            },
+            "encoding": {
+              "x": {
+                "field": "avg_authors",
+                "type": "quantitative",
+                "title": "Average authors per paper"
+              },
+              "y": {
+                "field": "keyword_coverage_pct",
+                "type": "quantitative",
+                "title": "Papers with keywords (%)"
+              },
+              "order": {
+                "field": "Year",
+                "type": "ordinal"
+              }
+            }
+          },
+          {
+            "mark": "point",
+            "encoding": {
+              "x": {
+                "field": "avg_authors",
+                "type": "quantitative",
+                "title": "Average authors per paper"
+              },
+              "y": {
+                "field": "keyword_coverage_pct",
+                "type": "quantitative",
+                "title": "Papers with keywords (%)"
+              },
+              "tooltip": [
+                {
+                  "field": "Year",
+                  "type": "ordinal"
+                },
+                {
+                  "field": "paper_count",
+                  "type": "quantitative",
+                  "title": "Papers",
+                  "format": ",d"
+                },
+                {
+                  "field": "avg_authors",
+                  "type": "quantitative",
+                  "title": "Average authors"
+                },
+                {
+                  "field": "keyword_coverage_pct",
+                  "type": "quantitative",
+                  "title": "Keyword coverage (%)"
+                },
+                {
+                  "field": "keyword_paper_count",
+                  "type": "quantitative",
+                  "title": "Papers with keywords",
+                  "format": ",d"
+                }
+              ]
+            }
+          }
+        ],
+        "width": "container",
+        "height": 260,
+        "autosize": {
+          "type": "fit",
+          "contains": "padding"
+        }
+      },
+      "fields": [
+        "Year",
+        "avg_authors",
+        "keyword_coverage_pct",
+        "keyword_paper_count",
+        "paper_count"
+      ],
+      "interaction": {
+        "kind": "range filter",
+        "instruction": "Move the Through year slider backward to test whether the authorship–keyword pattern is driven by the latest years."
+      },
+      "how_to_read": "The path connects years in order; movement up means broader keyword coverage, and movement right means larger author teams.",
+      "summary": "Average authors per paper rises from 2.2642 in 1990 to 4.7016 in 2024, while keyword coverage reaches 100.0% in 2024. This supports a parallel maturation story—larger collaborations and more complete keyword metadata accompany the publication-format shift, but this panel does not prove causation.",
+      "self_eval": {
+        "score": 84.0,
+        "criteria": [
+          {
+            "id": "data_fidelity",
+            "score": 5,
+            "rationale": "endpoint values match the authorship-keyword aggregate"
+          },
+          {
+            "id": "insightfulness",
+            "score": 4,
+            "rationale": "states the parallel rise and causal limit"
+          },
+          {
+            "id": "narrative_coherence",
+            "score": 4,
+            "rationale": "extends the stem into metadata maturation"
+          },
+          {
+            "id": "visual_craft",
+            "score": 4,
+            "rationale": "connected scatter fits two-measure change over time"
+          },
+          {
+            "id": "functionality",
+            "score": 4,
+            "rationale": "year slider visibly shortens the path"
+          }
+        ],
+        "weakest": "The chart implies temporal association, not a formal model."
+      },
+      "type_corrections": [],
+      "filter": null
+    },
+    {
+      "id": "l1",
+      "persona": "low_expertise",
+      "question": "How many papers were published each year?",
+      "complexity": "low",
+      "stage": "stem",
+      "vis_task": "present",
+      "table": "ieee_vis_papers_1990_2024_main_dataset_per_year",
+      "chart_title": "Annual VIS output ranges from 53 to 174 papers",
+      "caption": "",
+      "spec": {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "data": {
+          "name": "ieee_vis_papers_1990_2024_main_dataset_per_year"
+        },
+        "transform": [
+          {
+            "joinaggregate": [
+              {
+                "op": "sum",
+                "field": "count",
+                "as": "record_total"
+              }
+            ]
+          },
+          {
+            "filter": "datum.year >= start_year"
+          }
+        ],
+        "params": [
+          {
+            "name": "start_year",
+            "value": 1990,
+            "bind": {
+              "input": "range",
+              "min": 1990,
+              "max": 2024,
+              "step": 1,
+              "name": "Start year"
+            }
+          }
+        ],
+        "mark": {
+          "type": "line",
+          "point": true
+        },
+        "encoding": {
+          "x": {
+            "field": "year",
+            "type": "ordinal",
+            "title": "Year",
+            "sort": "ascending",
+            "axis": {
+              "labelAngle": 0,
+              "labelOverlap": "greedy",
+              "labelSeparation": 2
+            }
+          },
+          "y": {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Number of papers",
+            "axis": {
+              "labelExpr": "datum.value % 1 == 0 ? format(datum.value, ',d') : ''"
+            }
+          },
+          "tooltip": [
+            {
+              "field": "year",
+              "type": "ordinal",
+              "title": "Year"
+            },
+            {
+              "field": "count",
+              "type": "quantitative",
+              "title": "Number of papers",
+              "format": ",d"
+            },
+            {
+              "field": "record_total",
+              "type": "quantitative",
+              "title": "Papers in selected table",
+              "format": ",d"
+            }
+          ]
+        },
+        "width": "container",
+        "height": 260,
+        "autosize": {
+          "type": "fit",
+          "contains": "padding"
+        }
+      },
+      "fields": [
+        "count",
+        "year"
+      ],
+      "interaction": {
+        "kind": "range filter",
+        "instruction": "Move the Start year slider to focus the line on later parts of the 1990–2024 record."
+      },
+      "how_to_read": "Read left to right: each point is one publication year, and higher points mean more papers that year.",
+      "summary": "From 1990 through 2024, IEEE VIS yearly output ranges from 53 papers in 1990 to 174 papers in 2004, within a 3,877-paper record. Treat the peak as an annual-volume high, not as evidence of paper type or venue mix by itself.",
+      "self_eval": {
+        "score": 88.0,
+        "criteria": [
+          {
+            "id": "data_fidelity",
+            "score": 5,
+            "rationale": "uses the per-year count table directly"
+          },
+          {
+            "id": "insightfulness",
+            "score": 4,
+            "rationale": "names range and peak year"
+          },
+          {
+            "id": "narrative_coherence",
+            "score": 4,
+            "rationale": "opens the volume story cleanly"
+          },
+          {
+            "id": "visual_craft",
+            "score": 5,
+            "rationale": "line fits ordered yearly counts"
+          },
+          {
+            "id": "functionality",
+            "score": 4,
+            "rationale": "range filter visibly changes the years shown"
+          }
+        ],
+        "weakest": "It answers volume only, leaving composition to later panels."
+      },
+      "type_corrections": [],
+      "filter": null
+    },
+    {
+      "id": "l2",
+      "persona": "low_expertise",
+      "question": "Which conference contributed the most papers overall?",
+      "complexity": "low",
+      "stage": "stem",
+      "vis_task": "identify",
+      "table": "ieee_vis_papers_1990_2024_main_dataset_by_conference",
+      "chart_title": "Vis contributes the largest overall paper count",
+      "caption": "",
+      "spec": {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "data": {
+          "name": "ieee_vis_papers_1990_2024_main_dataset_by_conference"
+        },
+        "transform": [
+          {
+            "joinaggregate": [
+              {
+                "op": "sum",
+                "field": "count",
+                "as": "record_total"
+              }
+            ]
+          },
+          {
+            "filter": "datum.count >= minimum_count"
+          }
+        ],
+        "params": [
+          {
+            "name": "minimum_count",
+            "value": 0,
+            "bind": {
+              "input": "range",
+              "min": 0,
+              "max": 1942,
+              "step": 25,
+              "name": "Minimum papers"
+            }
+          }
+        ],
+        "mark": "bar",
+        "encoding": {
+          "y": {
+            "field": "Conference",
+            "type": "nominal",
+            "title": "Conference",
+            "sort": "-x",
+            "axis": {
+              "labelLimit": 170,
+              "labelOverlap": "greedy"
+            }
+          },
+          "x": {
+            "field": "count",
+            "type": "quantitative",
+            "title": "Number of papers",
+            "axis": {
+              "labelExpr": "datum.value % 1 == 0 ? format(datum.value, ',d') : ''"
+            }
+          },
+          "tooltip": [
+            {
+              "field": "Conference",
+              "type": "nominal"
+            },
+            {
+              "field": "count",
+              "type": "quantitative",
+              "title": "Number of papers",
+              "format": ",d"
+            },
+            {
+              "field": "record_total",
+              "type": "quantitative",
+              "title": "Total papers",
+              "format": ",d"
+            }
+          ]
+        },
+        "width": "container",
+        "height": 260,
+        "autosize": {
+          "type": "fit",
+          "contains": "padding"
+        }
+      },
+      "fields": [
+        "Conference",
+        "count"
+      ],
+      "interaction": {
+        "kind": "range filter",
+        "instruction": "Raise the Minimum papers slider to leave only conferences above that threshold."
+      },
+      "how_to_read": "The longest bar is the conference with the most papers across the full 1990–2024 record.",
+      "summary": "Vis contributed the most papers overall, with 1,942 of the 3,877 papers in the record. That makes venue mix central: the total growth is not evenly distributed across the named conferences.",
+      "self_eval": {
+        "score": 88.0,
+        "criteria": [
+          {
+            "id": "data_fidelity",
+            "score": 5,
+            "rationale": "counts come from the conference aggregate"
+          },
+          {
+            "id": "insightfulness",
+            "score": 4,
+            "rationale": "turns ranking into a venue-mix implication"
+          },
+          {
+            "id": "narrative_coherence",
+            "score": 4,
+            "rationale": "connects volume to venue concentration"
+          },
+          {
+            "id": "visual_craft",
+            "score": 5,
+            "rationale": "ranked horizontal bars suit four conferences"
+          },
+          {
+            "id": "functionality",
+            "score": 4,
+            "rationale": "threshold filter visibly removes bars"
+          }
+        ],
+        "weakest": "It does not show when the venue concentration emerges."
+      },
+      "type_corrections": [],
+      "filter": {
+        "field": "Conference",
+        "values": [
+          "InfoVis",
+          "SciVis",
+          "VAST",
+          "Vis"
+        ],
+        "rows": 4
+      }
+    },
+    {
+      "id": "l3",
+      "persona": "low_expertise",
+      "question": "When did journal papers become the main kind of paper?",
+      "complexity": "medium",
+      "stage": "bowl",
+      "vis_task": "locate",
+      "table": "analysis_paper_type_by_year",
+      "chart_title": "Journal is the main paper kind by 2024",
+      "caption": "",
+      "spec": {
+        "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+        "data": {
+          "name": "analysis_paper_type_by_year"
+        },
+        "transform": [
+          {
+            "joinaggregate": [
+              {
+                "op": "max",
+                "field": "share_pct",
+                "as": "max_share"
+              }
+            ],
+            "groupby": [
+              "Year"
+            ]
+          },
+          {
+            "filter": "datum.share_pct == datum.max_share"
+          },
+          {
+            "filter": "datum.PaperType == main_kind"
+          }
+        ],
+        "params": [
+          {
+            "name": "main_kind",
+            "value": "J",
+            "bind": {
+              "input": "select",
+              "options": [
+                "J",
+                "C",
+                "M"
+              ],
+              "labels": [
+                "Journal (J)",
+                "Conference (C)",
+                "Misc. (M)"
+              ],
+              "name": "Show years led by"
+            }
+          }
+        ],
+        "mark": "point",
+        "encoding": {
+          "x": {
+            "field": "Year",
+            "type": "ordinal",
+            "title": "Year",
+            "sort": "ascending",
+            "axis": {
+              "labelAngle": 0,
+              "labelOverlap": "greedy",
+              "labelSeparation": 2
+            }
+          },
+          "y": {
+            "field": "share_pct",
+            "type": "quantitative",
+            "title": "Winning share of papers (%)"
+          },
+          "tooltip": [
+            {
+              "field": "Year",
+              "type": "ordinal"
+            },
+            {
+              "field": "PaperType",
+              "type": "nominal",
+              "title": "Main paper kind"
+            },
+            {
+              "field": "paper_count",
+              "type": "quantitative",
+              "title": "Papers of this kind",
+              "format": ",d"
+            },
+            {
+              "field": "share_pct",
+              "type": "quantitative",
+              "title": "Share of year (%)"
+            },
+            {
+              "field": "year_total",
+              "type": "quantitative",
+              "title": "Total papers that year",
+              "format": ",d"
+            }
+          ]
+        },
+        "width": "container",
+        "height": 260,
+        "autosize": {
+          "type": "fit",
+          "contains": "padding"
+        }
+      },
+      "fields": [
+        "PaperType",
+        "Year",
+        "paper_count",
+        "share_pct",
+        "year_total"
+      ],
+      "interaction": {
+        "kind": "dropdown filter",
+        "instruction": "Use the dropdown to switch from Journal (J) to Conference (C) or Misc. (M) and see which years each kind led."
+      },
+      "how_to_read": "In the default view, each point is a year when journal papers were the largest paper kind; higher points mean journals made up more of that year’s papers.",
+      "summary": "In the default Journal (J) view, 2024 is a journal-led year with 124 J papers, or 100.0% of that year’s publications. Switch the dropdown to C or M to compare which years were led by conference or miscellaneous papers instead.",
+      "self_eval": {
+        "score": 80.0,
+        "criteria": [
+          {
+            "id": "data_fidelity",
+            "score": 5,
+            "rationale": "winner filter uses within-year max share"
+          },
+          {
+            "id": "insightfulness",
+            "score": 4,
+            "rationale": "locates leadership years rather than all shares"
+          },
+          {
+            "id": "narrative_coherence",
+            "score": 4,
+            "rationale": "turns the main shift into reader exploration"
+          },
+          {
+            "id": "visual_craft",
+            "score": 4,
+            "rationale": "point strip is simple for locating years"
+          },
+          {
+            "id": "functionality",
+            "score": 3,
+            "rationale": "dropdown is useful but hides other types at once"
+          }
+        ],
+        "weakest": "It requires interaction to compare all paper kinds."
+      },
+      "type_corrections": [],
+      "filter": null
+    }
+  ],
+  "tables": {
+    "analysis_authorship_keywords_by_year": [
+      {
+        "Year": 1990,
+        "paper_count": 53,
+        "author_count_present": 53,
+        "avg_authors": 2.2642,
+        "keyword_paper_count": 0,
+        "keyword_coverage_pct": 0.0,
+        "keyword_count": 0,
+        "avg_keywords_per_keyworded_paper": null
+      },
+      {
+        "Year": 1991,
+        "paper_count": 57,
+        "author_count_present": 57,
+        "avg_authors": 2.8246,
+        "keyword_paper_count": 1,
+        "keyword_coverage_pct": 1.7544,
+        "keyword_count": 1,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 1992,
+        "paper_count": 59,
+        "author_count_present": 59,
+        "avg_authors": 2.678,
+        "keyword_paper_count": 3,
+        "keyword_coverage_pct": 5.0847,
+        "keyword_count": 3,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 1993,
+        "paper_count": 55,
+        "author_count_present": 55,
+        "avg_authors": 2.3455,
+        "keyword_paper_count": 3,
+        "keyword_coverage_pct": 5.4545,
+        "keyword_count": 3,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 1994,
+        "paper_count": 59,
+        "author_count_present": 59,
+        "avg_authors": 2.8644,
+        "keyword_paper_count": 2,
+        "keyword_coverage_pct": 3.3898,
+        "keyword_count": 2,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 1995,
+        "paper_count": 74,
+        "author_count_present": 74,
+        "avg_authors": 2.6351,
+        "keyword_paper_count": 9,
+        "keyword_coverage_pct": 12.1622,
+        "keyword_count": 9,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 1996,
+        "paper_count": 89,
+        "author_count_present": 89,
+        "avg_authors": 3.3034,
+        "keyword_paper_count": 21,
+        "keyword_coverage_pct": 23.5955,
+        "keyword_count": 21,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 1997,
+        "paper_count": 91,
+        "author_count_present": 91,
+        "avg_authors": 2.8791,
+        "keyword_paper_count": 41,
+        "keyword_coverage_pct": 45.0549,
+        "keyword_count": 41,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 1998,
+        "paper_count": 94,
+        "author_count_present": 94,
+        "avg_authors": 2.7872,
+        "keyword_paper_count": 44,
+        "keyword_coverage_pct": 46.8085,
+        "keyword_count": 44,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 1999,
+        "paper_count": 91,
+        "author_count_present": 91,
+        "avg_authors": 3.0769,
+        "keyword_paper_count": 45,
+        "keyword_coverage_pct": 49.4505,
+        "keyword_count": 45,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2000,
+        "paper_count": 93,
+        "author_count_present": 93,
+        "avg_authors": 3.2043,
+        "keyword_paper_count": 66,
+        "keyword_coverage_pct": 70.9677,
+        "keyword_count": 66,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2001,
+        "paper_count": 97,
+        "author_count_present": 97,
+        "avg_authors": 3.2887,
+        "keyword_paper_count": 71,
+        "keyword_coverage_pct": 73.1959,
+        "keyword_count": 71,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2002,
+        "paper_count": 103,
+        "author_count_present": 103,
+        "avg_authors": 2.9417,
+        "keyword_paper_count": 83,
+        "keyword_coverage_pct": 80.5825,
+        "keyword_count": 83,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2003,
+        "paper_count": 114,
+        "author_count_present": 113,
+        "avg_authors": 3.2301,
+        "keyword_paper_count": 102,
+        "keyword_coverage_pct": 89.4737,
+        "keyword_count": 102,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2004,
+        "paper_count": 174,
+        "author_count_present": 174,
+        "avg_authors": 3.3448,
+        "keyword_paper_count": 97,
+        "keyword_coverage_pct": 55.7471,
+        "keyword_count": 97,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2005,
+        "paper_count": 120,
+        "author_count_present": 120,
+        "avg_authors": 3.6583,
+        "keyword_paper_count": 114,
+        "keyword_coverage_pct": 95.0,
+        "keyword_count": 114,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2006,
+        "paper_count": 114,
+        "author_count_present": 114,
+        "avg_authors": 3.4035,
+        "keyword_paper_count": 112,
+        "keyword_coverage_pct": 98.2456,
+        "keyword_count": 112,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2007,
+        "paper_count": 131,
+        "author_count_present": 131,
+        "avg_authors": 3.8626,
+        "keyword_paper_count": 106,
+        "keyword_coverage_pct": 80.916,
+        "keyword_count": 106,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2008,
+        "paper_count": 123,
+        "author_count_present": 123,
+        "avg_authors": 3.7561,
+        "keyword_paper_count": 90,
+        "keyword_coverage_pct": 73.1707,
+        "keyword_count": 90,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2009,
+        "paper_count": 148,
+        "author_count_present": 148,
+        "avg_authors": 3.8649,
+        "keyword_paper_count": 110,
+        "keyword_coverage_pct": 74.3243,
+        "keyword_count": 110,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2010,
+        "paper_count": 130,
+        "author_count_present": 130,
+        "avg_authors": 3.7692,
+        "keyword_paper_count": 106,
+        "keyword_coverage_pct": 81.5385,
+        "keyword_count": 106,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2011,
+        "paper_count": 149,
+        "author_count_present": 149,
+        "avg_authors": 4.0537,
+        "keyword_paper_count": 108,
+        "keyword_coverage_pct": 72.4832,
+        "keyword_count": 108,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2012,
+        "paper_count": 138,
+        "author_count_present": 138,
+        "avg_authors": 4.2246,
+        "keyword_paper_count": 104,
+        "keyword_coverage_pct": 75.3623,
+        "keyword_count": 104,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2013,
+        "paper_count": 101,
+        "author_count_present": 101,
+        "avg_authors": 4.1287,
+        "keyword_paper_count": 101,
+        "keyword_coverage_pct": 100.0,
+        "keyword_count": 101,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2014,
+        "paper_count": 133,
+        "author_count_present": 133,
+        "avg_authors": 4.609,
+        "keyword_paper_count": 132,
+        "keyword_coverage_pct": 99.2481,
+        "keyword_count": 132,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2015,
+        "paper_count": 160,
+        "author_count_present": 160,
+        "avg_authors": 4.4625,
+        "keyword_paper_count": 121,
+        "keyword_coverage_pct": 75.625,
+        "keyword_count": 121,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2016,
+        "paper_count": 115,
+        "author_count_present": 115,
+        "avg_authors": 4.687,
+        "keyword_paper_count": 99,
+        "keyword_coverage_pct": 86.087,
+        "keyword_count": 437,
+        "avg_keywords_per_keyworded_paper": 4.4141
+      },
+      {
+        "Year": 2017,
+        "paper_count": 114,
+        "author_count_present": 114,
+        "avg_authors": 4.7281,
+        "keyword_paper_count": 112,
+        "keyword_coverage_pct": 98.2456,
+        "keyword_count": 112,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2018,
+        "paper_count": 127,
+        "author_count_present": 127,
+        "avg_authors": 4.6299,
+        "keyword_paper_count": 127,
+        "keyword_coverage_pct": 100.0,
+        "keyword_count": 127,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2019,
+        "paper_count": 129,
+        "author_count_present": 129,
+        "avg_authors": 5.2558,
+        "keyword_paper_count": 129,
+        "keyword_coverage_pct": 100.0,
+        "keyword_count": 129,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2020,
+        "paper_count": 157,
+        "author_count_present": 157,
+        "avg_authors": 5.051,
+        "keyword_paper_count": 155,
+        "keyword_coverage_pct": 98.7261,
+        "keyword_count": 157,
+        "avg_keywords_per_keyworded_paper": 1.0129
+      },
+      {
+        "Year": 2021,
+        "paper_count": 109,
+        "author_count_present": 109,
+        "avg_authors": 5.0459,
+        "keyword_paper_count": 108,
+        "keyword_coverage_pct": 99.0826,
+        "keyword_count": 108,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2022,
+        "paper_count": 119,
+        "author_count_present": 119,
+        "avg_authors": 5.3782,
+        "keyword_paper_count": 119,
+        "keyword_coverage_pct": 100.0,
+        "keyword_count": 119,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2023,
+        "paper_count": 133,
+        "author_count_present": 133,
+        "avg_authors": 5.3308,
+        "keyword_paper_count": 133,
+        "keyword_coverage_pct": 100.0,
+        "keyword_count": 133,
+        "avg_keywords_per_keyworded_paper": 1.0
+      },
+      {
+        "Year": 2024,
+        "paper_count": 124,
+        "author_count_present": 124,
+        "avg_authors": 4.7016,
+        "keyword_paper_count": 124,
+        "keyword_coverage_pct": 100.0,
+        "keyword_count": 124,
+        "avg_keywords_per_keyworded_paper": 1.0
+      }
+    ],
+    "analysis_paper_type_by_year": [
+      {
+        "Year": 1990,
+        "PaperType": "C",
+        "paper_count": 53,
+        "year_total": 53,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 1990,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 53,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1990,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 53,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1991,
+        "PaperType": "C",
+        "paper_count": 50,
+        "year_total": 57,
+        "share_pct": 87.7193
+      },
+      {
+        "Year": 1991,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 57,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1991,
+        "PaperType": "M",
+        "paper_count": 7,
+        "year_total": 57,
+        "share_pct": 12.2807
+      },
+      {
+        "Year": 1992,
+        "PaperType": "C",
+        "paper_count": 53,
+        "year_total": 59,
+        "share_pct": 89.8305
+      },
+      {
+        "Year": 1992,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 59,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1992,
+        "PaperType": "M",
+        "paper_count": 6,
+        "year_total": 59,
+        "share_pct": 10.1695
+      },
+      {
+        "Year": 1993,
+        "PaperType": "C",
+        "paper_count": 55,
+        "year_total": 55,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 1993,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 55,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1993,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 55,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1994,
+        "PaperType": "C",
+        "paper_count": 53,
+        "year_total": 59,
+        "share_pct": 89.8305
+      },
+      {
+        "Year": 1994,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 59,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1994,
+        "PaperType": "M",
+        "paper_count": 6,
+        "year_total": 59,
+        "share_pct": 10.1695
+      },
+      {
+        "Year": 1995,
+        "PaperType": "C",
+        "paper_count": 74,
+        "year_total": 74,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 1995,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 74,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1995,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 74,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1996,
+        "PaperType": "C",
+        "paper_count": 77,
+        "year_total": 89,
+        "share_pct": 86.5169
+      },
+      {
+        "Year": 1996,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 89,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1996,
+        "PaperType": "M",
+        "paper_count": 12,
+        "year_total": 89,
+        "share_pct": 13.4831
+      },
+      {
+        "Year": 1997,
+        "PaperType": "C",
+        "paper_count": 88,
+        "year_total": 91,
+        "share_pct": 96.7033
+      },
+      {
+        "Year": 1997,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 91,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1997,
+        "PaperType": "M",
+        "paper_count": 3,
+        "year_total": 91,
+        "share_pct": 3.2967
+      },
+      {
+        "Year": 1998,
+        "PaperType": "C",
+        "paper_count": 90,
+        "year_total": 94,
+        "share_pct": 95.7447
+      },
+      {
+        "Year": 1998,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 94,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1998,
+        "PaperType": "M",
+        "paper_count": 4,
+        "year_total": 94,
+        "share_pct": 4.2553
+      },
+      {
+        "Year": 1999,
+        "PaperType": "C",
+        "paper_count": 88,
+        "year_total": 91,
+        "share_pct": 96.7033
+      },
+      {
+        "Year": 1999,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 91,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1999,
+        "PaperType": "M",
+        "paper_count": 3,
+        "year_total": 91,
+        "share_pct": 3.2967
+      },
+      {
+        "Year": 2000,
+        "PaperType": "C",
+        "paper_count": 93,
+        "year_total": 93,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2000,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 93,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2000,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 93,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2001,
+        "PaperType": "C",
+        "paper_count": 96,
+        "year_total": 97,
+        "share_pct": 98.9691
+      },
+      {
+        "Year": 2001,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 97,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2001,
+        "PaperType": "M",
+        "paper_count": 1,
+        "year_total": 97,
+        "share_pct": 1.0309
+      },
+      {
+        "Year": 2002,
+        "PaperType": "C",
+        "paper_count": 101,
+        "year_total": 103,
+        "share_pct": 98.0583
+      },
+      {
+        "Year": 2002,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 103,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2002,
+        "PaperType": "M",
+        "paper_count": 2,
+        "year_total": 103,
+        "share_pct": 1.9417
+      },
+      {
+        "Year": 2003,
+        "PaperType": "C",
+        "paper_count": 103,
+        "year_total": 114,
+        "share_pct": 90.3509
+      },
+      {
+        "Year": 2003,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 114,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2003,
+        "PaperType": "M",
+        "paper_count": 11,
+        "year_total": 114,
+        "share_pct": 9.6491
+      },
+      {
+        "Year": 2004,
+        "PaperType": "C",
+        "paper_count": 97,
+        "year_total": 174,
+        "share_pct": 55.7471
+      },
+      {
+        "Year": 2004,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 174,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2004,
+        "PaperType": "M",
+        "paper_count": 77,
+        "year_total": 174,
+        "share_pct": 44.2529
+      },
+      {
+        "Year": 2005,
+        "PaperType": "C",
+        "paper_count": 119,
+        "year_total": 120,
+        "share_pct": 99.1667
+      },
+      {
+        "Year": 2005,
+        "PaperType": "J",
+        "paper_count": 0,
+        "year_total": 120,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2005,
+        "PaperType": "M",
+        "paper_count": 1,
+        "year_total": 120,
+        "share_pct": 0.8333
+      },
+      {
+        "Year": 2006,
+        "PaperType": "C",
+        "paper_count": 26,
+        "year_total": 114,
+        "share_pct": 22.807
+      },
+      {
+        "Year": 2006,
+        "PaperType": "J",
+        "paper_count": 87,
+        "year_total": 114,
+        "share_pct": 76.3158
+      },
+      {
+        "Year": 2006,
+        "PaperType": "M",
+        "paper_count": 1,
+        "year_total": 114,
+        "share_pct": 0.8772
+      },
+      {
+        "Year": 2007,
+        "PaperType": "C",
+        "paper_count": 24,
+        "year_total": 131,
+        "share_pct": 18.3206
+      },
+      {
+        "Year": 2007,
+        "PaperType": "J",
+        "paper_count": 83,
+        "year_total": 131,
+        "share_pct": 63.3588
+      },
+      {
+        "Year": 2007,
+        "PaperType": "M",
+        "paper_count": 24,
+        "year_total": 131,
+        "share_pct": 18.3206
+      },
+      {
+        "Year": 2008,
+        "PaperType": "C",
+        "paper_count": 21,
+        "year_total": 123,
+        "share_pct": 17.0732
+      },
+      {
+        "Year": 2008,
+        "PaperType": "J",
+        "paper_count": 78,
+        "year_total": 123,
+        "share_pct": 63.4146
+      },
+      {
+        "Year": 2008,
+        "PaperType": "M",
+        "paper_count": 24,
+        "year_total": 123,
+        "share_pct": 19.5122
+      },
+      {
+        "Year": 2009,
+        "PaperType": "C",
+        "paper_count": 26,
+        "year_total": 148,
+        "share_pct": 17.5676
+      },
+      {
+        "Year": 2009,
+        "PaperType": "J",
+        "paper_count": 91,
+        "year_total": 148,
+        "share_pct": 61.4865
+      },
+      {
+        "Year": 2009,
+        "PaperType": "M",
+        "paper_count": 31,
+        "year_total": 148,
+        "share_pct": 20.9459
+      },
+      {
+        "Year": 2010,
+        "PaperType": "C",
+        "paper_count": 26,
+        "year_total": 130,
+        "share_pct": 20.0
+      },
+      {
+        "Year": 2010,
+        "PaperType": "J",
+        "paper_count": 83,
+        "year_total": 130,
+        "share_pct": 63.8462
+      },
+      {
+        "Year": 2010,
+        "PaperType": "M",
+        "paper_count": 21,
+        "year_total": 130,
+        "share_pct": 16.1538
+      },
+      {
+        "Year": 2011,
+        "PaperType": "C",
+        "paper_count": 26,
+        "year_total": 149,
+        "share_pct": 17.4497
+      },
+      {
+        "Year": 2011,
+        "PaperType": "J",
+        "paper_count": 93,
+        "year_total": 149,
+        "share_pct": 62.4161
+      },
+      {
+        "Year": 2011,
+        "PaperType": "M",
+        "paper_count": 30,
+        "year_total": 149,
+        "share_pct": 20.1342
+      },
+      {
+        "Year": 2012,
+        "PaperType": "C",
+        "paper_count": 20,
+        "year_total": 138,
+        "share_pct": 14.4928
+      },
+      {
+        "Year": 2012,
+        "PaperType": "J",
+        "paper_count": 96,
+        "year_total": 138,
+        "share_pct": 69.5652
+      },
+      {
+        "Year": 2012,
+        "PaperType": "M",
+        "paper_count": 22,
+        "year_total": 138,
+        "share_pct": 15.942
+      },
+      {
+        "Year": 2013,
+        "PaperType": "C",
+        "paper_count": 0,
+        "year_total": 101,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2013,
+        "PaperType": "J",
+        "paper_count": 101,
+        "year_total": 101,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2013,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 101,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2014,
+        "PaperType": "C",
+        "paper_count": 21,
+        "year_total": 133,
+        "share_pct": 15.7895
+      },
+      {
+        "Year": 2014,
+        "PaperType": "J",
+        "paper_count": 112,
+        "year_total": 133,
+        "share_pct": 84.2105
+      },
+      {
+        "Year": 2014,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 133,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2015,
+        "PaperType": "C",
+        "paper_count": 23,
+        "year_total": 160,
+        "share_pct": 14.375
+      },
+      {
+        "Year": 2015,
+        "PaperType": "J",
+        "paper_count": 104,
+        "year_total": 160,
+        "share_pct": 65.0
+      },
+      {
+        "Year": 2015,
+        "PaperType": "M",
+        "paper_count": 33,
+        "year_total": 160,
+        "share_pct": 20.625
+      },
+      {
+        "Year": 2016,
+        "PaperType": "C",
+        "paper_count": 15,
+        "year_total": 115,
+        "share_pct": 13.0435
+      },
+      {
+        "Year": 2016,
+        "PaperType": "J",
+        "paper_count": 100,
+        "year_total": 115,
+        "share_pct": 86.9565
+      },
+      {
+        "Year": 2016,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 115,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2017,
+        "PaperType": "C",
+        "paper_count": 15,
+        "year_total": 114,
+        "share_pct": 13.1579
+      },
+      {
+        "Year": 2017,
+        "PaperType": "J",
+        "paper_count": 99,
+        "year_total": 114,
+        "share_pct": 86.8421
+      },
+      {
+        "Year": 2017,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 114,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2018,
+        "PaperType": "C",
+        "paper_count": 7,
+        "year_total": 127,
+        "share_pct": 5.5118
+      },
+      {
+        "Year": 2018,
+        "PaperType": "J",
+        "paper_count": 120,
+        "year_total": 127,
+        "share_pct": 94.4882
+      },
+      {
+        "Year": 2018,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 127,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2019,
+        "PaperType": "C",
+        "paper_count": 9,
+        "year_total": 129,
+        "share_pct": 6.9767
+      },
+      {
+        "Year": 2019,
+        "PaperType": "J",
+        "paper_count": 120,
+        "year_total": 129,
+        "share_pct": 93.0233
+      },
+      {
+        "Year": 2019,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 129,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2020,
+        "PaperType": "C",
+        "paper_count": 10,
+        "year_total": 157,
+        "share_pct": 6.3694
+      },
+      {
+        "Year": 2020,
+        "PaperType": "J",
+        "paper_count": 147,
+        "year_total": 157,
+        "share_pct": 93.6306
+      },
+      {
+        "Year": 2020,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 157,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2021,
+        "PaperType": "C",
+        "paper_count": 0,
+        "year_total": 109,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2021,
+        "PaperType": "J",
+        "paper_count": 109,
+        "year_total": 109,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2021,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 109,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2022,
+        "PaperType": "C",
+        "paper_count": 0,
+        "year_total": 119,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2022,
+        "PaperType": "J",
+        "paper_count": 119,
+        "year_total": 119,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2022,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 119,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2023,
+        "PaperType": "C",
+        "paper_count": 0,
+        "year_total": 133,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2023,
+        "PaperType": "J",
+        "paper_count": 133,
+        "year_total": 133,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2023,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 133,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2024,
+        "PaperType": "C",
+        "paper_count": 0,
+        "year_total": 124,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2024,
+        "PaperType": "J",
+        "paper_count": 124,
+        "year_total": 124,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2024,
+        "PaperType": "M",
+        "paper_count": 0,
+        "year_total": 124,
+        "share_pct": 0.0
+      }
+    ],
+    "analysis_publication_volume_by_year_conference": [
+      {
+        "Year": 1990,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 53,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1990,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 53,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1990,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 53,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1990,
+        "Conference": "Vis",
+        "paper_count": 53,
+        "year_total": 53,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 1991,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 57,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1991,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 57,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1991,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 57,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1991,
+        "Conference": "Vis",
+        "paper_count": 57,
+        "year_total": 57,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 1992,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 59,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1992,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 59,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1992,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 59,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1992,
+        "Conference": "Vis",
+        "paper_count": 59,
+        "year_total": 59,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 1993,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 55,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1993,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 55,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1993,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 55,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1993,
+        "Conference": "Vis",
+        "paper_count": 55,
+        "year_total": 55,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 1994,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 59,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1994,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 59,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1994,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 59,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1994,
+        "Conference": "Vis",
+        "paper_count": 59,
+        "year_total": 59,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 1995,
+        "Conference": "InfoVis",
+        "paper_count": 18,
+        "year_total": 74,
+        "share_pct": 24.3243
+      },
+      {
+        "Year": 1995,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 74,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1995,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 74,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1995,
+        "Conference": "Vis",
+        "paper_count": 56,
+        "year_total": 74,
+        "share_pct": 75.6757
+      },
+      {
+        "Year": 1996,
+        "Conference": "InfoVis",
+        "paper_count": 19,
+        "year_total": 89,
+        "share_pct": 21.3483
+      },
+      {
+        "Year": 1996,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 89,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1996,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 89,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1996,
+        "Conference": "Vis",
+        "paper_count": 70,
+        "year_total": 89,
+        "share_pct": 78.6517
+      },
+      {
+        "Year": 1997,
+        "Conference": "InfoVis",
+        "paper_count": 16,
+        "year_total": 91,
+        "share_pct": 17.5824
+      },
+      {
+        "Year": 1997,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 91,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1997,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 91,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1997,
+        "Conference": "Vis",
+        "paper_count": 75,
+        "year_total": 91,
+        "share_pct": 82.4176
+      },
+      {
+        "Year": 1998,
+        "Conference": "InfoVis",
+        "paper_count": 18,
+        "year_total": 94,
+        "share_pct": 19.1489
+      },
+      {
+        "Year": 1998,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 94,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1998,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 94,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1998,
+        "Conference": "Vis",
+        "paper_count": 76,
+        "year_total": 94,
+        "share_pct": 80.8511
+      },
+      {
+        "Year": 1999,
+        "Conference": "InfoVis",
+        "paper_count": 19,
+        "year_total": 91,
+        "share_pct": 20.8791
+      },
+      {
+        "Year": 1999,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 91,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1999,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 91,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 1999,
+        "Conference": "Vis",
+        "paper_count": 72,
+        "year_total": 91,
+        "share_pct": 79.1209
+      },
+      {
+        "Year": 2000,
+        "Conference": "InfoVis",
+        "paper_count": 20,
+        "year_total": 93,
+        "share_pct": 21.5054
+      },
+      {
+        "Year": 2000,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 93,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2000,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 93,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2000,
+        "Conference": "Vis",
+        "paper_count": 73,
+        "year_total": 93,
+        "share_pct": 78.4946
+      },
+      {
+        "Year": 2001,
+        "Conference": "InfoVis",
+        "paper_count": 23,
+        "year_total": 97,
+        "share_pct": 23.7113
+      },
+      {
+        "Year": 2001,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 97,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2001,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 97,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2001,
+        "Conference": "Vis",
+        "paper_count": 74,
+        "year_total": 97,
+        "share_pct": 76.2887
+      },
+      {
+        "Year": 2002,
+        "Conference": "InfoVis",
+        "paper_count": 25,
+        "year_total": 103,
+        "share_pct": 24.2718
+      },
+      {
+        "Year": 2002,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 103,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2002,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 103,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2002,
+        "Conference": "Vis",
+        "paper_count": 78,
+        "year_total": 103,
+        "share_pct": 75.7282
+      },
+      {
+        "Year": 2003,
+        "Conference": "InfoVis",
+        "paper_count": 33,
+        "year_total": 114,
+        "share_pct": 28.9474
+      },
+      {
+        "Year": 2003,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 114,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2003,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 114,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2003,
+        "Conference": "Vis",
+        "paper_count": 81,
+        "year_total": 114,
+        "share_pct": 71.0526
+      },
+      {
+        "Year": 2004,
+        "Conference": "InfoVis",
+        "paper_count": 63,
+        "year_total": 174,
+        "share_pct": 36.2069
+      },
+      {
+        "Year": 2004,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 174,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2004,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 174,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2004,
+        "Conference": "Vis",
+        "paper_count": 111,
+        "year_total": 174,
+        "share_pct": 63.7931
+      },
+      {
+        "Year": 2005,
+        "Conference": "InfoVis",
+        "paper_count": 32,
+        "year_total": 120,
+        "share_pct": 26.6667
+      },
+      {
+        "Year": 2005,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 120,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2005,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 120,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2005,
+        "Conference": "Vis",
+        "paper_count": 88,
+        "year_total": 120,
+        "share_pct": 73.3333
+      },
+      {
+        "Year": 2006,
+        "Conference": "InfoVis",
+        "paper_count": 24,
+        "year_total": 114,
+        "share_pct": 21.0526
+      },
+      {
+        "Year": 2006,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 114,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2006,
+        "Conference": "VAST",
+        "paper_count": 27,
+        "year_total": 114,
+        "share_pct": 23.6842
+      },
+      {
+        "Year": 2006,
+        "Conference": "Vis",
+        "paper_count": 63,
+        "year_total": 114,
+        "share_pct": 55.2632
+      },
+      {
+        "Year": 2007,
+        "Conference": "InfoVis",
+        "paper_count": 27,
+        "year_total": 131,
+        "share_pct": 20.6107
+      },
+      {
+        "Year": 2007,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 131,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2007,
+        "Conference": "VAST",
+        "paper_count": 48,
+        "year_total": 131,
+        "share_pct": 36.6412
+      },
+      {
+        "Year": 2007,
+        "Conference": "Vis",
+        "paper_count": 56,
+        "year_total": 131,
+        "share_pct": 42.7481
+      },
+      {
+        "Year": 2008,
+        "Conference": "InfoVis",
+        "paper_count": 28,
+        "year_total": 123,
+        "share_pct": 22.7642
+      },
+      {
+        "Year": 2008,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 123,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2008,
+        "Conference": "VAST",
+        "paper_count": 45,
+        "year_total": 123,
+        "share_pct": 36.5854
+      },
+      {
+        "Year": 2008,
+        "Conference": "Vis",
+        "paper_count": 50,
+        "year_total": 123,
+        "share_pct": 40.6504
+      },
+      {
+        "Year": 2009,
+        "Conference": "InfoVis",
+        "paper_count": 37,
+        "year_total": 148,
+        "share_pct": 25.0
+      },
+      {
+        "Year": 2009,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 148,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2009,
+        "Conference": "VAST",
+        "paper_count": 57,
+        "year_total": 148,
+        "share_pct": 38.5135
+      },
+      {
+        "Year": 2009,
+        "Conference": "Vis",
+        "paper_count": 54,
+        "year_total": 148,
+        "share_pct": 36.4865
+      },
+      {
+        "Year": 2010,
+        "Conference": "InfoVis",
+        "paper_count": 35,
+        "year_total": 130,
+        "share_pct": 26.9231
+      },
+      {
+        "Year": 2010,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 130,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2010,
+        "Conference": "VAST",
+        "paper_count": 47,
+        "year_total": 130,
+        "share_pct": 36.1538
+      },
+      {
+        "Year": 2010,
+        "Conference": "Vis",
+        "paper_count": 48,
+        "year_total": 130,
+        "share_pct": 36.9231
+      },
+      {
+        "Year": 2011,
+        "Conference": "InfoVis",
+        "paper_count": 44,
+        "year_total": 149,
+        "share_pct": 29.5302
+      },
+      {
+        "Year": 2011,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 149,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2011,
+        "Conference": "VAST",
+        "paper_count": 56,
+        "year_total": 149,
+        "share_pct": 37.5839
+      },
+      {
+        "Year": 2011,
+        "Conference": "Vis",
+        "paper_count": 49,
+        "year_total": 149,
+        "share_pct": 32.8859
+      },
+      {
+        "Year": 2012,
+        "Conference": "InfoVis",
+        "paper_count": 44,
+        "year_total": 138,
+        "share_pct": 31.8841
+      },
+      {
+        "Year": 2012,
+        "Conference": "SciVis",
+        "paper_count": 42,
+        "year_total": 138,
+        "share_pct": 30.4348
+      },
+      {
+        "Year": 2012,
+        "Conference": "VAST",
+        "paper_count": 52,
+        "year_total": 138,
+        "share_pct": 37.6812
+      },
+      {
+        "Year": 2012,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 138,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2013,
+        "Conference": "InfoVis",
+        "paper_count": 38,
+        "year_total": 101,
+        "share_pct": 37.6238
+      },
+      {
+        "Year": 2013,
+        "Conference": "SciVis",
+        "paper_count": 31,
+        "year_total": 101,
+        "share_pct": 30.6931
+      },
+      {
+        "Year": 2013,
+        "Conference": "VAST",
+        "paper_count": 32,
+        "year_total": 101,
+        "share_pct": 31.6832
+      },
+      {
+        "Year": 2013,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 101,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2014,
+        "Conference": "InfoVis",
+        "paper_count": 45,
+        "year_total": 133,
+        "share_pct": 33.8346
+      },
+      {
+        "Year": 2014,
+        "Conference": "SciVis",
+        "paper_count": 34,
+        "year_total": 133,
+        "share_pct": 25.5639
+      },
+      {
+        "Year": 2014,
+        "Conference": "VAST",
+        "paper_count": 54,
+        "year_total": 133,
+        "share_pct": 40.6015
+      },
+      {
+        "Year": 2014,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 133,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2015,
+        "Conference": "InfoVis",
+        "paper_count": 38,
+        "year_total": 160,
+        "share_pct": 23.75
+      },
+      {
+        "Year": 2015,
+        "Conference": "SciVis",
+        "paper_count": 56,
+        "year_total": 160,
+        "share_pct": 35.0
+      },
+      {
+        "Year": 2015,
+        "Conference": "VAST",
+        "paper_count": 66,
+        "year_total": 160,
+        "share_pct": 41.25
+      },
+      {
+        "Year": 2015,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 160,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2016,
+        "Conference": "InfoVis",
+        "paper_count": 37,
+        "year_total": 115,
+        "share_pct": 32.1739
+      },
+      {
+        "Year": 2016,
+        "Conference": "SciVis",
+        "paper_count": 30,
+        "year_total": 115,
+        "share_pct": 26.087
+      },
+      {
+        "Year": 2016,
+        "Conference": "VAST",
+        "paper_count": 48,
+        "year_total": 115,
+        "share_pct": 41.7391
+      },
+      {
+        "Year": 2016,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 115,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2017,
+        "Conference": "InfoVis",
+        "paper_count": 39,
+        "year_total": 114,
+        "share_pct": 34.2105
+      },
+      {
+        "Year": 2017,
+        "Conference": "SciVis",
+        "paper_count": 23,
+        "year_total": 114,
+        "share_pct": 20.1754
+      },
+      {
+        "Year": 2017,
+        "Conference": "VAST",
+        "paper_count": 52,
+        "year_total": 114,
+        "share_pct": 45.614
+      },
+      {
+        "Year": 2017,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 114,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2018,
+        "Conference": "InfoVis",
+        "paper_count": 47,
+        "year_total": 127,
+        "share_pct": 37.0079
+      },
+      {
+        "Year": 2018,
+        "Conference": "SciVis",
+        "paper_count": 32,
+        "year_total": 127,
+        "share_pct": 25.1969
+      },
+      {
+        "Year": 2018,
+        "Conference": "VAST",
+        "paper_count": 48,
+        "year_total": 127,
+        "share_pct": 37.7953
+      },
+      {
+        "Year": 2018,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 127,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2019,
+        "Conference": "InfoVis",
+        "paper_count": 53,
+        "year_total": 129,
+        "share_pct": 41.0853
+      },
+      {
+        "Year": 2019,
+        "Conference": "SciVis",
+        "paper_count": 25,
+        "year_total": 129,
+        "share_pct": 19.3798
+      },
+      {
+        "Year": 2019,
+        "Conference": "VAST",
+        "paper_count": 51,
+        "year_total": 129,
+        "share_pct": 39.5349
+      },
+      {
+        "Year": 2019,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 129,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2020,
+        "Conference": "InfoVis",
+        "paper_count": 64,
+        "year_total": 157,
+        "share_pct": 40.7643
+      },
+      {
+        "Year": 2020,
+        "Conference": "SciVis",
+        "paper_count": 32,
+        "year_total": 157,
+        "share_pct": 20.3822
+      },
+      {
+        "Year": 2020,
+        "Conference": "VAST",
+        "paper_count": 61,
+        "year_total": 157,
+        "share_pct": 38.8535
+      },
+      {
+        "Year": 2020,
+        "Conference": "Vis",
+        "paper_count": 0,
+        "year_total": 157,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2021,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 109,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2021,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 109,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2021,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 109,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2021,
+        "Conference": "Vis",
+        "paper_count": 109,
+        "year_total": 109,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2022,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 119,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2022,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 119,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2022,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 119,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2022,
+        "Conference": "Vis",
+        "paper_count": 119,
+        "year_total": 119,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2023,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 133,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2023,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 133,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2023,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 133,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2023,
+        "Conference": "Vis",
+        "paper_count": 133,
+        "year_total": 133,
+        "share_pct": 100.0
+      },
+      {
+        "Year": 2024,
+        "Conference": "InfoVis",
+        "paper_count": 0,
+        "year_total": 124,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2024,
+        "Conference": "SciVis",
+        "paper_count": 0,
+        "year_total": 124,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2024,
+        "Conference": "VAST",
+        "paper_count": 0,
+        "year_total": 124,
+        "share_pct": 0.0
+      },
+      {
+        "Year": 2024,
+        "Conference": "Vis",
+        "paper_count": 124,
+        "year_total": 124,
+        "share_pct": 100.0
+      }
+    ],
+    "ieee_vis_papers_1990_2024_main_dataset_by_conference": [
+      {
+        "Conference": "Vis",
+        "count": 1942
+      },
+      {
+        "Conference": "InfoVis",
+        "count": 886
+      },
+      {
+        "Conference": "VAST",
+        "count": 744
+      },
+      {
+        "Conference": "SciVis",
+        "count": 305
+      }
+    ],
+    "ieee_vis_papers_1990_2024_main_dataset_per_year": [
+      {
+        "year": 1990,
+        "count": 53
+      },
+      {
+        "year": 1991,
+        "count": 57
+      },
+      {
+        "year": 1992,
+        "count": 59
+      },
+      {
+        "year": 1993,
+        "count": 55
+      },
+      {
+        "year": 1994,
+        "count": 59
+      },
+      {
+        "year": 1995,
+        "count": 74
+      },
+      {
+        "year": 1996,
+        "count": 89
+      },
+      {
+        "year": 1997,
+        "count": 91
+      },
+      {
+        "year": 1998,
+        "count": 94
+      },
+      {
+        "year": 1999,
+        "count": 91
+      },
+      {
+        "year": 2000,
+        "count": 93
+      },
+      {
+        "year": 2001,
+        "count": 97
+      },
+      {
+        "year": 2002,
+        "count": 103
+      },
+      {
+        "year": 2003,
+        "count": 114
+      },
+      {
+        "year": 2004,
+        "count": 174
+      },
+      {
+        "year": 2005,
+        "count": 120
+      },
+      {
+        "year": 2006,
+        "count": 114
+      },
+      {
+        "year": 2007,
+        "count": 131
+      },
+      {
+        "year": 2008,
+        "count": 123
+      },
+      {
+        "year": 2009,
+        "count": 148
+      },
+      {
+        "year": 2010,
+        "count": 130
+      },
+      {
+        "year": 2011,
+        "count": 149
+      },
+      {
+        "year": 2012,
+        "count": 138
+      },
+      {
+        "year": 2013,
+        "count": 101
+      },
+      {
+        "year": 2014,
+        "count": 133
+      },
+      {
+        "year": 2015,
+        "count": 160
+      },
+      {
+        "year": 2016,
+        "count": 115
+      },
+      {
+        "year": 2017,
+        "count": 114
+      },
+      {
+        "year": 2018,
+        "count": 127
+      },
+      {
+        "year": 2019,
+        "count": 129
+      },
+      {
+        "year": 2020,
+        "count": 157
+      },
+      {
+        "year": 2021,
+        "count": 109
+      },
+      {
+        "year": 2022,
+        "count": 119
+      },
+      {
+        "year": 2023,
+        "count": 133
+      },
+      {
+        "year": 2024,
+        "count": 124
+      }
+    ]
+  }
+}
